@@ -9,4 +9,5 @@ return [
     'Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle' => ['all' => true],
     'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle' => ['dev' => true, 'test' => true],
     'Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle' => ['all' => true],
+    'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle' => ['all' => true],
 ];
