@@ -103,6 +103,12 @@ class Report
      */
     private $validations;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="star")
+     */
+    private $stars;
+
     /**---------------------- setters & getters ------------------------*/
 
 
@@ -331,6 +337,7 @@ class Report
     public function __construct()
     {
         $this->validations = new ArrayCollection();
+        $this->stars       = new ArrayCollection();
     }
 
     /**
@@ -354,12 +361,41 @@ class Report
         $this->validations->removeElement($validation);
     }
 
-/**
- * @return mixed
- */
+    /**
+     * @return ArrayCollection
+     */
     public function getValidations()
     {
         return $this->validations;
+    }
+
+    /**
+     * @param Star $star
+     * @return $this
+     */
+    public function addStar(Star $star)
+    {
+        $this->stars[] = $star;
+
+        $star->setStar($this);
+
+        return $this;
+    }
+
+    /**
+     * @param Star $star
+     */
+    public function removeStar(Star $star)
+    {
+        $this->stars->removeElement($star);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStars()
+    {
+        return $this->stars;
     }
 
     /**

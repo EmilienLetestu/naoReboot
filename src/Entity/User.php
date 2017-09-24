@@ -103,6 +103,18 @@ class User
      */
     private $validations;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="star")
+     */
+    private $stars;
+
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="notification")
+     */
+    private $notifications;
+
     /**---------------------- setters & getters ------------------------*/
 
     /**
@@ -329,10 +341,12 @@ class User
      */
     public function __construct()
     {
-        $this->reports = new ArrayCollection();
-        $this->validations = new ArrayCollection();
-    }
+        $this->reports       = new ArrayCollection();
+        $this->validations   = new ArrayCollection();
+        $this->stars         = new ArrayCollection();
+        $this->notifications = new ArrayCollection();
 
+    }
 
     /**
      * @param Report $report
@@ -384,13 +398,73 @@ class User
         $this->validations->removeElement($validation);
     }
 
+
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getValidations()
     {
         return $this->validations;
     }
+
+    /**
+     * @param Star $star
+     * @return mixed
+     */
+    public function addStar(Star $star)
+    {
+        $this->stars[] = $star;
+
+        $this->setStar($this);
+
+        return $this;
+    }
+
+    /**
+     * @param Star $star
+     */
+    public function removeStar(Star $star)
+    {
+        $this->stars->removeElement($star);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStars()
+    {
+        return $this->stars;
+    }
+
+    /**
+     * @param Notification $notification
+     * @return $this
+     */
+    public function addNotification(Notification $notification)
+    {
+        $this->notifications[] = $notification;
+
+        $this->setNotification($this);
+
+        return $this;
+    }
+
+    /**
+     * @param Notification $notification
+     */
+    public function removeNotification(Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
 
     /**
      * @param int $length
