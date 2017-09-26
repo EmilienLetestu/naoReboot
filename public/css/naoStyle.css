@@ -1,0 +1,146 @@
+body, #wrapper
+{
+    min-height: 100vh;
+}
+
+main
+{
+    flex: 1;
+}
+
+footer
+{
+    background-color: #5e5e5e;
+}
+
+footer li
+{
+    font-size: 1.2rem;
+}
+
+li
+{
+    list-style: none;
+}
+
+a,
+a:hover,
+a:active,
+a:visited
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+/*---------------------buttons and link------------------*/
+
+#connection .btn-outline:hover,
+.social li:hover
+{
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    background-color: orange;
+}
+
+.social li
+{
+    color: orange;
+    border: solid 1px orange;
+    border-radius: 50%;
+    margin: 2%;
+    background-color: #FFFFFF;
+}
+
+#connection .btn-outline
+{
+    color: orange;
+    border-color: orange;
+    background-color: #FFFFFF;
+}
+
+#connection .btn-default
+{
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    background-color: orange;
+    margin-right: 5%;
+}
+
+#connection .btn-default:hover
+{
+    color: orange;
+    border-color: orange;
+    background-color: #FFFFFF;
+}
+
+
+#basic-addon1
+{
+    background-color: orange;
+    color: #FFFFFF;
+}
+
+#naoList li:hover,
+#moreInfo li:hover
+{
+    color: #FFFFFF;
+}
+
+/*---------------------------header-------------------------*/
+
+.navbar-brand i
+{
+    position: relative;
+    top: 4px;
+    color: #FFFFFF;
+    font-size: inherit;
+}
+
+.navbar
+{
+    background-color: #5e5e5e;
+}
+
+.navbar-brand:hover,
+.navbar-brand i:hover
+{
+    color: orange;
+}
+
+.navbar-brand
+{
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+
+
+/*---------------------------footer-------------------------*/
+
+.social ul
+{
+    display: flex;
+}
+
+
+.fa-facebook
+{
+    padding: 12%;
+}
+
+.social h4
+{
+    text-align: center;
+    color: #FFFFFF;
+}
+
+footer .list-group
+{
+    padding-left: 8%;
+}
+
+.list-title
+{
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}

@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('error') %}
+
+              <div class="flashMsg" style="font-size: 5em">
+                  <p>{{ message }}</p>
+              </div>
+
+    {% endfor %}
+    <div>
+        {{ form_start(form, {'attr':{'id':'registerForm'}}) }}
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.surname) }}
+            {{ form_widget(form.surname) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.pswd) }}
+            {{ form_widget(form.pswd) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.accessLevel) }}
+            {{ form_widget(form.accessLevel) }}
+        </div>
+        <div>
+            {{ form_label(form.termsAgreement) }}
+            {{ form_widget(form.termsAgreement) }}
+        </div>
+        <div class="form-group">
+             <button class="btn btn-success" type="submit">Valider</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

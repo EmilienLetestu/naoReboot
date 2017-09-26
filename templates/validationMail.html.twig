@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .disclaimer
+        {
+            font-size: 0.7em;
+        }
+    </style>
+</head>
+    <body>
+
+    <h1>Activation de votre compte</h1>
+
+    <h3>Bonjour {{ name }} {{ surname }},</h3>
+
+
+    <p>vous avez récemment créé un compte NAO et vous devez maintenant l'activer grĉe au lien ci-dessous:</p>
+
+    <a href="http://localhost:8000/validation/{{ expireOn }}/{{ email }}/{{ token }}">activer le compte</a>
+
+    <p>Nous vous remercions de votre confiance et vous souhaitons de passer d'agréables moments sur NAO.fr</p>
+
+    <p>L'équipe NAO.</p>
+
+    <p class="disclaimer"> Cet e-mail est généré automatiquement s'il vous est parvenu par erreur
+    veuillez nous en excuser et ne pas en tenir compte</p>
+
+    </body>
+</html>

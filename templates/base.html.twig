@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+                NAO
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://use.fontawesome.com/707b54fdb6.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+        {% block stylesheets %}
+            <link href="{{ asset("css/naoStyle.css") }}" rel="stylesheet">
+        {% endblock %}
+    </head>
+    <body>
+    <div class="d-flex flex-column" id="wrapper">
+        <nav class="navbar navbar-toggleable navbar-fixed-top py-5">
+            <a class="navbar-brand" href="{{ path('home') }}">
+                <i class="material-icons">home</i>
+                NAO
+            </a>
+            <div class="search-bar">
+                <form class="form-inline">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Rechercher" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon1"><i class="material-icons">search</i></span>
+                    </div>
+                </form>
+            </div>
+            <div class="nav navbar-nav ml-auto" id="connection">
+                <a class="btn btn-default" href="{{ path('register') }}">Inscription</a>
+                <a class="btn btn-outline" href="#" >Connexion</a>
+            </div>
+        </nav>
+        <main class="container-fluid py-3">
+
+        {% block body %}
+
+        {% endblock %}
+
+        </main>
+        <footer class="container-fluid w-100">
+            <div class="row my-4">
+                <ul class="list-group col-lg-4" id="naoList">
+                    <li class="list-title mb-3">
+                        Nos amis les oiseaux
+                    </li>
+                    <li>
+                        <a href="{{ path('aboutUs') }}#aboutUs">Qui sommes nous?</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('aboutUs') }}#contactUs">Nous contacter</a>
+                    </li>
+                </ul>
+                <div class="social col-lg-4 mb-4">
+                    <h4 class="mb-5">Suivez-nous</h4>
+                    <ul class="list-unstyled d-flex justify-content-center">
+                        <li>
+                            <i class="fa fa-twitter mx-2" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-facebook mx-2" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-google mx-2" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-instagram mx-2" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="list-group col-lg-4" id="moreInfo">
+                    <li class="list-title mb-3">
+                        Plus d'infos
+                    </li>
+                    <li>
+                        <a href="{{ path('aboutUs') }}#partnerShip">Nos partenaires</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('cgu') }}">Conditions générales d'utilisation</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+        {% block javascripts %}
+
+        {% endblock %}
+    </body>
+</html>

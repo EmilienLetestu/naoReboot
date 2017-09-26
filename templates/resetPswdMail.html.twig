@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .disclaimer
+        {
+            font-size: 0.7em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Modification du mot de passe</h1>
+
+<h3>Bonjour {{ name }} {{ surname }},</h3>
+
+
+<p>vous avez signalé avoir oublié votre mot de passe, pour choisir un nouveau mot de passe cliquez sur le lien ci-dessous</p>
+
+<a href="http://localhost:8000/mot-de-passe-oublier/{{ expireOn }}-{{ email }}-{{ token }}">Nouveau mot de passe</a>
+
+<p>Nous vous remercions de votre confiance et espèrons que vous passer d'agréables moments sur NAO.fr</p>
+
+<p>L'équipe NAO.</p>
+
+<p class="disclaimer"> Cet e-mail est généré automatiquement s'il vous est parvenu par erreur
+    veuillez nous en excuser et ne pas en tenir compte</p>
+
+</body>
+</html>
