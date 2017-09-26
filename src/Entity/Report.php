@@ -37,8 +37,8 @@ class Report
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reports")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -105,7 +105,7 @@ class Report
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="star")
+     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="report")
      */
     private $stars;
 

@@ -29,7 +29,8 @@ class Validation
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Report", inversedBy="validations")
+     * @ORM\JoinColumn(name="report_id", referencedColumnName="id")
      * @ORM\JoinColumn(nullable=false)
      * Id from validated report
      */
@@ -37,8 +38,8 @@ class Validation
 
     /**
      * @var
-     * @ORM\ManyToONe(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToONe(targetEntity="App\Entity\User", inversedBy="validations")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * Id from user whom was adding validation point
      */
     private $user;

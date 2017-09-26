@@ -29,16 +29,16 @@ class Star
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Report", inversedBy="stars")
+     * @ORM\JoinColumn(name="report_id", referencedColumnName="id")
      * id from starred report
      */
     private $report;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="stars")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * id from user whom was adding star
      */
     private $user;

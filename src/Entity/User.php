@@ -93,25 +93,25 @@ class User
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="report")
+     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="user")
      */
     private $reports;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Validation", mappedBy="validation")
+     * @ORM\OneToMany(targetEntity="App\Entity\Validation", mappedBy="user")
      */
     private $validations;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="star")
+     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="user")
      */
     private $stars;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="notification")
+     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="user")
      */
     private $notifications;
 
