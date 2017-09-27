@@ -45,7 +45,7 @@ class Mails
     {
         $repository = $this->doctrine->getRepository(User::class);
 
-        return  $repository->find($email);
+        return  $repository->findOneByEmail($email);
     }
 
     /**
@@ -65,7 +65,8 @@ class Mails
                 'name'     => $name,
                 'surname'  => $surname,
                 'token'    => $token,
-                'email'    => $email
+                'email'    => $email,
+                'expireOn' => date('Y-m-d', strtotime('+2 day'))
             ]),
                 'text/html');
         return $message;
