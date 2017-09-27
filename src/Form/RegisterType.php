@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Type;
@@ -54,9 +55,10 @@ class RegisterType extends AbstractType
                                             'label' => 'Nom'
             ])
             ->add('email', EmailType::class,['constraints'=>[new NotBlank(),
-                                                             new Type('string'),
+                                                             new Email([
+                                                                 'message' => 'Ceci n\'est pas un emazil valide']),
                                                              ],
-                                             'Label' => 'E-mail'
+                                             'label' => 'E-mail'
             ])
             ->add('pswd', PasswordType::class,['constraints'=>[new NotBlank(),
                                                                new PswdFormat(),
@@ -74,7 +76,7 @@ class RegisterType extends AbstractType
                                                                    'un professionnel'            => 2
                                                     ]
             ])
-            ->add('termAgreement', CheckboxType::class,['label' => 'J\'accepte les conditions générales d\'utilisation',
+            ->add('termsAgreement', CheckboxType::class,['label' => 'J\'accepte les conditions générales d\'utilisation',
                                                         'required' => true,
                                                         'mapped'   => false
             ])
