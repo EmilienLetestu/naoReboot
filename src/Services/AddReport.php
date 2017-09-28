@@ -9,8 +9,10 @@
 namespace App\Services;
 
 use App\Entity\Report;
+use App\Entity\User;
 use App\Form\ReportType;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -23,6 +25,7 @@ class AddReport
     private $requestStack;
     private $doctrine;
     private $session;
+    private $file;
 
     /**
      * AddReport constructor.
@@ -30,12 +33,14 @@ class AddReport
      * @param RequestStack $requestStack
      * @param EntityManager $doctrine
      * @param Session $session
+     * @param Filesystem $file
      */
     public function __construct(
         FormFactory   $formFactory,
         RequestStack  $requestStack,
         EntityManager $doctrine,
-        Session       $session
+        Session       $session,
+        Filesystem    $file
 
     )
     {
@@ -43,6 +48,7 @@ class AddReport
         $this->requestStack = $requestStack;
         $this->doctrine     = $doctrine;
         $this->session      = $session;
+        $this->file         = $file;
     }
 
 
@@ -52,7 +58,7 @@ class AddReport
         $report = new Report();
         $reportForm = $this->formFactory->create(ReportType::class, $report);
         //get user data from session
-        $user = $this->session->get('user');
+        //$user = $this->session->get('user');
 
         $reportForm->handleRequest($request);
 
@@ -60,25 +66,38 @@ class AddReport
         if($reportForm->isSubmitted() && $reportForm->isValid())
         {
             //get report default data
-            $default = $this->reportGateways(
-                $this->session->get('user')->getId()
-            );
-            $report->setValidated($default[0]);
-            $report->setValidationScore($default[1]);
+            //$default = $this->reportGateways(
+            //    $this->session->get('user')->getId()
+            //);
+
+            // !! -- temporary will use session as soon as session bug will be fixed -- !! //
+            $rep = $this->doctrine->getRepository(User::class);
+            $user = $rep->find(1);
+            $report->setValidated(false);
+            $report->setValidationScore(0);
             $report->setUser($user);
+            $report->setStarNbr(0);
 
             //get form data and hydrate
             $report->setNbrOfBirds($reportForm->get('nbrOfBirds')->getData());
             $report->setAddedOn($reportForm->get('addedOn')->getData());
             $report->setComment($reportForm->get('comment')->getData());
             $report->setPictRef(
-                $reportForm->get('pictRef')->getData(),
-                $reportForm->get('bird')->getData()
+                $user->getId(),
+                1,
+                date('Y-m-d')
             );
-            $report->setSatNav($reportForm->get('googleMap')->getData());
 
-            // !--- process pict and save into "userPict" directory --! //
-            //....
+            // !! -- temporary will use googleMap Api data later on -- !! //
+            $report->setSatNav($reportForm->get('googleMap')->getData());
+            $report->setLocation('sdsdqsd');
+
+            //process pict and save into "userImages" directory
+            $file = $reportForm->get('pictRef')->getData();
+            $file->move(
+                $uploadRootDir = '../public/userImages',
+                $filename = "{$report->getPictRef()}.{$file->guessExtension()}"
+            );
 
             //save
             $this->doctrine->getRepository(Report::class);
@@ -101,7 +120,8 @@ class AddReport
     {
         $gateWays = [
             $validated = $accessLevel > 1 ? true : false,
-            $validationScore = $validated === true ? 5 : 0
+            $validationScore = $validated === true ? 5 : 0,
+            $star = 0
         ]
         ;
         return $gateWays;
