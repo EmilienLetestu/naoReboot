@@ -31,3 +31,7 @@ services:
     App\Services\:
         resource: '../src/Services'
         public: true
+
+    App\Managers\:
+        resource: '../src/Managers'
+        public: true
