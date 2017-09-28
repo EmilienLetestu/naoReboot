@@ -38,8 +38,9 @@ class ReportTest extends TestCase
         $report->setNbrOfBirds(8);
         $report->setValidated(true);
         $report->setValidationScore(5);
+        $report->setPictRef(10, 157,'2017-12-01');
 
-        $report->generatePictRef(10, 157);
+        $pictRef = $report->generatePictRef(10, 157,'2017-12-01');
 
         static::assertEquals('Caen', $report->getLocation());
         static::assertEquals('lat: 48.8627, lng: 150.644', $report->getSatNav());
@@ -48,6 +49,10 @@ class ReportTest extends TestCase
         static::assertEquals(8, $report->getNbrOfBirds());
         static::assertEquals(true,$report->getValidated());
         static::assertEquals(5, $report->getValidationScore());
+        static::assertEquals('10_157_2017-12-01',$report->getPictRef());
+
+        static::assertEquals('10_157_2017-12-01', $pictRef);
+
 
     }
 }

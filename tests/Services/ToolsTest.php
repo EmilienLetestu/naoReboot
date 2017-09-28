@@ -31,5 +31,30 @@ class ToolsTest extends TestCase
         static::assertEquals(false,$onHoldFalse);
         static::assertEquals(true,$onHoldTrue);
 
+
+        $homePageImgData = $tools->generateDataForHomeImg('rossignol',1);
+
+        static::assertInternalType('array',$homePageImgData);
+        static::assertEquals('rossignol',$homePageImgData['watermark']);
+        static::assertEquals('nao recherche: rossignol',$homePageImgData['altText']);
+        static::assertEquals('naoEvent_1_rossignol', $homePageImgData['fileName']);
+
+
+        $speciesLatin = 'Accipiter fasciatus vigilax (Wetmore, 1926)';
+        $speciesFr    = 'Autour australien, Émouchet gris';
+        $wiki = $tools->birdWiki($speciesLatin,$speciesFr);
+
+        static::assertInternalType('array',$wiki);
+        static::assertEquals('Accipiter fasciatus vigilax', $wiki['latin']);
+        static::assertEquals('Wetmore', $wiki['twitcher']);
+        static::assertEquals('1926', $wiki['year']);
+        static::assertEquals('Autour australien', $wiki['fr']);
+
+
+        $userImgData = $tools->generateDataForUserImg('rossignol',1,10);
+
+        static::assertInternalType('array', $userImgData);
+        static::assertEquals('observation de rossignol sur NAO.fr', $userImgData['altText']);
+
     }
 }
