@@ -54,7 +54,8 @@ class ReportType extends AbstractType
                                                    'required' => false
             ])
             ->add('pictRef', FileType::class, ['required' => false,
-                                               'label'    => 'Ajouter une Image'
+                                               'label'    => 'Ajouter une Image',
+                                               'mapped'   => false
             ])
             ->add('googleMap', TextType::class, ['mapped' => false,
                                                  'label'  => 'lieu'
