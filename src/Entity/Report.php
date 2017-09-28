@@ -79,10 +79,10 @@ class Report
     private $comment;
 
     /**
-     * @var
+     * @var null
      * @ORM\Column(type="string", length=40)
      */
-    private $pictRef;
+    private $pictRef = null;
 
     /**
      * @var
@@ -273,13 +273,14 @@ class Report
     }
 
     /**
-     * @param User $user
-     * @param Bird $bird
+     * @param $date
+     * @param int $userId
+     * @param int $birdId
      * @return Report
      */
-    public function setPictRef(User $user, Bird $bird) :Report
+    public function setPictRef(int $userId, int $birdId, $date) :Report
     {
-        $pictRef = $this->generatePictRef($user,$bird);
+        $pictRef = $this->generatePictRef($userId,$birdId,$date);
         $this->pictRef = $pictRef;
 
         return $this;
@@ -397,13 +398,14 @@ class Report
     }
 
     /**
-     * @param $user
-     * @param $bird
+     * @param $userId
+     * @param $birdId
+     * @param $date
      * @return string
      * generate a serial number which will be used later on to rename file
      */
-    public function generatePictRef($user, $bird) :string
+    public function generatePictRef($userId, $birdId, $date) :string
     {
-        return $pictRef = "{$user}_{$bird}";
+        return $pictRef = "{$userId}_{$birdId}_{$date}";
     }
 }
