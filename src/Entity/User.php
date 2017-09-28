@@ -16,7 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @package App\Entity
  * @ORM\Entity
  * @ORM\Table(name="user")
- *
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User
 {
@@ -356,8 +356,6 @@ class User
     {
         $this->reports[] = $report;
 
-        $report->setReport($this);
-
         return $this;
     }
 
@@ -384,8 +382,6 @@ class User
     public function addValidation(Validation $validation)
     {
         $this->validations[] = $validation;
-
-        $this->setValidation($this);
 
         return $this;
     }
@@ -415,8 +411,6 @@ class User
     {
         $this->stars[] = $star;
 
-        $this->setStar($this);
-
         return $this;
     }
 
@@ -443,8 +437,6 @@ class User
     public function addNotification(Notification $notification)
     {
         $this->notifications[] = $notification;
-
-        $this->setNotification($this);
 
         return $this;
     }
