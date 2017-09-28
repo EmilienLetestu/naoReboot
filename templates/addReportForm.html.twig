@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+    <div>
+        {{ form_start(form, {'attr':{'id':'reportForm'}}) }}
+        <div class="form-group">
+            {{ form_label(form.bird) }}
+            {{ form_widget(form.bird) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.nbrOfBirds) }}
+            {{ form_widget(form.nbrOfBirds) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.addedOn) }}
+            {{ form_widget(form.addedOn) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.googleMap) }}
+            {{ form_widget(form.googleMap) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.comment) }}
+            {{ form_widget(form.comment) }}
+        </div>
+        <div>
+            {{ form_label(form.pictRef) }}
+            {{ form_widget(form.pictRef) }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Valider</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
