@@ -272,15 +272,13 @@ class Report
         return $this->comment;
     }
 
+
     /**
-     * @param $date
-     * @param int $userId
-     * @param int $birdId
+     * @param string $pictRef
      * @return Report
      */
-    public function setPictRef(int $userId, int $birdId, $date) :Report
+    public function setPictRef(string $pictRef) :Report
     {
-        $pictRef = $this->generatePictRef($userId,$birdId,$date);
         $this->pictRef = $pictRef;
 
         return $this;
@@ -397,15 +395,4 @@ class Report
         return $this->stars;
     }
 
-    /**
-     * @param $userId
-     * @param $birdId
-     * @param $date
-     * @return string
-     * generate a serial number which will be used later on to rename file
-     */
-    public function generatePictRef($userId, $birdId, $date) :string
-    {
-        return $pictRef = "{$userId}_{$birdId}_{$date}";
-    }
 }

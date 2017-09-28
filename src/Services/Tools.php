@@ -51,13 +51,12 @@ class Tools
 
     /**
      * @param $birdSpecies
-     * @param $birdId
      * @param $userId
      * @return array
      */
-    public function generateDataForUserImg($birdSpecies, $birdId, $userId)
+    public function generateDataForUserImg($birdSpecies, $userId)
     {
-        return ['fileName' => uniqid("{$userId}_{$birdId}"),
+        return ['fileName' => uniqid("{$userId}_"),
                 'altText'  => "observation de {$birdSpecies} sur NAO.fr"];
     }
 

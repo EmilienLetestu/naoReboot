@@ -51,7 +51,7 @@ class ToolsTest extends TestCase
         static::assertEquals('Autour australien', $wiki['fr']);
 
 
-        $userImgData = $tools->generateDataForUserImg('rossignol',1,10);
+        $userImgData = $tools->generateDataForUserImg('rossignol',1);
 
         static::assertInternalType('array', $userImgData);
         static::assertEquals('observation de rossignol sur NAO.fr', $userImgData['altText']);
