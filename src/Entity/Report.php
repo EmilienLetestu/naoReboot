@@ -348,8 +348,6 @@ class Report
     {
         $this->validations[] = $validation;
 
-        $validation->setValidation($this);
-
         return $this;
     }
 
