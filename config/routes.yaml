@@ -1,7 +1,12 @@
 home:
     path: /
     defaults:
-         _controller: App\Controller\IndexController::home
+        _controller: App\Controller\IndexController::home
+
+login:
+    path: /connexion
+    defaults:
+        _controller: App\Controller\IndexController::login
 
 register:
     path: /connexion/inscription
@@ -17,21 +22,38 @@ resetPswd:
     path: /mot-de-passe-oublier/{expireOn}/{email}/{token}
     defaults:
         _controller: App\Controller\IndexController::resetPswdForm
+    requirements:
+        expireOn: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])
+        email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
+        token: ([^']{40,})
 
 validation:
     path: /validation/{expireOn}/{email}/{token}
     defaults:
         _controller: App\Controller\IndexController::activate
+    requirements:
+        expireOn: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])
+        email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
+        token: ([^']{40,})
 
 addReport:
      path: /observations/nouvelle-observation
      defaults:
          _controller: App\Controller\IndexController::AddReport
 
+profil:
+    path: /mon-profil/{name}-{surname}
+    defaults:
+        _controller: App\Action\
+    requirements:
+        name: ([a-z]{3,})
+        surname: ([a-z]{3,})
+
 aboutUs:
     path: /nao-et-ses-partenaires
     defaults:
         _controller:
+
 cgu:
     path: /cgu
     defaults:
@@ -41,3 +63,5 @@ cgu:
 controllers:
    resource: ../src/Controller/
    type: annotation
+
+
