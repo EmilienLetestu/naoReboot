@@ -6,12 +6,18 @@ framework:
     #trusted_hosts: ~
     # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
     session:
-        handler_id: session.handler.native_file
+        storage_id: 'session.storage.native'
+        handler_id: 'session.handler.native_file'
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        name: 'session'
+        cookie_lifetime: 0
+
+    assets:
+        base_urls: '%env(BASE_URLS)%'
+
     #esi: ~
     #fragments: ~
     php_errors:
         log: true
 
-    assets:
-        base_urls: '%env(BASE_URLS)%'
+
