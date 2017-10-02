@@ -127,13 +127,13 @@ class UserRepository extends EntityRepository
      * @param $accessLevel
      * @return array
      */
-    public function findDeletableAccount($accessLevel)
+    public function findDeletableAccount($accessLevel,$nMonthAgo)
     {
         $queryBuilder = $this->createQueryBuilder('u');
 
        $this->whereActivated($queryBuilder, 0);
        $this->whereAccessLevel($queryBuilder,$accessLevel);
-       $this->whereCreatedOn($queryBuilder,"-1 day");
+       $this->whereCreatedOn($queryBuilder,$nMonthAgo);
 
         return(
             $queryBuilder->getQuery()->getResult()

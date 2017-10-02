@@ -11,33 +11,31 @@ namespace App\Managers;
 use App\Entity\User;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserManager
 {
 
-    /**
-     * @var EntityManager
-     */
+
     private $doctrine;
-    /**
-     * @var NotificationManager
-     */
     private $notificationManager;
+    private $session;
 
     /**
      * UserManager constructor.
      * @param EntityManager $doctrine
      * @param NotificationManager $notificationManager
+     * @param Session $session
      */
     public  function __construct(
         EntityManager       $doctrine,
-        NotificationManager $notificationManager
+        NotificationManager $notificationManager,
+        Session             $session
     )
     {
         $this->doctrine            = $doctrine;
         $this->notificationManager = $notificationManager;
+        $this->session             = $session;
     }
 
     /**
@@ -46,7 +44,6 @@ class UserManager
      */
     public function deleteAllUnactivated($accessLevel)
     {
-        $session =new Session();
         $repository = $this->doctrine->getRepository(User::class);
         $userList = $repository->findDeletableAccount($accessLevel);
 
@@ -57,7 +54,7 @@ class UserManager
 
         $this->doctrine->flush();
 
-        return $session->getFlashBag()
+        return $this->session->getFlashBag()
             ->add('success','Les comptes ont été supprimés')
         ;
     }
@@ -129,5 +126,4 @@ class UserManager
         $this->notificationManager->notifyUser($type = 4, $user);
         $this->doctrine->flush();
     }
-
 }

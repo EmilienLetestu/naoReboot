@@ -51,8 +51,7 @@ class ValidationManager
         $report = $repository->find($reportId);
         $score = $report->getValidationScore();
 
-
-        //---  get user data from session ---//
+        //---  will get user data from session as soon as session bug will be fixed ---//
 
         //create a new validation object and hydrate it
         $validation = new Validation();
@@ -62,8 +61,10 @@ class ValidationManager
         ;
 
         //update report with new data
-        $report->addValidation($validation);
-        $report->setValidationScore($score + 1);
+        $report
+            ->addValidation($validation)
+            ->setValidationScore($score + 1);
+
         $this->doctrine->persist($validation);
 
         //check if report as to be validated

@@ -26,6 +26,7 @@ class AddReport
     private $doctrine;
     private $session;
     private $file;
+    private $tools;
 
     /**
      * AddReport constructor.
@@ -34,13 +35,15 @@ class AddReport
      * @param EntityManager $doctrine
      * @param Session $session
      * @param Filesystem $file
+     * @param Tools $tools
      */
     public function __construct(
         FormFactory   $formFactory,
         RequestStack  $requestStack,
         EntityManager $doctrine,
         Session       $session,
-        Filesystem    $file
+        Filesystem    $file,
+        Tools         $tools
 
     )
     {
@@ -49,6 +52,7 @@ class AddReport
         $this->doctrine     = $doctrine;
         $this->session      = $session;
         $this->file         = $file;
+        $this->tools        = $tools;
     }
 
 
@@ -73,31 +77,30 @@ class AddReport
             // !! -- temporary will use session as soon as session bug will be fixed -- !! //
             $rep = $this->doctrine->getRepository(User::class);
             $user = $rep->find(1);
-            $report->setValidated(false);
-            $report->setValidationScore(0);
-            $report->setUser($user);
-            $report->setStarNbr(0);
-
-            //get form data and hydrate
-            $report->setNbrOfBirds($reportForm->get('nbrOfBirds')->getData());
-            $report->setAddedOn($reportForm->get('addedOn')->getData());
-            $report->setComment($reportForm->get('comment')->getData());
-            $report->setPictRef(
-                $user->getId(),
-                1,
-                date('Y-m-d')
-            );
-
-            // !! -- temporary will use googleMap Api data later on -- !! //
-            $report->setSatNav($reportForm->get('googleMap')->getData());
-            $report->setLocation('sdsdqsd');
+            $report
+                ->setValidated(false)
+                ->setValidationScore(0)
+                ->setUser($user)
+                ->setStarNbr(0)
+                ->setNbrOfBirds($reportForm->get('nbrOfBirds')->getData())
+                ->setAddedOn($reportForm->get('addedOn')->getData())
+                ->setComment($reportForm->get('comment')->getData())
+                // !! -- temporary will use googleMap Api data later on -- !! //
+                ->setSatNav($reportForm->get('googleMap')->getData())
+                ->setLocation('sdsdqsd');
 
             //process pict and save into "userImages" directory
             $file = $reportForm->get('pictRef')->getData();
+            //generate filename
+            $pictName = $this->tools->generateDataForUserImg(
+                $reportForm->get('bird')->getData(),
+                $user->getId()
+            );
             $file->move(
                 $uploadRootDir = '../public/userImages',
-                $filename = "{$report->getPictRef()}.{$file->guessExtension()}"
+                $filename = "$pictName.{$file->guessExtension()}"
             );
+            $report->setPictRef($filename);
 
             //save
             $this->doctrine->getRepository(Report::class);

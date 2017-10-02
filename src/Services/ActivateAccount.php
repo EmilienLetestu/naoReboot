@@ -16,29 +16,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class ActivateAccount
 {
-    /**
-     * @var EntityManager
-     */
+
     private $doctrine;
-
-    /**
-     * @var Session
-     */
     private $session;
-
-    /**
-     * @var Mails
-     */
     private $mailService;
-
-    /**
-     * @var
-     */
     private $tools;
-
-    /**
-     * @var
-     */
     private $swift;
 
 
@@ -85,7 +67,6 @@ class ActivateAccount
             'email'              => $email,
             'confirmationToken'  => $token
         ]);
-
 
 
         $stillValid = $this->tools->isLinkStillValid($date);

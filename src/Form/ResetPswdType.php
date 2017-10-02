@@ -37,8 +37,8 @@ class ResetPswdType extends AbstractType
                                                                   ],
                                                  'label' => 'Nouveau mot de passe'
             ])
-            ->add('confirmPswd', TextType::class, ['constraints' => [new NotBlank(),
-                                                                     new Type('string')
+            ->add('confirmPswd', PasswordType::class, ['constraints' => [new NotBlank(),
+                                                                         new Type('string')
                                                                     ],
                                                    'required' => true,
                                                    'mapped'   => false,

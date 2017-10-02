@@ -28,6 +28,16 @@ class Register
     private $tools;
     private $session;
 
+    /**
+     * Register constructor.
+     * @param FormFactory $formFactory
+     * @param RequestStack $requestStack
+     * @param EntityManager $doctrine
+     * @param \Swift_Mailer $swift
+     * @param Mails $mailService
+     * @param Tools $tools
+     * @param Session $session
+     */
     public  function __construct(
         FormFactory         $formFactory,
         RequestStack        $requestStack,

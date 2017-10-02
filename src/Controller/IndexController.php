@@ -17,15 +17,13 @@ class IndexController extends Controller
 {
     public function home()
     {
-        $this->get('session')->set('sdsqdq','hello');
 
         return $this->render('home.html.twig');
     }
 
-    public function login(Request $request)
+    public function login()
     {
         $view = $this->get('form.factory')->create(Login::class);
-       dump($request->getSession()->get('sdsqdq'));
         return $this->render(
             'connectionForms.html.twig',
             ['form' => $view->createView()]
