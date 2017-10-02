@@ -61,7 +61,7 @@ class Bird
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="report")
+     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="bird")
      */
     private $reports;
 
