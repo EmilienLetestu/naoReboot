@@ -30,8 +30,8 @@ class Report
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Bird")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Bird", inversedBy="reports")
+     * @ORM\JoinColumn(name="bird_id", referencedColumnName="id")
      */
     private $bird;
 
@@ -373,8 +373,6 @@ class Report
     public function addStar(Star $star)
     {
         $this->stars[] = $star;
-
-        $star->setStar($this);
 
         return $this;
     }

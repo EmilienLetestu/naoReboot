@@ -10,6 +10,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Class Bird
@@ -35,7 +37,7 @@ class Bird
 
     /**
      * @var
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
     private $synonymous;
 
@@ -56,6 +58,12 @@ class Bird
      * @ORM\Column(type="string", length=60)
      */
     private $birdGroup;
+
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="report")
+     */
+    private $reports;
 
 
     /**---------------------- setters & getters ------------------------*/
@@ -162,5 +170,38 @@ class Bird
         return $this;
     }
 
+    /**
+     * Bird constructor.
+     */
+    public function __construct()
+    {
+        $this->reports = new ArrayCollection();
+    }
 
+    /**
+     * @param Report $report
+     * @return $this
+     */
+    public function addReport(Report $report)
+    {
+        $this->reports[] = $report;
+
+        return $this;
+    }
+
+    /**
+     * @param Report $report
+     */
+    public function removeReport(Report $report)
+    {
+        $this->reports->removeElement($report);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReports()
+    {
+        return $this->reports;
+    }
 }
