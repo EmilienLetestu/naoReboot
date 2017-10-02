@@ -10,4 +10,5 @@ return [
     'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle' => ['dev' => true, 'test' => true],
     'Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle' => ['all' => true],
     'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle' => ['all' => true],
+    'Symfony\Bundle\SecurityBundle\SecurityBundle' => ['all' => true],
 ];

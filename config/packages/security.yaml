@@ -1,0 +1,34 @@
+security:
+    encoders:
+            App\Entity\User:
+                algorithm: bcrypt
+
+    role_hierarchy:
+            ROLE_VALIDATOR: [ROLE_USER]
+            ROLE_ADMIN: [ROLE_VALIDATOR]
+
+    providers:
+        main:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        main:
+            provider: main
+            pattern: ^/
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path: logout
+                target: login
+
+    access_control:
+            - { path: ^/admin, roles: ROLE_ADMIN }
+            - { path: ^/observations/nouvelle-observation, roles: ROLE_USER }
+            - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+
+
