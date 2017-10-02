@@ -41,19 +41,23 @@ class ReportRepository extends EntityRepository
     /**
      * @param QueryBuilder $queryBuilder
      * @param $validated
-     * @param $orderBy
+     * @param $order
      * @param $sort
      * @param $limit
      */
-    public function whereValidated(QueryBuilder $queryBuilder, $validated, $orderBy, $sort, $limit)
+    public function whereValidated(QueryBuilder $queryBuilder, $validated, $order, $sort, $limit)
     {
         $queryBuilder
             ->andWhere("r.validated = {$validated}")
-            ->orderBy("r.{$orderBy}","{$sort}")
+            ->orderBy("r.{$sort}","{$order}")
             ->setMaxResults($limit)
         ;
     }
 
+    /**
+     * fetch all unvalidated report posted 30 days ago or more
+     * @return array
+     */
     public function findAllExpired()
     {
         $queryBuilder = $this->createQueryBuilder('r');
@@ -72,19 +76,20 @@ class ReportRepository extends EntityRepository
     }
 
     /**
+     * fetch validated or unvalidated report based on user access level
      * @param $birdId
      * @param $validated
-     * @param $orderBy
+     * @param $order
      * @param $sort
      * @param $limit
      * @return array
      */
-    public function findAllBirdDependOnViewer($birdId,$validated,$orderBy,$sort,$limit)
+    public function findAllDependOnViewer($birdId,$validated,$order,$sort,$limit)
     {
         $queryBuilder = $this->createQueryBuilder('r');
 
         $this->whereReportedBird($queryBuilder,$birdId);
-        $this->whereValidated($queryBuilder,$validated,$orderBy,$sort,$limit);
+        $this->whereValidated($queryBuilder,$validated,$order,$sort,$limit);
 
         return $queryBuilder
             ->getQuery()
@@ -94,13 +99,14 @@ class ReportRepository extends EntityRepository
     }
 
     /**
+     * fetch the last 9 published and validated to display on home
      * @return array
      */
     public function findAllForHomePage()
     {
         $queryBuilder = $this->createQueryBuilder('r');
 
-        $this->whereValidated($queryBuilder,1,'addedOn','Desc',9);
+        $this->whereValidated($queryBuilder,1,'Desc','addedOn',9);
 
         return $queryBuilder
             ->getQuery()

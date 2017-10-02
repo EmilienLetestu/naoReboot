@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Entity
  * @ORM\Entity
  * @ORM\Table(name="report")
- *
+ * @ORM\Entity(repositoryClass="App\Repository\ReportRepository")
  */
 class Report
 {

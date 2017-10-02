@@ -47,6 +47,7 @@ class NotificationRepository extends EntityRepository
 
 
     /**
+     * fetch all notification for a given user
      * @param $id
      * @param $seen
      * @return array
@@ -63,7 +64,6 @@ class NotificationRepository extends EntityRepository
         $queryBuilder->where($queryBuilder->expr()->in('u.id',$id))
         ->andWhere('n.seen = :seen')
         ->setParameter('seen',$seen);
-
 
         return(
         $queryBuilder->getQuery()->getResult()

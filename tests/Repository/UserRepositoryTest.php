@@ -42,7 +42,7 @@ class UserRepositoryTest extends KernelTestCase
 
     public function testFindDeletableAccount()
     {
-        $accessLevel = 1;
+        $accessLevel = 2;
         $nMonthAgo   = "-1 day";
 
         $user = $this->em

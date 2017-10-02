@@ -124,6 +124,7 @@ class UserRepository extends EntityRepository
     }
 
     /**
+     * fetch all unactivated accounts created 30 days ago or more
      * @param $accessLevel
      * @return array
      */
@@ -142,6 +143,7 @@ class UserRepository extends EntityRepository
     }
 
     /**
+     * find matching user for a given email address
      * @param $email
      * @return array
      */
