@@ -8,6 +8,12 @@ login:
     defaults:
         _controller: App\Controller\IndexController::login
 
+login_check:
+    path: /login
+
+logout:
+    path: /logout
+
 register:
     path: /connexion/inscription
     defaults:
@@ -16,7 +22,7 @@ register:
 askNewPswd:
     path: /mot-de-passe-oublier
     defaults:
-        _controller: App\Controller\IndexController:resetPswdMail
+        _controller: App\Controller\IndexController::resetPswdMail
 
 resetPswd:
     path: /mot-de-passe-oublier/{expireOn}/{email}/{token}
@@ -44,10 +50,10 @@ addReport:
 profil:
     path: /mon-profil/{name}-{surname}
     defaults:
-        _controller: App\Action\
+        _controller: App\Controller\IndexController::profil
     requirements:
-        name: ([a-z]{3,})
-        surname: ([a-z]{3,})
+        name: ([a-zA-z]{3,})
+        surname: ([a-zA-z]{3,})
 
 aboutUs:
     path: /nao-et-ses-partenaires
@@ -63,5 +69,3 @@ cgu:
 controllers:
    resource: ../src/Controller/
    type: annotation
-
-
