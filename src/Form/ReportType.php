@@ -30,35 +30,40 @@ class ReportType extends AbstractType
     {
         $builder
             ->add('bird', EntityType::class, ['constraints'=>[new NotBlank()],
-                                               'class' => 'App:Bird',
-                                               'choice_label' => 'speciesFr'
+                                                         'class'        => 'App:Bird',
+                                                         'choice_label' => 'speciesFr'
             ])
+
             ->add('nbrOfBirds', IntegerType::class, ['constraints'=>[new Type('numeric'),
-                                                                     new Range([
-                                                                         'min' => 1,
-                                                                         'max' => 30,
-                                                                         'minMessage' => 'Le nombre minimum est 1',
-                                                                         'maxMessage' => 'Le nombre Maximum est 30'])
-                                                                     ],
-                                                      'label' => 'Spécimens observés'
+                                                                               new Range([
+                                                                                   'min' => 1,
+                                                                                   'max' => 30,
+                                                                                   'minMessage' => 'Le nombre minimum est 1',
+                                                                                   'maxMessage' => 'Le nombre Maximum est 30'])
+                                                                               ],
+                                                                'label' => 'Spécimens observés'
             ])
-            ->add('addedOn', DateType::class, ['label'  => 'Date',
-                                               'widget' => 'choice',
-                                               'html5'  =>  false,
-                                               'format' => 'dd-MM-yyyy'
+
+            ->add('addedOn', DateType::class, ['label' => 'Date',
+                                                         'widget' => 'choice',
+                                                         'html5'  =>  false,
+                                                         'format' => 'dd-MM-yyyy'
             ])
+
             ->add('comment', TextareaType::class, ['constraints' => [new commentLength()],
-                                                   'mapped'   => false,
-                                                   'trim'     => true,
-                                                   'label'    => 'Commentaire',
-                                                   'required' => false
+                                                             'mapped'   => false,
+                                                             'trim'     => true,
+                                                             'label'    => 'Commentaire',
+                                                             'required' => false
             ])
+
             ->add('pictRef', FileType::class, ['required' => false,
-                                               'label'    => 'Ajouter une Image',
-                                               'mapped'   => false
+                                                          'label'    => 'Ajouter une Image',
+                                                          'mapped'   => false
             ])
+
             ->add('googleMap', TextType::class, ['mapped' => false,
-                                                 'label'  => 'lieu'
+                                                            'label'  => 'lieu'
             ])
         ;
     }

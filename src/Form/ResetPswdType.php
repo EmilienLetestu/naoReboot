@@ -27,22 +27,23 @@ class ResetPswdType extends AbstractType
     {
         $builder
             ->add('pswd', PasswordType::class, ['constraints' => [new NotBlank(),
-                                                                  new PswdFormat(),
-                                                                  new Type('string'),
-                                                                  new Length([
-                                                                    'min'        => 6,
-                                                                    'max'        => 30,
-                                                                    'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
-                                                                    'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'])
-                                                                  ],
-                                                 'label' => 'Nouveau mot de passe'
+                                                                            new PswdFormat(),
+                                                                            new Type('string'),
+                                                                            new Length([
+                                                                                'min'        => 6,
+                                                                                'max'        => 30,
+                                                                                'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
+                                                                                'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'])
+                                                                            ],
+                                                           'label' => 'Nouveau mot de passe'
             ])
+
             ->add('confirmPswd', PasswordType::class, ['constraints' => [new NotBlank(),
-                                                                         new Type('string')
-                                                                    ],
-                                                   'required' => true,
-                                                   'mapped'   => false,
-                                                   'label'    => 'Confirmer le mot de passe'
+                                                                                   new Type('string')
+                                                                                   ],
+                                                                'required' => true,
+                                                                'mapped'   => false,
+                                                                'label'    => 'Confirmer le mot de passe'
             ])
         ;
     }
