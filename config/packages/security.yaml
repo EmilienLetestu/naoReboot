@@ -21,6 +21,7 @@ security:
             form_login:
                 login_path: login
                 check_path: login_check
+                use_referer: true
             logout:
                 path: logout
                 target: login
@@ -28,6 +29,7 @@ security:
     access_control:
             - { path: ^/admin, roles: ROLE_ADMIN }
             - { path: ^/observations/nouvelle-observation, roles: ROLE_USER }
+            - { path: ^/mon-profil, roles: ROLE_USER }
             - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
 
