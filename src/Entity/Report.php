@@ -44,7 +44,7 @@ class Report
 
     /**
      * @var
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default"=0})
      */
     private $starNbr;
 
@@ -74,13 +74,13 @@ class Report
 
     /**
      * @var
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $comment;
 
     /**
      * @var null
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $pictRef = null;
 

@@ -64,9 +64,9 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
-     * @ORM\column(type="boolean")
+     * @ORM\column(type="boolean", options={"default"=false})
      */
-    private $activated;
+    private $activated = false;
 
     /**
      * @var
@@ -82,15 +82,15 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
-     * @ORM\column(type="boolean")
+     * @ORM\column(type="boolean", options={"default"=false})
      */
-    private $ban;
+    private $ban = false;
 
     /**
      * @var
-     * @ORM\column(type="boolean")
+     * @ORM\column(type="boolean", options={"default"=false})
      */
-    private $deactivated;
+    private $deactivated = false;
 
     /**
      * @var
@@ -337,6 +337,8 @@ class User implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
+    /**---------------------- entity relation management------------------------*/
+
     /**
      * User constructor
      */
@@ -501,13 +503,17 @@ class User implements AdvancedUserInterface, \Serializable
         return array("ROLE_{$role[$accessLevel]}");
     }
 
-
+    /**
+     * default method from advanceUserInterface,
+     * must be declare even blank
+     */
     public function eraseCredentials()
     {
 
     }
 
     /**
+     * return null as pswd use bcrypt algorithm
      * @return null
      */
     public function getSalt()
@@ -528,7 +534,9 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function isAccountNonLocked()
     {
-        return true;
+        $locked = ($this->getBan() || $this->getDeactivated()) ? false : true;
+
+        return $locked;
     }
 
     /**
