@@ -37,7 +37,17 @@
         </nav>
         <main class="container-fluid py-3">
 
-        {% block body %}
+
+            {% for label, messages in app.flashes(['denied','error','success','warning']) %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}" style="font-size: 2em">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+
+            {% block body %}
 
         {% endblock %}
 
