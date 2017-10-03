@@ -100,11 +100,8 @@ class Register
 
             //hydrate with default value
             $user->setOnHold($status);
-            $user->setActivated(false);
             $user->setConfirmationToken(40);
-            $user->setBan(false);
-            $user->setDeactivated(false);
-
+            
             //prepare email
             $message = $this->mailService->validationMail(
                 $user->getName(),
@@ -119,6 +116,12 @@ class Register
 
             //send validation email
             $this->swift->send($message);
+
+            $this->session->getFlashBag()
+                ->add('success',
+                    'Compte créé avec succès ! Un email d\'activation à été envoyé.'
+                )
+            ;
 
             return $redirect = 'home';
         }
