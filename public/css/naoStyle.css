@@ -32,6 +32,27 @@ a:visited
     color: inherit;
 }
 
+h1
+{
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.headBanner
+{
+    width: 100%;
+    background-color: #8c8c8c;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 3%;
+}
+
+.headBanner i
+{
+    color: orange;
+}
+
 /*---------------------buttons and link------------------*/
 
 #connection .btn-outline:hover,
