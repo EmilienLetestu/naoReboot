@@ -74,12 +74,13 @@ class Register
         if($registerForm->isSubmitted() && $registerForm->isValid())
         {
             //hydrate with submitted data
-            $user->setName($registerForm->get('name')->getData());
-            $user->setSurname($registerForm->get('surname')->getData());
-            $user->setEmail($registerForm->get('email')->getData());
-            $user->setPswd($registerForm->get('pswd')->getData());
-            $user->setCreatedOn(\DateTime::createFromFormat('Y-m-d', $date));
-            $user->setAccessLevel($registerForm->get('accessLevel')->getData());
+            $user
+                ->setName($registerForm->get('name')->getData())
+                ->setSurname($registerForm->get('surname')->getData())
+                ->setEmail($registerForm->get('email')->getData())
+                ->setPswd($registerForm->get('pswd')->getData())
+                ->setCreatedOn(\DateTime::createFromFormat('Y-m-d', $date))
+                ->setAccessLevel($registerForm->get('accessLevel')->getData());
 
             $emailInDb = $this->mailService
                 ->checkMailAvailability($user->getEmail())
@@ -99,9 +100,10 @@ class Register
             $status = $this->tools->getUserAccountStatus($user->getAccessLevel());
 
             //hydrate with default value
-            $user->setOnHold($status);
-            $user->setConfirmationToken(40);
-            
+            $user
+                ->setOnHold($status)
+                ->setConfirmationToken(40);
+
             //prepare email
             $message = $this->mailService->validationMail(
                 $user->getName(),
