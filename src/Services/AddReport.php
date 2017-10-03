@@ -17,6 +17,7 @@ use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 
 class AddReport
@@ -27,6 +28,7 @@ class AddReport
     private $session;
     private $file;
     private $tools;
+    private $token;
 
     /**
      * AddReport constructor.
@@ -43,7 +45,8 @@ class AddReport
         EntityManager $doctrine,
         Session       $session,
         Filesystem    $file,
-        Tools         $tools
+        Tools         $tools,
+        TokenStorage  $token
 
     )
     {
@@ -53,6 +56,7 @@ class AddReport
         $this->session      = $session;
         $this->file         = $file;
         $this->tools        = $tools;
+        $this->token        = $token;
     }
 
 
@@ -69,19 +73,19 @@ class AddReport
         //process form
         if($reportForm->isSubmitted() && $reportForm->isValid())
         {
-            //get report default data
-            //$default = $this->reportGateways(
-            //    $this->session->get('user')->getId()
-            //);
+            //get user level and object
+            $level   = $this->token->getToken()->getUser()->getAccessLevel();
+            $user    = $this->token->getToken()->getUser();
 
-            // !! -- temporary will use session as soon as session bug will be fixed -- !! //
-            $rep = $this->doctrine->getRepository(User::class);
-            $user = $rep->find(1);
+            //prepare report default data
+            $default = $this->reportGateways($level);
+
+            //hydrate report object
             $report
-                ->setValidated(false)
-                ->setValidationScore(0)
+                ->setValidated($default[0])
+                ->setValidationScore($default[1])
+                ->setStarNbr($default[2])
                 ->setUser($user)
-                ->setStarNbr(0)
                 ->setNbrOfBirds($reportForm->get('nbrOfBirds')->getData())
                 ->setAddedOn($reportForm->get('addedOn')->getData())
                 ->setComment($reportForm->get('comment')->getData())
@@ -89,25 +93,33 @@ class AddReport
                 ->setSatNav($reportForm->get('googleMap')->getData())
                 ->setLocation('sdsdqsd');
 
-            //process pict and save into "userImages" directory
+            //----process pict----//
+            //--1 generate filename
+            $birdSpecies = serialize($reportForm->get('bird')->getData());
+            //--2 get submitted file
             $file = $reportForm->get('pictRef')->getData();
-            //generate filename
-            $pictName = $this->tools->generateDataForUserImg(
-                $reportForm->get('bird')->getData(),
-                $user->getId()
-            );
-            $file->move(
-                $uploadRootDir = '../public/userImages',
-                $filename = "$pictName.{$file->guessExtension()}"
-            );
-            $report->setPictRef($filename);
+
+            if($file !== null)
+            {
+                $pictName = $this->tools->generateDataForUserImg(
+                    $birdSpecies,
+                    $user->getId()
+                );
+                //--3 rename it and store it into userImages directory
+                $file->move(
+                    $uploadRootDir = '../public/userImages',
+                    $filename = "$pictName[0].{$file->guessExtension()}"
+                );
+                //--4 hydrate report with filename
+                $report->setPictRef($filename);
+            }
 
             //save
             $this->doctrine->getRepository(Report::class);
             $this->doctrine->persist($report);
             $this->doctrine->flush();
 
-            $this->session->getFlashBag()->add('succes','Votre observation a bien été ajoutée !');
+            $this->session->getFlashBag()->add('success','Votre observation a bien été ajoutée !');
 
             return $reportForm->createView();
         }
@@ -116,6 +128,7 @@ class AddReport
     }
 
     /**
+     * set default report data based on user accessLevel
      * @param $accessLevel
      * @return array
      */
@@ -124,7 +137,7 @@ class AddReport
         $gateWays = [
             $validated = $accessLevel > 1 ? true : false,
             $validationScore = $validated === true ? 5 : 0,
-            $star = 0
+            $starNbr = 0
         ]
         ;
         return $gateWays;
