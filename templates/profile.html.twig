@@ -27,31 +27,29 @@
                 </li>
             </ul>
         </div>
-        <div>
-            <a class="btn btn-outline" href="#">Modifier les informations</a>
+        <div id="app">
+            <button v-on:click="show">Show Modal</button>
         </div>
     </div>
-
-    <div id="chgPswdForm" style="display: none">
-        {{ form_start(changePswd, {'attr':{'id':'changePswd'}}) }}
-        <div class="form-group">
-            {{ form_label(changePswd.currentPswd) }}
-            {{ form_widget(changePswd.currentPswd) }}
-        </div>
-        <div>
-            {{ form_label(changePswd.pswd) }}
-            {{ form_widget(changePswd.pswd) }}
-        </div>
-        <div>
-            {{ form_label(changePswd.confirmPswd) }}
-            {{ form_widget(changePswd.confirmPswd) }}
-        </div>
-        <div class="form-group">
-            <button class="btn btn-success" type="submit">Valider</button>
-        </div>
-        {{ form_end(changePswd) }}
+    <div id="pswdModal" style="display: none">
+            {{ form_start(changePswd, {'attr':{'id':'changePswd'}}) }}
+            <div class="form-group">
+                {{ form_label(changePswd.currentPswd) }}
+                {{ form_widget(changePswd.currentPswd) }}
+            </div>
+            <div>
+                {{ form_label(changePswd.pswd) }}
+                {{ form_widget(changePswd.pswd) }}
+            </div>
+            <div>
+                {{ form_label(changePswd.confirmPswd) }}
+                {{ form_widget(changePswd.confirmPswd) }}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" type="submit">Valider</button>
+            </div>
+            {{ form_end(changePswd) }}
     </div>
-
     <div id="charts">
        <div id="chartIcon">
            <i class="fa fa-line-chart" aria-hidden="true"></i>
@@ -80,4 +78,9 @@
        </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('vueJs/profile.js') }}"></script>
 {% endblock %}
