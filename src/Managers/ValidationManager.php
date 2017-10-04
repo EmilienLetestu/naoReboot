@@ -10,73 +10,126 @@ namespace App\Managers;
 
 use App\Entity\Report;
 use App\Entity\Validation;
+
 use App\Services\Tools;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ValidationManager
 {
 
     private $doctrine;
-
     private $session;
-
     private $tools;
+    private $token;
 
     /**
      * ValidationManager constructor.
      * @param EntityManager $doctrine
      * @param Session $session
      * @param Tools $tools
+     * @param TokenStorage $token
      */
     public function __construct(
         EntityManager $doctrine,
         Session       $session,
-        Tools         $tools
+        Tools         $tools,
+        TokenStorage  $token
     )
     {
         $this->doctrine = $doctrine;
         $this->session  = $session;
         $this->tools    = $tools;
+        $this->token    = $token;
     }
 
     /**
      * @param $reportId
+     * @return mixed
      */
-    public function storeValidation($reportId)
+    public function validationProcess($reportId)
     {
-        //fetch matching report and add one to score
+        //fetch matching report
         $repository = $this->doctrine->getRepository(Report::class);
         $report = $repository->find($reportId);
         $score = $report->getValidationScore();
 
-        //---  will get user data from session as soon as session bug will be fixed ---//
+        //get logged user and his id
+        $user       = $this->token->getToken()->getUser();
+        $loggedId   = $user->getId();
+        //get all validation added for this report
+        $validationList = $report->getValidations();
 
-        //create a new validation object and hydrate it
+
+        //check logged user never validated this report before
+        $check = $this->hasAlreadyBeenValidated($validationList, $loggedId);
+
+        if($check === true)
+        {
+            return $this->session->getFlashBag()
+                ->add('denied',
+                    'Vous avez déjà validé cette observation')
+            ;
+        }
+
+        //create a new validatio object and hydrate it
         $validation = new Validation();
         $validation
-            ->setUser($user) // fetch $user from sesssion
+            ->setUser($user)
             ->setReport($report)
         ;
-
-        //update report with new data
+        //update report
         $report
             ->addValidation($validation)
-            ->setValidationScore($score + 1);
-
+            ->setValidationScore($score + 1)
+        ;
+        //prepare validation to get stored
         $this->doctrine->persist($validation);
 
         //check if report as to be validated
         //need 5 validations to be validated
         if($score === 4)
         {
-            $this->doctrine->persist(
-                $report->setValidated(true)
-            );
+            $report->setValidated(true);
+            $this->doctrine->persist($report);
             $this->doctrine->flush();
+            // ?--- maybe send a notification ---? //
+            return $this->session->getFlashBag()
+                ->add('success','Validation ajoutée')
+            ;
         }
 
+        $this->doctrine->persist($report);
         $this->doctrine->flush();
+
+        return $this->session->getFlashBag()
+            ->add('success','Validation ajoutée')
+        ;
+    }
+
+    /**
+     * check if a given user as stared a given report
+     * @param $validationList
+     * @param $loggedId
+     * @return bool
+     */
+    public function hasAlreadyBeenValidated($validationList,$loggedId)
+    {
+        if($validationList === null)
+        {
+            return false;
+        }
+        foreach ($validationList as $validation)
+        {
+            $userList[] = $validation->getUser();
+            foreach ($userList as $user)
+            {
+                $idList[] = $user->getId();
+            }
+
+            return in_array($loggedId, $idList) ? true : false;
+        }
     }
 }
