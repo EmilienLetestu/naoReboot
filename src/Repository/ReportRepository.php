@@ -113,4 +113,21 @@ class ReportRepository extends EntityRepository
             ->getResult()
         ;
     }
+
+    /**fetch the last report published for a given user
+     * @param $userId
+     * @return array
+     */
+    public function findUserLastPublication($userId)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+
+        $this->whereReporter($queryBuilder,$userId);
+        $this->whereValidated($queryBuilder,1,'Desc','addedOn',1);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

@@ -13,7 +13,7 @@
 
     <div class="headBanner">
         <h2>{{ app.user.name }} {{ app.user.surname }}</h2>
-        <i class="material-icons">grade</i>
+        <span class="accountScore"><i class="material-icons">grade</i>{{ score }}</span>
         <div>
             <ul class="list-inline">
                 <li class="list-inline-item">
@@ -23,7 +23,7 @@
                     Type de compte: {{ accountType }}
                 </li>
                 <li class="list-inline-item">
-                    inscript depuis le: {{ date }}
+                    inscript depuis le: {{ createdOn }}
                 </li>
             </ul>
         </div>
@@ -50,6 +50,34 @@
             <button class="btn btn-success" type="submit">Valider</button>
         </div>
         {{ form_end(changePswd) }}
+    </div>
+
+    <div id="charts">
+       <div id="chartIcon">
+           <i class="fa fa-line-chart" aria-hidden="true"></i>
+       </div>
+       <div>
+           <table class="table .table-responsive">
+               <thead>
+               <tr>
+                   <th>Total d'observations</th>
+                   <th>En attente de validation</th>
+                   <th>Dernière observation</th>
+                   <th>Dernière espèce observée</th>
+                   <th>Coordonées</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+                   <td>{{ published }}</td>
+                   <td>{{ unvalidated }}</td>
+                   <td>{{ addedOn }}</td>
+                   <td>{{ bird }}</td>
+                   <td>{{ satNav }}</td>
+               </tr>
+               </tbody>
+           </table>
+       </div>
     </div>
 
 {% endblock %}
