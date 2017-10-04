@@ -31,7 +31,6 @@ class Validation
      * @var
      * @ORM\ManyToOne(targetEntity="App\Entity\Report", inversedBy="validations")
      * @ORM\JoinColumn(name="report_id", referencedColumnName="id")
-     * @ORM\JoinColumn(nullable=false)
      * Id from validated report
      */
     private $report;
