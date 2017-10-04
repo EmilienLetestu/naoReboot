@@ -11,7 +11,6 @@
        <h1 class="pageTitle">Mon profil</h1>
     </div>
 
-    <div>
     <div class="headBanner">
         <h2>{{ app.user.name }} {{ app.user.surname }}</h2>
         <i class="material-icons">grade</i>
@@ -32,5 +31,25 @@
             <a class="btn btn-outline" href="#">Modifier les informations</a>
         </div>
     </div>
+
+    <div id="chgPswdForm" style="display: none">
+        {{ form_start(changePswd, {'attr':{'id':'changePswd'}}) }}
+        <div class="form-group">
+            {{ form_label(changePswd.currentPswd) }}
+            {{ form_widget(changePswd.currentPswd) }}
+        </div>
+        <div>
+            {{ form_label(changePswd.pswd) }}
+            {{ form_widget(changePswd.pswd) }}
+        </div>
+        <div>
+            {{ form_label(changePswd.confirmPswd) }}
+            {{ form_widget(changePswd.confirmPswd) }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Valider</button>
+        </div>
+        {{ form_end(changePswd) }}
     </div>
+
 {% endblock %}

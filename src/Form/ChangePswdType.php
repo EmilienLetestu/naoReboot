@@ -28,7 +28,8 @@ class ChangePswdType extends AbstractType
                                                                                 new PswdFormat(),
                                                                                 new Type('string'),
                                                                                 ],
-                                                                 'label' => 'Mot de passe actuel'
+                                                                 'label'  => 'Mot de passe actuel',
+                                                                 'mapped' => false
             ])
 
             ->add('pswd', PasswordType::class,['constraints'=>[new NotBlank(),
