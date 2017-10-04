@@ -10,8 +10,9 @@ namespace App\Managers;
 
 use App\Entity\Report;
 use App\Entity\Star;
-use App\Entity\User;
+
 use App\Services\Tools;
+
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
@@ -52,7 +53,7 @@ class StarManager
         $score  = $report->getStarNbr();
 
         //get logged user and his id
-        $user = $this->token->getToken()->getUser();
+        $user     = $this->token->getToken()->getUser();
         $loggedId = $user->getId();
         //get all stars added for this report
         $starList = $report->getStars();
@@ -82,6 +83,7 @@ class StarManager
         //store new star into db
         $this->doctrine->getRepository(Star::class);
         $this->doctrine->persist($star);
+        $this->doctrine->persist($report);
         $this->doctrine->flush();
 
         // !! remenber to update session var 'star' if ever it's used later on !! //
@@ -99,6 +101,11 @@ class StarManager
      */
     public function hasAlreadyBeenStared($starList, $loggedId)
     {
+        if($starList === null)
+        {
+            return false;
+        }
+
         foreach ($starList as $star)
         {
             $userList[] = $star->getUser();
