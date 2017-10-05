@@ -9,6 +9,7 @@
 namespace App\Services;
 
 use App\Entity\Report;
+use App\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -49,45 +50,32 @@ class ProfileBuilder
      * @param Request $request
      * @return array
      */
-    public function buildOwnerProfile(Request $request)
+    public function buildPrivateProfile(Request $request)
     {
         //fetch id and createdOn into tokenStorage
         $user      = $this->token->getToken()->getUser();
         $id        = $user->getId();
         $createdOn = $user->getCreatedOn()->format('d-m-Y');
-        $role = $user->getRoles();
+        $accessLevel      = $user->getAccessLevel();
 
         //get account type
-        $accountType = $this->tools->displayAccountType($role);
+        $accountType = $this->tools->displayAccountType($accessLevel);
 
         //change pswd process
         $changePswd = $this->updatePswd->changePswd($request);
 
+        //create array with collected data
+        $accountInfo = [$createdOn, $changePswd ,$accountType];
+
         //fetch last published one
-        $repository = $this->doctrine->getRepository(Report::class);
-        $lastReport = $repository->findUserLastPublication($id);
-        foreach ($lastReport as $report)
-        {
-            $date   = $report->getAddedOn()->format('d-m-y');
-            $bird   = $report->getBird()->getSpeciesFr();
-            $satNav = $report->getSatNav();
-        }
+        $lastInfo = $this->getLastPublicationData($id);
 
         //fetch all user reports
-        $reportList = $repository->findByUser($id);
-        foreach ($reportList as $report)
-        {
-            //get all stars gathered
-            $stars[] = $report->getStarNbr();
-            //get all validated and unvalidated
-            $validations[] = $report->getValidated();
-            $unvalidated[]  = array_search(false,$validations);
-            $validated[]    = array_search(1,$validations);
-        }
+        $reportList =$user->getReports();
 
-        $accountInfo = [$createdOn, $changePswd ,$accountType,array_sum($stars)];
-        $lastInfo= [$date, $bird, $satNav];
-        $reportsInfo=[count($unvalidated),count($validated)];
+        //extract data from report list
+        $reportsInfo = $this->getActivitiesData($reportList);
+
 
         return [
             $accountInfo,
@@ -96,4 +84,88 @@ class ProfileBuilder
             $reportList
         ];
     }
+
+    public function buildPublicProfile($id)
+    {
+        //fetch profile info from db
+        $repository = $this->doctrine->getRepository(User::class);
+        $user = $repository->find($id);
+
+        //hydrate needed user property
+        $createdOn = $user->getCreatedOn()->format('d-m-y');
+        $accessLevel = $user->getAccessLevel();
+        $accountType = $this->tools->displayAccountType($accessLevel);
+
+        //create array with collected data
+        $accountInfo = [$createdOn,$accountType];
+
+        //fetch last published one
+        $lastInfo = $this->getLastPublicationData($id);
+
+        //list all reports
+        $reportList = $user->getReports();
+
+        //extract data from report list
+        $reportsInfo = $this->getActivitiesData($reportList);
+
+        return [
+            $accountInfo,
+            $lastInfo,
+            $reportsInfo,
+            $reportList
+        ];
+    }
+
+    /**
+     * fetch last publication and extract needed data
+     * @param $id
+     * @return array|string
+     */
+    public function getLastPublicationData($id)
+    {
+        //fetch last published one
+        $repository = $this->doctrine->getRepository(Report::class);
+        $lastReport = $repository->findUserLastPublication($id);
+
+        if(!$lastReport)
+        {
+           return $lastInfo = 'Aucune publication à ce jour';
+        }
+
+        foreach ($lastReport as $report)
+        {
+            $date   = $report->getAddedOn()->format('d-m-y');
+            $bird   = $report->getBird()->getSpeciesFr();
+            $satNav = $report->getSatNav();
+        }
+
+        return  $lastInfo=[
+            $date,
+            $bird,
+            $satNav]
+        ;
+    }
+
+    /**
+     * extract general information from user publications
+     * @param $reportList
+     * @return array
+     */
+    public function getActivitiesData($reportList)
+    {
+        foreach ($reportList as $report)
+        {
+            $stars[] = $report->getStarNbr();
+            $validations[] = $report->getValidated();
+            $unvalidated[] = array_search(0,$validations);
+            $validated[] = array_search(1,$validations);
+        }
+
+        return $reportsInfo=[
+            count($unvalidated),
+            count($validated),
+            array_sum($stars)
+        ];
+    }
 }
+
