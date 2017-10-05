@@ -8,11 +8,9 @@
 
 namespace App\Services;
 
-
-
-
 class Tools
 {
+
     /**
      * @param $date
      * @return bool
@@ -56,8 +54,8 @@ class Tools
      */
     public function generateDataForUserImg($birdSpecies, $userId)
     {
-        return ['fileName' => uniqid("{$userId}_"),
-                'altText'  => "observation de {$birdSpecies} sur NAO.fr"];
+        return [ uniqid("{$userId}_"),
+                "observation de {$birdSpecies} sur NAO.fr"];
     }
 
     /**
@@ -77,6 +75,18 @@ class Tools
         ];
     }
 
+    /**
+     * @param null $type
+     * @return mixed
+     */
+    public function displayAccountType($type)
+    {
+        $displayType = ['type_1' => 'Compte amateur',
+                        'type_2' => 'Compte naturaliste']
+        ;
 
+        return $displayType["type_{$type}"];
+
+    }
 
 }
