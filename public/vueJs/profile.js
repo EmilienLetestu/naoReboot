@@ -4,8 +4,14 @@ new Vue({
     methods:{
         show:function () {
             var modal = document.getElementById('pswdModal');
-            modal.style.display = "block"
+            modal.style.display = "block";
+            },
+        close:function () {
+            var modal=document.getElementById('pswdModal');
+            modal.style.display = "none";
         }
+
+
     }
 
-})
+});
