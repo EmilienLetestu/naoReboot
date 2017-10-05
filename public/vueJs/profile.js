@@ -1,17 +1,18 @@
 
 new Vue({
     el: '#app',
+    data:{
+      seen: null
+    },
     methods:{
-        show:function () {
-            var modal = document.getElementById('pswdModal');
-            modal.style.display = "block";
-            },
+        open:function () {
+
+            this.seen = true;
+
+        },
         close:function () {
-            var modal=document.getElementById('pswdModal');
-            modal.style.display = "none";
+            this.seen = false;
         }
-
-
     }
 
 });
