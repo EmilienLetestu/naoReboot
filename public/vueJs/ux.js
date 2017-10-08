@@ -1,8 +1,9 @@
 
 new Vue({
-    el: '#app',
+    el: '#wrapper',
     data:{
-      seen: null
+        show: null,
+        seen: null
     },
     methods:{
         open:function () {
@@ -13,6 +14,7 @@ new Vue({
         close:function () {
             this.seen = false;
         }
+
     }
 
 });

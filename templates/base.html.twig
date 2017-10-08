@@ -17,7 +17,7 @@
     </head>
     <body>
     <div class="d-flex flex-column" id="wrapper">
-        <nav class="navbar navbar-toggleable navbar-fixed-top py-5">
+        <nav class="navbar navbar-toggleable-md navbar-fixed-top">
             <a class="navbar-brand" href="{{ path('home') }}">
                 <i class="material-icons">home</i>
                 NAO
@@ -30,12 +30,77 @@
                     </div>
                 </form>
             </div>
+            {% if  not is_granted('ROLE_USER') %}
             <div class="nav navbar-nav ml-auto" id="connection">
                 <a class="btn btn-default" href="{{ path('register') }}">Inscription</a>
                 <a class="btn btn-outline" href="{{ path('login') }}">Connexion</a>
             </div>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+            <div class="nav navbar-nav ml-auto">
+               <button  v-on:mouseover="show = true">
+                   <i class="fa fa-user" id="accountBadge" aria-hidden="true"></i>
+               </button>
+            </div>
+                <div id="dashboard" v-if="show">
+                    <ul v-on:mouseleave="show= false">
+                       <li>
+                           <a href="{{ path('logout') }}">
+                               <i class="fa fa-sign-out" aria-hidden="true"></i>
+                               Se déconnecter
+                           </a>
+                       </li>
+                        <li>
+                            <a href="{{ path('home') }}">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                Accueil
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('report') }}">
+                                <i class="fa fa-binoculars" aria-hidden="true"></i>
+                                Observations
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('addReport') }}">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                Nouvelle Observation
+                            </a>
+                        </li>
+                        {% if is_granted('ROLE_VALIDATOR') %}
+                        <li>
+                            <a href="{{ path('unvalidated') }}">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                En attente de validation
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{ path('profile', {'name' :app.user.name,'surname' :app.user.surname}) }}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Mon profil
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('notification') }}">
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                                Notification
+                            </a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admin') }}">
+                                <i class="fa fa-unlock" aria-hidden="true"></i>
+                                Espace d'administration
+                            </a>
+                        </li>
+                        {% endif %}
+                   vue
+                </div>
+            {% endif %}
         </nav>
-        <main class="container-fluid py-3">
+        <main class="container-fluid py-3 w-100" id="app">
 
 
             {% for label, messages in app.flashes(['denied','error','success','warning']) %}
@@ -97,7 +162,7 @@
         </footer>
     </div>
         {% block javascripts %}
-
+            <script src="{{ asset('vueJs/ux.js') }}"></script>
         {% endblock %}
     </body>
 </html>
