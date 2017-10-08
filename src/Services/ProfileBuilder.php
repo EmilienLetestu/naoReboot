@@ -53,10 +53,10 @@ class ProfileBuilder
     public function buildPrivateProfile(Request $request)
     {
         //fetch id and createdOn into tokenStorage
-        $user      = $this->token->getToken()->getUser();
-        $id        = $user->getId();
-        $createdOn = $user->getCreatedOn()->format('d-m-Y');
-        $accessLevel      = $user->getAccessLevel();
+        $user        = $this->token->getToken()->getUser();
+        $id          = $user->getId();
+        $createdOn   = $user->getCreatedOn()->format('d-m-Y');
+        $accessLevel = $user->getAccessLevel();
 
         //get account type
         $accountType = $this->tools->displayAccountType($accessLevel);
@@ -88,8 +88,8 @@ class ProfileBuilder
     public function buildPublicProfile($id)
     {
         //fetch profile info from db
-        $repository = $this->doctrine->getRepository(User::class);
-        $user = $repository->find($id);
+        $user = $this->doctrine->getRepository(User::class)
+            ->findOneBy(['id'=>$id]);
 
         //hydrate needed user property
         $createdOn = $user->getCreatedOn()->format('d-m-y');
@@ -124,12 +124,15 @@ class ProfileBuilder
     public function getLastPublicationData($id)
     {
         //fetch last published one
-        $repository = $this->doctrine->getRepository(Report::class);
-        $lastReport = $repository->findUserLastPublication($id);
+        $lastReport = $this->doctrine->getRepository(Report::class)
+            ->findUserLastPublication($id);
 
         if(!$lastReport)
         {
-           return $lastInfo = 'Aucune publication à ce jour';
+           return [
+               $date   = '-------------',
+               $bird   = '-------------',
+               $satNav = '-------------'];
         }
 
         foreach ($lastReport as $report)
@@ -139,7 +142,7 @@ class ProfileBuilder
             $satNav = $report->getSatNav();
         }
 
-        return  $lastInfo=[
+        return  [
             $date,
             $bird,
             $satNav]
@@ -161,7 +164,7 @@ class ProfileBuilder
             $validated[] = array_search(1,$validations);
         }
 
-        return $reportsInfo=[
+        return [
             count($unvalidated),
             count($validated),
             array_sum($stars)
