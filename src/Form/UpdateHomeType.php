@@ -22,7 +22,8 @@ class UpdateHomeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('species',TextType::class,['constraints'=>new NotBlank()
+            ->add('species', TextType::class,['constraints'=>[new NotBlank()],
+                                                         'label' => 'Nom de l\'espèce'
             ])
             ->add('picture', FileType::class, ['required' => true,
                                                          'label'    => 'Modifier l\'image',
