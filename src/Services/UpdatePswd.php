@@ -205,8 +205,8 @@ class UpdatePswd
             //hydrate with submitted data
             $user->setPswd($changeForm->get('pswd')->getData());
             //connection to db and update user pswd
-            $repository = $this->doctrine->getRepository(User::class);
-            $user = $repository->find($id);
+            $user = $this->doctrine->getRepository(User::class)
+            ->find($id);
             $this->doctrine->persist($user);
             $this->doctrine->flush();
 
