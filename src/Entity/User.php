@@ -192,12 +192,12 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @param  $createdOn
+     * @param $format
      * @return User
      */
-    public function setCreatedOn($createdOn) :User
+    public function setCreatedOn($format) :User
     {
-        $this->createdOn = $createdOn;
+        $this->createdOn = new \DateTime(date($format));
 
         return $this;
     }
