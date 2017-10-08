@@ -75,12 +75,7 @@ class Register
         {
             //hydrate with submitted data
             $user
-                ->setName($registerForm->get('name')->getData())
-                ->setSurname($registerForm->get('surname')->getData())
-                ->setEmail($registerForm->get('email')->getData())
-                ->setPswd($registerForm->get('pswd')->getData())
-                ->setCreatedOn(\DateTime::createFromFormat('Y-m-d', $date))
-                ->setAccessLevel($registerForm->get('accessLevel')->getData());
+                ->setCreatedOn('Y-m-d');
 
             $emailInDb = $this->mailService
                 ->checkMailAvailability($user->getEmail())
@@ -93,7 +88,7 @@ class Register
                         'Cette email est déjà utilisé'
                     )
                 ;
-                return $render = [$registerForm->createView()];
+                return $registerForm->createView();
             }
 
             //check if user requested an access level 1 or 2
@@ -128,6 +123,6 @@ class Register
             return $redirect = 'home';
         }
 
-        return $render = [$registerForm->createView()];
+        return $registerForm->createView();
     }
 }

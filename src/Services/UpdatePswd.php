@@ -77,9 +77,6 @@ class UpdatePswd
         //process form
         if($askResetForm->isSubmitted() && $askResetForm->isValid())
         {
-            //hydrate user with submitted data
-            $user->setEmail($askResetForm->get('email')->getData());
-
             //check if mail exist
             $user=$this->mailService->checkMailAvailability($user->getEmail());
 
@@ -90,7 +87,6 @@ class UpdatePswd
                         'Adresse e-mail inconnue'
                     )
                 ;
-
                return $askResetForm->createView();
             }
             //prepare email and send it
