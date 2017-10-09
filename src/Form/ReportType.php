@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -62,8 +63,10 @@ class ReportType extends AbstractType
                                                           'mapped'   => false
             ])
 
-            ->add('googleMap', TextType::class, ['mapped' => false,
-                                                            'label'  => 'lieu'
+            ->add('location', TextType::class, ['constraints'=>[new NotBlank()],
+                                                           'label'  => 'lieu'
+            ])
+            ->add('satNav', HiddenType::class, ['constraints' =>[new NotBlank()]
             ])
         ;
     }

@@ -76,7 +76,7 @@ class Report
      * @var
      * @ORM\Column(type="text", nullable=true)
      */
-    private $comment;
+    private $comment = null;
 
     /**
      * @var null

@@ -65,8 +65,6 @@ class AddReport
         //generate form and required object
         $report = new Report();
         $reportForm = $this->formFactory->create(ReportType::class, $report);
-        //get user data from session
-        //$user = $this->session->get('user');
 
         $reportForm->handleRequest($request);
 
@@ -86,12 +84,8 @@ class AddReport
                 ->setValidationScore($default[1])
                 ->setStarNbr($default[2])
                 ->setUser($user)
-                ->setNbrOfBirds($reportForm->get('nbrOfBirds')->getData())
-                ->setAddedOn($reportForm->get('addedOn')->getData())
-                ->setComment($reportForm->get('comment')->getData())
-                // !! -- temporary will use googleMap Api data later on -- !! //
-                ->setSatNav($reportForm->get('googleMap')->getData())
-                ->setLocation('sdsdqsd');
+                ->setComment($reportForm->get('comment')->getData());
+            ;
 
             //----process pict----//
             //--1 generate filename
