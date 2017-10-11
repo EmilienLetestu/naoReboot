@@ -40,4 +40,12 @@ class ReportManager
         $this->doctrine->remove($deleteList);
         $this->doctrine->flush();
     }
+
+    public function displayHomePageReport()
+    {
+        $repository = $this->doctrine->getRepository(Report::class);
+        $reportList = $repository->findAllForHomePage();
+
+        return $reportList;
+    }
 }
