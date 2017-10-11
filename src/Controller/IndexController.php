@@ -9,27 +9,53 @@
 namespace App\Controller;
 
 use App\Form\Login;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 class IndexController extends Controller
 {
-    public function home()
+
+
+    public function home(Request $request)
     {
 
-        return $this->render('home.html.twig');
+        $view = $this->get('App\Managers\ReportManager')->displayHomePageReport();
+        return $this->render('home.html.twig',['reports'=>$view]);
     }
 
-    public function login()
+    /**
+     * @param Request $request
+     * @param AuthenticationUtils $authUtils
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/connexion", name="login")
+     */
+    public function login(Request $request, AuthenticationUtils $authUtils)
     {
-        $view = $this->get('form.factory')->create(Login::class);
+        $view = $this->get('App\Services\Login')->processLogin($request, $authUtils);
+
+        if($view === 'home')
+        {
+            return $this->redirectToRoute($view);
+        }
+
         return $this->render(
             'connectionForms.html.twig',
-            ['form' => $view->createView()]
+            [
+                'last_username' =>$view[0],
+                'error' => $view[1]]
         );
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function register(Request $request)
     {
         $view = $this->get('App\Services\Register')->registerUser($request);
@@ -37,12 +63,17 @@ class IndexController extends Controller
         {
             return $this->redirectToRoute($view);
         }
+
         return $this->render(
             'connectionForms.html.twig',
-            ['form' => $view[0]]
+            ['form' => $view]
         );
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function activate(Request $request)
     {
         $this->get('App\Services\ActivateAccount')->ActivateUserAccount($request);
@@ -52,7 +83,7 @@ class IndexController extends Controller
 
     public function resetPswdMail(Request $request)
     {
-        $view = $this->get('App\Services\ResetPswd')->askReset($request);
+        $view = $this->get('App\Services\UpdatePswd')->askReset($request);
 
         return $this->render(
             'connectionForms.html.twig',
@@ -60,20 +91,30 @@ class IndexController extends Controller
         );
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function resetPswdForm(Request $request)
     {
-        $view = $this->get('App\Services\ResetPswd')->resetPswd($request);
+        $view = $this->get('App\Services\UpdatePswd')->resetPswd($request);
 
         if($view === 'home')
         {
             return $this->redirectToRoute($view);
         }
+
         return $this->render(
             'connectionForms.html.twig',
             ['form'=> $view]
         );
     }
 
+    /**
+     * @Security("has_role('ROLE_USER')")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function addReport(Request $request)
     {
         $view = $this->get('App\Services\AddReport')->addReportProcess($request);
@@ -82,6 +123,47 @@ class IndexController extends Controller
             'addReportForm.html.twig',
             ['form' => $view]
         );
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function profile(Request $request)
+    {
+        $view = $this->get('App\Services\ProfileBuilder')->buildPrivateProfile($request);
+
+        return $this->render('profile.html.twig',[
+            'accountInfo' => $view[0],
+            'lastInfo'    => $view[1],
+            'reportInfo'  => $view[2]
+        ]);
+
+    }
+
+    /**
+     * @Security("has_role('ROLE_USER')")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function starReport(Request $request)
+    {
+
+       $this->get('App\Managers\StarManager')->starProcess(
+           $request->get('reportId')
+       );
+       $redirect = $request->headers->get('referer');
+       return $this->redirect($redirect);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function administration()
+    {
+        $view = $this->get('App\Services\Admin')->buildUserManagement();
+
+        return $this->render('admin.html.twig');
     }
 
 }
