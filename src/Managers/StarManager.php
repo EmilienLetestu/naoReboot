@@ -68,6 +68,13 @@ class StarManager
                      'Vous avez déjà ajouter une étoile à cette observation')
             ;
         }
+        if($loggedId === $report->getUser()->getId())
+        {
+            return $this->session->getFlashBag()
+                ->add('denied',
+                    'Vous ne pouvez ajouter une étoile à vos observations')
+                ;
+        }
         //create a new star object and hydrate it
         $star = new Star();
         $star
@@ -101,20 +108,18 @@ class StarManager
      */
     public function hasAlreadyBeenStared($starList, $loggedId)
     {
-        if($starList === null)
+        if(!$starList)
         {
             return false;
         }
-
         foreach ($starList as $star)
         {
             $userList[] = $star->getUser();
             foreach ($userList as $user)
             {
                 $idList[] = $user->getId();
+                return  in_array($loggedId, $idList) ? true : false;
             }
         }
-
-        return  in_array($loggedId, $idList) ? true : false;
     }
 }
