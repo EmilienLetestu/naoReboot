@@ -83,10 +83,11 @@ class AddReport
                 ->setValidated($default[0])
                 ->setValidationScore($default[1])
                 ->setStarNbr($default[2])
-                ->setUser($user)
-                ->setComment($reportForm->get('comment')->getData());
-            ;
-
+                ->setUser($user);
+            if($reportForm->get('comment')->getData())
+            {
+                    $report->setComment($reportForm->get('comment')->getData());
+            }
             //----process pict----//
             //--1 generate filename
             $birdSpecies = serialize($reportForm->get('bird')->getData());

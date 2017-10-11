@@ -63,7 +63,7 @@ class ReportType extends AbstractType
                                                           'mapped'   => false
             ])
 
-            ->add('location', TextType::class, ['constraints'=>[new NotBlank()],
+            ->add('location', TextType::class, [
                                                            'label'  => 'lieu'
             ])
             ->add('satNav', HiddenType::class, ['constraints' =>[new NotBlank()]

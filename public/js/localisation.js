@@ -15,9 +15,6 @@ function getAll() {
 
         var geocoder = new google.maps.Geocoder();
         var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-        console.log(position.coords.latitude + ', ' + position.coords.longitude);
-
         geocoder.geocode({'latLng': geolocate}, function (results, status) {
             if (status === "OK") {
                 var result;
@@ -27,7 +24,6 @@ function getAll() {
                     result = results[0];
                 }
                 //console.log(result);
-                console.log(result.address_components[0].long_name + ', ' + result.address_components[2].long_name);
                 document.getElementById("report_location").value = result.address_components[0].long_name + ', ' + result.address_components[2].long_name;
                 document.getElementById("report_satNav").value = position.coords.latitude + ', ' + position.coords.longitude;
             }
@@ -44,7 +40,10 @@ function codeLocation(geocoder) {
     geocoder.geocode({"address": address}, function (results, status) {
         if (status === "OK") {
             alert("Coordonnées GPS qui seront enregistrées : " + results[0].geometry.location);
-            document.getElementById("report_satNav").value = location;
+
+            var data = results[0].geometry.location.toString();
+
+            document.getElementById("report_satNav").value = data.replace(/\(|\)/g,'') ;
         } else {
             alert("Aucune données pour ce lieu !");
         }
