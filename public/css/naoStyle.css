@@ -48,14 +48,17 @@ h1
     padding: 3%;
 }
 
-.headBanner i
+.pageTitle
 {
-    color: orange;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
 /*---------------------buttons and link------------------*/
 
 #connection .btn-outline:hover,
+#app .btn-outline:hover,
+#loadReports .btn-outline:hover,
 .social li:hover
 {
     color: #FFFFFF;
@@ -72,7 +75,9 @@ h1
     background-color: #FFFFFF;
 }
 
-#connection .btn-outline
+#connection .btn-outline,
+#app .btn-outline,
+#loadReports .btn-outline
 {
     color: orange;
     border-color: orange;
@@ -120,18 +125,83 @@ h1
 .navbar
 {
     background-color: #5e5e5e;
+    -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 }
 
 .navbar-brand:hover,
 .navbar-brand i:hover
 {
-    color: orange;
+    color: #ffa500;
 }
 
 .navbar-brand
 {
     color: #FFFFFF;
     font-size: 2rem;
+}
+
+#accountBadge
+{
+    font-size: 3em;
+    color: #FFA500 ;
+    padding: 25%;
+}
+
+
+#accountBadge:hover
+{
+    color: #FFFFFF ;
+}
+
+#dashboard ul
+{
+    list-style: none;
+    margin: 0;
+    padding:0;
+    border:1px solid #ffa500;
+    background:#FFFFFF;
+    font-size: 1.5em;
+}
+
+#dashboard
+{
+    position: absolute;
+    right: 0;
+    top: 102%;
+    width: 20%;
+    z-index: 1;
+}
+
+#dashboard li
+{
+    color:  #FFFFFF;
+    margin-bottom: 1px;
+}
+
+#dashboard li a
+{
+    display: block ;
+    color:  #2C2C2C ;
+    padding: 4px;
+}
+
+
+#dashboard li:not(:last-child)
+{
+    border-bottom: 1px solid #ffa500;
+}
+
+#dashboard li i
+{
+    color: #2C2C2C
+}
+
+#dashboard li a:hover
+{
+    background-color:  #5e5e5e;
+    color: #FFFFFF;
 }
 
 
@@ -165,3 +235,110 @@ footer .list-group
     font-size: 1.5rem;
     color: #FFFFFF;
 }
+/*---------------------------report card-------------------------*/
+.cardHolder
+{
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+}
+.card i
+{
+    color: orange;
+}
+
+.card
+{
+    background-color: #EEEDEC ;
+    margin: 2%;
+    margin-block-end: 15px;
+    -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+
+}
+.card h4
+{
+    font-size: 1.2em;
+}
+
+.card a
+{
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 30px !important;
+}
+
+
+/*---------------------------profile-------------------------*/
+
+.accountScore
+{
+    display: inline-flex;
+    color: orange;
+}
+
+.accountScore i
+{
+    padding: 5%;
+}
+
+#chartIcon
+{
+    text-align: center;
+    color: orange;
+    font-size: 4em;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#pswdModal
+{
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    background: white;
+    -webkit-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
+    -moz-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
+    box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
+    padding: 3%;
+}
+
+#pswdModal i
+{
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+    color: orange;
+}
+
+#pswdModal i:hover
+{
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+#changePswd
+{
+    position: relative;
+    left: 25%;
+}
+
+#app .btn-outline
+{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#loadReports .btn-outline
+{
+    margin-left: 44%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
