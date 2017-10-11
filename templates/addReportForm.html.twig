@@ -22,8 +22,7 @@
         <div class="form-group">
             {{ form_label(form.location) }}
             {{ form_widget(form.location) }}
-            {{ form_widget(form.satNav)}}
-            <a class="btn btn-outline" onclick="successFunction()" id="localizeMe">Me Géolocaliser</a>
+            <a class="btn btn-outline" id="localize" onclick="localizeMe()">Me Géolocaliser</a>
         </div>
         <div class="form-group">
             {{ form_label(form.comment) }}
@@ -34,6 +33,7 @@
             {{ form_widget(form.pictRef) }}
         </div>
         <div class="form-group">
+            {{ form_widget(form.satNav) }}
             <button class="btn btn-success" type="submit">Valider</button>
         </div>
         {{ form_end(form) }}
@@ -44,6 +44,6 @@
 {% block javascripts %}
     <script src="{{ asset('vueJs/ux.js') }}"></script>
     <script src={{ asset('js/localisation.js') }}></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6n-eURwEiVeT5k9FTLN3SjmLFU7nTT-Y&callback=initMap"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg&callback=initMap"
             type="text/javascript"></script>
 {% endblock %}
