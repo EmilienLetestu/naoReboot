@@ -85,7 +85,8 @@ class Admin
                 $pictToUpdate
             );
 
-            //remove file with same prefix
+            //remove file to update
+            $this->deletePreviousHomeImage($pictToUpdate);
 
             $file->move(
                 $uploadRootDir = '../public/naoPictures',
@@ -97,6 +98,22 @@ class Admin
         }
 
         return $updateForm->createView();
+    }
+
+
+    /**
+     * @param $pictNum
+     * @return bool
+     */
+    public function deletePreviousHomeImage($pictNum)
+    {
+        $dir = '../public/naoPictures';
+        $dirContent = scandir($dir);
+
+        //add 2 to picture number to find its position in array
+        $filePosition = $pictNum + 2;
+
+       return unlink("../public/naoPictures/{$dirContent[$filePosition]}");
     }
 
 }
