@@ -42,18 +42,44 @@ validation:
         email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
         token: ([^']{40,})
 
+report:
+    path: /observations
+    defaults:
+        _controller:
+
 addReport:
      path: /observations/nouvelle-observation
      defaults:
          _controller: App\Controller\IndexController::AddReport
 
-profil:
+unvalidated:
+     path: /observations/en-attente-de-validation
+     defaults:
+         _controller: App\Controller\IndexController
+
+notification:
+    path: /notifications
+    defaults:
+        _controller: App\Controller\IndexController
+
+notification:
+     path: /notification
+     defaults:
+         _controller: App\Controller\IndexController::AddReport
+
+
+profile:
     path: /mon-profil/{name}-{surname}
     defaults:
-        _controller: App\Controller\IndexController::profil
+        _controller: App\Controller\IndexController::profile
     requirements:
         name: ([a-zA-z]{3,})
         surname: ([a-zA-z]{3,})
+
+admin:
+    path: /admin
+    defaults:
+       _controller: App\Controller\IndexController::Administration
 
 aboutUs:
     path: /nao-et-ses-partenaires
@@ -64,6 +90,13 @@ cgu:
     path: /cgu
     defaults:
         _controller:
+
+star:
+   path: /star/{reportId}
+   defaults:
+      _controller: App\Controller\IndexController::starReport
+   requirements:
+       reportId: \d+
 
 
 controllers:
