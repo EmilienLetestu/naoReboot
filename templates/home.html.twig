@@ -9,31 +9,41 @@
     <div class="cardHolder">
     {% for report in reports %}
       <div class="card" style="width: 25%; height: 450px">
-          <h4>{{ report.bird.speciesLatin }}</h4>  <span>{{ report.addedOn|date('m-d-Y') }}</span>
-          <div>
+          <div class="cardHeader">
+              <ul class="list-inline">
+                  <li class="list-inline-item">
+                      {{  report.bird.speciesLatin|species }}
+                  </li>
+                  <li class="list-inline-item">
+                      {{  report.addedOn|date('m-d-Y') }}
+                  </li>
+              </ul>
+          </div>
+          <div class="birdImg">
           <img src="{{ asset('/userImages/'~report.pictRef) }}" alt="observation de {{ report.bird.speciesFr }}"   style="width: 100%"/>
           </div>
-          <ul class="list-inline">
+          <ul class="list-inline info1">
               <li class="list-inline-item">
                   <i class="fa fa-star-o" aria-hidden="true">
                       <a href="{{ path('star', {'reportId': report.id}) }}">{{ report.starNbr }}</a>
                   </i>
               </li>
-              <li class="list-inline-item">
+              <li class="list-inline-item pull-right">
                   <i class="fa fa-compass" aria-hidden="true"></i>
                   {{ report.satNav }}
               </li>
           </ul>
-          <ul class="list-inline">
+          <ul class="list-inline info2">
               <li class="list-inline-item">
-                  {{ report.user.name }}{{ report.user.surname }}
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  {{ report.user.name }} {{ report.user.surname }}
               </li>
-              <li class="list-inline-item">
+              <li class="list-inline-item pull-right">
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
                   {{ report.location }}
               </li>
           </ul>
-          <p>Nombre de <strong>{{ report.bird.speciesFr }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
+          <p class="quantity">Nombre de <strong>{{ report.bird.speciesFr }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
           <a class="btn btn-outline" href="#">Lire le commentaire</a>
       </div>
     {% endfor %}
