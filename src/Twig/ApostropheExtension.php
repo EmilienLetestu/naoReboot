@@ -29,7 +29,7 @@ class ApostropheExtension extends \Twig_Extension
     public function vowelFilter($birdName)
     {
         $vowel = ['a','e','i','o','u','y'];
-        
+
         return in_array(strtolower($birdName[0]),$vowel) ? 'd\''.$birdName:'de '.$birdName;
     }
 }
