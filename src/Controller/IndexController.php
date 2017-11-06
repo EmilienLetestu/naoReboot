@@ -30,14 +30,13 @@ class IndexController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param AuthenticationUtils $authUtils
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/connexion", name="login")
      */
-    public function login(Request $request, AuthenticationUtils $authUtils)
+    public function login(AuthenticationUtils $authUtils)
     {
-        $view = $this->get('App\Services\Login')->processLogin($request, $authUtils);
+        $view = $this->get('App\Services\Login')->processLogin($authUtils);
 
         if($view === 'home')
         {
