@@ -88,5 +88,4 @@ class Tools
         return $displayType["type_{$accessLevel}"];
 
     }
-
 }

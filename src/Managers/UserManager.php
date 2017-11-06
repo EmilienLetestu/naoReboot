@@ -94,7 +94,7 @@ class UserManager
             'accessLevel' => $formerLevel
         ]);
         $user->setAccessLevel($newLevel);
-        $this->notificationManager->notifyUser($type = $newLevel, $user);
+        $this->notificationManager->notifyUser($newLevel, $user);
         $this->doctrine->flush();
     }
 
@@ -108,7 +108,7 @@ class UserManager
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneById($id);
         $user->setOnHold(false);
-        $this->notificationManager->notifyUser($type= 3, $user);
+        $this->notificationManager->notifyUser(3, $user);
         $this->doctrine->flush();
     }
 
@@ -123,7 +123,7 @@ class UserManager
         $user = $repository->findOneById($id);
         $user->setOnHold(true);
         $user->setAccessLevel(1);
-        $this->notificationManager->notifyUser($type = 4, $user);
+        $this->notificationManager->notifyUser(4, $user);
         $this->doctrine->flush();
     }
 }

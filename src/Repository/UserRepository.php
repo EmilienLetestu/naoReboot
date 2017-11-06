@@ -152,13 +152,12 @@ class UserRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('u');
 
         $this->whereEmail($queryBuilder,$email);
-        $this->whereBan($queryBuilder,$ban =0);
-        $this->whereDeactivated($queryBuilder, $deactivated =0);
+        $this->whereBan($queryBuilder,0);
+        $this->whereDeactivated($queryBuilder,0);
 
         return(
           $queryBuilder->getQuery()->getResult()
         );
     }
-
 
 }

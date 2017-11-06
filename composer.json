@@ -1,4 +1,6 @@
 {
+    "name": "nao",
+    "description": "a symfony based web app for twitchers",
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -65,3 +67,4 @@
         }
     }
 }
+

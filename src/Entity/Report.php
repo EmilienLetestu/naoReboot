@@ -392,5 +392,4 @@ class Report
     {
         return $this->stars;
     }
-
 }

@@ -32,5 +32,4 @@ class AskResetType extends AbstractType
     {
        return $resolver->setDefaults(['data-class' =>'App\Entity\User']);
     }
-
 }

@@ -57,7 +57,7 @@ class Login
     {
         if ( $this->authCheck->isGranted('IS_AUTHENTICATED_REMEMBERED'))
         {
-            return $redirect = 'home';
+            return 'home';
         }
 
         // get the login error if there is one

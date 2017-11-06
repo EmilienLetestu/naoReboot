@@ -23,38 +23,31 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 class AddReport
 {
     private $formFactory;
-    private $requestStack;
     private $doctrine;
     private $session;
-    private $file;
     private $tools;
     private $token;
 
     /**
      * AddReport constructor.
      * @param FormFactory $formFactory
-     * @param RequestStack $requestStack
      * @param EntityManager $doctrine
      * @param Session $session
-     * @param Filesystem $file
      * @param Tools $tools
+     * @param TokenStorage $token
      */
     public function __construct(
         FormFactory   $formFactory,
-        RequestStack  $requestStack,
         EntityManager $doctrine,
         Session       $session,
-        Filesystem    $file,
         Tools         $tools,
         TokenStorage  $token
 
     )
     {
         $this->formFactory  = $formFactory;
-        $this->requestStack = $requestStack;
         $this->doctrine     = $doctrine;
         $this->session      = $session;
-        $this->file         = $file;
         $this->tools        = $tools;
         $this->token        = $token;
     }
@@ -102,7 +95,7 @@ class AddReport
                 );
                 //--3 rename it and store it into userImages directory
                 $file->move(
-                    $uploadRootDir = '../public/userImages',
+                    '../public/userImages',
                     $filename = "$pictName[0].{$file->guessExtension()}"
                 );
                 //--4 hydrate report with filename
@@ -131,10 +124,11 @@ class AddReport
     {
         $gateWays = [
             $validated = $accessLevel > 1 ? true : false,
-            $validationScore = $validated === true ? 5 : 0,
-            $starNbr = 0
-        ]
-        ;
+            $validated === true ? 5 : 0,
+            0
+        ];
+
         return $gateWays;
     }
 }
+

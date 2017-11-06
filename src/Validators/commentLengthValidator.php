@@ -11,7 +11,7 @@ namespace App\Validators;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class commentLengthValidator extends ConstraintValidator
+class CommentLengthValidator extends ConstraintValidator
 {
     /**
      * @param mixed $value

@@ -24,7 +24,6 @@ class UpdatePswd
 {
     private $formFactory;
     private $doctrine;
-    private $requestStack;
     private $mailService;
     private $tools;
     private $swift;
@@ -35,7 +34,6 @@ class UpdatePswd
      * UpdatePswd constructor.
      * @param FormFactory $formFactory
      * @param EntityManager $doctrine
-     * @param RequestStack $requestStack
      * @param Mails $mailService
      * @param Tools $tools
      * @param \Swift_Mailer $swift
@@ -45,7 +43,6 @@ class UpdatePswd
     public function __construct(
         FormFactory   $formFactory,
         EntityManager $doctrine,
-        RequestStack  $requestStack,
         Mails         $mailService,
         Tools         $tools,
         \Swift_Mailer $swift,
@@ -55,7 +52,6 @@ class UpdatePswd
     {
         $this->formFactory  = $formFactory;
         $this->doctrine     = $doctrine;
-        $this->requestStack = $requestStack;
         $this->mailService  = $mailService;
         $this->tools        = $tools;
         $this->swift        = $swift;
@@ -170,7 +166,7 @@ class UpdatePswd
                     'Le mot de passe  été modifier')
             ;
 
-            return $redirect = 'home';
+            return 'home';
         }
 
         return $resetForm->createView();
@@ -225,5 +221,4 @@ class UpdatePswd
 
         return $changeForm->createView();
     }
-
 }

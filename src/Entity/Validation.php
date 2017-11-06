@@ -66,7 +66,7 @@ class Validation
 
     /**
      * @param Report $report
-     * @return $this
+     * @return Validation
      */
     public function setReport(Report $report) :Validation
     {
@@ -92,5 +92,4 @@ class Validation
 
         return $this;
     }
-
 }

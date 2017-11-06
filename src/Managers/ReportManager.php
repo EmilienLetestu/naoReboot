@@ -16,20 +16,16 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class ReportManager
 {
     private $doctrine;
-    private $session;
 
     /**
      * ReportManager constructor.
      * @param EntityManager $doctrine
-     * @param Session $session
      */
     public function __construct(
-        EntityManager $doctrine,
-        Session       $session
+        EntityManager $doctrine
     )
     {
         $this->doctrine = $doctrine;
-        $this->session  = $session;
     }
 
     public function deleteAllExpired()

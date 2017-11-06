@@ -21,7 +21,6 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class Register
 {
     private $formFactory;
-    private $requestStack;
     private $doctrine;
     private $swift;
     private $mailService;
@@ -31,7 +30,6 @@ class Register
     /**
      * Register constructor.
      * @param FormFactory $formFactory
-     * @param RequestStack $requestStack
      * @param EntityManager $doctrine
      * @param \Swift_Mailer $swift
      * @param Mails $mailService
@@ -40,7 +38,6 @@ class Register
      */
     public  function __construct(
         FormFactory         $formFactory,
-        RequestStack        $requestStack,
         EntityManager       $doctrine,
         \Swift_Mailer       $swift,
         Mails               $mailService,
@@ -51,7 +48,6 @@ class Register
     )
     {
         $this->formFactory  = $formFactory;
-        $this->requestStack = $requestStack;
         $this->doctrine     = $doctrine;
         $this->swift        = $swift;
         $this->mailService  = $mailService;
@@ -68,7 +64,6 @@ class Register
     {
         $user = new User();
         $registerForm = $this->formFactory->create(RegisterType::class, $user);
-        $date = date('Y-m-d');
 
         $registerForm->handleRequest($request);
         if($registerForm->isSubmitted() && $registerForm->isValid())
@@ -120,7 +115,7 @@ class Register
                 )
             ;
 
-            return $redirect = 'home';
+            return 'home';
         }
 
         return $registerForm->createView();

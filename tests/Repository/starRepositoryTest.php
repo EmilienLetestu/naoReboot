@@ -62,5 +62,4 @@ class starRepositoryTest extends KernelTestCase
         $this->em = null;
     }
 
-
 }

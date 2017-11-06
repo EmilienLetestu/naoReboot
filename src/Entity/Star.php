@@ -91,7 +91,4 @@ class Star
 
         return $this;
     }
-
-
-
 }

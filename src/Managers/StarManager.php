@@ -22,20 +22,17 @@ class StarManager
 {
     private $doctrine;
     private $session;
-    private $tools;
     private $token;
 
     public function __construct(
         EntityManager $doctrine,
         Session       $session,
-        Tools         $tools,
         TokenStorage  $token
 
     )
     {
         $this->doctrine  = $doctrine;
         $this->session   = $session;
-        $this->tools     = $tools;
         $this->token     = $token;
     }
 

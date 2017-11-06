@@ -24,26 +24,28 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class Admin
 {
     private $doctrine;
-    private $requestStack;
     private $formFactory;
     private $tools;
     private $file;
     private $session;
 
+    /**
+     * Admin constructor.
+     * @param EntityManager $doctrine
+     * @param FormFactory $formFactory
+     * @param Tools $tools
+     * @param Session $session
+     */
     public function __construct(
         EntityManager $doctrine,
-        RequestStack  $requestStack,
         FormFactory   $formFactory,
         Tools         $tools,
-        Filesystem    $file,
         Session       $session
     )
     {
         $this->doctrine     = $doctrine;
-        $this->requestStack = $requestStack;
         $this->formFactory  = $formFactory;
         $this->tools        = $tools;
-        $this->file         = $file;
         $this->session      = $session;
     }
 
@@ -89,8 +91,8 @@ class Admin
             $this->deletePreviousHomeImage($pictToUpdate);
 
             $file->move(
-                $uploadRootDir = '../public/naoPictures',
-                $filename      = "{$pictureData['fileName']}.{$file->guessExtension()}"
+                '../public/naoPictures',
+                "{$pictureData['fileName']}.{$file->guessExtension()}"
             );
 
             $this->session->getFlashBag()

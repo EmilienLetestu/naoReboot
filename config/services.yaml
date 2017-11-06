@@ -35,3 +35,4 @@ services:
     App\Managers\:
         resource: '../src/Managers'
         public: true
+

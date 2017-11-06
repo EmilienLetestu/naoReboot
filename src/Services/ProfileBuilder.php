@@ -18,7 +18,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 class ProfileBuilder
 {
     private $doctrine;
-    private $session;
     private $token;
     private $tools;
     private $updatePswd;
@@ -26,21 +25,18 @@ class ProfileBuilder
     /**
      * ProfileBuilder constructor.
      * @param EntityManager $doctrine
-     * @param Session $session
      * @param TokenStorage $token
      * @param Tools $tools
      * @param UpdatePswd $updatePswd
      */
     public function __construct(
         EntityManager $doctrine,
-        Session       $session,
         TokenStorage  $token,
         Tools         $tools,
         UpdatePswd    $updatePswd
     )
     {
         $this->doctrine   = $doctrine;
-        $this->session    = $session;
         $this->token      = $token;
         $this->tools      = $tools;
         $this->updatePswd = $updatePswd;
@@ -171,4 +167,5 @@ class ProfileBuilder
         ];
     }
 }
+
 

@@ -21,18 +21,18 @@ class Mails
 
     /**
      * Mails constructor.
-     * @param \Swift_Mailer $swift
+     * @param \Swift_Mailer $mailer
      * @param \Twig_Environment $twig
      * @param EntityManager $doctrine
      */
     public function __construct(
-        \Swift_Mailer     $swift,
+        \Swift_Mailer     $mailer,
         \Twig_Environment $twig,
         EntityManager     $doctrine
 
     )
     {
-        $this->mailer   = $swift;
+        $this->mailer   = $mailer;
         $this->twig     = $twig;
         $this->doctrine = $doctrine;
     }

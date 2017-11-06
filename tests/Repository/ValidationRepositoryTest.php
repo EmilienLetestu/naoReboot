@@ -60,5 +60,4 @@ class ValidationRepositoryTest extends KernelTestCase
         $this->em->close();
         $this->em = null;
     }
-
 }

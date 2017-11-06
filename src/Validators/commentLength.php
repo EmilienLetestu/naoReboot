@@ -10,7 +10,7 @@ namespace App\Validators;
 
 use Symfony\Component\Validator\Constraint;
 
-class commentLength extends Constraint
+class CommentLength extends Constraint
 {
     /**
      * @var string

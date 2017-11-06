@@ -22,26 +22,22 @@ class ValidationManager
 
     private $doctrine;
     private $session;
-    private $tools;
     private $token;
 
     /**
      * ValidationManager constructor.
      * @param EntityManager $doctrine
      * @param Session $session
-     * @param Tools $tools
      * @param TokenStorage $token
      */
     public function __construct(
         EntityManager $doctrine,
         Session       $session,
-        Tools         $tools,
         TokenStorage  $token
     )
     {
         $this->doctrine = $doctrine;
         $this->session  = $session;
-        $this->tools    = $tools;
         $this->token    = $token;
     }
 
