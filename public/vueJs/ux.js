@@ -9,7 +9,7 @@ new Vue({
         pswd:'',
         email:'',
         submit: false,
-        confirmPswd:''
+        confirmPswd:'',
     },
     computed:{
         missingName: function () {
@@ -40,6 +40,7 @@ new Vue({
                 this.confirmPswd === ''
             )
         }
+
     },
     methods:{
         open:function () {
@@ -61,6 +62,11 @@ new Vue({
                 event.preventDefault();
         },
         validateResetPswd: function (event) {
+            this.submit = true;
+            if(this.missingPswd||this.matchLess)
+                event.preventDefault();
+        },
+        validateChangePswd: function (event) {
             this.submit = true;
             if(this.missingPswd||this.matchLess)
                 event.preventDefault();

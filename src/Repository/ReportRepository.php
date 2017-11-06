@@ -106,7 +106,7 @@ class ReportRepository extends EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('r');
 
-        $this->whereValidated($queryBuilder,1,'Desc','addedOn',9);
+        $this->whereValidated($queryBuilder,1,'ASC','addedOn',9);
 
         return $queryBuilder
             ->getQuery()
@@ -124,6 +124,22 @@ class ReportRepository extends EntityRepository
 
         $this->whereReporter($queryBuilder,$userId);
         $this->whereValidated($queryBuilder,1,'Desc','addedOn',1);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findAllWithBirdName($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder
+            ->innerJoin('r.bird','b')
+            ->addSelect('b')
+        ;
+
+        $queryBuilder->where($queryBuilder->expr()->in('b.id',$id));
 
         return $queryBuilder
             ->getQuery()

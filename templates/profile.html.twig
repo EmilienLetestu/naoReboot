@@ -13,42 +13,45 @@
 
     <div class="headBanner">
         <h2>{{ app.user.name }} {{ app.user.surname }}</h2>
-        <span class="accountScore"><i class="material-icons">grade</i>{{ score }}</span>
+        <span class="accountScore"><i class="material-icons">grade</i>{{ reportInfo.2 }}</span>
         <div>
             <ul class="list-inline">
                 <li class="list-inline-item">
                     Adresse email: {{ app.user.email }}
                 </li>
                 <li class="list-inline-item">
-                    Type de compte: {{ accountType }}
+                    Type de compte: {{ accountInfo.2 }}
                 </li>
                 <li class="list-inline-item">
-                    inscript depuis le: {{ createdOn }}
+                    inscript depuis le: {{ accountInfo.0}}
                 </li>
             </ul>
         </div>
-        <div id="app">
-            <button v-on:click="show">Show Modal</button>
+        <div>
+            <button v-on:click="seen = !seen" class="btn btn-outline">Modifier mes informations</button>
         </div>
     </div>
-    <div id="pswdModal" style="display: none">
-            {{ form_start(changePswd, {'attr':{'id':'changePswd'}}) }}
-            <div class="form-group">
-                {{ form_label(changePswd.currentPswd) }}
-                {{ form_widget(changePswd.currentPswd) }}
+    <div id="pswdModal" v-if="seen">
+        <i v-on:click="close" class="material-icons">close</i>
+            {{ form_start(accountInfo.1, {'attr':{'id':'changePswd', 'v-on:submit':'validateChangePswd'}}) }}
+            <div class="form-group col-sm-6">
+                {{ form_label(accountInfo.1.currentPswd) }}
+                {{ form_widget(accountInfo.1.currentPswd) }}
             </div>
-            <div>
-                {{ form_label(changePswd.pswd) }}
-                {{ form_widget(changePswd.pswd) }}
+            <div class="form-group col-sm-6"  v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
+                {{ form_label(accountInfo.1.pswd) }}
+                {{ form_widget(accountInfo.1.pswd, {'attr':{'v-model':'pswd'}}) }}
+                <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
-            <div>
-                {{ form_label(changePswd.confirmPswd) }}
-                {{ form_widget(changePswd.confirmPswd) }}
+            <div class="form-group  col-sm-6" v-bind:class="{ 'has-feedback has-warning': 'submit && matchLess' }">
+                {{ form_label(accountInfo.1.confirmPswd ) }}
+                {{ form_widget(accountInfo.1.confirmPswd, {'attr':{'v-model':'confirmPswd'}}) }}
+                <div class="form-control-feedback" v-if="submit && matchLess">Les mots de passes ne correspondent pas</div>
             </div>
-            <div class="form-group">
+            <div class="form-group col-sm-6">
                 <button class="btn btn-success" type="submit">Valider</button>
             </div>
-            {{ form_end(changePswd) }}
+            {{ form_end(accountInfo.1) }}
     </div>
     <div id="charts">
        <div id="chartIcon">
@@ -67,20 +70,25 @@
                </thead>
                <tbody>
                <tr>
-                   <td>{{ published }}</td>
-                   <td>{{ unvalidated }}</td>
-                   <td>{{ addedOn }}</td>
-                   <td>{{ bird }}</td>
-                   <td>{{ satNav }}</td>
+                   <td>{{ reportInfo.1 }}</td>
+                   <td>{{ reportInfo.0 }}</td>
+                   <td>{{ lastInfo.0 }}</td>
+                   <td>{{ lastInfo.1 }}</td>
+                   <td>{{ lastInfo.2 }}</td>
                </tr>
                </tbody>
            </table>
        </div>
     </div>
 
+    <div id="loadReports">
+        <button class="btn btn-outline">Toutes mes observations</button>
+    </div>
+
+
+
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('vueJs/profile.js') }}"></script>
+    <script src="{{ asset('vueJs/ux.js') }}"></script>
 {% endblock %}

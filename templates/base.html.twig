@@ -7,7 +7,7 @@
                 NAO
             {% endblock %}
         </title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <script src="https://use.fontawesome.com/707b54fdb6.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
@@ -38,9 +38,8 @@
             {% endif %}
             {% if is_granted('ROLE_USER') %}
             <div class="nav navbar-nav ml-auto">
-               <button  v-on:mouseover="show = true">
-                   <i class="fa fa-user" id="accountBadge" aria-hidden="true"></i>
-               </button>
+
+                   <i class="fa fa-user-circle-o" aria-hidden="true" id="accountBadge"  v-on:mouseover="show = true"></i>
             </div>
                 <div id="dashboard" v-if="show">
                     <ul v-on:mouseleave="show= false">
@@ -96,16 +95,16 @@
                             </a>
                         </li>
                         {% endif %}
-                   vue
+                    </ul>
                 </div>
             {% endif %}
         </nav>
         <main class="container-fluid py-3 w-100" id="app">
 
 
-            {% for label, messages in app.flashes(['denied','error','success','warning']) %}
+            {% for label, messages in app.flashes(['denied','error','success','warning','welcome']) %}
                 {% for message in messages %}
-                    <div class="alert alert-{{ label }}" style="font-size: 2em">
+                    <div class="alert alert-{{ label }}" style="font-size: 5em">
                         <p>{{ message }}</p>
                     </div>
                 {% endfor %}

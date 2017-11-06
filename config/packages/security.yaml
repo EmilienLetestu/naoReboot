@@ -25,9 +25,15 @@ security:
             logout:
                 path: logout
                 target: login
+            remember_me:
+                secret: '%env(SECRET)%'
+                lifetime: 259200 # 3 days
+                path: /
+                httponly: true
 
     access_control:
             - { path: ^/admin, roles: ROLE_ADMIN }
+            - { path: ^/observations/en-attente-de-validation, roles: ROLE_VALIDATOR}
             - { path: ^/observations/nouvelle-observation, roles: ROLE_USER }
             - { path: ^/mon-profil, roles: ROLE_USER }
             - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

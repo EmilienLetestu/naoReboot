@@ -164,6 +164,12 @@ class UpdatePswd
             //store into db
             $this->doctrine->flush();
 
+            //msg flash
+            $this->session->getFlashBag()
+                ->add('success',
+                    'Le mot de passe  été modifier')
+            ;
+
             return $redirect = 'home';
         }
 

@@ -76,16 +76,16 @@ class Tools
     }
 
     /**
-     * @param null $type
+     * @param $accessLevel
      * @return mixed
      */
-    public function displayAccountType($type)
+    public function displayAccountType($accessLevel)
     {
         $displayType = ['type_1' => 'Compte amateur',
                         'type_2' => 'Compte naturaliste']
         ;
 
-        return $displayType["type_{$type}"];
+        return $displayType["type_{$accessLevel}"];
 
     }
 
