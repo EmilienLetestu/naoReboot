@@ -8,7 +8,7 @@
 
 namespace App\Form;
 
-use App\Validators\commentLength;
+use App\Validators\CommentLength;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\AbstractType;
@@ -51,7 +51,7 @@ class ReportType extends AbstractType
                                                          'format' => 'dd-MM-yyyy'
             ])
 
-            ->add('comment', TextareaType::class, ['constraints' => [new commentLength()],
+            ->add('comment', TextareaType::class, ['constraints' => [new CommentLength()],
                                                              'mapped'   => false,
                                                              'trim'     => true,
                                                              'label'    => 'Commentaire',

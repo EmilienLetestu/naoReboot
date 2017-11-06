@@ -15,24 +15,20 @@ use Doctrine\ORM\EntityManager;
 class Mails
 {
 
-    private $mailer;
     private $twig;
     private $doctrine;
 
     /**
      * Mails constructor.
-     * @param \Swift_Mailer $mailer
      * @param \Twig_Environment $twig
      * @param EntityManager $doctrine
      */
     public function __construct(
-        \Swift_Mailer     $mailer,
         \Twig_Environment $twig,
         EntityManager     $doctrine
 
     )
     {
-        $this->mailer   = $mailer;
         $this->twig     = $twig;
         $this->doctrine = $doctrine;
     }

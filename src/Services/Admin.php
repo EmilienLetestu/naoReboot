@@ -26,7 +26,6 @@ class Admin
     private $doctrine;
     private $formFactory;
     private $tools;
-    private $file;
     private $session;
 
     /**
