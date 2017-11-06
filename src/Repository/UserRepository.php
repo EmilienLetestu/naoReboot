@@ -160,4 +160,17 @@ class UserRepository extends EntityRepository
         );
     }
 
+    public function countAllWithAccessLevel($accessLevel)
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+
+        $this->whereActivated($queryBuilder,1);
+        $this->whereAccessLevel($queryBuilder,$accessLevel);
+
+        return(
+            $queryBuilder->getQuery()->getScalarResult()
+        );
+    }
+
 }
+

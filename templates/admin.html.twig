@@ -21,21 +21,20 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th><i class= "material-icons">person</i></th>
-                    <th><i class = "material-icons">date_range</i></th>
-                    <th><i class = "material-icons">info_outline</i></th>
+                    <th>Nombre total de membres</th>
+                    <th>Comptes naturistes</th>
+                    <th>Comptes amateurs</th>
+                    <th>En ligne</th>
                 </tr>
             </thead>
             <tbody>
-                    {% for user in users %}
-                    <tr>
-                        <td>{{ user.name }} {{ user.surname }}</td>
-                        <td>{{ user.reports.satNav }}</td>
-                        <td><i class = "material-icons">add</i></td>
-                    </tr>
-                    {% endfor %}
+                <tr>
+                    <td>{{ maxLevel + minLevel }}</td>
+                    <td>{{ maxLevel}}</td>
+                    <td>{{ minLevel}}</td>
+                    <td> todo </td>
+                </tr>
             </tbody>
         </table>
     </div>
-
 {% endblock %}

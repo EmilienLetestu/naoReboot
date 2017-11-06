@@ -52,21 +52,11 @@ class Admin
     {
         //get user list
         $repository = $this->doctrine->getRepository(User::class);
-        $userList   = $repository->findAll();
-
-        foreach ($userList as $user)
-        {
-            $accessLevel[] = $user->getAccessLevel();
-            $minLevel = array_search(1,$accessLevel);
-            $maxLevel = array_search(2,$accessLevel);
-
-        }
 
         //homepage img modification
         Return [
-            count($userList),
-            count($minLevel),
-            count($maxLevel)
+            count($repository->countAllWithAccessLevel(1)),
+            count($repository->countAllWithAccessLevel(2))
         ];
     }
 
@@ -118,3 +108,4 @@ class Admin
     }
 
 }
+

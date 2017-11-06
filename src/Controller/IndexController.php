@@ -160,8 +160,12 @@ class IndexController extends Controller
      */
     public function administration()
     {
-       $this->get('App\Services\Admin')->buildUserManagement();
+       $view = $this->get('App\Services\Admin')->buildAdminHome();
 
-        return $this->render('admin.html.twig');
+        return $this->render('admin.html.twig',[
+            'minLevel' => $view[0],
+            'maxLevel' => $view[1]
+        ]);
     }
 }
+
