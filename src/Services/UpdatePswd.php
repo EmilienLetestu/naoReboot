@@ -145,7 +145,7 @@ class UpdatePswd
             ;
             $this->swift->send($message);
 
-            return $redirect = 'home';
+            return 'home';
         }
 
         //generate needed object and form

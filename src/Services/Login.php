@@ -49,11 +49,10 @@ class Login
     }
 
     /**
-     * @param Request $request
      * @param AuthenticationUtils $authUtils
      * @return array|string
      */
-    public function processLogin(Request $request,AuthenticationUtils $authUtils)
+    public function processLogin(AuthenticationUtils $authUtils)
     {
         if ( $this->authCheck->isGranted('IS_AUTHENTICATED_REMEMBERED'))
         {
