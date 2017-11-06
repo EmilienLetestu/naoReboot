@@ -40,8 +40,4 @@ services:
         resource: '../src/Twig'
         tags: ['twig.extension']
 
-    App\EventListener\:
-        resource: '../src/EventListener'
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }
-        public: true
+

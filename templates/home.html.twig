@@ -43,7 +43,7 @@
                   {{ report.location }}
               </li>
           </ul>
-          <p class="quantity">Nombre de <strong>{{ report.bird.speciesFr }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
+          <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
           <a class="btn btn-outline" href="#">Lire le commentaire</a>
       </div>
     {% endfor %}
