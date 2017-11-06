@@ -45,4 +45,3 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
         public: true
-
