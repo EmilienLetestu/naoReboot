@@ -123,7 +123,7 @@ class UpdatePswd
                     'Adresse e-mail inconnue'
                 )
             ;
-            return $redirect = 'home';
+            return 'home';
         }
 
         //check if mail still valid
