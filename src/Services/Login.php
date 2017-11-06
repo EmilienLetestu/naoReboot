@@ -39,6 +39,7 @@ class Login
         Session              $session,
         TokenStorage         $token,
         EntityManager        $doctrine
+
     )
     {
         $this->authCheck  = $authCheck;
@@ -64,7 +65,6 @@ class Login
 
         // last username entered by the user
         $lastUsername = $authUtils->getLastUsername();
-
 
         return [
             $lastUsername,

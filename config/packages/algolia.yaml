@@ -1,0 +1,4 @@
+algolia:
+    application_id: '%env(APPLICATION_ID)%'
+    api_key: '%env(API_KEY)%'
+
