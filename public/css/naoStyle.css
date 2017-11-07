@@ -361,4 +361,20 @@ footer .list-group
     margin-bottom: 3%;
 }
 
+/*---------------------------admin home-------------------------*/
 
+
+.img img{
+    width: 25%;
+}
+.imgTitle{
+    position: relative;
+    left: -200px;
+    color: white;
+}
+.img button{
+    position: relative;
+    top: -40px;
+    left: -60px;
+    color: orange;
+}

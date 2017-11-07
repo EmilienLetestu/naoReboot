@@ -70,6 +70,19 @@ new Vue({
             this.submit = true;
             if(this.missingPswd||this.matchLess)
                 event.preventDefault();
+        },
+        pictNumber: function (btn) {
+            this.seen = true;
+            if(btn === 1){
+               document.getElementById('pictRef').value = "1";
+            }
+            if(btn === 2){
+                document.getElementById('pictRef').value = "2";
+            }
+            if(btn === 3){
+                document.getElementById('pictRef').value = "3";
+            }
         }
     }
 });
+

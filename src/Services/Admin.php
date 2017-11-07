@@ -48,7 +48,7 @@ class Admin
         $this->session      = $session;
     }
 
-    public function buildAdminHome()
+    public function buildAdminHome(Request $request)
     {
         //get user list
         $repository = $this->doctrine->getRepository(User::class);
@@ -56,10 +56,16 @@ class Admin
         //homepage img modification
         Return [
             count($repository->countAllWithAccessLevel(1)),
-            count($repository->countAllWithAccessLevel(2))
+            count($repository->countAllWithAccessLevel(2)),
+            $this->getHomeImage(),
+            $this->addPictureToHomePage($request)
         ];
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\Form\FormView
+     */
     public function addPictureToHomePage(Request $request)
     {
         $updateForm = $this->formFactory->create(UpdateHomeType::class);
@@ -89,6 +95,19 @@ class Admin
         }
 
         return $updateForm->createView();
+    }
+
+    /**
+     * @return array
+     */
+    public function getHomeImage()
+    {
+        $dir = '../public/naoPictures';
+
+        $dirContent = scandir($dir);
+
+        //remove '.' and '..' from array and return file name
+        return  array_splice($dirContent,2);
     }
 
 

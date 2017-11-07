@@ -156,15 +156,18 @@ class IndexController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function administration()
+    public function administration(Request $request)
     {
-       $view = $this->get('App\Services\Admin')->buildAdminHome();
+       $view = $this->get('App\Services\Admin')->buildAdminHome($request);
 
         return $this->render('admin.html.twig',[
             'minLevel' => $view[0],
-            'maxLevel' => $view[1]
+            'maxLevel' => $view[1],
+            'homeImg'  => $view[2],
+            'form'     => $view[3]
         ]);
     }
 }

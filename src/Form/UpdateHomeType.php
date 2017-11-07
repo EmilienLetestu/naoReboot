@@ -23,13 +23,14 @@ class UpdateHomeType extends AbstractType
     {
         $builder
             ->add('species', TextType::class,['constraints'=>[new NotBlank()],
-                                                         'label' => 'Nom de l\'espèce'
+                                              'label' => 'Nom de l\'espèce',
+                                               'required' => false
             ])
-            ->add('picture', FileType::class, ['required' => true,
-                                                         'label'    => 'Modifier l\'image',
+            ->add('picture', FileType::class, ['required' => false,
+                                               'label'    => 'Modifier l\'image',
 
             ])
-            ->add('pictNum', HiddenType::class,['data' => ' '])
+            ->add('pictNum', HiddenType::class)
         ;
 
     }

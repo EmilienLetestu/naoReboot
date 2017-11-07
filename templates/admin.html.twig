@@ -37,4 +37,35 @@
             </tbody>
         </table>
     </div>
+
+    <div>
+        <h2>Modifier la page d'accueil</h2>
+        {% for img in homeImg %}
+
+            <div class="img" >
+                <img src="{{ asset('/naoPictures/'~img) }}">
+                <span class ="imgTitle">dsfds</span>
+                <button v-on:click="pictNumber({{ loop.index }},$event)" class="btn btn-outline" value="{{ loop.index }}">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+    <div v-show="seen">
+        <i v-on:click="close" class="material-icons">close</i>
+        {{ form_start(form) }}
+        <div class="form-group col-sm-6">
+            {{ form_label(form.species) }}
+            {{ form_widget(form.species) }}
+        </div>
+        <div class="form-group col-sm-6">
+            {{ form_label(form.picture) }}
+            {{ form_widget(form.picture) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.pictNum, { 'id':'pictRef','attr':{'value': ' ' }}) }}
+            <button class="btn btn-success" type="submit">Valider</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
