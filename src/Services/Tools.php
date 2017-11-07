@@ -37,14 +37,11 @@ class Tools
     /**
      * @param string $birdSpecies
      * @param int $imagePosition
-     * @return array
+     * @return string
      */
-    public function generateDataForHomeImg(string $birdSpecies, int $imagePosition) :array
+    public function generateDataForHomeImg(string $birdSpecies, int $imagePosition) :string
     {
-        return ['watermark' => $birdSpecies,
-                'altText'   => "nao recherche: {$birdSpecies}",
-                'fileName'  => "naoEvent_{$imagePosition}_{$birdSpecies}"
-        ];
+        return 'naoEvent_'.$imagePosition.'_'.$birdSpecies;
     }
 
     /**
