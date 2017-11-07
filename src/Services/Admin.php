@@ -114,16 +114,16 @@ class Admin
 
 
     /**
+     * find image inside directory based on picture position from 1 to 3 (inside html)
+     * return an array with up to 2 keys
+     * => picture array key = picture position - 1
      * @param $pictNum
      * @return bool
      */
     public function deletePreviousHomeImage($pictNum)
     {
-        $dir = '../public/naoPictures';
-        $dirContent = scandir($dir);
-
-        //remove '.' and '..' from array and return file name
-        $pictureContent = array_splice($dirContent,2);
+       //get pictures from directory
+       $pictureContent = $this->getHomeImage();
 
        return unlink("../public/naoPictures/{$pictureContent[$pictNum-1]}");
     }
