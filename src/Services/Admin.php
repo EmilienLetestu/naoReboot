@@ -76,6 +76,7 @@ class Admin
             //process data
             $birdSpecies  = $updateForm->get('species')->getData();
             $pictToUpdate = $updateForm->get('pictNum')->getData();
+
             $file         = $updateForm->get('picture')->getData();
             $pictureData  = $this->tools->generateDataForHomeImg(
                 $birdSpecies,
@@ -120,10 +121,10 @@ class Admin
         $dir = '../public/naoPictures';
         $dirContent = scandir($dir);
 
-        //add 2 to picture number to find its position in array
-        $filePosition = $pictNum + 2;
+        //remove '.' and '..' from array and return file name
+        $pictureContent = array_splice($dirContent,2);
 
-       return unlink("../public/naoPictures/{$dirContent[$filePosition]}");
+       return unlink("../public/naoPictures/{$pictureContent[$pictNum-1]}");
     }
 
 }
