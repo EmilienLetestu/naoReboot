@@ -163,6 +163,11 @@ class IndexController extends Controller
     {
        $view = $this->get('App\Services\Admin')->buildAdminHome($request);
 
+       if($view[3] === 'admin')
+       {
+           return $this->redirectToRoute('admin');
+       }
+
         return $this->render('admin.html.twig',[
             'minLevel' => $view[0],
             'maxLevel' => $view[1],
