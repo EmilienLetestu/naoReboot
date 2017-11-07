@@ -79,7 +79,7 @@ class Admin
 
             $file         = $updateForm->get('picture')->getData();
             $pictureData  = $this->tools->generateDataForHomeImg(
-                $birdSpecies,
+                str_replace(' ','_',$birdSpecies),
                 $pictToUpdate
             );
 
@@ -96,6 +96,7 @@ class Admin
         }
 
         return $updateForm->createView();
+
     }
 
     /**

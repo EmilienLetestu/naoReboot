@@ -44,7 +44,7 @@
 
             <div class="img" >
                 <img src="{{ asset('/naoPictures/'~img) }}">
-                <span class ="imgTitle">dsfds</span>
+                <span class ="imgTitle">{{ img|speciesFromFile }}</span>
                 <button v-on:click="pictNumber({{ loop.index }},$event)" class="btn btn-outline" value="{{ loop.index }}">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
