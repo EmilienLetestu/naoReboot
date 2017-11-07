@@ -1,0 +1,38 @@
+{% extends"base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Liste des Membres</h1>
+    </div>
+
+    {{ include('adminNav.html.twig') }}
+
+    <div class="memberList">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th><i class="material-icons">person</i></th>
+                    <th><i class="material-icons">date range</i></th>
+                    <th><i class="material-icons">info_outline</i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        {{ user.surname }} {{ user.name }}
+                    </th>
+                    <th>
+                        {{  }}
+                    </th>
+                    <th>
+                        <i class="material-icons">add</i>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
