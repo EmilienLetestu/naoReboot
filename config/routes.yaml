@@ -82,11 +82,18 @@ admin:
         _controller: App\Controller\IndexController::administration
 
 
-memberList:
+userList:
     path: /admin/liste-des-membres
     defaults:
         _controller: App\Controller\IndexController::userList
 
+userManagement:
+    path: /admin/{action}/{id}
+    defaults:
+        _controller: App\Controller\IndexController::userManagement
+    requirements:
+        action: deactivate||ban||privilege
+        id: \d+
 
 statistics:
     path: /admin/statistiques

@@ -34,7 +34,11 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <div class="userDetails">
+                        <div class="accountDetails">
+                            <span class="accountScore">
+                                <i class="material-icons">grade</i>
+                                todo
+                            </span>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                    Adresse email: {{ user.email }}
@@ -42,11 +46,36 @@
                                 <li class="list-inline-item">
                                     Type de compte: {{ user.accessLevel|account }}
                                 </li>
-                                <li class="list-inline-item">
-                                    Todo
-                                </li>
                             </ul>
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                       <div class="accountActions">
+                           <ul class="list-inline">
+                               <li class="list-inline-item">
+                                   <a class="btn btn-outline btn-danger"
+                                      href="{{ path('userManagement', {'action' :'deactivate','id':user.id}) }}">
+                                       <i class="material-icons">delete</i>
+                                   </a>
+                               </li>
+                               <li class="list-inline-item">
+                                   <a class="btn btn-outline btn-warning"
+                                      href="{{ path('userManagement', {'action' :'ban','id':user.id}) }}">
+                                       <i class="material-icons">not_interested</i>
+                                   </a>
+                               </li>
+                               <li class="list-inline-item">
+                                   <a class="btn btn-outline btn-primary"
+                                      href="{{ path('userManagement', {'action' :'privilege','id':user.id}) }}">
+                                       <i class="material-icons">
+                                           {{ user.accessLevel < 2 ? 'arrow_upward' : 'arrow_downward' }}
+                                       </i>
+                                   </a>
+                               </li>
+                           </ul>
+                       </div>
                     </td>
                 </tr>
             {% endfor %}

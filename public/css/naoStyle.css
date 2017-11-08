@@ -378,3 +378,24 @@ footer .list-group
     left: -60px;
     color: orange;
 }
+
+/*---------------------------admin memberList-------------------------*/
+
+.accountDetails{
+    background-color: #8c8c8c;
+    text-align: center;
+    padding: 2%;
+}
+
+.accountActions ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+.accountDetails ul{
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
