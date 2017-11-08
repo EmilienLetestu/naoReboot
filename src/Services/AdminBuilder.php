@@ -11,6 +11,7 @@ namespace App\Services;
 use App\Entity\Report;
 use App\Entity\User;
 
+use App\Managers\UserManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,15 +19,18 @@ class AdminBuilder
 {
     private $doctrine;
     private $homeImg;
+    private $userManager;
 
 
     public function __construct(
         EntityManager $doctrine,
-        HomeImg       $homeImg
+        HomeImg       $homeImg,
+        UserManager   $userManager
     )
     {
-        $this->doctrine = $doctrine;
-        $this->homeImg  = $homeImg;
+        $this->doctrine    = $doctrine;
+        $this->homeImg     = $homeImg;
+        $this->userManager = $userManager;
     }
 
     /**
@@ -70,6 +74,9 @@ class AdminBuilder
         ];
     }
 
+    /**
+     * @return array
+     */
     public function buildStatistics()
     {
         // total of validated report
@@ -77,15 +84,22 @@ class AdminBuilder
         $repoUser   = $this->doctrine->getRepository(User::class);
 
         //total
-        $totalReport     = count($repoReport->countAllValidated());
-        $totalUser       = count($repoUser->countAllActivated());
-
+        $totalReport = count(
+            $repoReport->countAllValidated()
+        );
+        $totalUser = count(
+            $repoUser->countAllActivated()
+        );
 
         // reference value for date based stats
-        $yearlyTotal    = count($repoReport->countValidatedThisYear(date('Y')));
+        $yearlyTotal = count(
+            $repoReport->countValidatedThisYear(date('Y'))
+        );
 
         // reference values for user based stats
-        $allReportByUserLevel2 = count($repoReport->countWithUserAccessLevel(1));
+        $allReportByUserLevel2 = count(
+            $repoReport->countWithUserAccessLevel(1)
+        );
         $allReportByUserLevel1 = $totalReport - $allReportByUserLevel2;
 
         // prevent to divide by 0
@@ -104,6 +118,35 @@ class AdminBuilder
             $average1,
             $average2,
         ];
+    }
+
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function buildAccountManagement(Request $request)
+    {
+        $action = $request->attributes->get('action');
+        $id     = $request->attributes->get('id');
+
+
+       //get action to apply from url
+       if($action === 'deactivate')
+       {
+           $this->userManager->softDeleteById($id);
+           return $request->get('referer');
+       }
+       if($action === 'ban')
+       {
+           $this->userManager->banUser($id);
+           return $request->request->get('referer');
+       }
+       if($action === 'privilege')
+       {
+           $this->userManager->changeAccessLevel($id);
+           return $request->request->get('referer');
+       }
     }
 
 }

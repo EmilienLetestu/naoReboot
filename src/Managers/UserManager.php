@@ -78,23 +78,24 @@ class UserManager
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneById($id);
         $user->setBan(true);
+        $this->doctrine->persist($user);
         $this->doctrine->flush();
     }
 
     /**
      * @param $id
-     * @param $formerLevel
-     * @param $newLevel
      */
-    public function changeAccessLevel($id,$formerLevel,$newLevel)
+    public function changeAccessLevel($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneBy([
             'id' => $id,
-            'accessLevel' => $formerLevel
+
         ]);
+        $newLevel = $user->getAccessLevel() > 1 ? 1 : 2;
         $user->setAccessLevel($newLevel);
         $this->notificationManager->notifyUser($newLevel, $user);
+        $this->doctrine->persist($user);
         $this->doctrine->flush();
     }
 

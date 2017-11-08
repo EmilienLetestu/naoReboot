@@ -57,7 +57,8 @@ class IndexController extends Controller
      */
     public function register(Request $request)
     {
-        $view = $this->get('App\Services\Register')->registerUser($request);
+        $view = $this->get('App\Services\Register')
+            ->registerUser($request);
         if($view === 'home')
         {
             return $this->redirectToRoute($view);
@@ -75,14 +76,16 @@ class IndexController extends Controller
      */
     public function activate(Request $request)
     {
-        $this->get('App\Services\ActivateAccount')->ActivateUserAccount($request);
+        $this->get('App\Services\ActivateAccount')
+            ->ActivateUserAccount($request);
 
         return $this->redirectToRoute('home');
     }
 
     public function resetPswdMail(Request $request)
     {
-        $view = $this->get('App\Services\UpdatePswd')->askReset($request);
+        $view = $this->get('App\Services\UpdatePswd')
+            ->askReset($request);
 
         return $this->render(
             'connectionForms.html.twig',
@@ -96,7 +99,8 @@ class IndexController extends Controller
      */
     public function resetPswdForm(Request $request)
     {
-        $view = $this->get('App\Services\UpdatePswd')->resetPswd($request);
+        $view = $this->get('App\Services\UpdatePswd')
+            ->resetPswd($request);
 
         if($view === 'home')
         {
@@ -116,7 +120,9 @@ class IndexController extends Controller
      */
     public function addReport(Request $request)
     {
-        $view = $this->get('App\Services\AddReport')->addReportProcess($request);
+        $view = $this->get('App\Services\AddReport')
+            ->addReportProcess($request)
+        ;
 
         return $this->render(
             'addReportForm.html.twig',
@@ -130,7 +136,9 @@ class IndexController extends Controller
      */
     public function profile(Request $request)
     {
-        $view = $this->get('App\Services\ProfileBuilder')->buildPrivateProfile($request);
+        $view = $this->get('App\Services\ProfileBuilder')
+            ->buildPrivateProfile($request)
+        ;
 
         return $this->render('profile.html.twig',[
             'accountInfo' => $view[0],
@@ -149,9 +157,9 @@ class IndexController extends Controller
     public function starReport(Request $request)
     {
 
-       $this->get('App\Managers\StarManager')->starProcess(
-           $request->get('reportId')
-       );
+       $this->get('App\Managers\StarManager')
+           ->starProcess($request->get('reportId'))
+       ;
        $redirect = $request->headers->get('referer');
        return $this->redirect($redirect);
     }
@@ -162,7 +170,9 @@ class IndexController extends Controller
      */
     public function administration(Request $request)
     {
-       $view = $this->get('App\Services\AdminBuilder')->buildAdminHome($request);
+       $view = $this->get('App\Services\AdminBuilder')
+           ->buildAdminHome($request)
+       ;
 
        if($view[3] === 'admin')
        {
@@ -183,7 +193,9 @@ class IndexController extends Controller
      */
     public function userList()
     {
-        $view = $this->get('App\Services\AdminBuilder')->builduserList();
+        $view = $this->get('App\Services\AdminBuilder')
+            ->builduserList()
+        ;
 
         return $this->render('adminMembers.html.twig',[
             'userList'   => $view[0],
@@ -196,7 +208,9 @@ class IndexController extends Controller
      */
     public function statistics()
     {
-        $view = $this->get('App\Services\AdminBuilder')->buildStatistics();
+        $view = $this->get('App\Services\AdminBuilder')
+            ->buildStatistics()
+        ;
 
         return $this->render('adminStats.html.twig',[
             'totalReport'     => $view[0],
@@ -210,6 +224,19 @@ class IndexController extends Controller
             'averageByLevel1' => $view[8],
             'averageByLevel2' => $view[9]
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function accountManagement(Request $request)
+    {
+        $this->get('App\Services\AdminBuilder')
+            ->buildAccountManagement($request)
+        ;
+
+        return $this->redirectToRoute('userList');
     }
 
 }
