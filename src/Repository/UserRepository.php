@@ -136,10 +136,10 @@ class UserRepository extends EntityRepository
        $this->whereAccessLevel($queryBuilder,$accessLevel);
        $this->whereCreatedOn($queryBuilder,$nMonthAgo);
 
-        return(
-            $queryBuilder->getQuery()->getResult()
-        );
-
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     /**
@@ -155,11 +155,32 @@ class UserRepository extends EntityRepository
         $this->whereBan($queryBuilder,0);
         $this->whereDeactivated($queryBuilder,0);
 
-        return(
-          $queryBuilder->getQuery()->getResult()
-        );
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
+    /**
+     * @return array
+     */
+    public function countAllActivated()
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+
+        $this->whereActivated($queryBuilder,1);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
+    }
+
+    /**
+     * Will return for a given access level the number of activated account
+     * @param $accessLevel
+     * @return array
+     */
     public function countAllWithAccessLevel($accessLevel)
     {
         $queryBuilder = $this->createQueryBuilder('u');
@@ -167,9 +188,26 @@ class UserRepository extends EntityRepository
         $this->whereActivated($queryBuilder,1);
         $this->whereAccessLevel($queryBuilder,$accessLevel);
 
-        return(
-            $queryBuilder->getQuery()->getScalarResult()
-        );
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
+    }
+
+    /**
+     * Will return all user with an activated account
+     * @return array
+     */
+    public function findAllActivated()
+    {
+       $queryBuilder = $this->createQueryBuilder('u');
+
+       $this->whereActivated($queryBuilder,1);
+
+       return $queryBuilder
+           ->getQuery()
+           ->getResult()
+       ;
     }
 
 }

@@ -11,7 +11,6 @@ namespace App\Repository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
-
 class ReportRepository extends EntityRepository
 {
     /**
@@ -131,6 +130,10 @@ class ReportRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function findAllWithBirdName($id)
     {
         $queryBuilder = $this->createQueryBuilder('r');
@@ -146,4 +149,85 @@ class ReportRepository extends EntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * Will return all superior or equal to a given access level
+     * Use to cover access level 2 and 3 on buildStatistics()
+     * @param $accessLevel
+     * @return array
+     */
+    public function countWithUserAccessLevel($accessLevel)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder
+            ->innerJoin('r.user', 'u', 'WITH', 'u.accessLevel >= :accessLevel')
+            ->setParameter('accessLevel',$accessLevel);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
+    }
+
+    /**
+     * @return array
+     */
+    public function countAllValidated()
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder
+            ->andWhere('r.validated = 1')
+        ;
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
+    }
+
+    /**
+     * @param $year
+     * @param $month
+     * @return array
+     */
+    public function countValidatedThisMonth($year,$month)
+    {
+        $date = new \DateTime($year.'-'.$month.'-01');
+
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder
+            ->andWhere('r.addedOn BETWEEN :start AND :end')
+            ->setParameter('start', $date->format('Y-m-d'))
+            ->setParameter('end', $date->format('Y-m-t'))
+        ;
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
+    }
+
+    /**
+     * @param $year
+     * @return array
+     */
+    public function countValidatedThisYear($year)
+    {
+        $dateStart = new \DateTime($year.'-01-01');
+        $dateEnd   = new \DateTime($year.'-12-31');
+
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder
+            ->andWhere('r.addedOn BETWEEN :start AND :end')
+            ->setParameter('start', $dateStart->format('Y-m-d'))
+            ->setParameter('end', $dateEnd->format('Y-m-t'))
+        ;
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+            ;
+    }
+
 }
+
