@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Statistiques</h1>
+    </div>
+
+    {{ include('adminNav.html.twig') }}
+
+    <ul>
+        <li>
+           Nombre d'observations
+        </li>
+        <li>
+            {{ totalReport }}
+        </li>
+        <li>
+           Ce mois-ci
+        </li>
+        <li>
+           {{ monthlyTotal }}
+        </li>
+        <li>
+            Cette Année
+        </li>
+        <li>
+            {{ yearlyTotal }}
+        </li>
+        <li>
+            Moyenne quotidienne
+        </li>
+        <li>
+            {{ dailyAverage }}
+        </li>
+        <li>
+            Moyenne mensuelle
+        </li>
+        <li>
+            {{ monthlyAverage }}
+        </li>
+    </ul>
+    <ul>
+        <li>
+           Moyenne par utilisateur
+        </li>
+        <li>
+            {{ averageByUser }}
+        </li>
+        <li>
+            Nombre d'observcations par amateurs
+        </li>
+        <li>
+            {{ totalByLevel1 }}
+        </li>
+        <li>
+            Nombre d'observations par naturalistes
+        </li>
+        <li>
+            {{ totalByLevel2 }}
+        </li>
+        <li>
+           Moyenne amateurs
+        </li>
+        <li>
+            {{ averageByLevel1 }}
+        </li>
+        <li>
+            Moyenne naturalistes
+        </li>
+        <li>
+            {{ averageByLevel2 }}
+        </li>
+    </ul>
+{% endblock %}

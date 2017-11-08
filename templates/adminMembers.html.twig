@@ -10,28 +10,31 @@
     </div>
 
     {{ include('adminNav.html.twig') }}
-
     <div class="memberList">
         <table class="table table-responsive">
             <thead>
                 <tr>
                     <th><i class="material-icons">person</i></th>
-                    <th><i class="material-icons">date range</i></th>
+                    <th><i class="material-icons">date_range</i></th>
                     <th><i class="material-icons">info_outline</i></th>
                 </tr>
             </thead>
             <tbody>
+            {% for user in userList %}
+                {% for key, report in lastReport|keys %}
                 <tr>
                     <th>
                         {{ user.surname }} {{ user.name }}
                     </th>
                     <th>
-                        {{  }}
+                        {{ keys.report.id}}
                     </th>
                     <th>
                         <i class="material-icons">add</i>
                     </th>
                 </tr>
+                    {% endfor %}
+            {% endfor %}
             </tbody>
         </table>
     </div>
