@@ -11,7 +11,7 @@
 
     {{ include('adminNav.html.twig') }}
     <div class="memberList">
-        <table class="table table-responsive">
+        <table class="table">
             <thead>
                 <tr>
                     <th><i class="material-icons">person</i></th>
@@ -21,19 +21,34 @@
             </thead>
             <tbody>
             {% for user in userList %}
-                {% for key, report in lastReport|keys %}
                 <tr>
-                    <th>
+                    <td>
                         {{ user.surname }} {{ user.name }}
-                    </th>
-                    <th>
-                        {{ keys.report.id}}
-                    </th>
-                    <th>
+                    </td>
+                    <td>
+                        {{ user.createdOn|date('d/m/Y') }}
+                    </td>
+                    <td>
                         <i class="material-icons">add</i>
-                    </th>
+                    </td>
                 </tr>
-                    {% endfor %}
+                <tr>
+                    <td colspan="3">
+                        <div class="userDetails">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                   Adresse email: {{ user.email }}
+                                </li>
+                                <li class="list-inline-item">
+                                    Type de compte: {{ user.accessLevel|account }}
+                                </li>
+                                <li class="list-inline-item">
+                                    Todo
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>

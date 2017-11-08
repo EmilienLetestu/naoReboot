@@ -51,33 +51,22 @@ class ProfileBuilder
         //fetch id and createdOn into tokenStorage
         $user        = $this->token->getToken()->getUser();
         $id          = $user->getId();
-        $createdOn   = $user->getCreatedOn()->format('d-m-Y');
-        $accessLevel = $user->getAccessLevel();
 
-        //get account type
-        $accountType = $this->tools->displayAccountType($accessLevel);
-
-        //change pswd process
-        $changePswd = $this->updatePswd->changePswd($request);
-
-        //create array with collected data
-        $accountInfo = [$createdOn, $changePswd ,$accountType];
-
-        //fetch last published one
-        $lastInfo = $this->getLastPublicationData($id);
+        //create array with account creation date, chg pswd process and account type
+        $accountInfo = [
+            $user->getCreatedOn()->format('d-m-Y'),
+            $this->updatePswd->changePswd($request),
+            $user->getAccessLevel()
+        ];
 
         //fetch all user reports
         $reportList =$user->getReports();
 
-        //extract data from report list
-        $reportsInfo = $this->getActivitiesData($reportList);
-
-
         return [
             $accountInfo,
-            $lastInfo,
-            $reportsInfo,
-            $reportList
+            $this->getLastPublicationData($id),
+            $reportList,
+            $this->getActivitiesData($reportList)
         ];
     }
 
@@ -87,28 +76,20 @@ class ProfileBuilder
         $user = $this->doctrine->getRepository(User::class)
             ->findOneBy(['id'=>$id]);
 
-        //hydrate needed user property
-        $createdOn = $user->getCreatedOn()->format('d-m-y');
-        $accessLevel = $user->getAccessLevel();
-        $accountType = $this->tools->displayAccountType($accessLevel);
-
         //create array with collected data
-        $accountInfo = [$createdOn,$accountType];
-
-        //fetch last published one
-        $lastInfo = $this->getLastPublicationData($id);
+        $accountInfo = [
+            $createdOn = $user->getCreatedOn(),
+            $user->getAccessLevel()
+        ];
 
         //list all reports
         $reportList = $user->getReports();
 
-        //extract data from report list
-        $reportsInfo = $this->getActivitiesData($reportList);
-
         return [
             $accountInfo,
-            $lastInfo,
-            $reportsInfo,
-            $reportList
+            $this->getLastPublicationData($id),
+            $reportList,
+            $this->getActivitiesData($reportList)
         ];
     }
 

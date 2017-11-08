@@ -14,7 +14,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
-class Admin
+class AdminBuilder
 {
     private $doctrine;
     private $homeImg;

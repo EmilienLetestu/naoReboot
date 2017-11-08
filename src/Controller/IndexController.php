@@ -135,7 +135,8 @@ class IndexController extends Controller
         return $this->render('profile.html.twig',[
             'accountInfo' => $view[0],
             'lastInfo'    => $view[1],
-            'reportInfo'  => $view[2]
+            'reportList'  => $view[2],
+            'reportInfo'  => $view[3]
         ]);
 
     }
@@ -161,7 +162,7 @@ class IndexController extends Controller
      */
     public function administration(Request $request)
     {
-       $view = $this->get('App\Services\Admin')->buildAdminHome($request);
+       $view = $this->get('App\Services\AdminBuilder')->buildAdminHome($request);
 
        if($view[3] === 'admin')
        {
@@ -182,7 +183,7 @@ class IndexController extends Controller
      */
     public function userList()
     {
-        $view = $this->get('App\Services\Admin')->builduserList();
+        $view = $this->get('App\Services\AdminBuilder')->builduserList();
 
         return $this->render('adminMembers.html.twig',[
             'userList'   => $view[0],
@@ -195,7 +196,7 @@ class IndexController extends Controller
      */
     public function statistics()
     {
-        $view = $this->get('App\Services\Admin')->buildStatistics();
+        $view = $this->get('App\Services\AdminBuilder')->buildStatistics();
 
         return $this->render('adminStats.html.twig',[
             'totalReport'     => $view[0],
