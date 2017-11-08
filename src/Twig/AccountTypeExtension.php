@@ -9,7 +9,7 @@
 namespace App\Twig;
 
 
-class accountTypeExtension extends \Twig_Extension
+class AccountTypeExtension extends \Twig_Extension
 {
 
     public function getFilters()
@@ -23,7 +23,7 @@ class accountTypeExtension extends \Twig_Extension
      * @param $accessLevel
      * @return mixed
      */
-    public function AccountTypeFilter($accessLevel)
+    public function accountTypeFilter($accessLevel)
     {
         $account = [
             '1'=>'Amateur',
