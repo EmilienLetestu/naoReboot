@@ -71,19 +71,5 @@ class Tools
                 'fr'       => trim($extractDataFr[0])
         ];
     }
-
-    /**
-     * @param $accessLevel
-     * @return mixed
-     */
-    public function displayAccountType($accessLevel)
-    {
-        $displayType = ['type_1' => 'Compte amateur',
-                        'type_2' => 'Compte naturaliste']
-        ;
-
-        return $displayType["type_{$accessLevel}"];
-
-    }
 }
 
