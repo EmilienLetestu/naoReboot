@@ -115,7 +115,7 @@ class ProfileBuilder
     /**
      * fetch last publication and extract needed data
      * @param $id
-     * @return array|string
+     * @return array
      */
     public function getLastPublicationData($id)
     {

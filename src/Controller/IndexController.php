@@ -175,5 +175,41 @@ class IndexController extends Controller
             'form'     => $view[3]
         ]);
     }
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function userList()
+    {
+        $view = $this->get('App\Services\Admin')->builduserList();
+
+        return $this->render('adminMembers.html.twig',[
+            'userList'   => $view[0],
+            'lastReport' => $view[1]
+        ]);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function statistics()
+    {
+        $view = $this->get('App\Services\Admin')->buildStatistics();
+
+        return $this->render('adminStats.html.twig',[
+            'totalReport'     => $view[0],
+            'monthlyTotal'    => $view[1],
+            'yearlyTotal'     => $view[2],
+            'dailyAverage'    => $view[3],
+            'monthlyAverage'  => $view[4],
+            'averageByUser'   => $view[5],
+            'totalByLevel1'   => $view[6],
+            'totalByLevel2'   => $view[7],
+            'averageByLevel1' => $view[8],
+            'averageByLevel2' => $view[9]
+        ]);
+    }
+
 }
 
