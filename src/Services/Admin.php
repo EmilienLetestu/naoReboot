@@ -97,7 +97,7 @@ class Admin
             count($repoReport->countValidatedThisMonth(date('Y'),date('m'))),
             $yearlyTotal,
             $yearlyTotal / 365.4,
-            $monthlyAverage = $yearlyTotal / 12,
+            $yearlyTotal / 12,
             $totalReport / $totalUser,
             $allReportByUserLevel1,
             $allReportByUserLevel2,
