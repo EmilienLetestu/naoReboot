@@ -9,7 +9,7 @@
 namespace App\Twig;
 
 
-class AccountTypeExtension extends \Twig_Extension
+class accountTypeExtension extends \Twig_Extension
 {
 
     public function getFilters()

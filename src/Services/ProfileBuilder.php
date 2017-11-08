@@ -19,26 +19,22 @@ class ProfileBuilder
 {
     private $doctrine;
     private $token;
-    private $tools;
     private $updatePswd;
 
     /**
      * ProfileBuilder constructor.
      * @param EntityManager $doctrine
      * @param TokenStorage $token
-     * @param Tools $tools
      * @param UpdatePswd $updatePswd
      */
     public function __construct(
         EntityManager $doctrine,
         TokenStorage  $token,
-        Tools         $tools,
         UpdatePswd    $updatePswd
     )
     {
         $this->doctrine   = $doctrine;
         $this->token      = $token;
-        $this->tools      = $tools;
         $this->updatePswd = $updatePswd;
     }
 
@@ -78,7 +74,7 @@ class ProfileBuilder
 
         //create array with collected data
         $accountInfo = [
-            $createdOn = $user->getCreatedOn(),
+            $user->getCreatedOn(),
             $user->getAccessLevel()
         ];
 
