@@ -3,13 +3,14 @@ new Vue({
     el: '#wrapper',
     data:{
         show: null,
+        nav: null,
         seen: null,
         name:'',
         surname:'',
         pswd:'',
         email:'',
         submit: false,
-        confirmPswd:'',
+        confirmPswd:''
     },
     computed:{
         missingName: function () {
@@ -85,4 +86,5 @@ new Vue({
         }
     }
 });
+
 

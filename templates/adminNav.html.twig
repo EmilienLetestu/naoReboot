@@ -1,11 +1,25 @@
 <div class="headBanner">
-    <select class ="selectpicker show-menu-arrrow show-tick">
-        <option>Accueil</option>
-        <option>Liste des membres</option>
-        <option>Comptes innactifs</option>
-        <option>Demandes d'accès naturalistes</option>
-        <option>Liste des espèces</option>
-        <option>Statistiques</option>
-    </select>
+    <i class="fa fa-caret-square-o-down" aria-hidden="true" id="adminNavBtn"  v-on:mouseover="nav = true"></i>
 </div>
-
+<div id="adminNav" v-if="nav">
+    <ul v-on:mouseleave="nav= false">
+        <li>
+            <a href="{{ path('admin') }}">Accueil</a>
+        </li>
+        <li>
+            <a href="{{ path('userList') }}">Liste des membres</a>
+        </li>
+        <li>
+            <a href="#">Comptes innactifs</a>
+        </li>
+        <li>
+            <a href="{{ path('accountValidation') }}">Demandes d'accès</a>
+        </li>
+        <li>
+            <a href="#">Liste des espèces</a>
+        </li>
+        <li>
+            <a href="{{ path('statistics') }}">Statistiques</a>
+        </li>
+    </ul>
+</div>

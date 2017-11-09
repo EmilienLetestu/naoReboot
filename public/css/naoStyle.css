@@ -379,6 +379,47 @@ footer .list-group
     color: orange;
 }
 
+/*---------------------------admin menu------------------------------*/
+#adminNav{
+    z-index: 1;
+}
+#adminNav li
+{
+    color:  #FFFFFF;
+    margin-bottom: 1px;
+}
+
+#adminNav li a
+{
+    display: block ;
+    color:  #2C2C2C ;
+}
+
+
+#adminNav li:not(:last-child)
+{
+    border-bottom: 1px solid #ffa500;
+}
+
+#adminNav li i
+{
+    color: #2C2C2C
+}
+
+#adminNav li a:hover
+{
+    background-color:  #5e5e5e;
+    color: #FFFFFF;
+}
+#adminNav ul
+{
+    list-style: none;
+    margin: 0;
+    padding:0;
+    border:1px solid #ffa500;
+    background:#FFFFFF;
+    font-size: 1.1em;
+}
 /*---------------------------admin memberList-------------------------*/
 
 .accountDetails{
@@ -400,13 +441,15 @@ footer .list-group
     justify-content: space-between;
 }
 
-.softDelete{
-    color: #ff3b1e;
-    border-color: #ff3b1e ;
+.softDelete,
+.deny{
+    color: #ff5240;
+    border-color:  #ff5240 ;
 }
 
-.softDelete:hover{
-    background-color: #ff3b1e;
+.softDelete:hover,
+.deny:hover{
+    background-color:  #ff5240;
     color: #FFFFFF;
 }
 
@@ -429,3 +472,14 @@ footer .list-group
     background-color: #FEEB16;
     color: #FFFFFF;
 }
+
+.validate{
+    color: #5fdda1;
+    border-color: #5fdda1;
+}
+
+.validate:hover{
+    background-color: #5fdda1;
+    color: #FFFFFF;
+}
+
