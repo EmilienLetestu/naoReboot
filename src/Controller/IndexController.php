@@ -203,6 +203,17 @@ class IndexController extends Controller
         ]);
     }
 
+    public function accountLvl2Request()
+    {
+       $view = $this->get('App\Services\AdminBuilder')
+           ->buildAccountLvl2Request()
+       ;
+
+       return $this->render('adminMembers.html.twig',[
+           'userList' => $view
+       ]);
+    }
+
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */

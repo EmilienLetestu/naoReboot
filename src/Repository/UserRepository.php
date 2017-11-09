@@ -203,11 +203,29 @@ class UserRepository extends EntityRepository
        $queryBuilder = $this->createQueryBuilder('u');
 
        $this->whereActivated($queryBuilder,1);
+       $this->whereOnHold($queryBuilder,0);
 
        return $queryBuilder
            ->getQuery()
            ->getResult()
        ;
+    }
+
+    /**
+     * Will return all activated account with access lvl 2 request
+     * @return array
+     */
+    public function findAllAccessLvl2Request()
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+
+        $this->whereActivated($queryBuilder,1);
+        $this->whereOnHold($queryBuilder,1);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
 }

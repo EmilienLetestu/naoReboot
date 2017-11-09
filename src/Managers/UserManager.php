@@ -100,7 +100,7 @@ class UserManager
     }
 
     /**
-     * dedicated to users whom registered as professional
+     * dedicated to professional registered user
      * validate a professional account request
      * @param $id
      */
@@ -110,21 +110,24 @@ class UserManager
         $user = $repository->findOneById($id);
         $user->setOnHold(false);
         $this->notificationManager->notifyUser(3, $user);
+        $this->doctrine->persist($user);
         $this->doctrine->flush();
     }
 
     /**
-     * dedicated to users whom registered as professional
+     * dedicated to professional registered user
      * deny a professional account request
      * @param $id
      */
-    public function requestedAccountDenied($id)
+    public function denyAccountRequest($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneById($id);
         $user->setOnHold(true);
         $user->setAccessLevel(1);
         $this->notificationManager->notifyUser(4, $user);
+        $this->doctrine->persist($user);
         $this->doctrine->flush();
     }
 }
+

@@ -51,6 +51,21 @@ class AdminBuilder
         ];
     }
 
+    /**
+     * @return mixed
+     */
+    public function buildAccountLvl2Request()
+    {
+        //get all activated account
+        $repository = $this->doctrine->getRepository(User::class);
+
+        return $repository->findAllAccessLvl2Request();
+
+    }
+
+    /**
+     * @return array
+     */
     public function buildUserList()
     {
         //get all activated account
@@ -147,7 +162,21 @@ class AdminBuilder
            $this->userManager->changeAccessLevel($id);
            return $request->request->get('referer');
        }
+
+       if($action === 'deny')
+       {
+           $this->userManager->denyAccountRequest($id);
+           return $request->get('referer');
+       }
+
+       if($action === 'validate')
+       {
+           $this->userManager->validateAccountRequest($id);
+           return $request->get('referer');
+       }
     }
 
+
 }
+
 
