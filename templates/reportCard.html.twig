@@ -25,8 +25,10 @@
     </ul>
     <ul class="list-inline info2">
         <li class="list-inline-item">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            {{ report.user.name }} {{ report.user.surname }}
+            <a href="{{ path('profile', {'name' :report.user.name,'surname' :report.user.surname,'id' :report.user.id}) }}">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                {{ report.user.name }} {{ report.user.surname }}
+            </a>
         </li>
         <li class="list-inline-item pull-right">
             <i class="fa fa-map-marker" aria-hidden="true"></i>

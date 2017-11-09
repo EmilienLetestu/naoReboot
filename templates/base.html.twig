@@ -76,7 +76,7 @@
                         </li>
                         {% endif %}
                         <li>
-                            <a href="{{ path('profile', {'name' :app.user.name,'surname' :app.user.surname}) }}">
+                            <a href="{{ path('profile', {'name' :app.user.name,'surname' :app.user.surname, 'id' :app.user.id}) }}">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 Mon profil
                             </a>
