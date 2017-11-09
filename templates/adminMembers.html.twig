@@ -55,19 +55,19 @@
                        <div class="accountActions">
                            <ul class="list-inline">
                                <li class="list-inline-item">
-                                   <a class="btn btn-outline btn-danger"
+                                   <a class="btn softDelete"
                                       href="{{ path('userManagement', {'action' :'deactivate','id':user.id}) }}">
                                        <i class="material-icons">delete</i>
                                    </a>
                                </li>
                                <li class="list-inline-item">
-                                   <a class="btn btn-outline btn-warning"
+                                   <a class="btn ban"
                                       href="{{ path('userManagement', {'action' :'ban','id':user.id}) }}">
                                        <i class="material-icons">not_interested</i>
                                    </a>
                                </li>
                                <li class="list-inline-item">
-                                   <a class="btn btn-outline btn-primary"
+                                   <a class="btn privilege"
                                       href="{{ path('userManagement', {'action' :'privilege','id':user.id}) }}">
                                        <i class="material-icons">
                                            {{ user.accessLevel < 2 ? 'arrow_upward' : 'arrow_downward' }}

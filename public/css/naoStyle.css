@@ -399,3 +399,33 @@ footer .list-group
     display: flex;
     justify-content: space-between;
 }
+
+.softDelete{
+    color: #ff3b1e;
+    border-color: #ff3b1e ;
+}
+
+.softDelete:hover{
+    background-color: #ff3b1e;
+    color: #FFFFFF;
+}
+
+.ban{
+    color: #FFA500;
+    border-color: #FFA500;
+}
+
+.ban:hover{
+    background-color: #FFA500;
+    color: #FFFFFF;
+}
+
+.privilege{
+    color: #FEEB16;
+    border-color: #FEEB16;
+}
+
+.privilege:hover{
+    background-color: #FEEB16;
+    color: #FFFFFF;
+}
