@@ -1,0 +1,47 @@
+{% if app.request.get('_route') == 'userList' %}
+<div class="accountActions">
+    <ul class="list-inline">
+        <li class="list-inline-item">
+            <a class="btn softDelete"
+               href="{{ path('userManagement', {'action' :'deactivate','id':user.id}) }}">
+                <i class="material-icons">delete</i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn ban"
+               href="{{ path('userManagement', {'action' :'ban','id':user.id}) }}">
+                <i class="material-icons">
+                    {{ user.ban == 0 ? 'block' : 'do_not_disturb_off' }}
+                </i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn privilege"
+               href="{{ path('userManagement', {'action' :'privilege','id':user.id}) }}">
+                <i class="material-icons">
+                    {{ user.accessLevel < 2 ? 'arrow_upward' : 'arrow_downward' }}
+                </i>
+            </a>
+        </li>
+    </ul>
+</div>
+{% endif %}
+
+{% if app.request.get('_route') == 'accountValidation' %}
+    <div class="accountActions">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a class="btn validate"
+                   href="{{ path('userManagement', {'action' :'validate','id':user.id}) }}">
+                    <i class="material-icons">check</i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn deny"
+                   href="{{ path('userManagement', {'action' :'deny','id':user.id}) }}">
+                    <i class="material-icons">close</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endif %}
