@@ -10,6 +10,7 @@ namespace App\Managers;
 
 
 use App\Entity\Report;
+use ClassesWithParents\E;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -43,5 +44,12 @@ class ReportManager
         $reportList = $repository->findAllForHomePage();
 
         return $reportList;
+    }
+
+    public function displayAllValidated()
+    {
+       $repository = $this->doctrine->getRepository(Report::class);
+
+       return $repository->findAllReport(1);
     }
 }

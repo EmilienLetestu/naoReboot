@@ -262,6 +262,9 @@ footer .list-group
     font-size: 0.9em;
 }
 
+.card li a{
+    margin-left: 0 !important;
+}
 
 .card a {
     width: 50%;

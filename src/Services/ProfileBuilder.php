@@ -42,6 +42,21 @@ class ProfileBuilder
      * @param Request $request
      * @return array
      */
+    public function getProfileVersion(Request $request)
+    {
+        $id = $request->attributes->get('id');
+        $userId = $this->token->getToken()->getUser()->getId();
+
+        return
+            intval($id) == $userId ? $this->buildPrivateProfile($request) : $this->buildPublicProfile($id)
+        ;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function buildPrivateProfile(Request $request)
     {
         //fetch id and createdOn into tokenStorage
@@ -50,9 +65,13 @@ class ProfileBuilder
 
         //create array with account creation date, chg pswd process and account type
         $accountInfo = [
-            $user->getCreatedOn()->format('d-m-Y'),
-            $this->updatePswd->changePswd($request),
-            $user->getAccessLevel()
+            'title'        => 'Mon Profil',
+            'name'         => $user->getName(),
+            'surname'      => $user->getSurname(),
+            'email'        => $user->getEmail(),
+            'accessLevel'  => $user->getAccessLevel(),
+            'creationDate' => $user->getCreatedOn()->format('d-m-Y'),
+            'updatePswd'   => $this->updatePswd->changePswd($request)
         ];
 
         //fetch all user reports
@@ -74,8 +93,11 @@ class ProfileBuilder
 
         //create array with collected data
         $accountInfo = [
-            $user->getCreatedOn(),
-            $user->getAccessLevel()
+            'title'        => 'Profil',
+            'name'         => $user->getName(),
+            'surname'      => $user->getSurname(),
+            'accessLevel'  => $user->getAccessLevel(),
+            'creationDate' => $user->getCreatedOn()->format('d-m-Y')
         ];
 
         //list all reports

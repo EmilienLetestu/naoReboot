@@ -75,26 +75,22 @@ class ReportRepository extends EntityRepository
     }
 
     /**
-     * fetch validated or unvalidated report based on user access level
-     * @param $birdId
+     * fetch validated or unvalidated
      * @param $validated
-     * @param $order
-     * @param $sort
-     * @param $limit
      * @return array
      */
-    public function findAllDependOnViewer($birdId,$validated,$order,$sort,$limit)
+    public function findAllReport($validated)
     {
         $queryBuilder = $this->createQueryBuilder('r');
-
-        $this->whereReportedBird($queryBuilder,$birdId);
-        $this->whereValidated($queryBuilder,$validated,$order,$sort,$limit);
+        $queryBuilder
+            ->andWhere('r.validated = :validated')
+            ->setParameter('validated', $validated)
+        ;
 
         return $queryBuilder
             ->getQuery()
             ->getResult()
         ;
-
     }
 
     /**

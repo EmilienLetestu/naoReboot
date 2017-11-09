@@ -45,7 +45,7 @@ validation:
 report:
     path: /observations
     defaults:
-        _controller:
+        _controller: App\Controller\IndexController::browseReport
 
 addReport:
      path: /observations/nouvelle-observation
@@ -69,12 +69,13 @@ notification:
 
 
 profile:
-    path: /mon-profil/{name}-{surname}
+    path: /mon-profil/{name}-{surname}/{id}
     defaults:
         _controller: App\Controller\IndexController::profile
     requirements:
         name: ([a-zA-z]{3,})
         surname: ([a-zA-z]{3,})
+        id: \d+
 
 admin:
     path: /admin

@@ -25,8 +25,27 @@ class IndexController extends Controller
     public function home(Request $request)
     {
 
-        $view = $this->get('App\Managers\ReportManager')->displayHomePageReport();
-        return $this->render('home.html.twig',['reports'=>$view]);
+        $view = $this->get('App\Managers\ReportManager')
+            ->displayHomePageReport();
+
+        return $this->render('home.html.twig',[
+            'reports'=>$view
+        ]);
+    }
+
+    /**
+     * @Security("has_role('ROLE_USER')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function browseReport()
+    {
+        $view =  $this->get('App\Managers\ReportManager')
+            ->displayAllValidated()
+        ;
+
+        return $this->render('browseReport.html.twig',[
+            'reports' => $view
+        ]);
     }
 
     /**
@@ -137,7 +156,7 @@ class IndexController extends Controller
     public function profile(Request $request)
     {
         $view = $this->get('App\Services\ProfileBuilder')
-            ->buildPrivateProfile($request)
+            ->getProfileVersion($request)
         ;
 
         return $this->render('profile.html.twig',[
