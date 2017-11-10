@@ -90,7 +90,16 @@
     </div>
 
     <div id="loadReports">
-        <button class="btn btn-outline">Toutes mes observations</button>
+        <button class="btn btn-outline" v-on:click="reportList = !reportList">Toutes mes observations</button>
+    </div>
+
+    <div v-if = "reportList">
+        {% for report in reportList if app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN')  %}
+            {{ include('reportCard.html.twig') }}
+        {% endfor %}
+        {% for report in reportList if report.validated == 1 and app.user.id != app.request.get('id') and not is_granted('ROLE_ADMIN')  %}
+            {{ include('reportCard.html.twig') }}
+        {% endfor %}
     </div>
 
 

@@ -374,6 +374,7 @@ footer .list-group
     position: relative;
     left: -200px;
     color: white;
+    font-size: 1.3em;
 }
 .img button{
     position: relative;
