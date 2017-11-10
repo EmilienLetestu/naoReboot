@@ -101,6 +101,11 @@ accountValidation:
     defaults:
         _controller: App\Controller\IndexController::accountLvl2Request
 
+unactivated:
+        path: /admin/comptes-innactifs
+        defaults:
+           _controller: App\Controller\IndexController::unactivatedAccount
+
 statistics:
     path: /admin/statistiques
     defaults:
