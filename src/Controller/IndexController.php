@@ -202,7 +202,8 @@ class IndexController extends Controller
             'minLevel' => $view[0],
             'maxLevel' => $view[1],
             'homeImg'  => $view[2],
-            'form'     => $view[3]
+            'form'     => $view[3],
+            'title'    => $view[4]
         ]);
     }
 
@@ -218,10 +219,14 @@ class IndexController extends Controller
 
         return $this->render('adminMembers.html.twig',[
             'userList'   => $view[0],
-            'lastReport' => $view[1]
+            'lastReport' => $view[1],
+            'title'      => $view[2]
         ]);
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function accountLvl2Request()
     {
        $view = $this->get('App\Services\AdminBuilder')
@@ -229,8 +234,23 @@ class IndexController extends Controller
        ;
 
        return $this->render('adminMembers.html.twig',[
-           'userList' => $view
+           'userList' => $view[0],
+           'title'    => $view[1]
        ]);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function unactivatedAccount()
+    {
+        $view  = $this->get('App\Services\AdminBuilder')
+            ->buildUnactivatedList();
+
+        return $this->render('adminMembers.html.twig',[
+            'userList' => $view[0],
+            'title'    => $view[1]
+        ]);
     }
 
     /**

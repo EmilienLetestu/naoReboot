@@ -47,7 +47,8 @@ class AdminBuilder
             count($repository->countAllWithAccessLevel(1)),
             count($repository->countAllWithAccessLevel(2)),
             $this->homeImg->getHomeImage(),
-            $this->homeImg->addPictureToHomePage($request)
+            $this->homeImg->addPictureToHomePage($request),
+            'Espace d\'administration'
         ];
     }
 
@@ -59,7 +60,10 @@ class AdminBuilder
         //get all activated account
         $repository = $this->doctrine->getRepository(User::class);
 
-        return $repository->findAllAccessLvl2Request();
+        return [
+            $repository->findAllAccessLvl2Request(),
+            'Demande d\'accès naturaliste'
+        ];
 
     }
 
@@ -85,8 +89,20 @@ class AdminBuilder
 
         Return [
             $repository->findAllActivated(),
-            $report
+            $report,
+            'Liste des membres'
         ];
+    }
+
+    public function buildUnactivatedList()
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+
+        return [
+            $repository->findDeletableAccount('- 60 day'),
+            'Compte innactifs'
+            ];
+
     }
 
     /**
@@ -144,7 +160,6 @@ class AdminBuilder
     {
         $action = $request->attributes->get('action');
         $id     = $request->attributes->get('id');
-
 
        //get action to apply from url
        if($action === 'deactivate')

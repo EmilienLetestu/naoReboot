@@ -77,7 +77,8 @@ class UserManager
     {
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneById($id);
-        $user->setBan(true);
+        $newStatus = $user->getBan() == 0 ? true : false;
+        $user->setBan($newStatus);
         $this->doctrine->persist($user);
         $this->doctrine->flush();
     }

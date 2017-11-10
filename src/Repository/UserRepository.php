@@ -118,22 +118,20 @@ class UserRepository extends EntityRepository
         $date = date('Y-m-d', strtotime($dateToGet));
 
         $queryBuilder
-            ->andWhere("u.createdOn <= :date")
-            ->setParameter("date", new \DateTime($date))
+            ->andWhere('u.createdOn <= :date')
+            ->setParameter('date', new \DateTime($date))
         ;
     }
 
     /**
-     * fetch all unactivated accounts created 30 days ago or more
-     * @param $accessLevel
+     * @param $nMonthAgo
      * @return array
      */
-    public function findDeletableAccount($accessLevel,$nMonthAgo)
+    public function findDeletableAccount($nMonthAgo)
     {
         $queryBuilder = $this->createQueryBuilder('u');
 
        $this->whereActivated($queryBuilder, 0);
-       $this->whereAccessLevel($queryBuilder,$accessLevel);
        $this->whereCreatedOn($queryBuilder,$nMonthAgo);
 
         return $queryBuilder
