@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+
+    <div class="notification">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th><i class="material-icons">date_range</i></th>
+                <th><i class="material-icons">info_outline</i></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for notification in notificationList %}
+             <tr>
+                <td>
+                     {{ notification.notifiedOn|date('d/m/Y') }}
+                </td>
+                <td>
+                     {{ notification.type|typeToText }}
+                </td>
+             </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
