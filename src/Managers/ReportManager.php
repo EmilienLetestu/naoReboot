@@ -38,6 +38,9 @@ class ReportManager
         $this->doctrine->flush();
     }
 
+    /**
+     * @return mixed
+     */
     public function displayHomePageReport()
     {
         $repository = $this->doctrine->getRepository(Report::class);
@@ -46,10 +49,24 @@ class ReportManager
         return $reportList;
     }
 
+    /**
+     * @return mixed
+     */
     public function displayAllValidated()
     {
        $repository = $this->doctrine->getRepository(Report::class);
 
        return $repository->findAllReport(1);
     }
+
+    /**
+     * @return mixed
+     */
+    public function displayAllUnvalidated()
+    {
+        $repository = $this->doctrine->getRepository(Report::class);
+
+        return $repository->findAllReport(0);
+    }
+
 }

@@ -49,6 +49,21 @@ class IndexController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_VALIDATOR')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function browseUnvalidated()
+    {
+        $view =  $this->get('App\Managers\ReportManager')
+            ->displayAllUnvalidated()
+        ;
+
+        return $this->render('browseReport.html.twig',[
+            'reports' => $view
+        ]);
+    }
+
+    /**
      * @param AuthenticationUtils $authUtils
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/connexion", name="login")
@@ -181,6 +196,20 @@ class IndexController extends Controller
        ;
        $redirect = $request->headers->get('referer');
        return $this->redirect($redirect);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function validateReport(Request $request)
+    {
+        $this->get('App\Managers\ValidationManager')
+            ->validationProcess($request->get('reportId'))
+        ;
+        $redirect = $request->headers->get('referer');
+        return $this->redirect($redirect);
+
     }
 
     /**

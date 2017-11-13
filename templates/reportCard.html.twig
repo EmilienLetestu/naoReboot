@@ -14,9 +14,17 @@
     </div>
     <ul class="list-inline info1">
         <li class="list-inline-item">
-            <i class="fa fa-star-o" aria-hidden="true">
-                <a href="{{ path('star', {'reportId': report.id}) }}">{{ report.starNbr }}</a>
-            </i>
+            {% if app.request.get('_route') != ('unvalidatedReport') %}
+                <i class="fa fa-star-o" aria-hidden="true">
+                    <a href="{{ path('star', {'reportId': report.id}) }}">{{ report.starNbr }}</a>
+                </i>
+            {% endif %}
+            {% if app.request.get('_route') == ('unvalidatedReport') %}
+                <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    {{ report.user.name }} {{ report.user.surname }}
+                </a>
+            {% endif %}
         </li>
         <li class="list-inline-item pull-right">
             <i class="fa fa-compass" aria-hidden="true"></i>
@@ -25,17 +33,36 @@
     </ul>
     <ul class="list-inline info2">
         <li class="list-inline-item">
-            <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                {{ report.user.name }} {{ report.user.surname }}
-            </a>
+            {% if app.request.get('_route') != ('unvalidatedReport') %}
+                <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    {{ report.user.name }} {{ report.user.surname }}
+                </a>
+            {% endif %}
+            {% if app.request.get('_route') == ('unvalidatedReport') %}
+              Inscrit depuis le: {{ report.user.createdOn|date('d/m/Y') }}
+            {% endif %}
         </li>
         <li class="list-inline-item pull-right">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
             {{ report.location }}
         </li>
     </ul>
-    <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
-    <a class="btn btn-outline" href="#">Lire le commentaire</a>
+    <div>
+        <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
+        <a class="btn btn-outline" href="#">Lire le commentaire</a>
+    {% if app.request.get('_route') == ('unvalidatedReport') %}
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="{{ path('validateReport', {'reportId': report.id}) }}">
+                    <i class="material-icons">check</i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                {{ report.validationScore }} / 5
+            </li>
+        </ul>
+    {% endif %}
+    </div>
 </div>
 

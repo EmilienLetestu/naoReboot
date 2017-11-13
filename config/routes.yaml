@@ -52,21 +52,15 @@ addReport:
      defaults:
          _controller: App\Controller\IndexController::addReport
 
-unvalidated:
+unvalidatedReport:
      path: /observations/en-attente-de-validation
      defaults:
-         _controller: App\Controller\IndexController
-
-notification:
-    path: /notifications
-    defaults:
-        _controller: App\Controller\IndexController
+         _controller: App\Controller\IndexController::browseUnvalidated
 
 notification:
      path: /notification
      defaults:
          _controller: App\Controller\IndexController::addReport
-
 
 profile:
     path: /mon-profil/{name}-{surname}/{id}
@@ -76,12 +70,10 @@ profile:
         name: ([a-zA-z]{3,})
         surname: ([a-zA-z]{3,})
         id: \d+
-
 admin:
     path: /admin
     defaults:
         _controller: App\Controller\IndexController::administration
-
 
 userList:
     path: /admin/liste-des-membres
@@ -128,6 +120,12 @@ star:
    requirements:
        reportId: \d+
 
+validateReport:
+   path: /validation/{reportId}
+   defaults:
+       _controller: App\Controller\IndexController::validateReport
+   requirements:
+       reportId: \d+
 
 controllers:
    resource: ../src/Controller/

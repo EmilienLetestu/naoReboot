@@ -123,9 +123,8 @@ class ValidationManager
             foreach ($userList as $user)
             {
                 $idList[] = $user->getId();
+                return in_array($loggedId, $idList) ? true : false;
             }
-
-            return in_array($loggedId, $idList) ? true : false;
         }
     }
 }
