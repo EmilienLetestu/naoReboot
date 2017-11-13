@@ -60,7 +60,7 @@ unvalidatedReport:
 notification:
      path: /notification
      defaults:
-         _controller: App\Controller\IndexController::addReport
+         _controller: App\Controller\IndexController::userNotification
 
 profile:
     path: /mon-profil/{name}-{surname}/{id}
@@ -130,5 +130,6 @@ validateReport:
 controllers:
    resource: ../src/Controller/
    type: annotation
+
 
 

@@ -11,32 +11,25 @@ namespace App\Managers;
 use App\Entity\Notification;
 use App\Entity\User;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class NotificationManager
 {
     private $doctrine;
+    private $token;
 
     /**
      * NotificationManager constructor.
      * @param EntityManager $doctrine
+     * @param TokenStorage $token
      */
-    public function __construct(EntityManager $doctrine)
+    public function __construct(
+        EntityManager $doctrine,
+        TokenStorage  $token
+    )
     {
         $this->doctrine = $doctrine;
-    }
-
-    /**
-     * @return array
-     */
-    public function notificationList():array
-    {
-        $list = ['type_1'=>'Votre niveau de privilège a changé, vous disposé maintenant d\'un compte amateur',
-                 'type_2'=>'Félicitations votre compte à été promu, vous disposez à présent d\'un compte naturalise!',
-                 'type_3'=>'Votre demande de compte naturaliste à été accepté',
-                 'type_4'=>'Votre demande de compte naturaliste à été refusé']
-        ;
-
-        return $list;
+        $this->token    = $token;
     }
 
 
@@ -61,30 +54,40 @@ class NotificationManager
     }
 
     /**
-     * Get notifications types and find text to display
-     * @param $id
-     * @param $seen
+     * Get notifications to display and update their status to "seen"
      * @return array
      */
-    public function getNotificationToDisplay($id,$seen)
+    public function getNotificationToDisplay()
     {
         $repository   = $this->doctrine->getRepository(Notification::class);
 
-        $notifications = $repository->findNotificationForUser($id,$seen);
+        $user = $this->token->getToken()->getUser();
 
-        foreach ($notifications as $notification)
+        $notificationList = $repository->findNotificationForUser(
+            $user->getId(),
+            0);
+
+        $this->updateNotificationStatus($notificationList);
+
+        return $notificationList;
+    }
+
+    /**
+     * Set all notification to "seen"
+     * @param $notificationList
+     */
+    public function updateNotificationStatus($notificationList)
+    {
+        //get notification to update
+        foreach ($notificationList as $notification)
         {
-          $types[] =  $notification->getType();
+            $notification->setSeen(1);
 
-          foreach ($types as $type)
-          {
-              $list = $this->notificationList();
-          }
-
-          $display[] = $list["type_{$type}"];
+            $this->doctrine->persist($notification);
         }
 
-        return $display;
+        $this->doctrine->flush();
     }
 
 }
+

@@ -213,6 +213,21 @@ class IndexController extends Controller
     }
 
     /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function userNotification()
+    {
+        $view = $this->get('App\Managers\NotificationManager')
+            ->getNotificationToDisplay()
+        ;
+
+        return $this->render('notification.html.twig',[
+           'notificationList' => $view
+        ]);
+    }
+
+
+    /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
