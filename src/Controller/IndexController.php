@@ -21,7 +21,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class IndexController extends Controller
 {
 
-
     public function home(Request $request)
     {
 

@@ -204,6 +204,12 @@ h1
     color: #FFFFFF;
 }
 
+#totalNotif{
+    font-size: 0.6em;
+    font-weight: bolder;
+    color:  #FFA500;
+}
+
 
 
 /*---------------------------footer-------------------------*/

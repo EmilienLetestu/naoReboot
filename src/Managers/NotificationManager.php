@@ -73,6 +73,21 @@ class NotificationManager
     }
 
     /**
+     * @return mixed
+     */
+    public function checkNotification()
+    {
+        $repository   = $this->doctrine->getRepository(Notification::class);
+
+        $user = $this->token->getToken()->getUser();
+
+        return $repository->countNotificationForUser(
+            $user->getId(),
+            0
+        );
+    }
+
+    /**
      * Set all notification to "seen"
      * @param $notificationList
      */

@@ -83,7 +83,9 @@
                         </li>
                         <li>
                             <a href="{{ path('notification') }}">
-                                <i class="fa fa-bell" aria-hidden="true"></i>
+                                <i class="fa fa-bell" aria-hidden="true">
+                                    <span id="totalNotif">{{ ' '|countNotif|join('|') }}</span>
+                                </i>
                                 Notification
                             </a>
                         </li>

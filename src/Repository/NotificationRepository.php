@@ -65,8 +65,29 @@ class NotificationRepository extends EntityRepository
         ->andWhere('n.seen = :seen')
         ->setParameter('seen',$seen);
 
-        return(
-        $queryBuilder->getQuery()->getResult()
-        );
+        return $queryBuilder
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param $id
+     * @param $seen
+     * @return array
+     */
+    public function countNotificationForUser($id,$seen)
+    {
+        $queryBuilder = $this->createQueryBuilder('n');
+        $queryBuilder
+            ->innerJoin('n.user','u')
+            ->addSelect('u')
+        ;
+        $queryBuilder->where($queryBuilder->expr()->in('u.id',$id))
+            ->andWhere('n.seen = :seen')
+            ->setParameter('seen',$seen);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult();
     }
 }
