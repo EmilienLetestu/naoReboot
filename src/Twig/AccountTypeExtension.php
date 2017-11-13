@@ -34,3 +34,4 @@ class AccountTypeExtension extends \Twig_Extension
         return $account[$accessLevel];
     }
 }
+

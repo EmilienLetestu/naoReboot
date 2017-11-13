@@ -6,7 +6,7 @@
 
 {% block body %}
     <div>
-        <h1 class="page-title">Liste des Membres</h1>
+        <h1 class="page-title">{{ title }}</h1>
     </div>
 
     {{ include('adminNav.html.twig') }}
@@ -55,6 +55,7 @@
                         {{ include('actions.html.twig') }}
                     </td>
                 </tr>
+                    {% endfor %}
             {% endfor %}
             </tbody>
         </table>

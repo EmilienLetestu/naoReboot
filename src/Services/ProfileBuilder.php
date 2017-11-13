@@ -151,6 +151,14 @@ class ProfileBuilder
      */
     public function getActivitiesData($reportList)
     {
+        if(count($reportList) === 0)
+        {
+            return [
+                0,
+                0,
+                0,
+            ];
+        }
         foreach ($reportList as $report)
         {
             $stars[] = $report->getStarNbr();
