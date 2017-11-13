@@ -66,10 +66,11 @@ class AddReport
         {
             //get user level and object
             $level   = $this->token->getToken()->getUser()->getAccessLevel();
+            $onHold  = $this->token->getToken()->getUser()->getAccessLevel();
             $user    = $this->token->getToken()->getUser();
 
             //prepare report default data
-            $default = $this->reportGateways($level);
+            $default = $this->reportGateways($level,$onHold);
 
             //hydrate report object
             $report
@@ -120,10 +121,10 @@ class AddReport
      * @param $accessLevel
      * @return array
      */
-    public function reportGateways($accessLevel)
+    public function reportGateways($accessLevel, $onHold)
     {
         $gateWays = [
-            $validated = $accessLevel > 1 ? true : false,
+            $validated = $accessLevel || $onHold == 1 ? false : true,
             $validated === true ? 5 : 0,
             0
         ];

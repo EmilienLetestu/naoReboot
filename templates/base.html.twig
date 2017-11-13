@@ -67,7 +67,7 @@
                                 Nouvelle Observation
                             </a>
                         </li>
-                        {% if is_granted('ROLE_VALIDATOR') %}
+                        {% if is_granted('ROLE_VALIDATOR') and app.user.onHold == 0 %}
                         <li>
                             <a href="{{ path('unvalidated') }}">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i>

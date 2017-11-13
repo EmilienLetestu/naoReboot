@@ -25,7 +25,7 @@
     </ul>
     <ul class="list-inline info2">
         <li class="list-inline-item">
-            <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|SpecChars,'id' :report.user.id}) }}">
+            <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 {{ report.user.name }} {{ report.user.surname }}
             </a>

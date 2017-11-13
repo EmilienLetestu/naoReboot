@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8eafdd50-1ff4-4c46-921d-f55fb371465f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Twig/UrlCharsTypeExtension.php" afterPath="$PROJECT_DIR$/src/Twig/UrlCharsTypeExtension.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Services/AddReport.php" afterPath="$PROJECT_DIR$/src/Services/AddReport.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="$PROJECT_DIR$/templates/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/reportCard.html.twig" afterPath="$PROJECT_DIR$/templates/reportCard.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,16 +52,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Managers/UserManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2106">
-              <caret line="86" column="17" lean-forward="false" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="adminMembers.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/adminMembers.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,21 +92,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UrlCharsTypeExtension.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UrlCharsTypeExtension.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Twig/UrlCharsTypeExtension.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1264">
-              <caret line="85" column="77" lean-forward="false" selection-start-line="85" selection-start-column="77" selection-end-line="85" selection-end-column="77" />
+            <state relative-caret-position="491">
+              <caret line="69" column="83" lean-forward="false" selection-start-line="69" selection-start-column="83" selection-end-line="69" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -124,8 +115,18 @@
       <file leaf-file-name="reportCard.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/reportCard.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+            <state relative-caret-position="648">
+              <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddReport.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Services/AddReport.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1160">
+              <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -135,7 +136,7 @@
         <entry file="file://$PROJECT_DIR$/src/Services/ProfileBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="188">
-              <caret line="151" column="50" lean-forward="true" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="50" />
+              <caret line="151" column="50" lean-forward="false" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -166,7 +167,6 @@
         <option value="$PROJECT_DIR$/config/packages/algolia.yaml" />
         <option value="$PROJECT_DIR$/src/Managers/StarManager.php" />
         <option value="$PROJECT_DIR$/src/Managers/ValidationManager.php" />
-        <option value="$PROJECT_DIR$/src/Services/AddReport.php" />
         <option value="$PROJECT_DIR$/src/Services/Register.php" />
         <option value="$PROJECT_DIR$/src/Form/ReportType.php" />
         <option value="$PROJECT_DIR$/phpunit.xml.dist" />
@@ -210,10 +210,11 @@
         <option value="$PROJECT_DIR$/src/Twig/AccountTypeExtension.php" />
         <option value="$PROJECT_DIR$/templates/adminMembers.html.twig" />
         <option value="$PROJECT_DIR$/src/Twig/LatinNameCharsTypeExtension.php" />
-        <option value="$PROJECT_DIR$/templates/base.html.twig" />
-        <option value="$PROJECT_DIR$/templates/reportCard.html.twig" />
         <option value="$PROJECT_DIR$/src/Twig/UrlCharsTypeExtension.php" />
         <option value="$PROJECT_DIR$/src/Services/ProfileBuilder.php" />
+        <option value="$PROJECT_DIR$/templates/reportCard.html.twig" />
+        <option value="$PROJECT_DIR$/src/Services/AddReport.php" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
       </list>
     </option>
   </component>
@@ -783,12 +784,12 @@
       <workItem from="1510124656183" duration="53007000" />
       <workItem from="1510212194547" duration="27383000" />
       <workItem from="1510299099151" duration="23146000" />
-      <workItem from="1510560206575" duration="2662000" />
+      <workItem from="1510560206575" duration="3799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="914786000" />
+    <option name="totallyTimeSpent" value="915923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2391" y="-9" width="2418" height="1318" extended-state="6" />
@@ -843,7 +844,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/naoPictures/naoEvent_1_rossignol.png" />
     <entry file="file://$PROJECT_DIR$/src/Form/ChangePswdType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1157,22 +1157,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1264">
-          <caret line="85" column="77" lean-forward="false" selection-start-line="85" selection-start-column="77" selection-end-line="85" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reportCard.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/NotificationRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1200,7 +1184,7 @@
     <entry file="file://$PROJECT_DIR$/src/Services/ProfileBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
-          <caret line="151" column="50" lean-forward="true" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="50" />
+          <caret line="151" column="50" lean-forward="false" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1208,7 +1192,31 @@
     <entry file="file://$PROJECT_DIR$/src/Twig/UrlCharsTypeExtension.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/reportCard.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Services/AddReport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1160">
+          <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="69" column="83" lean-forward="false" selection-start-line="69" selection-start-column="83" selection-end-line="69" selection-end-column="83" />
           <folding />
         </state>
       </provider>
