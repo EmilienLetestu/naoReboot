@@ -27,7 +27,7 @@ class IndexController extends Controller
         $view = $this->get('App\Managers\ReportManager')
             ->displayHomePageReport();
 
-        return $this->render('nao/home.html.twig',[
+        return $this->render('nao\home.html.twig',[
             'reports'=>$view
         ]);
     }
@@ -42,7 +42,7 @@ class IndexController extends Controller
             ->displayAllValidated()
         ;
 
-        return $this->render('nao/browseReport.html.twig',[
+        return $this->render('nao\browseReport.html.twig',[
             'reports' => $view
         ]);
     }
@@ -57,7 +57,7 @@ class IndexController extends Controller
             ->displayAllUnvalidated()
         ;
 
-        return $this->render('nao/browseReport.html.twig',[
+        return $this->render('nao\browseReport.html.twig',[
             'reports' => $view
         ]);
     }
@@ -77,7 +77,7 @@ class IndexController extends Controller
         }
 
         return $this->render(
-            'nao/connectionForms.html.twig',
+            'nao\connectionForms.html.twig',
             [
                 'last_username' =>$view[0],
                 'error' => $view[1]]
@@ -98,7 +98,7 @@ class IndexController extends Controller
         }
 
         return $this->render(
-            'nao/connectionForms.html.twig',
+            'nao\connectionForms.html.twig',
             ['form' => $view]
         );
     }
@@ -121,7 +121,7 @@ class IndexController extends Controller
             ->askReset($request);
 
         return $this->render(
-            'nao/connectionForms.html.twig',
+            'nao\connectionForms.html.twig',
             ['form'=>$view]
         );
     }
@@ -141,7 +141,7 @@ class IndexController extends Controller
         }
 
         return $this->render(
-            'nao/connectionForms.html.twig',
+            'nao\connectionForms.html.twig',
             ['form'=> $view]
         );
     }
@@ -158,7 +158,7 @@ class IndexController extends Controller
         ;
 
         return $this->render(
-            'nao/addReportForm.html.twig',
+            'nao\addReportForm.html.twig',
             ['form' => $view]
         );
     }
@@ -173,7 +173,7 @@ class IndexController extends Controller
             ->getProfileVersion($request)
         ;
 
-        return $this->render('nao/profile.html.twig',[
+        return $this->render('nao\profile.html.twig',[
             'accountInfo' => $view[0],
             'lastInfo'    => $view[1],
             'reportList'  => $view[2],
@@ -220,7 +220,7 @@ class IndexController extends Controller
             ->getNotificationToDisplay()
         ;
 
-        return $this->render('notification.html.twig',[
+        return $this->render('nao\notification.html.twig',[
            'notificationList' => $view
         ]);
     }
@@ -241,7 +241,7 @@ class IndexController extends Controller
            return $this->redirectToRoute('admin');
        }
 
-        return $this->render('admin/admin.html.twig',[
+        return $this->render('admin\admin.html.twig',[
             'minLevel' => $view[0],
             'maxLevel' => $view[1],
             'homeImg'  => $view[2],
@@ -260,7 +260,7 @@ class IndexController extends Controller
             ->builduserList()
         ;
 
-        return $this->render('admin/adminMembers.html.twig',[
+        return $this->render('admin\adminMembers.html.twig',[
             'userList'   => $view[0],
             'lastReport' => $view[1],
             'title'      => $view[2]
@@ -276,7 +276,7 @@ class IndexController extends Controller
            ->buildAccountLvl2Request()
        ;
 
-       return $this->render('admin/adminMembers.html.twig',[
+       return $this->render('admin\adminMembers.html.twig',[
            'userList' => $view[0],
            'title'    => $view[1]
        ]);
@@ -305,7 +305,7 @@ class IndexController extends Controller
             ->buildStatistics()
         ;
 
-        return $this->render('admin/adminStats.html.twig',[
+        return $this->render('admin\adminStats.html.twig',[
             'totalReport'     => $view[0],
             'monthlyTotal'    => $view[1],
             'yearlyTotal'     => $view[2],
@@ -328,8 +328,8 @@ class IndexController extends Controller
         $this->get('App\Builders\AdminBuilder')
             ->buildAccountManagement($request)
         ;
-
-        return $this->redirectToRoute('userList');
+        $redirect = $request->headers->get('referer');
+        return $this->redirect($redirect);
     }
 
 }
