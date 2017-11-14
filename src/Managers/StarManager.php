@@ -55,8 +55,9 @@ class StarManager
         //get all stars added for this report
         $starList = $report->getStars();
 
-        //check logged user never stared this report before
-        $check = $this->hasAlreadyBeenStared($starList, $loggedId);
+        // if hasn't been stared yet skip verification
+        // otherwise check logged user never stared this report before
+        $check = $score === 0 ? false : $this->hasAlreadyBeenStared($starList, $loggedId);
 
         if( $check === true)
         {
@@ -105,18 +106,16 @@ class StarManager
      */
     public function hasAlreadyBeenStared($starList, $loggedId)
     {
-        if(!$starList)
-        {
-            return false;
-        }
+
         foreach ($starList as $star)
         {
             $userList[] = $star->getUser();
-            foreach ($userList as $user)
-            {
-                $idList[] = $user->getId();
-                return  in_array($loggedId, $idList) ? true : false;
-            }
         }
+
+        foreach ($userList as $user)
+        {
+            $idList[] = $user->getId();
+        }
+        return  in_array($loggedId, $idList) ? true : false;
     }
 }
