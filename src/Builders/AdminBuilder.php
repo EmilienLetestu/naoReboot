@@ -6,12 +6,13 @@
  * Time: 12:50
  */
 
-namespace App\Services;
+namespace App\Builders;
 
 use App\Entity\Report;
 use App\Entity\User;
 
 use App\Managers\UserManager;
+use App\Services\HomeImg;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 

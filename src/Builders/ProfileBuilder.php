@@ -6,10 +6,11 @@
  * Time: 23:01
  */
 
-namespace App\Services;
+namespace App\Builders;
 
 use App\Entity\Report;
 use App\Entity\User;
+use App\Services\UpdatePswd;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
