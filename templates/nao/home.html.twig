@@ -6,18 +6,11 @@
 
 {% block body %}
 
-    <div>
-        <h1 class="pageTitle">Observations</h1>
-    </div>
-
-    <div class="browseFilters">
-
-    </div>
-
     <div class="cardHolder">
-        {% for report in reports %}
-            {{ include('reportCard.html.twig') }}
-        {% endfor %}
+    {% for report in reports %}
+      {{ include('nao/reportCard.html.twig') }}
+    {% endfor %}
     </div>
 
 {% endblock %}
+

@@ -9,7 +9,7 @@
         <h1 class="page-title">{{ title }}</h1>
     </div>
 
-    {{ include('adminNav.html.twig') }}
+    {{ include('admin/adminNav.html.twig') }}
     <div class="memberList">
         <table class="table">
             <thead>
@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        {{ include('actions.html.twig') }}
+                        {{ include('admin/actions.html.twig') }}
                     </td>
                 </tr>
             {% endfor %}
