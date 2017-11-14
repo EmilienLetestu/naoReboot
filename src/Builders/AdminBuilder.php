@@ -163,43 +163,27 @@ class AdminBuilder
         $id     = $request->attributes->get('id');
 
        //get action to apply from url
-       if($action === 'deactivate')
-       {
-           $this->userManager->softDeleteById($id);
-           return $request->get('referer');
-       }
-       if($action === 'ban')
-       {
-           $this->userManager->banUser($id);
-           return $request->request->get('referer');
-       }
-       if($action === 'privilege')
-       {
-           $this->userManager->changeAccessLevel($id);
-           return $request->request->get('referer');
-       }
-
-       if($action === 'deny')
-       {
-           $this->userManager->denyAccountRequest($id);
-           return $request->get('referer');
-       }
-
-       if($action === 'validate')
-       {
-           $this->userManager->validateAccountRequest($id);
-           return $request->get('referer');
-       }
-
-       if($action === 'delete')
-       {
-           $this->userManager->getDelete($id,'- 60 day');
-
-           return $request->get('referer');
-       }
+       switch ($action):
+           case 'deactivate':
+               $this->userManager->softDeleteById($id);
+               break;
+           case 'ban':
+               $this->userManager->banUser($id);
+               break;
+           case 'privilege':
+               $this->userManager->changeAccessLevel($id);
+               break;
+           case 'deny':
+               $this->userManager->denyAccountRequest($id);
+               break;
+           case 'validate':
+               $this->userManager->validateAccountRequest($id);
+               break;
+           case 'delete':
+               $this->userManager->getDelete($id,'- 60 day');
+               break;
+       endswitch;
     }
-
-
 }
 
 
