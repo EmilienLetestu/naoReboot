@@ -42,8 +42,11 @@ function codeLocation(geocoder) {
             alert("Coordonnées GPS qui seront enregistrées : " + results[0].geometry.location);
 
             var data = results[0].geometry.location.toString();
+            var addressToUpper = address.charAt(0).toUpperCase() + address.slice(1);
 
             document.getElementById("report_satNav").value = data.replace(/\(|\)/g,'') ;
+            document.getElementById("report_location").value = addressToUpper + ', ' +  results[0].address_components[2].long_name;
+
         } else {
             alert("Aucune données pour ce lieu !");
         }
