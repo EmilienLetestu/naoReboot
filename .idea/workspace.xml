@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8eafdd50-1ff4-4c46-921d-f55fb371465f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/actions.html.twig" afterPath="$PROJECT_DIR$/templates/admin/actions.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/addReportForm.html.twig" afterPath="$PROJECT_DIR$/templates/nao/addReportForm.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/admin.html.twig" afterPath="$PROJECT_DIR$/templates/admin/admin.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/adminMembers.html.twig" afterPath="$PROJECT_DIR$/templates/admin/adminMembers.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/adminNav.html.twig" afterPath="$PROJECT_DIR$/templates/admin/adminNav.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/adminStats.html.twig" afterPath="$PROJECT_DIR$/templates/admin/adminStats.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/browseReport.html.twig" afterPath="$PROJECT_DIR$/templates/nao/browseReport.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/connectionForms.html.twig" afterPath="$PROJECT_DIR$/templates/nao/connectionForms.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/home.html.twig" afterPath="$PROJECT_DIR$/templates/nao/home.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/notification.html.twig" afterPath="$PROJECT_DIR$/templates/nao/notification.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/profile.html.twig" afterPath="$PROJECT_DIR$/templates/nao/profile.html.twig" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/templates/reportCard.html.twig" afterPath="$PROJECT_DIR$/templates/nao/reportCard.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" />
-    </list>
+    <list default="true" id="8eafdd50-1ff4-4c46-921d-f55fb371465f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,8 +129,8 @@
       <file leaf-file-name="addReportForm.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/nao/addReportForm.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-406">
-              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+            <state relative-caret-position="917">
+              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -813,18 +798,18 @@
       <workItem from="1510212194547" duration="27383000" />
       <workItem from="1510299099151" duration="23146000" />
       <workItem from="1510560206575" duration="45597000" />
-      <workItem from="1510645562776" duration="2686000" />
+      <workItem from="1510645562776" duration="2973000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="960407000" />
+    <option name="totallyTimeSpent" value="960694000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2391" y="-9" width="2418" height="1318" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20625" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20625" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1175,7 +1160,7 @@
         <state relative-caret-position="755">
           <caret line="58" column="20" lean-forward="false" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
           <folding>
-            <marker date="1510647505142" expanded="true" signature="173:2171" ph="{% block body ...%}" />
+            <marker date="1510648517643" expanded="true" signature="173:2171" ph="{% block body ...%}" />
           </folding>
         </state>
       </provider>
@@ -1270,8 +1255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/nao/addReportForm.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-406">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+        <state relative-caret-position="917">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
