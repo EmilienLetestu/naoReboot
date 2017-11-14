@@ -8,12 +8,11 @@
 
 namespace App\Builders;
 
-use App\Entity\Report;
 use App\Entity\User;
+use App\Services\ActivitiesTracker;
 use App\Services\UpdatePswd;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ProfileBuilder
@@ -21,22 +20,27 @@ class ProfileBuilder
     private $doctrine;
     private $token;
     private $updatePswd;
+    private $activitiesTracker;
 
     /**
      * ProfileBuilder constructor.
      * @param EntityManager $doctrine
      * @param TokenStorage $token
      * @param UpdatePswd $updatePswd
+     * @param ActivitiesTracker $activitiesTracker
      */
     public function __construct(
-        EntityManager $doctrine,
-        TokenStorage  $token,
-        UpdatePswd    $updatePswd
+        EntityManager     $doctrine,
+        TokenStorage      $token,
+        UpdatePswd        $updatePswd,
+        ActivitiesTracker $activitiesTracker
+
     )
     {
-        $this->doctrine   = $doctrine;
-        $this->token      = $token;
-        $this->updatePswd = $updatePswd;
+        $this->doctrine          = $doctrine;
+        $this->token             = $token;
+        $this->updatePswd        = $updatePswd;
+        $this->activitiesTracker = $activitiesTracker;
     }
 
     /**
@@ -80,9 +84,11 @@ class ProfileBuilder
 
         return [
             $accountInfo,
-            $this->getLastPublicationData($id),
+            $this->activitiesTracker
+                ->getLastPublicationData($id),
             $reportList,
-            $this->getActivitiesData($reportList)
+            $this->activitiesTracker
+                ->getActivitiesData($reportList)
         ];
     }
 
@@ -106,74 +112,14 @@ class ProfileBuilder
 
         return [
             $accountInfo,
-            $this->getLastPublicationData($id),
+            $this->activitiesTracker
+                ->getLastPublicationData($id),
             $reportList,
-            $this->getActivitiesData($reportList)
+            $this->activitiesTracker
+                ->getActivitiesData($reportList)
         ];
     }
 
-    /**
-     * fetch last publication and extract needed data
-     * @param $id
-     * @return array
-     */
-    public function getLastPublicationData($id)
-    {
-        //fetch last published one
-        $lastReport = $this->doctrine->getRepository(Report::class)
-            ->findUserLastPublication($id);
-
-        if(!$lastReport)
-        {
-           return [
-               $date   = '-------------',
-               $bird   = '-------------',
-               $satNav = '-------------'];
-        }
-
-        foreach ($lastReport as $report)
-        {
-            $date   = $report->getAddedOn()->format('d-m-y');
-            $bird   = $report->getBird()->getSpeciesFr();
-            $satNav = $report->getSatNav();
-        }
-
-        return  [
-            $date,
-            $bird,
-            $satNav]
-        ;
-    }
-
-    /**
-     * extract general information from user publications
-     * @param $reportList
-     * @return array
-     */
-    public function getActivitiesData($reportList)
-    {
-        if(count($reportList) === 0)
-        {
-            return [
-                0,
-                0,
-                0,
-            ];
-        }
-        foreach ($reportList as $report)
-        {
-            $stars[] = $report->getStarNbr();
-            $validations[] = $report->getValidated();
-            $unvalidated[] = array_search(0,$validations);
-            $validated[] = array_search(1,$validations);
-        }
-
-        return [
-            count($unvalidated),
-            count($validated),
-            array_sum($stars)
-        ];
-    }
 }
 
 
