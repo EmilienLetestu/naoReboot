@@ -169,7 +169,7 @@ class IndexController extends Controller
      */
     public function profile(Request $request)
     {
-        $view = $this->get('App\Services\ProfileBuilder')
+        $view = $this->get('App\Builders\ProfileBuilder')
             ->getProfileVersion($request)
         ;
 
@@ -232,7 +232,7 @@ class IndexController extends Controller
      */
     public function administration(Request $request)
     {
-       $view = $this->get('App\Services\AdminBuilder')
+       $view = $this->get('App\Builders\AdminBuilder')
            ->buildAdminHome($request)
        ;
 
@@ -256,7 +256,7 @@ class IndexController extends Controller
      */
     public function userList()
     {
-        $view = $this->get('App\Services\AdminBuilder')
+        $view = $this->get('App\Builders\AdminBuilder')
             ->builduserList()
         ;
 
@@ -272,7 +272,7 @@ class IndexController extends Controller
      */
     public function accountLvl2Request()
     {
-       $view = $this->get('App\Services\AdminBuilder')
+       $view = $this->get('App\Builders\AdminBuilder')
            ->buildAccountLvl2Request()
        ;
 
@@ -287,7 +287,7 @@ class IndexController extends Controller
      */
     public function unactivatedAccount()
     {
-        $view  = $this->get('App\Services\AdminBuilder')
+        $view  = $this->get('App\Builders\AdminBuilder')
             ->buildUnactivatedList();
 
         return $this->render('admin/adminMembers.html.twig',[
@@ -325,7 +325,7 @@ class IndexController extends Controller
      */
     public function accountManagement(Request $request)
     {
-        $this->get('App\Services\AdminBuilder')
+        $this->get('App\Builders\AdminBuilder')
             ->buildAccountManagement($request)
         ;
 
