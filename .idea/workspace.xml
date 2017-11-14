@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8eafdd50-1ff4-4c46-921d-f55fb371465f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Twig/CheckNotificationTypeExtension.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/naoStyle.css" afterPath="$PROJECT_DIR$/public/css/naoStyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Managers/NotificationManager.php" afterPath="$PROJECT_DIR$/src/Managers/NotificationManager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Repository/NotificationRepository.php" afterPath="$PROJECT_DIR$/src/Repository/NotificationRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/adminMembers.html.twig" afterPath="$PROJECT_DIR$/templates/adminMembers.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="$PROJECT_DIR$/templates/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/notification.html.twig" afterPath="$PROJECT_DIR$/templates/notification.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -77,16 +70,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotificationTypeExtension.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Twig/NotificationTypeExtension.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -107,11 +90,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckNotificationTypeExtension.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CheckNotificationTypeExtension.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Twig/CheckNotificationTypeExtension.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="864">
               <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notification.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/notification.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="891">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -210,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/Managers/ValidationManager.php" />
         <option value="$PROJECT_DIR$/src/Managers/ReportManager.php" />
         <option value="$PROJECT_DIR$/templates/reportCard.html.twig" />
-        <option value="$PROJECT_DIR$/templates/notification.html.twig" />
         <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/src/Twig/NotificationTypeExtension.php" />
         <option value="$PROJECT_DIR$/templates/adminMembers.html.twig" />
@@ -220,6 +212,7 @@
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/public/css/naoStyle.css" />
         <option value="$PROJECT_DIR$/src/Twig/CheckNotificationTypeExtension.php" />
+        <option value="$PROJECT_DIR$/templates/notification.html.twig" />
       </list>
     </option>
   </component>
@@ -789,16 +782,16 @@
       <workItem from="1510124656183" duration="53007000" />
       <workItem from="1510212194547" duration="27383000" />
       <workItem from="1510299099151" duration="23146000" />
-      <workItem from="1510560206575" duration="24675000" />
+      <workItem from="1510560206575" duration="45597000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="936799000" />
+    <option name="totallyTimeSpent" value="957721000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2391" y="-9" width="2418" height="1318" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20625" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1079,14 +1072,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/notification.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/ResetPswdType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1245,6 +1230,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="864">
           <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/notification.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
