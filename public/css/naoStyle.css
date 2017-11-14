@@ -452,12 +452,14 @@ footer .list-group
 }
 
 .softDelete,
+.delete,
 .deny{
     color: #ff5240;
     border-color:  #ff5240 ;
 }
 
 .softDelete:hover,
+.delete:hover,
 .deny:hover{
     background-color:  #ff5240;
     color: #FFFFFF;
