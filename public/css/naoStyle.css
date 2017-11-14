@@ -250,6 +250,11 @@ footer .list-group
     align-content: space-between;
     justify-content: center;
 }
+
+.stared,
+.stared:hover{
+  color: #ffa500;
+}
 .card i
 {
     color: orange;

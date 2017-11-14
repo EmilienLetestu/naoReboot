@@ -23,12 +23,12 @@ function getAll() {
                 } else {
                     result = results[0];
                 }
-                //console.log(result);
-                document.getElementById("report_location").value = result.address_components[0].long_name + ', ' + result.address_components[2].long_name;
-                document.getElementById("report_satNav").value = position.coords.latitude + ', ' + position.coords.longitude;
+
+                document.getElementById('report_location').value = result.address_components[0].long_name + ', ' + result.address_components[2].long_name;
+                document.getElementById('report_satNav').value = position.coords.latitude + ', ' + position.coords.longitude;
             }
             if (!results) {
-                alert('dsddqd');
+                alert('Nous ne parvenons pas à géolocaliser !');
             }
         });
     });
@@ -37,18 +37,18 @@ function getAll() {
 //find lat and lng from submitted location
 function codeLocation(geocoder) {
     var address = document.getElementById("report_location").value;
-    geocoder.geocode({"address": address}, function (results, status) {
+    geocoder.geocode({'address': address}, function (results, status) {
         if (status === "OK") {
-            alert("Coordonnées GPS qui seront enregistrées : " + results[0].geometry.location);
+            alert('Coordonnées GPS qui seront enregistrées : ' + results[0].geometry.location);
 
             var data = results[0].geometry.location.toString();
             var addressToUpper = address.charAt(0).toUpperCase() + address.slice(1);
 
-            document.getElementById("report_satNav").value = data.replace(/\(|\)/g,'') ;
-            document.getElementById("report_location").value = addressToUpper + ', ' +  results[0].address_components[2].long_name;
+            document.getElementById('report_satNav').value = data.replace(/\(|\)/g,'') ;
+            document.getElementById('report_location').value = addressToUpper + ', ' +  results[0].address_components[2].long_name;
 
         } else {
-            alert("Aucune données pour ce lieu !");
+            alert('Aucune données pour ce lieu !');
         }
     });
 }
