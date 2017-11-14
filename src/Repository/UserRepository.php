@@ -129,7 +129,7 @@ class UserRepository extends EntityRepository
      */
     public function findDeletableAccount($nMonthAgo)
     {
-        $queryBuilder = $this->createQueryBuilder('u');
+       $queryBuilder = $this->createQueryBuilder('u');
 
        $this->whereActivated($queryBuilder, 0);
        $this->whereCreatedOn($queryBuilder,$nMonthAgo);
@@ -137,6 +137,25 @@ class UserRepository extends EntityRepository
         return $queryBuilder
             ->getQuery()
             ->getResult()
+        ;
+    }
+
+    /**
+     * @param $nMonthAgo
+     * @param $id
+     * @return mixed
+     */
+    public function findAccountToDelete($nMonthAgo,$id)
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+
+        $this->whereActivated($queryBuilder, 0);
+        $this->whereCreatedOn($queryBuilder,$nMonthAgo);
+        $this->whereId($queryBuilder,$id);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getSingleResult()
         ;
     }
 

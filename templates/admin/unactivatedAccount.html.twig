@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h1 class="pageTitle">{{ title }}</h1>
+    </div>
+
+    {{ include('admin/adminNav.html.twig') }}
+
+
+    <div class="globalDelete">
+        <a class="btn delete" href="{{ path('userManagement', {'action' : 'delete'}) }}">
+            Supprimer tous les comptes créés il y a plus de 60 jours
+        </a>
+    </div>
+
+
+    <div class="memberList">
+        <table class="table">
+            <thead>
+            <tr>
+                <th><i class="material-icons">person</i></th>
+                <th><i class="material-icons">date_range</i></th>
+                <th><i class="material-icons">delete</i></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in userList %}
+            <tr>
+                <td>
+                    {{ user.surname }} {{ user.name }}
+                </td>
+                <td>
+                    {{ user.createdOn|date('d/m/Y') }}
+                </td>
+                <td>
+                    <a class="btn delete" href="{{ path('userManagement', {'action' : 'delete', 'id' :  user.id}) }}">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

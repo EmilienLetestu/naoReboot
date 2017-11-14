@@ -39,13 +39,13 @@ class UserManager
     }
 
     /**
-     * @param $accessLevel
+     * @param $nDaysAgo
      * @return mixed
      */
-    public function deleteAllUnactivated($accessLevel)
+    public function deleteAllUnactivated($nDaysAgo)
     {
         $repository = $this->doctrine->getRepository(User::class);
-        $userList = $repository->findDeletableAccount($accessLevel);
+        $userList = $repository->findDeletableAccount($nDaysAgo);
 
         foreach ($userList as $user )
         {
@@ -57,6 +57,37 @@ class UserManager
         return $this->session->getFlashBag()
             ->add('success','Les comptes ont été supprimés')
         ;
+    }
+
+    /**
+     * @param $nDaysAgo
+     * @param $id
+     * @return mixed
+     */
+    public function deleteUnactivated($nDaysAgo, $id)
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+        $user = $repository->findAccountToDelete($nDaysAgo,$id);
+        $this->doctrine->remove($user);
+        $this->doctrine->flush();
+
+        return $this->session->getFlashBag()
+            ->add('success','Le compte a été supprimé')
+        ;
+    }
+
+    /**
+     * @param $id
+     * @param $nDaysAgo
+     * @return mixed
+     */
+    public function getDelete($id,$nDaysAgo)
+    {
+      return $id === null ?
+          $this->deleteAllUnactivated($nDaysAgo)
+          :
+          $this->deleteUnactivated($nDaysAgo,$id)
+      ;
     }
 
     /**

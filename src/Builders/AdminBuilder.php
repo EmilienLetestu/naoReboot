@@ -190,6 +190,13 @@ class AdminBuilder
            $this->userManager->validateAccountRequest($id);
            return $request->get('referer');
        }
+
+       if($action === 'delete')
+       {
+           $this->userManager->getDelete($id,'- 60 day');
+
+           return $request->get('referer');
+       }
     }
 
 

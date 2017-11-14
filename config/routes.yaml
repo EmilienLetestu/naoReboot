@@ -84,9 +84,11 @@ userManagement:
     path: /admin/{action}/{id}
     defaults:
         _controller: App\Controller\IndexController::accountManagement
+        id: null
     requirements:
-        action: deactivate||ban||privilege||validate||deny
+        action: deactivate||ban||privilege||validate||deny||delete
         id: \d+
+
 
 accountValidation:
     path: /admin/demande-accès-naturaliste

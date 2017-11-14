@@ -57,7 +57,6 @@ class ProfileBuilder
         ;
     }
 
-
     /**
      * @param Request $request
      * @return array

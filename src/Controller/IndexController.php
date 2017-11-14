@@ -290,7 +290,7 @@ class IndexController extends Controller
         $view  = $this->get('App\Builders\AdminBuilder')
             ->buildUnactivatedList();
 
-        return $this->render('admin/adminMembers.html.twig',[
+        return $this->render('admin\unactivatedAccount.html.twig',[
             'userList' => $view[0],
             'title'    => $view[1]
         ]);
