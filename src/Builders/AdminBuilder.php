@@ -83,6 +83,7 @@ class AdminBuilder
         {
             $idList[] = $user->getId();
         }
+
         foreach ($idList as $id)
         {
             $report[] = $repo->findUserLastPublication($id);
@@ -183,6 +184,23 @@ class AdminBuilder
                $this->userManager->getDelete($id,'- 60 day');
                break;
        endswitch;
+    }
+
+    /**
+     * @return array
+     */
+    public function buildReportedBird()
+    {
+        $repository = $this->doctrine->getRepository(Report::class);
+        $reportList = $repository->findAllReport(1);
+
+        foreach ($reportList as $report)
+        {
+          $birdList[] = $report->getBird()->getId();
+        }
+
+
+        return array_count_values($birdList);
     }
 }
 

@@ -19,7 +19,8 @@ class ActivitiesTracker
      * ProfileBuilder constructor.
      * @param EntityManager $doctrine
      */
-    public function __construct(EntityManager $doctrine
+    public function __construct(
+        EntityManager $doctrine
     )
     {
         $this->doctrine   = $doctrine;
@@ -44,18 +45,11 @@ class ActivitiesTracker
                 $satNav = '-------------'];
         }
 
-        foreach ($lastReport as $report)
-        {
-            $date   = $report->getAddedOn()->format('d-m-y');
-            $bird   = $report->getBird()->getSpeciesFr();
-            $satNav = $report->getSatNav();
-        }
-
         return  [
-            $date,
-            $bird,
-            $satNav]
-            ;
+            $lastReport->getAddedOn()->format('d-m-y'),
+            $lastReport->getBird()->getSpeciesFr(),
+            $lastReport->getSatNav()
+        ];
     }
 
     /**
@@ -85,6 +79,47 @@ class ActivitiesTracker
             count($unvalidated),
             count($validated),
             array_sum($stars)
+        ];
+    }
+
+    /**
+     * @param $birdId
+     * @return array
+     */
+    public function getReportedSpeciesData($birdId)
+    {
+        $reportedList = $this->doctrine->getRepository(Report::class)
+            ->findAllWithBirdName($birdId);
+
+        foreach ($reportedList as $report)
+        {
+            $specimens[] = $report->getNbrOfBirds();
+            $bird = $report->getBird()->getSpeciesLatin();
+        }
+
+        $population = array_sum($specimens);
+
+
+        return [
+            $population,
+            $population / count($reportedList),
+            $bird
+        ];
+    }
+
+    /**
+     * @param $birId
+     * @return array
+     */
+    public function getLastReportedData($birId)
+    {
+        $lastReported = $this->doctrine->getRepository(Report::class)
+            ->findLastReportWithBird($birId)
+        ;
+
+        return [
+            $lastReported->getAddedOn()->format('d-m-y'),
+            $lastReported->getSatNav()
         ];
     }
 }

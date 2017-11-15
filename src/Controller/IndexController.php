@@ -332,5 +332,19 @@ class IndexController extends Controller
         return $this->redirect($redirect);
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listReportedBird()
+    {
+       $view = $this->get('App\Builders\AdminBuilder')
+            ->buildReportedBird()
+        ;
+
+        return $this->render('admin\adminBird.html.twig',[
+            'reportedBird' => $view,
+        ]);
+    }
+
 }
 

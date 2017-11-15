@@ -94,6 +94,24 @@ class ReportRepository extends EntityRepository
     }
 
     /**
+     * @param $birdId
+     * @return array
+     */
+    public function findLastReportWithBird($birdId)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+
+        $this-> whereValidated($queryBuilder,1,'ASC','addedOn',1);
+        $this->whereReportedBird($queryBuilder,$birdId);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getSingleResult()
+        ;
+
+    }
+
+    /**
      * fetch the last 9 published and validated to display on home
      * @return array
      */
@@ -122,7 +140,7 @@ class ReportRepository extends EntityRepository
 
         return $queryBuilder
             ->getQuery()
-            ->getResult()
+            ->getSingleResult()
         ;
     }
 
@@ -136,9 +154,12 @@ class ReportRepository extends EntityRepository
         $queryBuilder
             ->innerJoin('r.bird','b')
             ->addSelect('b')
+
         ;
 
-        $queryBuilder->where($queryBuilder->expr()->in('b.id',$id));
+        $queryBuilder
+            ->where($queryBuilder->expr()->in('b.id',$id))
+            ->andWhere('r.validated = 1');
 
         return $queryBuilder
             ->getQuery()
@@ -224,6 +245,5 @@ class ReportRepository extends EntityRepository
             ->getScalarResult()
             ;
     }
-
 }
 
