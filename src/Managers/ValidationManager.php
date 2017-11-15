@@ -59,8 +59,9 @@ class ValidationManager
         $validationList = $report->getValidations();
 
 
-        //check logged user never validated this report before
-        $check = $this->hasAlreadyBeenValidated($validationList, $loggedId);
+        // if hasn't gathered any validation, skip verification
+        // otherwise check logged user never validated this report before
+        $check = $score === 0 ? false : $this->hasAlreadyBeenValidated($validationList, $loggedId);
 
         if($check === true)
         {
@@ -70,7 +71,7 @@ class ValidationManager
             ;
         }
 
-        //create a new validatio object and hydrate it
+        //create a new validation object and hydrate it
         $validation = new Validation();
         $validation
             ->setUser($user)
@@ -84,7 +85,7 @@ class ValidationManager
         //prepare validation to get stored
         $this->doctrine->persist($validation);
 
-        //check if report as to be validated
+        //check if report has to be validated
         //need 5 validations to be validated
         if($score === 4)
         {
@@ -120,11 +121,13 @@ class ValidationManager
         foreach ($validationList as $validation)
         {
             $userList[] = $validation->getUser();
-            foreach ($userList as $user)
-            {
-                $idList[] = $user->getId();
-                return in_array($loggedId, $idList) ? true : false;
-            }
         }
+
+        foreach ($userList as $user)
+        {
+            $idList[] = $user->getId();
+        }
+
+        return in_array($loggedId, $idList) ? true : false;
     }
 }
