@@ -40,9 +40,10 @@ class ActivitiesTracker
         if(!$lastReport)
         {
             return [
-                $date   = '-------------',
-                $bird   = '-------------',
-                $satNav = '-------------'];
+                '-------------',
+                '-------------',
+                '-------------'
+            ];
         }
 
         return  [
@@ -77,7 +78,6 @@ class ActivitiesTracker
         $published = array_sum($validations);
 
         return [
-
             count($reportList) - $published,
             $published,
             array_sum($stars)
