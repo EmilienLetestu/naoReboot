@@ -74,10 +74,12 @@ class ActivitiesTracker
             $validations[] = $report->getValidated() == 1 ? $i + 1 : $i;
         }
 
+        $published = array_sum($validations);
+
         return [
 
-            count($reportList) - array_sum($validations),
-            array_sum($validations),
+            count($reportList) - $published,
+            $published,
             array_sum($stars)
         ];
     }
