@@ -57,9 +57,9 @@ class StarManager
 
         // if hasn't been stared yet skip verification
         // otherwise check logged user never stared this report before
-        $check = $score === 0 ? false : $this->hasAlreadyBeenStared($starList, $loggedId);
+        $check = $score === 0 ? true : $this->hasAlreadyBeenStared($starList, $loggedId);
 
-        if( $check === true)
+        if($check === true)
         {
            return $this->session->getFlashBag()
                ->add('denied',

@@ -61,7 +61,7 @@ class ValidationManager
 
         // if hasn't gathered any validation, skip verification
         // otherwise check logged user never validated this report before
-        $check = $score === 0 ? false : $this->hasAlreadyBeenValidated($validationList, $loggedId);
+        $check = $score === 0 ? true : $this->hasAlreadyBeenValidated($validationList, $loggedId);
 
         if($check === true)
         {
