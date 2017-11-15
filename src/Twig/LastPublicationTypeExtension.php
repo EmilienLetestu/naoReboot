@@ -14,6 +14,7 @@ class LastPublicationTypeExtension extends \Twig_Extension
 {
     private  $activitiesTracker;
 
+
     public function __construct(
         ActivitiesTracker $activitiesTracker
     )
@@ -22,6 +23,9 @@ class LastPublicationTypeExtension extends \Twig_Extension
     }
 
 
+    /**
+     * @return array
+     */
     public function getFilters()
     {
         return [
@@ -29,6 +33,10 @@ class LastPublicationTypeExtension extends \Twig_Extension
         ];
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function lastPublicationFilter($id)
     {
         $lastPublication = $this->activitiesTracker->getLastPublicationData($id);
