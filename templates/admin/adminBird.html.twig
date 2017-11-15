@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+<div>
+    <h1 class="page-title">Liste des espèces</h1>
+</div>
+
+{{ include('admin/adminNav.html.twig') }}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th><i class="fa fa-binoculars" aria-hidden="true"></i></th>
+                <th><i class="material-icons">trending_up</i></th>
+                <th><i class="material-icons">info_outline</i></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key, seenNtimes in reportedBird %}
+            <tr>
+                <td>
+                    {{ key|statistics['bird']|species }}
+                </td>
+                <td>
+                    {{ seenNtimes }}
+                </td>
+                <td>
+                    <i class="material-icons">add</i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre de spécimens</th>
+                                <th>Spécimen par observation</th>
+                                <th>Dernière observation</th>
+                                <th>Coordonnées</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{ key|statistics['population'] }}
+                                <td>
+                                    {{ key|statistics['avgByReport'] }}
+                                </td>
+                                <td>
+                                    {{ key|lastReported['date'] }}
+                                </td>
+                                <td>
+                                    {{ key|lastReported['satNav'] }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
