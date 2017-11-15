@@ -106,7 +106,7 @@ class ReportRepository extends EntityRepository
 
         return $queryBuilder
             ->getQuery()
-            ->getSingleResult()
+            ->getOneOrNullResult()
         ;
 
     }
@@ -140,7 +140,7 @@ class ReportRepository extends EntityRepository
 
         return $queryBuilder
             ->getQuery()
-            ->getSingleResult()
+            ->getOneOrNullResult()
         ;
     }
 
