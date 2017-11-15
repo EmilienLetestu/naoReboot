@@ -55,6 +55,41 @@
                         {{ include('admin/actions.html.twig') }}
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="3">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Total d'observations</th>
+                                <th>En attente de validation</th>
+                                <th>Dernière observation</th>
+                                <th>Dernière espèce observée</th>
+                                <th>Coordonnées</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    {{ user.reports|activities['validated'] }}
+                                <td>
+                                    {{ user.reports|activities['unvalidated'] }}
+                                </td>
+                                <td>
+                                    {{ user.id|lastPublication['date'] }}
+                                </td>
+                                <td>
+                                    {{ user.id|lastPublication['bird'] }}
+                                </td>
+
+                                </td>
+                                <td>
+                                    {{ user.id|lastPublication['satNav'] }}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>

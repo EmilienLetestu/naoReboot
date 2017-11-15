@@ -69,15 +69,15 @@ class ActivitiesTracker
         }
         foreach ($reportList as $report)
         {
+            $i = 0;
             $stars[] = $report->getStarNbr();
-            $validations[] = $report->getValidated();
-            $unvalidated[] = array_search(0,$validations);
-            $validated[] = array_search(1,$validations);
+            $validations[] = $report->getValidated() == 1 ? $i + 1 : $i;
         }
 
         return [
-            count($unvalidated),
-            count($validated),
+
+            count($reportList) - array_sum($validations),
+            array_sum($validations),
             array_sum($stars)
         ];
     }
