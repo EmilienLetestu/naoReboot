@@ -33,17 +33,18 @@ class IndexController extends Controller
     }
 
     /**
-     * @Security("has_role('ROLE_USER')")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function browseReport()
+    public function browseReport(Request $request)
     {
-        $view =  $this->get('App\Managers\ReportManager')
-            ->displayAllValidated()
+        $view =  $this->get('App\Services\Search')
+            ->processFilter($request)
         ;
 
         return $this->render('nao\browseReport.html.twig',[
-            'reports' => $view
+            'filter' => $view[0],
+            'reports'  => $view[1]
         ]);
     }
 
@@ -345,6 +346,5 @@ class IndexController extends Controller
             'reportedBird' => $view,
         ]);
     }
-
 }
 
