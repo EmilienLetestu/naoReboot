@@ -8,6 +8,7 @@
 
 namespace App\Form;
 
+use App\Entity\Bird;
 use App\Validators\CommentLength;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -32,7 +33,9 @@ class ReportType extends AbstractType
         $builder
             ->add('bird', EntityType::class, ['constraints'=>[new NotBlank()],
                                                          'class'        => 'App:Bird',
-                                                         'choice_label' => 'speciesFr'
+                                                         'choice_label' => function(Bird $bird){
+                                                             return $bird->getSpeciesForForm();
+                                                         }
             ])
 
             ->add('nbrOfBirds', IntegerType::class, ['constraints'=>[new Type('numeric'),
