@@ -6,6 +6,7 @@ new Vue({
         nav: null,
         seen: null,
         reportList: null,
+        filter: null,
         name:'',
         surname:'',
         pswd:'',
