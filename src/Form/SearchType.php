@@ -9,6 +9,7 @@
 namespace App\Form;
 
 
+use App\Entity\Bird;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +20,7 @@ class SearchType extends AbstractType
     {
        $builder->add('bird', EntityType::class, [
            'class' => 'App:Bird',
-           'choice_label' => function($bird){
+           'choice_label' => function(Bird $bird){
             return $bird->getSpeciesNameOnly();
            },
            'placeholder' => 'Rechercher une espèce'
