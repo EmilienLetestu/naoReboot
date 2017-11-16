@@ -17,7 +17,7 @@
     </head>
     <body>
     <div class="d-flex flex-column" id="wrapper">
-        <nav class="navbar navbar-toggleable-md navbar-fixed-top">
+        <nav class="navbar navbar-toggleable-md">
             <a class="navbar-brand" href="{{ path('home') }}">
                 <i class="material-icons">home</i>
                 NAO
@@ -102,7 +102,6 @@
             {% endif %}
         </nav>
         <main class="container-fluid py-3 w-100" id="app">
-
 
             {% for label, messages in app.flashes(['denied','error','success','warning','welcome']) %}
                 {% for message in messages %}
