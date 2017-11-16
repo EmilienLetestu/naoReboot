@@ -93,6 +93,18 @@ class ReportRepository extends EntityRepository
         ;
     }
 
+    public function findSelection($validated,$order,$sort,$limit = null)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+
+        $this->whereValidated($queryBuilder,$validated,$order,$sort,$limit);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /**
      * @param $birdId
      * @return array
