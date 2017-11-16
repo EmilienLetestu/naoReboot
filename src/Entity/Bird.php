@@ -205,5 +205,16 @@ class Bird
         return $this->reports;
     }
 
+    public function getSpeciesNameOnly()
+    {
+        $speciesLatin = $this->getSpeciesLatin();
+
+        $sanitize = preg_replace('/\(|\)/','',$speciesLatin);
+        $extractSpecies = preg_split('/(?=[A-Z])/',$sanitize);
+
+        return $extractSpecies[1];
+
+    }
+
 }
 
