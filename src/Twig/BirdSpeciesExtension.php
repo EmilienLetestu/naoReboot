@@ -27,7 +27,8 @@ class BirdSpeciesExtension extends \Twig_Extension
      * @return mixed
      */
     public function birdFilter($speciesLatin){
-        $extractSpecies = preg_split('/(?=[A-Z])/',$speciesLatin);
+        $sanitize = preg_replace('/\(|\)/','',$speciesLatin);
+        $extractSpecies = preg_split('/(?=[A-Z])/',$sanitize);
 
         return $extractSpecies[1];
     }
