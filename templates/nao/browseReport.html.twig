@@ -6,13 +6,29 @@
 
 {% block body %}
 
+
+
     <div>
         <h1 class="pageTitle">Observations</h1>
     </div>
-
-    <div class="browseFilters">
-
-    </div>
+    <div class="filter">
+        <i class="material-icons" v-on:mouseover="filter = true" v-show ="!filter">keyboard_arrow_down</i>
+            {{ form_start(filter, {'attr':{'class' : 'form-inline','v-show' : 'filter'}}) }}
+            <div class="form-group-row">
+                {{ form_widget(filter.route) }}
+            </div>
+            <div class="form-group-row">
+                {{ form_widget(filter.order) }}
+            </div>
+            <div>
+                {{ form_widget(filter.bird) }}
+            </div>
+            <div class="form-group-row">
+                <i class="material-icons" v-on:click="filter = false">close</i>
+                <button class="btn btn-success" type="submit">Valider</button>
+            </div>
+            {{ form_end(filter) }}
+      </div>
 
     <div class="cardHolder">
         {% for report in reports %}
@@ -21,3 +37,4 @@
     </div>
 
 {% endblock %}
+
