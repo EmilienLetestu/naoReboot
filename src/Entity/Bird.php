@@ -205,6 +205,10 @@ class Bird
         return $this->reports;
     }
 
+    /**
+     * Use to fill entity type form
+     * @return mixed
+     */
     public function getSpeciesNameOnly()
     {
         $speciesLatin = $this->getSpeciesLatin();
@@ -213,7 +217,17 @@ class Bird
         $extractSpecies = preg_split('/(?=[A-Z])/',$sanitize);
 
         return $extractSpecies[1];
+    }
 
+    /**
+     * Use to fill entity type form
+     * @return string
+     */
+    public function getSpeciesForForm()
+    {
+        $fr = $this->getSpeciesFr();
+
+        return  trim($fr) === ''  ? $this->getSpeciesNameOnly() : trim($fr);
     }
 
 }
