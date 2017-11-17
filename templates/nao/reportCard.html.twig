@@ -50,7 +50,7 @@
         </li>
     </ul>
     <div>
-        <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
+        <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
         <a class="btn btn-outline" href="#">Lire le commentaire</a>
     {% if app.request.get('_route') == ('unvalidatedReport') %}
         <ul class="list-inline">
