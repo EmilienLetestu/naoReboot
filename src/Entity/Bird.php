@@ -225,9 +225,11 @@ class Bird
      */
     public function getSpeciesForForm()
     {
-        $fr = $this->getSpeciesFr();
+        $fr = trim($this->getSpeciesFr());
+        $splitFr = preg_split('/;|,/',$fr);
+        $sanitizeFr = preg_split('/\(|\)/',$splitFr[0]);
 
-        return  trim($fr) === ''  ? $this->getSpeciesNameOnly() : trim($fr);
+        return  $sanitizeFr[0] === ''  ? $this->getSpeciesNameOnly() : $sanitizeFr[0];
     }
 
 }
