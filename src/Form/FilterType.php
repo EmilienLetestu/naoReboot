@@ -14,22 +14,22 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class FilterType extends AbstractType
 {
+    private $token;
+
+    public function __construct(TokenStorage $token)
+    {
+        $this->token = $token;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('route',ChoiceType::class,[
-                    'choices' => [
-                        'Toutes les observations'        => 1,
-                        'Les espèces les plus observés'  => 2,
-                        'Les espèces les moins observés' => 3,
-                        'En attente de validation'       => 4,
-                    ],
-                    'required' => false,
-                    'mapped'   => false
-            ])
             ->add('order', ChoiceType::class,[
                     'choices' => [
                         'Les plus récentes'  => 1,
@@ -46,7 +46,30 @@ class FilterType extends AbstractType
                         },
                     'placeholder' => 'Rechercher une espèce',
                     'required' => false,
-            ]);
+            ])
+        ;
+
+        $user = $this->token->getToken()->getUser();
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA,
+           function(FormEvent $event) use ($user)
+           {
+                $form = $event->getForm();
+
+                if ($user->getAccessLevel() >= 2)
+                {
+                   $form->add('route',ChoiceType::class,[
+                    'choices' => [
+                        'Toutes les observations'  => 1,
+                        'Validés uniquement'       => 2,
+                        'En attente de validation' => 4,
+                    ],
+                    'required' => false,
+                    'mapped'   => false
+                    ]);
+                }
+           })
+        ;
 
     }
 }
