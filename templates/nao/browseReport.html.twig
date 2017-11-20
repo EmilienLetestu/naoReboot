@@ -14,7 +14,7 @@
 
     <div class="filter">
         <i class="material-icons" v-on:mouseover="filter = true" v-show ="!filter">keyboard_arrow_down</i>
-            {{ form_start(filter, {'attr':{'class' : 'form-inline','v-show' : 'filter'}}) }}
+            {{ form_start(filter, {'action': path('search'),'attr':{'class' : 'form-inline','v-show' : 'filter'}}) }}
             {% if is_granted('ROLE_VALIDATOR') %}
             <div class="form-group-row">
                 {{ form_widget(filter.route) }}

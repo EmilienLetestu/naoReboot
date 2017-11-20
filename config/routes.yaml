@@ -46,13 +46,23 @@ report:
     path: /observations
     defaults:
         _controller: App\Controller\IndexController::browseReport
+    requirements:
+        filtre: valides||en-attentes-de-validation
 
+search:
+    path: /observations/resultat-de-la-recherche
+    defaults:
+        _controller: App\Controller\IndexController::search
+
+unvalidatedReport:
+     path: /observations/en-attente-de-validation
+     defaults:
+         _controller: App\Controller\IndexController::browseUnvalidated
 
 addReport:
      path: /observations/nouvelle-observation
      defaults:
          _controller: App\Controller\IndexController::addReport
-
 
 notification:
      path: /notification

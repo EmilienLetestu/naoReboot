@@ -8,14 +8,10 @@
 
 namespace App\Form;
 
-
-use App\Entity\Bird;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class FilterType extends AbstractType
@@ -35,25 +31,26 @@ class FilterType extends AbstractType
                     'Validés uniquement'       => 1,
                     'En attente de validation' => 2,
                 ],
+                'placeholder' => 'Filtrer par statut',
                 'required' => false,
                 'mapped'   => false
             ])
             ->add('order', ChoiceType::class,[
-                    'choices' => [
-                        'Les plus récentes'  => 1,
-                        'les plus anciennes' => 2,
-                        'A-Z'                => 3
-                    ],
-                    'required' => false,
-                    'mapped'   => false,
+                'choices' => [
+                    'Les plus récentes'  => 1,
+                    'les plus anciennes' => 2,
+                    'A-Z'                => 3
+                ],
+                'placeholder' => 'Ordre d\'affichage',
+                'required' => false,
+                'mapped'   => false
             ])
             ->add('bird', EntityType::class, [
-                        'class' => 'App:Bird',
-                        'choice_label' => function(Bird $bird){
-                            return $bird->getSpeciesForForm();
-                        },
-                    'placeholder' => 'Rechercher une espèce',
-                    'required' => false,
+                'class' => 'App:Report',
+                'choice_label' => 'bird.getSpeciesForForm',
+                'choice_value' => 'bird.id',
+                'placeholder' => 'Rechercher une espèce',
+                'required' => false,
             ])
         ;
     }

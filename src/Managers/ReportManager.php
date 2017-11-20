@@ -71,12 +71,4 @@ class ReportManager
     }
 
 
-    public function getReportToDisplay(Request $request)
-    {
-        return $request->attributes->get('_route') === 'report' ?
-            $this->displayAllValidated() :
-            $this->displayAllUnvalidated()
-        ;
-    }
-
 }

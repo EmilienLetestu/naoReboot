@@ -64,6 +64,7 @@ class Search
         return $searchForm->createView();
     }
 
+
     /**
      * @param Request $request
      * @return array
@@ -101,16 +102,18 @@ class Search
                 ];
             }
 
+
             return [
                 $filterForm->createView(),
-                $repository->findSelectionWithBird($validated,$sort,$order,null,$bird),
+                $repository->findSelectionWithBird($validated,$sort,$order,null,$bird->getBird()->getId()),
+
             ];
 
         }
 
         return [
             $filterForm->createView(),
-            $this->reportManager->getReportToDisplay($request),
+            $this->getReportToDisplay($request),
         ];
     }
 
@@ -124,6 +127,24 @@ class Search
            $this->formFactory->create(FilterType::class):
            $this->formFactory->create(UserFilterType::class)
        ;
+    }
+
+    public function getReportToDisplay(Request $request)
+    {
+        $route = $request->attributes->get('_route');
+
+       if($route === 'report')
+       {
+           return $this->reportManager->displayAllValidated();
+       }
+
+       if($route === 'unvalidatedReport')
+       {
+           return $this->reportManager->displayAllUnvalidated();
+       }
+
+       return $this->processFilter($request);
+
     }
 
 }

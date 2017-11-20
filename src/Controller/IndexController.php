@@ -49,6 +49,34 @@ class IndexController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        $view =  $this->get('App\Services\Search')
+            ->processFilter($request)
+        ;
+
+        return $this->render('nao\browseReport.html.twig',[
+            'filter' => $view[0],
+            'reports'  => $view[1]
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function browseUnvalidated(Request $request)
+    {
+        $view =  $this->get('App\Services\Search')
+            ->processFilter($request)
+        ;
+
+        return $this->render('nao\browseReport.html.twig',[
+            'filter' => $view[0],
+            'reports'  => $view[1]
+        ]);
+    }
+
     /**
      * @param AuthenticationUtils $authUtils
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
