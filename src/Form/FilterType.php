@@ -12,16 +12,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class FilterType extends AbstractType
 {
-    private $token;
-
-    public function __construct(TokenStorage $token)
-    {
-        $this->token = $token;
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
