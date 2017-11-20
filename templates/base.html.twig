@@ -67,14 +67,6 @@
                                 Nouvelle Observation
                             </a>
                         </li>
-                        {% if is_granted('ROLE_VALIDATOR') and app.user.onHold == 0 %}
-                        <li>
-                            <a href="{{ path('report') }}">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                En attente de validation
-                            </a>
-                        </li>
-                        {% endif %}
                         <li>
                             <a href="{{ path('profile', {'name' :app.user.name|specChars,'surname' :app.user.surname|specChars, 'id' :app.user.id}) }}">
                                 <i class="fa fa-user" aria-hidden="true"></i>

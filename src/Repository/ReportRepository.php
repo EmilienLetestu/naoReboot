@@ -105,6 +105,19 @@ class ReportRepository extends EntityRepository
         ;
     }
 
+    public function findSelectionWithBird($validated,$order,$sort,$limit = null,$birdId)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+
+        $this->whereValidated($queryBuilder,$validated,$order,$sort,$limit);
+        $this->whereReportedBird($queryBuilder, $birdId);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     /**
      * @param $birdId
      * @return array
@@ -168,7 +181,6 @@ class ReportRepository extends EntityRepository
             ->addSelect('b')
 
         ;
-
         $queryBuilder
             ->where($queryBuilder->expr()->in('b.id',$id))
             ->andWhere('r.validated = 1');
@@ -257,5 +269,6 @@ class ReportRepository extends EntityRepository
             ->getScalarResult()
             ;
     }
+
 }
 

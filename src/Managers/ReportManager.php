@@ -12,6 +12,7 @@ namespace App\Managers;
 use App\Entity\Report;
 use ClassesWithParents\E;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class ReportManager
@@ -67,6 +68,15 @@ class ReportManager
         $repository = $this->doctrine->getRepository(Report::class);
 
         return $repository->findAllReport(0);
+    }
+
+
+    public function getReportToDisplay(Request $request)
+    {
+        return $request->attributes->get('_route') === 'report' ?
+            $this->displayAllValidated() :
+            $this->displayAllUnvalidated()
+        ;
     }
 
 }

@@ -32,9 +32,8 @@ class FilterType extends AbstractType
         $builder
             ->add('route',ChoiceType::class,[
                 'choices' => [
-                    'Toutes les observations'  => 1,
-                    'Validés uniquement'       => 2,
-                    'En attente de validation' => 4,
+                    'Validés uniquement'       => 1,
+                    'En attente de validation' => 2,
                 ],
                 'required' => false,
                 'mapped'   => false

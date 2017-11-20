@@ -47,15 +47,12 @@ report:
     defaults:
         _controller: App\Controller\IndexController::browseReport
 
+
 addReport:
      path: /observations/nouvelle-observation
      defaults:
          _controller: App\Controller\IndexController::addReport
 
-unvalidatedReport:
-     path: /observations/en-attente-de-validation
-     defaults:
-         _controller: App\Controller\IndexController::browseUnvalidated
 
 notification:
      path: /notification

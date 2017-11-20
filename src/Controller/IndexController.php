@@ -42,24 +42,10 @@ class IndexController extends Controller
             ->processFilter($request)
         ;
 
+
         return $this->render('nao\browseReport.html.twig',[
             'filter' => $view[0],
             'reports'  => $view[1]
-        ]);
-    }
-
-    /**
-     * @Security("has_role('ROLE_VALIDATOR')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function browseUnvalidated()
-    {
-        $view =  $this->get('App\Managers\ReportManager')
-            ->displayAllUnvalidated()
-        ;
-
-        return $this->render('nao\browseReport.html.twig',[
-            'reports' => $view
         ]);
     }
 

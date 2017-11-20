@@ -33,12 +33,14 @@ class Search
         FormFactory   $formFactory,
         EntityManager $doctrine,
         ReportManager $reportManager,
+        TokenStorage  $token,
         AuthorizationChecker $authCheck
     )
     {
         $this->formFactory   = $formFactory;
         $this->doctrine      = $doctrine;
         $this->reportManager = $reportManager;
+        $this->token         = $token;
         $this->authCheck     = $authCheck;
     }
 
@@ -69,7 +71,6 @@ class Search
     public function processFilter(Request $request)
     {
 
-
         $filterForm = $this->getFormToGenerate();
         $filterForm->handleRequest($request);
 
@@ -88,27 +89,28 @@ class Search
             $order === 'addedOn' && $ordering === 1 ? $sort = 'DESC' : $sort = 'ASC';
 
 
+            $repository = $this->doctrine->getRepository(Report::class);
+
+
             if($bird === null)
             {
-                $repository = $this->doctrine->getRepository(Report::class);
 
                 return [
                     $filterForm->createView(),
-                    $repository->findSelection($validated , $sort, $order)
+                    $repository->findSelection($validated , $sort, $order),
                 ];
             }
 
-            $repository = $this->doctrine->getRepository(Report::class);
-
             return [
                 $filterForm->createView(),
-                $repository->findAllWithBirdName($bird->getId())
+                $repository->findSelectionWithBird($validated,$sort,$order,null,$bird),
             ];
+
         }
 
         return [
             $filterForm->createView(),
-            $this->reportManager->displayAllValidated()
+            $this->reportManager->getReportToDisplay($request),
         ];
     }
 
