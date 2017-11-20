@@ -9,7 +9,7 @@
 
 
     <div>
-        <h1 class="pageTitle">Observations {{ title }}</h1>
+        <h1 class="pageTitle">{{ title }}</h1>
     </div>
 
     <div class="filter">
@@ -32,6 +32,29 @@
             </div>
             {{ form_end(filter) }}
       </div>
+
+    {% if  birdId is defined and birdId != null %}
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre de spécimens</th>
+                    <th>Spécimens par observation</th>
+                    <th>Dernière observation</th>
+                    <th>Coordonnées</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{ birdId|statistics['population'] }}</th>
+                    <th>{{ birdId|statistics['avgByReport'] }}</th>
+                    <th>{{ birdId|lastReported['date'] }}</th>
+                    <th>{{ birdId|lastReported['satNav'] }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
 
     <div class="cardHolder">
         {% for report in reports %}

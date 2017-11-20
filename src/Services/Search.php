@@ -28,20 +28,23 @@ class Search
     private $reportManager;
     private $token;
     private $authCheck;
+    private $activitiesTracker;
 
     public function __construct(
-        FormFactory   $formFactory,
-        EntityManager $doctrine,
-        ReportManager $reportManager,
-        TokenStorage  $token,
-        AuthorizationChecker $authCheck
+        FormFactory          $formFactory,
+        EntityManager        $doctrine,
+        ReportManager        $reportManager,
+        TokenStorage         $token,
+        AuthorizationChecker $authCheck,
+        ActivitiesTracker    $activitiesTracker
     )
     {
-        $this->formFactory   = $formFactory;
-        $this->doctrine      = $doctrine;
-        $this->reportManager = $reportManager;
-        $this->token         = $token;
-        $this->authCheck     = $authCheck;
+        $this->formFactory       = $formFactory;
+        $this->doctrine          = $doctrine;
+        $this->reportManager     = $reportManager;
+        $this->token             = $token;
+        $this->authCheck         = $authCheck;
+        $this->activitiesTracker = $activitiesTracker;
     }
 
     public function processSearch(Request $request)
@@ -113,10 +116,23 @@ class Search
      * @param $validated
      * @return string
      */
-    public function getTitle($route, $validated)
+    public function getTitle($route,$validated)
     {
         return $route === 'report' || $validated === 1 ?
-            ' validées' : 'en attentes de validation'
+            'Observations validées' : 'Observations en attentes de validation'
+        ;
+    }
+
+    /**
+     * @param $bird
+     * @param $validated
+     * @return string
+     */
+    public function getBirdTitle($validated ,$bird)
+    {
+        return $validated === 1 ?
+            'Historique des observations: '.$bird :
+            'Observations en attentes de validation: '.$bird
         ;
     }
 
@@ -152,14 +168,16 @@ class Search
                 return [
                     $filterForm->createView(),
                     $repository->findSelection($validated , $sort, $order),
-                    $this->getTitle($route,$validated)
+                    $this->getTitle($route,$validated),
+                    null
                 ];
             }
 
             return [
                 $filterForm->createView(),
                 $repository->findSelectionWithBird($validated,$sort,$order,null,$bird->getBird()->getId()),
-                $this->getTitle($route,$validated)
+                $this->getBirdTitle($validated, $bird->getBird()->getSpeciesFr()),
+                $bird->getBird()->getId()
             ];
         }
     }

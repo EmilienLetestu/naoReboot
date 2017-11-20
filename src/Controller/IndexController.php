@@ -74,9 +74,10 @@ class IndexController extends Controller
         ;
 
         return $this->render('nao\browseReport.html.twig',[
-            'filter'  => $view[0],
-            'reports' => $view[1],
-            'title'   => $view[2]
+            'filter'    => $view[0],
+            'reports'   => $view[1],
+            'title'     => $view[2],
+            'birdId' => $view[3],
         ]);
     }
 
