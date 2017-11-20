@@ -497,7 +497,7 @@ class User implements AdvancedUserInterface, \Serializable
 
         $onHold = $this->getOnHold();
 
-        $onHold == true ? $accessLevel = 1 : $accessLevel = $this->getAccessLevel();
+        $onHold === true ? $accessLevel = 1 : $accessLevel = $this->getAccessLevel();
 
         $role = [1 => 'USER',
                  2 => 'VALIDATOR',

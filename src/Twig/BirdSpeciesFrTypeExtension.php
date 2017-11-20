@@ -32,6 +32,4 @@ class BirdSpeciesFrTypeExtension extends \Twig_Extension
 
     }
 
-
-
 }
