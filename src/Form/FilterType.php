@@ -30,6 +30,15 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('route',ChoiceType::class,[
+                'choices' => [
+                    'Toutes les observations'  => 1,
+                    'Validés uniquement'       => 2,
+                    'En attente de validation' => 4,
+                ],
+                'required' => false,
+                'mapped'   => false
+            ])
             ->add('order', ChoiceType::class,[
                     'choices' => [
                         'Les plus récentes'  => 1,
@@ -48,29 +57,6 @@ class FilterType extends AbstractType
                     'required' => false,
             ])
         ;
-
-        $user = $this->token->getToken()->getUser();
-
-        $builder->addEventListener(FormEvents::PRE_SET_DATA,
-           function(FormEvent $event) use ($user)
-           {
-                $form = $event->getForm();
-
-                if ($user->getAccessLevel() >= 2)
-                {
-                   $form->add('route',ChoiceType::class,[
-                    'choices' => [
-                        'Toutes les observations'  => 1,
-                        'Validés uniquement'       => 2,
-                        'En attente de validation' => 4,
-                    ],
-                    'required' => false,
-                    'mapped'   => false
-                    ]);
-                }
-           })
-        ;
-
     }
 }
 

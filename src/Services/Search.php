@@ -13,26 +13,33 @@ namespace App\Services;
 use App\Entity\Report;
 use App\Form\FilterType;
 use App\Form\SearchType;
+use App\Form\UserFilterType;
 use App\Managers\ReportManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class Search
 {
     private $formFactory;
     private $doctrine;
     private $reportManager;
+    private $token;
+    private $authCheck;
 
     public function __construct(
         FormFactory   $formFactory,
         EntityManager $doctrine,
-        ReportManager $reportManager
+        ReportManager $reportManager,
+        AuthorizationChecker $authCheck
     )
     {
-        $this->formFactory = $formFactory;
-        $this->doctrine    = $doctrine;
+        $this->formFactory   = $formFactory;
+        $this->doctrine      = $doctrine;
         $this->reportManager = $reportManager;
+        $this->authCheck     = $authCheck;
     }
 
     public function processSearch(Request $request)
@@ -61,19 +68,25 @@ class Search
      */
     public function processFilter(Request $request)
     {
-        $filterForm = $this->formFactory->create(FilterType::class);
 
+
+        $filterForm = $this->getFormToGenerate();
         $filterForm->handleRequest($request);
+
+        $user = $this->token->getToken()->getUser();
 
         if($filterForm->isSubmitted() && $filterForm->isValid())
         {
-            $route  = $filterForm->get('route')->getData();
+
+            $user->getOnHold() === true ? $route = 1 : $route = $filterForm->get('route')->getData();
             $ordering  = $filterForm->get('order')->getData();
             $bird   = $filterForm->get('bird')->getData();
 
-            $validated = $route !==4 ? $route = 1 : $route = 0;
+            //prepare query
+            $validated = $route === 1 ? $route = 1 : $route = 0;
             $ordering === 3 ? $order = 'bird' : $order = 'addedOn';
             $order === 'addedOn' && $ordering === 1 ? $sort = 'DESC' : $sort = 'ASC';
+
 
             if($bird === null)
             {
@@ -99,5 +112,16 @@ class Search
         ];
     }
 
+    /**
+     * Decide which form builder to call based on user role
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function getFormToGenerate()
+    {
+       return $this->authCheck->isGranted('ROLE_VALIDATOR')?
+           $this->formFactory->create(FilterType::class):
+           $this->formFactory->create(UserFilterType::class)
+       ;
+    }
 
 }

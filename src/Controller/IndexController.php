@@ -302,7 +302,7 @@ class IndexController extends Controller
      */
     public function statistics()
     {
-        $view = $this->get('App\Services\AdminBuilder')
+        $view = $this->get('App\Builders\AdminBuilder')
             ->buildStatistics()
         ;
 
