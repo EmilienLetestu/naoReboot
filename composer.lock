@@ -3699,16 +3699,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v3.3.12",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "04a06fe48fbbff978d4e2e4bdce9f8c1b3166dc3"
+                "reference": "85596136cc4d839366cbb02fdcf450e108fe25e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/04a06fe48fbbff978d4e2e4bdce9f8c1b3166dc3",
-                "reference": "04a06fe48fbbff978d4e2e4bdce9f8c1b3166dc3",
+                "url": "https://api.github.com/repos/symfony/form/zipball/85596136cc4d839366cbb02fdcf450e108fe25e3",
+                "reference": "85596136cc4d839366cbb02fdcf450e108fe25e3",
                 "shasum": ""
             },
             "require": {
@@ -3774,7 +3774,7 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-13T18:13:16+00:00"
+            "time": "2017-11-16T15:24:32+00:00"
         },
         {
             "name": "symfony/framework-bundle",
