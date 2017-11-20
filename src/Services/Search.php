@@ -28,15 +28,13 @@ class Search
     private $reportManager;
     private $token;
     private $authCheck;
-    private $activitiesTracker;
 
     public function __construct(
         FormFactory          $formFactory,
         EntityManager        $doctrine,
         ReportManager        $reportManager,
         TokenStorage         $token,
-        AuthorizationChecker $authCheck,
-        ActivitiesTracker    $activitiesTracker
+        AuthorizationChecker $authCheck
     )
     {
         $this->formFactory       = $formFactory;
@@ -44,7 +42,6 @@ class Search
         $this->reportManager     = $reportManager;
         $this->token             = $token;
         $this->authCheck         = $authCheck;
-        $this->activitiesTracker = $activitiesTracker;
     }
 
     public function processSearch(Request $request)
