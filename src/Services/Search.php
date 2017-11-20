@@ -64,8 +64,64 @@ class Search
         return $searchForm->createView();
     }
 
+    /**
+     * Decide which form builder to call based on user role
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function getFormToGenerate()
+    {
+        return $this->authCheck->isGranted('ROLE_VALIDATOR')?
+            $this->formFactory->create(FilterType::class):
+            $this->formFactory->create(UserFilterType::class)
+            ;
+    }
 
     /**
+     * create filter form
+     * @param Request $request
+     * @return array
+     */
+    public function createFilter(Request $request)
+    {
+        $filterForm = $this->getFormToGenerate();
+        $route = $request->attributes->get('_route');
+
+        return [
+            $filterForm->createView(),
+            $this->getReportToDisplay($request),
+            $this->getTitle($route,null)
+        ];
+    }
+
+    /**
+     * select report list based on url
+     * @param Request $request
+     * @return array|mixed
+     */
+    public function getReportToDisplay(Request $request)
+    {
+        $route = $request->attributes->get('_route');
+
+        return $route === 'report' ?
+            $this->reportManager->displayAllValidated() :
+            $this->reportManager->displayAllUnvalidated()
+        ;
+    }
+
+    /**
+     * @param $route
+     * @param $validated
+     * @return string
+     */
+    public function getTitle($route, $validated)
+    {
+        return $route === 'report' || $validated === 1 ?
+            ' validées' : 'en attentes de validation'
+        ;
+    }
+
+    /**
+     * create filter form and process it
      * @param Request $request
      * @return array
      */
@@ -79,7 +135,6 @@ class Search
 
         if($filterForm->isSubmitted() && $filterForm->isValid())
         {
-
             $user->getOnHold() === true ? $route = 1 : $route = $filterForm->get('route')->getData();
             $ordering  = $filterForm->get('order')->getData();
             $bird   = $filterForm->get('bird')->getData();
@@ -89,9 +144,7 @@ class Search
             $ordering === 3 ? $order = 'bird' : $order = 'addedOn';
             $order === 'addedOn' && $ordering === 1 ? $sort = 'DESC' : $sort = 'ASC';
 
-
             $repository = $this->doctrine->getRepository(Report::class);
-
 
             if($bird === null)
             {
@@ -99,52 +152,17 @@ class Search
                 return [
                     $filterForm->createView(),
                     $repository->findSelection($validated , $sort, $order),
+                    $this->getTitle($route,$validated)
                 ];
             }
-
 
             return [
                 $filterForm->createView(),
                 $repository->findSelectionWithBird($validated,$sort,$order,null,$bird->getBird()->getId()),
-
+                $this->getTitle($route,$validated)
             ];
-
         }
-
-        return [
-            $filterForm->createView(),
-            $this->getReportToDisplay($request),
-        ];
-    }
-
-    /**
-     * Decide which form builder to call based on user role
-     * @return \Symfony\Component\Form\FormInterface
-     */
-    public function getFormToGenerate()
-    {
-       return $this->authCheck->isGranted('ROLE_VALIDATOR')?
-           $this->formFactory->create(FilterType::class):
-           $this->formFactory->create(UserFilterType::class)
-       ;
-    }
-
-    public function getReportToDisplay(Request $request)
-    {
-        $route = $request->attributes->get('_route');
-
-       if($route === 'report')
-       {
-           return $this->reportManager->displayAllValidated();
-       }
-
-       if($route === 'unvalidatedReport')
-       {
-           return $this->reportManager->displayAllUnvalidated();
-       }
-
-       return $this->processFilter($request);
-
     }
 
 }
+

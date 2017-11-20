@@ -39,25 +39,13 @@ class IndexController extends Controller
     public function browseReport(Request $request)
     {
         $view =  $this->get('App\Services\Search')
-            ->processFilter($request)
-        ;
-
-
-        return $this->render('nao\browseReport.html.twig',[
-            'filter' => $view[0],
-            'reports'  => $view[1]
-        ]);
-    }
-
-    public function search(Request $request)
-    {
-        $view =  $this->get('App\Services\Search')
-            ->processFilter($request)
+            ->createFilter($request)
         ;
 
         return $this->render('nao\browseReport.html.twig',[
-            'filter' => $view[0],
-            'reports'  => $view[1]
+            'filter'   => $view[0],
+            'reports'  => $view[1],
+            'title'    => $view[2]
         ]);
     }
 
@@ -68,14 +56,30 @@ class IndexController extends Controller
     public function browseUnvalidated(Request $request)
     {
         $view =  $this->get('App\Services\Search')
+            ->createFilter($request)
+        ;
+
+        return $this->render('nao\browseReport.html.twig',[
+            'filter'   => $view[0],
+            'reports'  => $view[1],
+            'title'    => $view[2]
+        ]);
+    }
+
+
+    public function search(Request $request)
+    {
+        $view =  $this->get('App\Services\Search')
             ->processFilter($request)
         ;
 
         return $this->render('nao\browseReport.html.twig',[
-            'filter' => $view[0],
-            'reports'  => $view[1]
+            'filter'  => $view[0],
+            'reports' => $view[1],
+            'title'   => $view[2]
         ]);
     }
+
 
     /**
      * @param AuthenticationUtils $authUtils
