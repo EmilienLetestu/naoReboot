@@ -199,7 +199,6 @@ class AdminBuilder
           $birdList[] = $report->getBird()->getId();
         }
 
-
         return array_count_values($birdList);
     }
 }
