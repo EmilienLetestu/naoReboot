@@ -59,6 +59,7 @@
 
     <div class="cardHolder">
         {% for report in reports %}
+            <input type="hidden"  class="locations" value="{{ report.satNav }}">
             {{ include('nao/reportCard.html.twig') }}
         {% endfor %}
     </div>
