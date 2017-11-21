@@ -310,7 +310,15 @@ footer .list-group
     height: 200px;
 }
 
+.noCmtCard{
+    text-align: center;
+    padding-top: 5%;
+    color: #ffa500;
+}
 
+.quantity{
+    text-align: center;
+}
 /*---------------------------profile-------------------------*/
 
 .accountScore

@@ -51,8 +51,13 @@
     </ul>
     <div>
         <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
-        <a class="btn btn-outline" href="#">Lire le commentaire</a>
-    {% if app.request.get('_route') == ('unvalidatedReport') %}
+        {% if report.comment != null %}
+            <a class="btn btn-outline" href="#">Lire le commentaire</a>
+        {% endif %}
+        {% if report.comment == null %}
+            <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>
+        {% endif %}
+        {% if app.request.get('_route') == ('unvalidatedReport') %}
         <ul class="list-inline">
             <li class="list-inline-item">
                 <a href="{{ path('validateReport', {'reportId': report.id}) }}">
@@ -63,7 +68,7 @@
                 {{ report.validationScore }} / 5
             </li>
         </ul>
-    {% endif %}
+        {% endif %}
     </div>
 </div>
 
