@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 
@@ -28,8 +29,15 @@ class UpdateHomeType extends AbstractType
                                 'required' => false
             ])
             ->add('picture', FileType::class, [
-                                'required' => false,
-                                'label'    => 'Modifier l\'image',
+                                'constaints' =>[ new File([
+                                                    'mimeTypes' => [
+                                                        'image/jpeg',
+                                                        'image/png'
+                                                    ]
+                                ])
+                                ],
+                                'required'   => false,
+                                'label'      => 'Modifier l\'image',
 
             ])
             ->add('pictNum', HiddenType::class)
@@ -37,3 +45,4 @@ class UpdateHomeType extends AbstractType
 
     }
 }
+
