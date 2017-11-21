@@ -34,6 +34,7 @@
       </div>
 
     {% if  birdId is defined and birdId != null %}
+    <div id ="map"></div>"
     <div>
         <table class="table">
             <thead>
@@ -58,9 +59,16 @@
 
     <div class="cardHolder">
         {% for report in reports %}
+            <input type="hidden" id="mapSatNav{{ loop.index }}" class="locations" value="{{ report.satNav }}">
             {{ include('nao/reportCard.html.twig') }}
         {% endfor %}
     </div>
 
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('vueJs/ux.js') }}"></script>
+    <script src="{{ asset('js/map.js') }}"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg&callback=initMap"
+            type="text/javascript"></script>
 {% endblock %}
 

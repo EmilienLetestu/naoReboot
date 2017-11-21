@@ -319,6 +319,11 @@ footer .list-group
 .quantity{
     text-align: center;
 }
+
+#map{
+    height: 400px;
+    width:100%;
+}
 /*---------------------------profile-------------------------*/
 
 .accountScore
