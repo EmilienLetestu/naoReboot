@@ -64,15 +64,23 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <div id="birdStatMap{{ loop.index }}" class="gMap"></div>
+                    <div id="birdStatMap{{ loop.index }}" class="gMap">
                     {% for report in key|birdLocation %}
-                    <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav }}">
+                    <input type="hidden" id="reportMapSatNav{{ loop.index }}" class="birdLocation_{{ report.bird.id }}" value="{{ report.satNav }}">
                     {% endfor %}
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 {% endblock %}
-
+{% block javascripts %}
+    <script src="{{ asset('vueJs/ux.js') }}"></script>
+    {% if app.request.attributes.get('_route') == 'bird' %}
+        <script src="{{ asset('js/birdMap.js') }}"></script>
+    {% endif %}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg&callback=initMap"
+            type="text/javascript"></script>
+{% endblock %}
 
