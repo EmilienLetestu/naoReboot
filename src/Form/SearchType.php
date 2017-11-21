@@ -20,11 +20,11 @@ class SearchType extends AbstractType
     {
        $builder
            ->add('bird', EntityType::class, [
-                    'class'        => 'App:Bird',
-                    'choice_label' => function(Bird $bird){
-                        return $bird->getSpeciesNameOnly();
-                    },
-                    'placeholder' => 'Rechercher une espèce'
+                                'class'        => 'App:Bird',
+                                'choice_label' => function(Bird $bird){
+                                         return $bird->getSpeciesNameOnly();
+                                },
+                                'placeholder' => 'Rechercher une espèce'
        ]);
     }
 }

@@ -20,30 +20,28 @@ class FilterType extends AbstractType
     {
         $builder
             ->add('route',ChoiceType::class,[
-                'choices' => [
-                    'Validés uniquement'       => 1,
-                    'En attente de validation' => 2,
-                ],
-                'placeholder' => 'Filtrer par statut',
-                'required' => false,
-                'mapped'   => false
+                                'choices' => [  'Validés uniquement'       => 1,
+                                                'En attente de validation' => 2,
+                                ],
+                                'placeholder' => 'Filtrer par statut',
+                                'required' => false,
+                                'mapped'   => false
             ])
             ->add('order', ChoiceType::class,[
-                'choices' => [
-                    'Les plus récentes'  => 1,
-                    'les plus anciennes' => 2,
-                    'A-Z'                => 3
-                ],
-                'placeholder' => 'Ordre d\'affichage',
-                'required' => false,
-                'mapped'   => false
+                                'choices' => [  'Les plus récentes'  => 1,
+                                                'les plus anciennes' => 2,
+                                                'A-Z'                => 3
+                                ],
+                                'placeholder' => 'Ordre d\'affichage',
+                                'required' => false,
+                                'mapped'   => false
             ])
             ->add('bird', EntityType::class, [
-                'class' => 'App:Report',
-                'choice_label' => 'bird.getSpeciesForForm',
-                'choice_value' => 'bird.id',
-                'placeholder' => 'Rechercher une espèce',
-                'required' => false,
+                                'class' => 'App:Report',
+                                'choice_label' => 'bird.getSpeciesForForm',
+                                'choice_value' => 'bird.id',
+                                'placeholder' => 'Rechercher une espèce',
+                                'required' => false,
             ])
         ;
     }

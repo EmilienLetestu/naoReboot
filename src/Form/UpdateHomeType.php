@@ -22,12 +22,14 @@ class UpdateHomeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('species', TextType::class,['constraints'=>[new NotBlank()],
-                                              'label' => 'Nom de l\'espèce',
-                                               'required' => false
+            ->add('species', TextType::class,[
+                                'constraints'=>[ new NotBlank()],
+                                'label' => 'Nom de l\'espèce',
+                                'required' => false
             ])
-            ->add('picture', FileType::class, ['required' => false,
-                                               'label'    => 'Modifier l\'image',
+            ->add('picture', FileType::class, [
+                                'required' => false,
+                                'label'    => 'Modifier l\'image',
 
             ])
             ->add('pictNum', HiddenType::class)

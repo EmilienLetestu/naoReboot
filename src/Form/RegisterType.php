@@ -34,56 +34,65 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class,['constraints'=>[new NotBlank(),
-                                                           new Type('string'),
-                                                           new Length([
-                                                               'min'        => 3,
-                                                               'max'        => 30,
-                                                               'minMessage' => 'Le prénom doit comporter 3 lettres au minimun',
-                                                               'maxMessage' => 'Le prénom ne peut excéder 30 lettres']),
-                                                           ],
-                                            'label' => 'Prénom'
+            ->add('name', TextType::class,[
+                                'constraints'=>[ new NotBlank(),
+                                                 new Type('string'),
+                                                 new Length([
+                                                     'min'        => 3,
+                                                     'max'        => 30,
+                                                     'minMessage' => 'Le prénom doit comporter 3 lettres au minimun',
+                                                     'maxMessage' => 'Le prénom ne peut excéder 30 lettres'
+                                                 ])
+                                ],
+                                'label' => 'Prénom'
             ])
 
-            ->add('surname', TextType::class,['constraints'=>[new NotBlank(),
-                                                              new Type('string'),
-                                                              new Length([
-                                                                   'min'        => 3,
-                                                                   'max'        => 30,
-                                                                   'minMessage' => 'Le prénom doit comporter 3 lettres au minimun',
-                                                                   'maxMessage' => 'Le prénom ne peut excéder 30 lettres']),
-                                                              ],
-                                            'label' => 'Nom'
+            ->add('surname', TextType::class,[
+                                'constraints'=>[ new NotBlank(),
+                                                 new Type('string'),
+                                                 new Length([
+                                                     'min'        => 3,
+                                                     'max'        => 30,
+                                                     'minMessage' => 'Le prénom doit comporter 3 lettres au minimun',
+                                                     'maxMessage' => 'Le prénom ne peut excéder 30 lettres'
+                                                 ]),
+                                ],
+                                'label' => 'Nom'
             ])
 
-            ->add('email', EmailType::class,['constraints'=>[new NotBlank(),
-                                                                       new Email([
-                                                                           'message' => 'Ceci n\'est pas un email valide']),
-                                                                       ],
-                                                        'label' => 'E-mail'
+            ->add('email', EmailType::class,[
+                                'constraints'=>[ new NotBlank(),
+                                                 new Email(['message' => 'Ceci n\'est pas un email valide']),
+                                ],
+                                'label' => 'E-mail'
             ])
 
-            ->add('pswd', PasswordType::class,['constraints'=>[new NotBlank(),
-                                                                         new PswdFormat(),
-                                                                         new Type('string'),
-                                                                         new Length([
-                                                                             'min'        => 6,
-                                                                             'max'        => 30,
-                                                                             'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
-                                                                             'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'])
-                                                                         ],
-                                                           'label' => 'Mot de passe'
+            ->add('pswd', PasswordType::class,[
+                                'constraints'=>[ new NotBlank(),
+                                                 new PswdFormat(),
+                                                 new Type('string'),
+                                                 new Length([
+                                                     'min'        => 6,
+                                                     'max'        => 30,
+                                                     'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
+                                                     'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'
+                                                 ])
+
+                                ],
+                                'label' => 'Mot de passe'
             ])
 
-            ->add('accessLevel', ChoiceType::class,['label'   => 'Vous êtes',
-                                                               'choices' => ['un passioné d\'ornithologie' => 1,
-                                                                             'un professionnel'            => 2
-                                                               ]
+            ->add('accessLevel', ChoiceType::class,[
+                                'label'   => 'Vous êtes',
+                                'choices' => ['un passioné d\'ornithologie' => 1,
+                                              'un professionnel'            => 2
+                                ]
             ])
 
-            ->add('termsAgreement', CheckboxType::class,['label'     => 'J\'accepte les conditions générales d\'utilisation',
-                                                                    'required'  => true,
-                                                                     'mapped'   => false
+            ->add('termsAgreement', CheckboxType::class,[
+                                'label'     => 'J\'accepte les conditions générales d\'utilisation',
+                                'required'  => true,
+                                'mapped'    => false
             ])
         ;
     }

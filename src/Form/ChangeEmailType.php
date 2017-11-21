@@ -21,16 +21,17 @@ class ChangeEmailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
        $builder
-           ->add('email', EmailType::class,['constraints'=>[new NotBlank(),
-                                                                      new Email(['message' => 'Ceci n\'est pas un email valide']),
-                                                                      ],
-                                                       'label' => 'Nouvell adresse email'
+           ->add('email', EmailType::class,[
+                            'constraints'=>[ new NotBlank(),
+                                             new Email(['message' => 'Ceci n\'est pas un email valide']),
+                                           ],
+                            'label' => 'Nouvell adresse email'
            ])
 
-           ->add('confirmEmail', EmailType::class,['constraints'=>[new NotBlank()],
-                                                              'label'  => 'confirmer l\'adresse',
-                                                              'mapped' => false
-
+           ->add('confirmEmail', EmailType::class,[
+                            'constraints'=>[new NotBlank()],
+                            'label'  => 'confirmer l\'adresse',
+                            'mapped' => false
            ])
        ;
     }

@@ -22,8 +22,9 @@ class AskResetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
        $builder
-           ->add('email', EmailType::class, ['constraints' => [new NotBlank(),
-                                                                         new Email(['message' => 'Ceci n\'est pas un email valide'])]
+           ->add('email', EmailType::class, [
+                            'constraints' => [new NotBlank(),
+                                              new Email(['message' => 'Ceci n\'est pas un email valide'])]
            ])
        ;
     }

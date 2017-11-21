@@ -24,21 +24,24 @@ class Login extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('_username',EmailType::class,['constraints'=>[new NotBlank(),
-                                                                          new Email(['message' => 'Ceci n\'est pas un emazil valide']),
-                                                                          ],
-                                                           'label' => 'E-mail'
+            ->add('_username',EmailType::class,[
+                                'constraints'=>[ new NotBlank(),
+                                                 new Email(['message' => 'Ceci n\'est pas un emazil valide']),
+                                ],
+                                'label' => 'E-mail'
             ])
-            ->add('_password', PasswordType::class,['constraints'=>[new NotBlank(),
-                                                                              new PswdFormat(),
-                                                                              new Type('string'),
-                                                                              new Length([
-                                                                                  'min'        => 6,
-                                                                                  'max'        => 30,
-                                                                                  'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
-                                                                                  'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'])
-                                                                              ],
-                                                               'label' => 'Mot de passe'
+            ->add('_password', PasswordType::class,[
+                                'constraints'=>[new NotBlank(),
+                                                new PswdFormat(),
+                                                new Type('string'),
+                                                new Length([
+                                                    'min'        => 6,
+                                                    'max'        => 30,
+                                                    'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
+                                                    'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'
+                                                ])
+                                ],
+                                'label' => 'Mot de passe'
             ])
         ;
     }

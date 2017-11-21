@@ -31,45 +31,52 @@ class ReportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('bird', EntityType::class, ['constraints'=>[new NotBlank()],
-                                                         'class'        => 'App:Bird',
-                                                         'choice_label' => function(Bird $bird){
-                                                             return $bird->getSpeciesForForm();
-                                                         }
+            ->add('bird', EntityType::class, [
+                            'constraints'  =>[new NotBlank()],
+                            'class'        => 'App:Bird',
+                            'choice_label' => function(Bird $bird){
+                                return $bird->getSpeciesForForm();
+                            }
             ])
 
-            ->add('nbrOfBirds', IntegerType::class, ['constraints'=>[new Type('numeric'),
-                                                                               new Range([
-                                                                                   'min' => 1,
-                                                                                   'max' => 30,
-                                                                                   'minMessage' => 'Le nombre minimum est 1',
-                                                                                   'maxMessage' => 'Le nombre Maximum est 30'])
-                                                                               ],
-                                                                'label' => 'Spécimens observés'
+            ->add('nbrOfBirds', IntegerType::class, [
+                            'constraints'=>[ new Type('numeric'),
+                                             new Range([
+                                                 'min' => 1,
+                                                 'max' => 30,
+                                                 'minMessage' => 'Le nombre minimum est 1',
+                                                 'maxMessage' => 'Le nombre Maximum est 30'
+                                             ])
+                            ],
+                            'label' => 'Spécimens observés'
             ])
 
-            ->add('addedOn', DateType::class, ['label' => 'Date',
-                                                         'widget' => 'choice',
-                                                         'html5'  =>  false,
-                                                         'format' => 'dd-MM-yyyy'
+            ->add('addedOn', DateType::class, [
+                            'label'  => 'Date',
+                            'widget' => 'choice',
+                            'html5'  =>  false,
+                            'format' => 'dd-MM-yyyy'
             ])
 
-            ->add('comment', TextareaType::class, ['constraints' => [new CommentLength()],
-                                                             'mapped'   => false,
-                                                             'trim'     => true,
-                                                             'label'    => 'Commentaire',
-                                                             'required' => false
+            ->add('comment', TextareaType::class, [
+                            'constraints' => [new CommentLength()],
+                            'mapped'      => false,
+                            'trim'        => true,
+                            'label'       => 'Commentaire',
+                            'required'    => false
             ])
 
-            ->add('pictRef', FileType::class, ['required' => false,
-                                                          'label'    => 'Ajouter une Image',
-                                                          'mapped'   => false
+            ->add('pictRef', FileType::class, [
+                            'required' => false,
+                            'label'    => 'Ajouter une Image',
+                            'mapped'   => false
             ])
 
             ->add('location', TextType::class, [
-                                                           'label'  => 'lieu'
+                            'label'  => 'lieu'
             ])
-            ->add('satNav', HiddenType::class, ['constraints' =>[new NotBlank()]
+            ->add('satNav', HiddenType::class, [
+                'constraints' =>[new NotBlank()]
             ])
         ;
     }
