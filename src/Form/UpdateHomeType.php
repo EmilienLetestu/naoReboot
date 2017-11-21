@@ -29,7 +29,7 @@ class UpdateHomeType extends AbstractType
                                 'required' => false
             ])
             ->add('picture', FileType::class, [
-                                'constaints' =>[ new File([
+                                'constraints' =>[ new File([
                                                     'mimeTypes' => [
                                                         'image/jpeg',
                                                         'image/png'

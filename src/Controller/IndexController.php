@@ -77,7 +77,7 @@ class IndexController extends Controller
             'filter'    => $view[0],
             'reports'   => $view[1],
             'title'     => $view[2],
-            'birdId' => $view[3],
+            'birdId'    => $view[3],
         ]);
     }
 

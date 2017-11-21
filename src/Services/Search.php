@@ -161,23 +161,21 @@ class Search
 
             if($bird === null)
             {
-
                 return [
                     $filterForm->createView(),
                     $repository->findSelection($validated , $sort, $order),
                     $this->getTitle($route,$validated),
                     null
+
                 ];
             }
-
             return [
                 $filterForm->createView(),
                 $repository->findSelectionWithBird($validated,$sort,$order,null,$bird->getBird()->getId()),
                 $this->getBirdTitle($validated, $bird->getBird()->getSpeciesFr()),
-                $bird->getBird()->getId()
+                $bird->getBird()->getId(),
             ];
         }
     }
-
 }
 
