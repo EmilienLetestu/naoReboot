@@ -324,6 +324,11 @@ footer .list-group
     height: 400px;
     width:100%;
 }
+
+.gMap{
+    height: 450px;
+    width: 100%;
+}
 /*---------------------------profile-------------------------*/
 
 .accountScore
