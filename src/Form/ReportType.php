@@ -22,6 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Type;
@@ -67,9 +68,16 @@ class ReportType extends AbstractType
             ])
 
             ->add('pictRef', FileType::class, [
-                            'required' => false,
-                            'label'    => 'Ajouter une Image',
-                            'mapped'   => false
+                            'constraints' =>[ new File([
+                                                'mimeTypes' => [
+                                                    'image/jpeg',
+                                                    'image/png'
+                                                ]
+                            ])
+                            ],
+                            'required'    => false,
+                            'label'       => 'Ajouter une Image',
+                            'mapped'      => false
             ])
 
             ->add('location', TextType::class, [
