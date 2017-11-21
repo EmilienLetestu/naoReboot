@@ -62,6 +62,14 @@
                     </table>
                 </td>
             </tr>
+            <tr>
+                <td colspan="3">
+                    <div id="birdStatMap{{ loop.index }}" class="gMap"></div>
+                    {% for report in key|birdLocation %}
+                    <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav }}">
+                    {% endfor %}
+                </td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>

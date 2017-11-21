@@ -9,9 +9,14 @@
             </li>
         </ul>
     </div>
-    <div class="birdImg">
+
+    <div class="birdImg"  v-if="picture">
         <img src="{{ asset('/userImages/'~report.pictRef) }}" alt="observation de {{ report.bird.speciesFr }}"   style="width: 100%"/>
     </div>
+
+    <div id="reportMap{{ loop.index }}" class="gMap"></div>
+    <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav }}">
+
     <ul class="list-inline info1">
         <li class="list-inline-item">
             {% if app.request.get('_route') != ('unvalidatedReport') %}
