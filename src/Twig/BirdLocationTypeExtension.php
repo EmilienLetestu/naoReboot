@@ -34,6 +34,6 @@ class BirdLocationTypeExtension extends \Twig_Extension
     {
         $repository = $this->doctrine->getRepository(Report::class);
 
-       return $report = $repository->findByBird($birdId);
+       return $repository->findByBird($birdId);
     }
 }

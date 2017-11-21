@@ -24,5 +24,5 @@ function initMap() {
             map: map
         });
     }
-
 }
+
