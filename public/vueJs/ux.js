@@ -97,7 +97,6 @@ new Vue({
            this.map = btn;
            this.bird = btn;
         }
-
     }
 });
 
