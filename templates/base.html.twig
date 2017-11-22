@@ -38,8 +38,7 @@
             {% endif %}
             {% if is_granted('ROLE_USER') %}
             <div class="nav navbar-nav ml-auto">
-
-                   <i class="fa fa-user-circle-o" aria-hidden="true" id="accountBadge"  v-on:mouseover="show = true"></i>
+                <i class="fa fa-user-circle-o" aria-hidden="true"  id="accountBadge"  v-on:mouseover="show = true"></i>
             </div>
                 <div id="dashboard" v-if="show">
                     <ul v-on:mouseleave="show= false">
