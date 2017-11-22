@@ -25,12 +25,17 @@ function initMap() {
         });
     }
 
+    google.maps.event.addListener(map, 'idle', function(){
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter(latLng);
+    });
+
     //bird map
     var center = new google.maps.LatLng(46.7667, 2.45);
     var birdLocations = document.getElementsByClassName('locations');
     var birdMap = new google.maps.Map(document.getElementById('map'), {
         zoom: 5,
-        center:  center,
+        center:  center
 
     });
 

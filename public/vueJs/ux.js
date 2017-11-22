@@ -12,7 +12,10 @@ new Vue({
         pswd:'',
         email:'',
         submit: false,
-        confirmPswd:''
+        confirmPswd:'',
+        info: null,
+        map: null,
+        bird: null
     },
     computed:{
         missingName: function () {
@@ -85,7 +88,16 @@ new Vue({
             if(btn === 3){
                 document.getElementById('pictRef').value = "3";
             }
+        },
+        showInfo: function(btn){
+          this.info = btn;
+        },
+
+        showMap: function (btn) {
+           this.map = btn;
+           this.bird = btn;
         }
+
     }
 });
 
