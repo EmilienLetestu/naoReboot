@@ -24,11 +24,12 @@ class IndexController extends Controller
     public function home(Request $request)
     {
 
-        $view = $this->get('App\Managers\ReportManager')
-            ->displayHomePageReport();
+        $view = $this->get('App\Builders\HomePageBuilder')
+            ->buildHomePage();
 
         return $this->render('nao\home.html.twig',[
-            'reports'=>$view
+            'reports' => $view[0],
+            'homeImg' => $view[1]
         ]);
     }
 

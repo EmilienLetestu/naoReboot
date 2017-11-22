@@ -33,20 +33,20 @@
         </table>
     </div>
 
-    <div>
-        <h2>Modifier la page d'accueil</h2>
+    <h2>Modifier la page d'accueil</h2>
+    <div class="mostWanted">
         {% for img in homeImg %}
 
             <div class="img" >
                 <img src="{{ asset('/naoPictures/'~img) }}">
                 <span class ="imgTitle">{{ img|speciesFromFile }}</span>
-                <button v-on:click="pictNumber({{ loop.index }},$event)" class="btn btn-outline" value="{{ loop.index }}">
+                <button v-on:click="pictNumber({{ loop.index }},$event)" class="btn btn-outline updateHome" value="{{ loop.index }}">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
             </div>
         {% endfor %}
     </div>
-    <div v-show="seen">
+    <div class="modalForm" v-show="seen">
         <i v-on:click="close" class="material-icons">close</i>
         {{ form_start(form) }}
         <div class="form-group col-sm-6">

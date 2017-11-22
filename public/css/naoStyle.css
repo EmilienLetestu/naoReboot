@@ -54,6 +54,18 @@ h1
     margin-bottom: 3%;
 }
 
+.modalForm
+{
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    background: white;
+    -webkit-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
+    -moz-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
+    box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
+    padding: 3%;
+}
+
 /*---------------------buttons and link------------------*/
 
 #connection .btn-outline:hover,
@@ -247,6 +259,20 @@ footer .list-group
     font-size: 1.5rem;
     color: #FFFFFF;
 }
+/*---------------------------home page---------------------------*/
+
+.mostWanted{
+    display: flex;
+    background-color: #dfdfdf;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    padding-left: 3%;
+    justify-content: center;
+}
+.img{
+    width: 30%;
+}
+
 /*---------------------------report card-------------------------*/
 .cardHolder
 {
@@ -359,18 +385,6 @@ footer .list-group
     margin-bottom: 3%;
 }
 
-#pswdModal
-{
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    background: white;
-    -webkit-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
-    -moz-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
-    box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
-    padding: 3%;
-}
-
 #pswdModal i
 {
     margin-top: 1px;
@@ -409,22 +423,32 @@ footer .list-group
 
 /*---------------------------admin home-------------------------*/
 
-
 .img img{
-    width: 25%;
+    height: 370px;
+    width: 400px;
 }
+
 .imgTitle{
+    display: inline-block;
     position: relative;
-    left: -200px;
+    top: -200px;
+    text-align: center;
+    width: 400px;
     color: white;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 .img button{
     position: relative;
-    top: -40px;
-    left: -60px;
+    top: -418px;
+    left: 81.5%;
     color: orange;
+    background-color: transparent!important;
+    border: none;
+    font-size: 1.5em;
 }
+
+
+
 
 /*---------------------------admin menu------------------------------*/
 #adminNav{

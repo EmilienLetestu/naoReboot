@@ -37,7 +37,7 @@
     </div>
 
     {% if app.user.id == app.request.get('id') %}
-    <div id="pswdModal" v-if="seen">
+    <div class="modalForm" id="pswdModal" v-if="seen">
         <i v-on:click="close" class="material-icons">close</i>
             {{ form_start(accountInfo.updatePswd, {'attr':{'id':'changePswd', 'v-on:submit':'validateChangePswd'}}) }}
             <div class="form-group col-sm-6">
