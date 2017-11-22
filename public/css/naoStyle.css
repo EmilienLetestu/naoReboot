@@ -325,9 +325,17 @@ footer .list-group
     width:100%;
 }
 
-.gMap{
+.gBird{
     height: 450px;
     width: 100%;
+}
+
+.gMap{
+    height: 200px;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 40px;
 }
 /*---------------------------profile-------------------------*/
 
