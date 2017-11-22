@@ -79,7 +79,7 @@ class Mails
     {
         $message = (new \Swift_Message('Modification du mot de passe'));
         $message
-            ->setFrom('modification_du_mot_passe@nao.fr')
+            ->setFrom('nao@gmail.com')
             ->setTo($email)
             ->setBody($this->twig->render('resetPswdMail.html.twig', [
                 'name'    => $name,
