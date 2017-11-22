@@ -10,6 +10,7 @@
     </div>
 
     {{ include('admin/adminNav.html.twig') }}
+
     <div class="memberList">
         <table class="table">
             <thead>
@@ -29,10 +30,12 @@
                         {{ user.createdOn|date('d/m/Y') }}
                     </td>
                     <td>
-                        <i class="material-icons">add</i>
+                        <button class="btn btn-success" v-on:click="showInfo({{ loop.index }})" value="{{ loop.index }}">
+                            <i class="material-icons">add</i>
+                        </button>
                     </td>
                 </tr>
-                <tr>
+                <tr v-if="info == {{ loop.index }}" class="info{{ loop.index }}">
                     <td colspan="3">
                         <div class="accountDetails">
                             <span class="accountScore">
@@ -50,12 +53,12 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr v-if="info == {{ loop.index }}">
                     <td colspan="3">
                         {{ include('admin/actions.html.twig') }}
                     </td>
                 </tr>
-                <tr>
+                <tr v-if="info == {{ loop.index }}">
                     <td colspan="3">
                         <table>
                             <thead>
