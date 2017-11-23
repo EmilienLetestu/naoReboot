@@ -583,3 +583,34 @@ footer .list-group
 
 }
 
+/*-------------About us------------------*/
+#aboutUs{
+    background-color: #c3c3c3;
+    padding: 4%;
+}
+.aboutNao{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.aboutNao:nth-child(2){
+    margin-top: 2%;
+    flex-flow: row-reverse;
+}
+
+.aboutNao p,
+.aboutNao h2{
+    width: 50%;
+}
+
+.aboutNao h2{
+    text-align: center;
+    font-size: 2.5em;
+    color: #FFA500;
+}
+.aboutNao P{
+    text-align: justify;
+}
+
+
