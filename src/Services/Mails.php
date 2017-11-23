@@ -79,7 +79,7 @@ class Mails
     {
         $message = (new \Swift_Message('Modification du mot de passe'));
         $message
-            ->setFrom('nao@gmail.com')
+            ->setFrom('admin@nao.fr')
             ->setTo($email)
             ->setBody($this->twig->render('resetPswdMail.html.twig', [
                 'name'    => $name,
@@ -89,6 +89,31 @@ class Mails
                 'expireOn'=> date('Y-m-d', strtotime('+2 day'))
             ]),
                 'text/html'
+            )
+        ;
+        return $message;
+    }
+
+    /**
+     * @param $fullname
+     * @param $email
+     * @param $subject
+     * @param $text
+     * @return \Swift_Message
+     */
+    public function contactMail($fullname, $email, $subject, $text)
+    {
+        $message = (new \Swift_Message($subject));
+        $message
+            ->setFrom($email)
+            ->setTo('contact@nao.fr')
+            ->setBody($this->twig->render('contactMail.html.twig',[
+                'fullname'   => $fullname,
+                'date'       => date('m-d-Y'),
+                'message'    => $text,
+                'subject'    => $subject
+            ]),
+            'text/html'
             )
         ;
         return $message;
