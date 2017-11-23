@@ -251,6 +251,11 @@ class IndexController extends Controller
         return $this->render('nao\terms.html.twig');
     }
 
+    public function aboutUs()
+    {
+        return $this->render('nao\aboutUs.html.twig');
+    }
+
 
     /**
      * @param Request $request
