@@ -16,8 +16,8 @@
             <thead>
                 <tr>
                     <th><i class="material-icons">person</i></th>
-                    <th><i class="material-icons">date_range</i></th>
-                    <th><i class="material-icons">info_outline</i></th>
+                    <th class="centered"><i class="material-icons">date_range</i></th>
+                    <th class="centered"><i class="material-icons">info_outline</i></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,10 +26,10 @@
                     <td>
                         {{ user.surname }} {{ user.name }}
                     </td>
-                    <td>
+                    <td class="centered">
                         {{ user.createdOn|date('d/m/Y') }}
                     </td>
-                    <td>
+                    <td class="centered">
                         <button class="btn btn-success" v-on:click="showInfo({{ loop.index }})" value="{{ loop.index }}">
                             <i class="material-icons">add</i>
                         </button>
@@ -60,7 +60,7 @@
                 </tr>
                 <tr v-if="info == {{ loop.index }}">
                     <td colspan="3">
-                        <table>
+                        <table class="resume">
                             <thead>
                             <tr>
                                 <th>Total d'observations</th>

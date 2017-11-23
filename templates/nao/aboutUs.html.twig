@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <div>
+    <div id="about">
         <h1 class="pageTitle">Nao, qui sommes-nous ?</h1>
     </div>
 
@@ -40,7 +40,7 @@
         <h2>Nos partenaires</h2>
     </div>
     <div id="contact">
-        <h2>Nous contacter</h2>
+        <h2 id="contactUs">Nous contacter</h2>
         <div>
             {{ form_start(form,{'attr':{'id':'contatcForm'}}) }}
             <div id="senderInfo">

@@ -66,6 +66,14 @@ h1
     padding: 3%;
 }
 
+.resume{
+    width: 100%;
+}
+
+.centered{
+    text-align: center;
+}
+
 /*---------------------buttons and link------------------*/
 
 #connection .btn-outline:hover,
@@ -435,7 +443,9 @@ footer .list-group
     text-align: center;
     width: 400px;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.8em;
+    text-shadow: 4px 4px 1px rgba(3, 3, 3,1);
+    font-weight: 600;
 }
 .img button{
     position: relative;
