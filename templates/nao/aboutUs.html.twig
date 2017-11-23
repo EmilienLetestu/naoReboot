@@ -36,10 +36,31 @@
             </p>
         </div>
     </div>
-    <div>
+    <div id="partnership">
         <h2>Nos partenaires</h2>
     </div>
-    <div>
+    <div id="contact">
         <h2>Nous contacter</h2>
+        <div>
+            {{ form_start(form,{'attr':{'id':'contatcForm'}}) }}
+            <div id="senderInfo">
+                <div class ="form-group-row">
+                    {{ form_widget(form.fullname) }}
+                </div>
+                <div class ="form-group-row">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class ="form-group-row">
+                    {{ form_widget(form.subject) }}
+                </div>
+            </div>
+                <div class ="form-group-row">
+                    {{ form_widget(form.message,{'attr':{'cols':'180', 'rows':'10'}}) }}
+                </div>
+                <div class="form-group-row">
+                    <button class="btn btn-success" type="submit">Valider</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
