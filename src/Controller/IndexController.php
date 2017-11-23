@@ -246,6 +246,11 @@ class IndexController extends Controller
         ]);
     }
 
+    public function terms()
+    {
+        return $this->render('nao\terms.html.twig');
+    }
+
 
     /**
      * @param Request $request
