@@ -15,7 +15,19 @@ new Vue({
         confirmPswd:'',
         info: null,
         map: null,
-        bird: null
+        bird: null,
+        article1:null,
+        article2:null,
+        article3:null,
+        article4:null,
+        article5:null,
+        article6:null,
+        article7:null,
+        article8:null,
+        article9:null,
+        article10:null,
+        article11:null,
+        article12:null
     },
     computed:{
         missingName: function () {
