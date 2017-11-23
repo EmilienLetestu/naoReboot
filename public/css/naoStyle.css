@@ -604,7 +604,9 @@ footer .list-group
     width: 50%;
 }
 
-.aboutNao h2{
+.aboutNao h2,
+#partnership h2,
+#contact h2{
     text-align: center;
     font-size: 2.5em;
     color: #FFA500;
@@ -613,4 +615,37 @@ footer .list-group
     text-align: justify;
 }
 
+#partnership{
+    height: 500px;
+    padding: 5%;
+}
+
+#contact{
+    background-color: #c3c3c3;
+    padding: 5%;
+}
+
+#contact{
+
+}
+
+#contact textarea{
+    margin-top: 5%;
+    width: 100%;
+}
+
+#contact button{
+    margin-top: 5%;
+}
+
+
+#senderInfo{
+    display: flex;
+    margin-top: 5%;
+}
+
+#senderInfo input{
+    width:400px;
+    margin-right: 25%;
+}
 
