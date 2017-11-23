@@ -60,7 +60,7 @@ class ReportType extends AbstractType
             ])
 
             ->add('comment', TextareaType::class, [
-                            'constraints' => [new CommentLength()],
+                            'constraints' => [new CommentLength(['limit'=>300])],
                             'mapped'      => false,
                             'trim'        => true,
                             'label'       => 'Commentaire',

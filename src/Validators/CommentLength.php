@@ -12,10 +12,19 @@ use Symfony\Component\Validator\Constraint;
 
 class CommentLength extends Constraint
 {
-    /**
-     * @var string
-     */
-    public $message = "Votre commentaire ne peut excèder 300 caractères";
+
+    public $message = "Ne peut excéder ";
+    public $limit;
+
+    public function construct($options)
+    {
+        return $this->limit = $options['limit'];
+    }
+
+    public function getLimit()
+    {
+        return $this->limit;
+    }
 
     /**
      * @return string
