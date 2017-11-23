@@ -19,9 +19,10 @@ class CommentLengthValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        if(strlen($value) > 300)
+        if(strlen($value) > $constraint->getLimit())
         {
-            $this->context->buildViolation($constraint->message)
+            $this->context->buildViolation($constraint
+                          ->message.$constraint->getLimit().'caractères')
                           ->addViolation()
             ;
         }
