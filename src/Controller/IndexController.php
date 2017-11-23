@@ -246,14 +246,27 @@ class IndexController extends Controller
         ]);
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function terms()
     {
         return $this->render('nao\terms.html.twig');
     }
 
-    public function aboutUs()
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function aboutUs(Request $request)
     {
-        return $this->render('nao\aboutUs.html.twig');
+        $view = $this->get('App\Services\Contact')
+            ->processContact($request)
+        ;
+
+        return $this->render('nao\aboutUs.html.twig',[
+            'form' => $view
+        ]);
     }
 
 
