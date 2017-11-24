@@ -59,7 +59,7 @@ class StarManager
         // otherwise check logged user never stared this report before
         $check = $score === 0 ? true : $this->hasAlreadyBeenStared($starList, $loggedId);
 
-        if($check === true)
+        if($check === 'has voted')
         {
            return $this->session->getFlashBag()
                ->add('denied',
@@ -116,6 +116,6 @@ class StarManager
         {
             $idList[] = $user->getId();
         }
-        return  in_array($loggedId, $idList) ? true : false;
+        return  in_array($loggedId, $idList) ? 'has voted' : false;
     }
 }

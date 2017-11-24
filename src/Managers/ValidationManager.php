@@ -63,7 +63,7 @@ class ValidationManager
         // otherwise check logged user never validated this report before
         $check = $score === 0 ? true : $this->hasAlreadyBeenValidated($validationList, $loggedId);
 
-        if($check === true)
+        if($check === 'has validated')
         {
             return $this->session->getFlashBag()
                 ->add('denied',
@@ -128,6 +128,6 @@ class ValidationManager
             $idList[] = $user->getId();
         }
 
-        return in_array($loggedId, $idList) ? true : false;
+        return in_array($loggedId, $idList) ? 'has validated' : false;
     }
 }
