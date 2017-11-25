@@ -93,7 +93,7 @@
         <button class="btn btn-outline" v-on:click="reportList = !reportList">Toutes mes observations</button>
     </div>
 
-    <div v-if = "reportList">
+    <div v-if = "reportList" class="cardHolder">
         {% for report in reportList if app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN')  %}
             {{ include('nao/reportCard.html.twig') }}
         {% endfor %}
