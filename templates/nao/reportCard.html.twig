@@ -57,10 +57,16 @@
             {{ report.location }}
         </li>
     </ul>
-    <div>
+    <div class="cardFooter">
         <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
         {% if report.comment != null %}
-            <a class="btn btn-outline" href="#">Lire le commentaire</a>
+            <button class="btn btn-outline" v-on:click="cmt = true">Lire le commentaire</button>
+            <div class="cardCmt" v-if="cmt">
+                <i v-on:click="cmt = false" class="material-icons">close</i>
+                <p class="reportCmt">
+                    {{ report.comment }}
+                </p>
+            </div>
         {% endif %}
         {% if report.comment == null %}
             <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>

@@ -27,7 +27,8 @@ new Vue({
         article9:null,
         article10:null,
         article11:null,
-        article12:null
+        article12:null,
+        cmt:null
     },
     computed:{
         missingName: function () {

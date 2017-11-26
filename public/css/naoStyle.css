@@ -368,6 +368,27 @@ footer .list-group
     text-align: center;
 }
 
+.cardFooter button{
+    margin-left: 25%;
+}
+
+.cardCmt{
+    position:absolute;
+    bottom: 5px;
+    z-index: 1;
+    background-color: #FFFFFF;
+    text-align: justify;
+    padding: 1%;
+    height:190px;
+    box-shadow: 0 0 8px #9b9b9b;
+    width:98%;
+    margin-left: 1%;
+}
+
+.cardCmt i{
+    margin-left: 95%;
+}
+
 #map{
     height: 400px;
     width:100%;
