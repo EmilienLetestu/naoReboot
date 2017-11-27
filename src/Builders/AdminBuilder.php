@@ -12,6 +12,7 @@ use App\Entity\Report;
 use App\Entity\User;
 
 use App\Managers\UserManager;
+use App\Services\ExportCsv;
 use App\Services\HomeImg;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,17 +22,20 @@ class AdminBuilder
     private $doctrine;
     private $homeImg;
     private $userManager;
+    private $exportCsv;
 
 
     public function __construct(
         EntityManager $doctrine,
         HomeImg       $homeImg,
-        UserManager   $userManager
+        UserManager   $userManager,
+        ExportCsv     $exportCsv
     )
     {
         $this->doctrine    = $doctrine;
         $this->homeImg     = $homeImg;
         $this->userManager = $userManager;
+        $this->exportCsv   = $exportCsv;
     }
 
     /**
@@ -112,9 +116,11 @@ class AdminBuilder
      */
     public function buildStatistics()
     {
+
         // total of validated report
         $repoReport = $this->doctrine->getRepository(Report::class);
         $repoUser   = $this->doctrine->getRepository(User::class);
+
 
         //total
         $totalReport = count(
@@ -134,6 +140,7 @@ class AdminBuilder
             $repoReport->countWithUserAccessLevel(1)
         );
         $allReportByUserLevel1 = $totalReport - $allReportByUserLevel2;
+
 
         // prevent to divide by 0
         $average1 = $allReportByUserLevel1 > 0 ? $totalReport / $allReportByUserLevel1 : 0;
@@ -156,7 +163,6 @@ class AdminBuilder
 
     /**
      * @param Request $request
-     * @return mixed
      */
     public function buildAccountManagement(Request $request)
     {

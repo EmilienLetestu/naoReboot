@@ -12,6 +12,7 @@ use App\Form\Login;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -357,12 +358,13 @@ class IndexController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return Response
      */
-    public function statistics()
+    public function statistics(Request $request)
     {
         $view = $this->get('App\Builders\AdminBuilder')
-            ->buildStatistics()
+            ->buildStatistics($request)
         ;
 
         return $this->render('admin\adminStats.html.twig',[
@@ -404,6 +406,16 @@ class IndexController extends Controller
         return $this->render('admin\adminBird.html.twig',[
             'reportedBird' => $view,
         ]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function export(){
+
+        return $this->get('App\Services\ExportCsv')
+            ->encodeTable()
+        ;
     }
 }
 
