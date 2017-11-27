@@ -21,6 +21,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class IndexController extends Controller
 {
 
+    public function landing(Request $request)
+    {
+        $view = $this->get('App\Services\Register')
+            ->registerUser($request)
+        ;
+
+        if($view === 'home')
+        {
+            return $this->redirectToRoute($view);
+        }
+
+        return $this->render('nao\landingPage.html.twig',[
+            'form' => $view
+        ]);
+    }
+
     public function home(Request $request)
     {
 

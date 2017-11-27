@@ -1,5 +1,10 @@
-home:
+landing:
     path: /
+    defaults:
+        _controller: App\Controller\IndexController::landing
+
+home:
+    path: /accueil
     defaults:
         _controller: App\Controller\IndexController::home
 
