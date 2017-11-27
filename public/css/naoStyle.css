@@ -98,7 +98,7 @@ h1
 #withOutNao,
 #withNao{
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 #withNao{
@@ -202,10 +202,13 @@ h1
     padding: 2%;
 }
 
-#landingForm{
+#landingForm {
     width: 30%;
-    background-color: #c3c3c3 ;
+    background-color: #c3c3c3;
     margin-left: 10%;
+    -webkit-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
+    -moz-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
+    box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
 }
 
 #registerLanding {
