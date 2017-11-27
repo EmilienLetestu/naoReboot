@@ -10,5 +10,8 @@
     },
     "symfony/form": {
         "version": "v3.3.10"
+    },
+    "symfony/serializer": {
+        "version": "v3.3.13"
     }
 }
