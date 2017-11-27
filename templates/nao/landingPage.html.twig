@@ -1,0 +1,132 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+     <div id="landingTop">
+        <div id="landingIntro">
+            <h1>L'assitant idéal de vos sorties ornithologiques</h1>
+            <p>
+                Rejoignez dès maintenant NAO l'application participative à but écologique et aidez-nous dans
+                notre mission de recensement des espèces
+            </p>
+            <ul>
+                <li>
+                    <i class="fa fa-desktop fa-2x circleIcon" aria-hidden="true"></i>
+                    <span class="iconText">Au calme</span>
+                </li>
+                <li>
+                    <i class="fa fa-mobile fa-2x circleIcon" aria-hidden="true"></i>
+                    <span class="iconText">Sur le terrain</span>
+                </li>
+                <li>
+                    <i class="fa fa-map-marker fa-2x circleIcon" aria-hidden="true"></i>
+                    <span class="iconText">Géolocalisation</span>
+                </li>
+                <li>
+                    <i class="fa fa-camera fa-2x circleIcon" aria-hidden="true"></i>
+                    <span class="iconText">Ajout d'images</span>
+                </li>
+                <li>
+                    <i class="fa fa-users fa-2x circleIcon" aria-hidden="true"></i>
+                    <span class="iconText">Communautaire</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="landingForm">
+            {{ form_start(form, {'attr':{'id':'registerLanding', 'v-on:submit':'validateRegiter' }}) }}
+            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingName' }">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name, { 'attr': { 'class':'form-control','v-model': 'name'} }) }}
+                <div class="form-control-feedback" v-if="submit && missingName">Le prénom doit contenir 3 lettres minimum</div>
+            </div>
+            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingSurname' }">
+                {{ form_label(form.surname) }}
+                {{ form_widget(form.surname, { 'attr': { 'class':'form-control', 'v-model': 'surname' } }) }}
+                <div class="form-control-feedback" v-if="submit && missingSurname">Le nom doit contenir 3 lettres minimum</div>
+            </div>
+            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingEmail' }">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email,  { 'attr': {'class':'form-control', 'v-model': 'email' } }) }}
+                <div class="form-control-feedback" v-if="submit && missingEmail">Veuillez fournir un e-mail</div>
+            </div>
+            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
+                {{ form_label(form.pswd) }}
+                {{ form_widget(form.pswd, { 'attr': { 'class':'form-control', 'v-model': 'pswd' } }) }}
+                <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.accessLevel) }}
+                {{ form_widget(form.accessLevel, { 'attr': { 'class':'form-control' } }) }}
+            </div>
+            <div>
+                {{ form_label(form.termsAgreement) }}
+                {{ form_widget(form.termsAgreement) }}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" type="submit">Valider</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+     </div>
+
+     <div id="landingMid">
+         <p>
+             Recenser, sensibiliser, protéger et simplifer votre passion
+         </p>
+         <ul>
+             <li>
+                 <span class="circleData" id="totalSpecies">570</span>
+                 <span class="dataText">Espèces d'oiseaux</span>
+             </li>
+             <li>
+                 <span class="circleData" id="speciesUe">58%</span>
+                 <span class="dataText"> Des espèces nidifiant en Europe</span>
+             </li>
+             <li>
+                 <span class="circleData" id="speciesThreat">13%</span>
+                 <span class="dataText">Menacées de diparition</span>
+             </li>
+         </ul>
+     </div>
+
+    <div id="landingEnd">
+        <div id="withOutNao">
+
+            <h2>Votre équipement pour protéger ue espèce sans NAO</h2>
+            <ul>
+                <li>
+                    <i class="fa fa-binoculars" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <i class="fa fa-compass" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <i class="fa fa-camera-retro" aria-hidden="true"></i>
+                </li>
+            </ul>
+
+        </div>
+        <div id="withNao">
+
+            <h2>Votre équipement pour protéger ue espèce avec NAO</h2>
+            <span>
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+            </span>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('vueJs/ux.js') }}"></script>
+{% endblock %}
