@@ -101,6 +101,12 @@ userManagement:
         action: deactivate||ban||privilege||validate||deny||delete
         id: \d+
 
+exportCsv:
+    path: /admin/export-report
+    defaults:
+        _controller: App\Controller\IndexController::export
+
+
 accountValidation:
     path: /admin/demande-accès-naturaliste
     defaults:
