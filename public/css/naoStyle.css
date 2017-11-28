@@ -794,12 +794,75 @@ footer .list-group
     color: #FFFFFF;
 }
 /*---------------admin stats--------------------*/
+#statsWrap{
+    padding-top: 2%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+
+}
+
+#statIcon,
+#exportIcon{
+    text-align: center;
+    padding-bottom: 2%;
+    color: #FFA500;
+}
+
+#exportIcon{
+    font-size: 2em;
+    padding-bottom: 1%;
+}
+
+#statIcon{
+    font-size: 3em;
+    padding-bottom: 2%;
+}
 
 #stats{
     display: flex;
     justify-content: space-around;
+    font-size: 1.4em;
 }
 
+#stats ul{
+    border: solid 1px #FFFFFF;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    background-color: #c3c3c3;
+    -webkit-box-shadow: -2px -1px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px -1px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: -2px -1px 5px 0 rgba(0,0,0,0.75);
+}
+
+#stats ul:nth-child(even){
+    -webkit-box-shadow: 2px -1px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px -1px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 2px -1px 5px 0 rgba(0,0,0,0.75);
+}
+
+
+
+#stats li{
+    padding: 2%;
+}
+
+#stats li:not(:last-child){
+    border-bottom: solid 1px #FFFFFF;
+}
+
+#stats li:nth-child(even){
+    color: #FFFFFF;
+}
+
+
+#exportCsv{
+    text-align: center;
+    color: #FFA500;
+    font-size: 1.5em;
+    margin-bottom: 1%;
+}
 /*-------------terms and conditions------------------*/
 
 #termsSummary{
