@@ -38,7 +38,7 @@ class IndexController extends Controller
         ]);
     }
 
-    public function home(Request $request)
+    public function home()
     {
 
         $view = $this->get('App\Builders\HomePageBuilder')
@@ -108,11 +108,6 @@ class IndexController extends Controller
     public function login(AuthenticationUtils $authUtils)
     {
         $view = $this->get('App\Services\Login')->processLogin($authUtils);
-
-        if($view === 'home')
-        {
-            return $this->redirectToRoute($view);
-        }
 
         return $this->render(
             'nao\connectionForms.html.twig',

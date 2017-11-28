@@ -1,7 +1,10 @@
 /**
  * Created by Emilien on 21/11/2017.
  */
-function initMap() {
+function reportMaps() {
+
+}
+    function initMap() {
 
 
     // report maps

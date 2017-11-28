@@ -21,7 +21,8 @@ security:
             form_login:
                 login_path: login
                 check_path: login_check
-                use_referer: true
+                default_target_path: home
+                always_use_default_target_path: true
             logout:
                 path: logout
                 target: login
@@ -36,7 +37,7 @@ security:
             - { path: ^/observations/en-attente-de-validation, roles: ROLE_VALIDATOR}
             - { path: ^/observations/nouvelle-observation, roles: ROLE_USER }
             - { path: ^/mon-profil, roles: ROLE_USER }
-            - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/accueil, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
 
 
