@@ -21,12 +21,12 @@ class UserTest extends TestCase
     {
         $user = new User();
 
-        $dateToSql = date('Y-m-d');
+        $date = new \DateTime(date('Y-m-d'));
 
         $user->setAccessLevel(1);
         $user->setActivated(true);
         $user->setBan(false);
-        $user->setCreatedOn($dateToSql);
+        $user->setCreatedOn('Y-m-d');
         $user->setConfirmationToken(40);
         $user->setDeactivated(false);
         $user->setEmail('user@gmail.com');
@@ -38,7 +38,7 @@ class UserTest extends TestCase
         static::assertEquals(1, $user->getAccessLevel());
         static::assertEquals(true, $user->getActivated());
         static::assertEquals(false, $user->getBan());
-        static::assertEquals(true, ($dateToSql == $user->getCreatedOn()));
+        static::assertEquals($date,$user->getCreatedOn());
         static::assertEquals(40, strlen($user->getConfirmationToken()));
         static::assertEquals(0, $user->getDeactivated());
         static::assertEquals('user@gmail.com', $user->getEmail());
@@ -46,5 +46,13 @@ class UserTest extends TestCase
         static::assertEquals('Emilien', $user->getName());
         static::assertEquals('Letestu', $user->getSurname());
 
+        $role = $user->getRoles();
+        $notLocked = $user->isAccountNonLocked();
+        $enable    = $user->isEnabled();
+
+        static::assertEquals('ROLE_USER',$role[0]);
+        static::assertEquals(false, 'ROLE_VALIDATOR' == $role[0]);
+        static::assertEquals(true,$notLocked);
+        static::assertEquals(true, $user->getActivated()===$enable);
     }
 }

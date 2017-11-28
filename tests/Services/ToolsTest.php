@@ -34,11 +34,7 @@ class ToolsTest extends TestCase
 
         $homePageImgData = $tools->generateDataForHomeImg('rossignol',1);
 
-        static::assertInternalType('array',$homePageImgData);
-        static::assertEquals('rossignol',$homePageImgData['watermark']);
-        static::assertEquals('nao recherche: rossignol',$homePageImgData['altText']);
-        static::assertEquals('naoEvent_1_rossignol', $homePageImgData['fileName']);
-
+        static::assertInternalType('string',$homePageImgData);
 
         $speciesLatin = 'Accipiter fasciatus vigilax (Wetmore, 1926)';
         $speciesFr    = 'Autour australien, Émouchet gris';
@@ -54,7 +50,8 @@ class ToolsTest extends TestCase
         $userImgData = $tools->generateDataForUserImg('rossignol',1);
 
         static::assertInternalType('array', $userImgData);
-        static::assertEquals('observation de rossignol sur NAO.fr', $userImgData['altText']);
+        static::assertEquals('observation de rossignol sur NAO.fr', $userImgData[1]);
 
     }
 }
+

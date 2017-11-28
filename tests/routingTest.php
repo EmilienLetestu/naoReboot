@@ -13,19 +13,18 @@ class routingTest extends WebTestCase
 {
     public function testRouting()
     {
-        $client = self::createClient();
+        $client = static::createClient(array(), array(
+            'PHP_AUTH_USER' => 'username',
+            'PHP_AUTH_PW'   => 'pa$$word',
+        ));
 
-        $client->request('GET','/');
-        $this->assertTrue($client->getResponse()->isSuccessful());
 
-        $client->request('GET','connexion');
-        $this->assertTrue($client->getResponse()->isSuccessful());
 
-        $client->request('GET','/connexion/inscription');
-        $this->assertTrue($client->getResponse()->isSuccessful());
 
-        $client->request('GET','/mot-de-passe-oublier');
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $crawler = $client->request('GET','/connexion');
+        $this->assertTrue($crawler->filter('html:contains("Email")')->count() > 0);
+
+
 
     }
 }
