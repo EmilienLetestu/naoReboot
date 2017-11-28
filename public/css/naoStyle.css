@@ -793,6 +793,13 @@ footer .list-group
     background-color: #5fdda1;
     color: #FFFFFF;
 }
+/*---------------admin stats--------------------*/
+
+#stats{
+    display: flex;
+    justify-content: space-around;
+}
+
 /*-------------terms and conditions------------------*/
 
 #termsSummary{

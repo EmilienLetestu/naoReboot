@@ -10,71 +10,73 @@
     </div>
 
     {{ include('admin/adminNav.html.twig') }}
+    <div id="stats">
+        <ul>
+            <li>
+                Nombre d'observations
+            </li>
+            <li>
+                {{ totalReport }}
+            </li>
+            <li>
+                Ce mois-ci
+            </li>
+            <li>
+                {{ monthlyTotal }}
+            </li>
+            <li>
+                Cette Année
+            </li>
+            <li>
+                {{ yearlyTotal }}
+            </li>
+            <li>
+                Moyenne quotidienne
+            </li>
+            <li>
+                {{ dailyAverage }}
+            </li>
+            <li>
+                Moyenne mensuelle
+            </li>
+            <li>
+                {{ monthlyAverage }}
+            </li>
+        </ul>
+        <ul>
+            <li>
+                Moyenne par utilisateur
+            </li>
+            <li>
+                {{ averageByUser }}
+            </li>
+            <li>
+                Nombre d'observcations par amateurs
+            </li>
+            <li>
+                {{ totalByLevel1 }}
+            </li>
+            <li>
+                Nombre d'observations par naturalistes
+            </li>
+            <li>
+                {{ totalByLevel2 }}
+            </li>
+            <li>
+                Moyenne amateurs
+            </li>
+            <li>
+                {{ averageByLevel1 }}
+            </li>
+            <li>
+                Moyenne naturalistes
+            </li>
+            <li>
+                {{ averageByLevel2 }}
+            </li>
+        </ul>
+    </div>
 
-    <ul>
-        <li>
-           Nombre d'observations
-        </li>
-        <li>
-            {{ totalReport }}
-        </li>
-        <li>
-           Ce mois-ci
-        </li>
-        <li>
-           {{ monthlyTotal }}
-        </li>
-        <li>
-            Cette Année
-        </li>
-        <li>
-            {{ yearlyTotal }}
-        </li>
-        <li>
-            Moyenne quotidienne
-        </li>
-        <li>
-            {{ dailyAverage }}
-        </li>
-        <li>
-            Moyenne mensuelle
-        </li>
-        <li>
-            {{ monthlyAverage }}
-        </li>
-    </ul>
-    <ul>
-        <li>
-           Moyenne par utilisateur
-        </li>
-        <li>
-            {{ averageByUser }}
-        </li>
-        <li>
-            Nombre d'observcations par amateurs
-        </li>
-        <li>
-            {{ totalByLevel1 }}
-        </li>
-        <li>
-            Nombre d'observations par naturalistes
-        </li>
-        <li>
-            {{ totalByLevel2 }}
-        </li>
-        <li>
-           Moyenne amateurs
-        </li>
-        <li>
-            {{ averageByLevel1 }}
-        </li>
-        <li>
-            Moyenne naturalistes
-        </li>
-        <li>
-            {{ averageByLevel2 }}
-        </li>
-    </ul>
 
     <a class="btn" href="{{ path('exportCsv') }}"> Télécharger le contenu de la table des observations </a>
 {% endblock %}
