@@ -1,11 +1,8 @@
 /**
  * Created by Emilien on 21/11/2017.
  */
-function reportMaps() {
 
-}
     function initMap() {
-
 
     // report maps
     var locations = document.querySelectorAll('*[id^="reportMapSatNav"]');
@@ -54,5 +51,5 @@ function reportMaps() {
         });
         markers.push(birdMarker);
     }
-
 }
+
