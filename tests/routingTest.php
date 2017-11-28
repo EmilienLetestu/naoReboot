@@ -15,16 +15,18 @@ class routingTest extends WebTestCase
     {
         $client = static::createClient(array(), array(
             'PHP_AUTH_USER' => 'username',
-            'PHP_AUTH_PW'   => 'pa$$word',
+            'PHP_AUTH_PW'   => 'password',
         ));
 
 
+        $client->request('GET','/accueil');
+        $this->assertTrue($client->getResponse()->isSuccessful());
 
+        $client->request('GET','/connexion/inscription');
+        $this->assertTrue($client->getResponse()->isSuccessful());
 
-        $crawler = $client->request('GET','/connexion');
-        $this->assertTrue($crawler->filter('html:contains("Email")')->count() > 0);
-
-
+        $client->request('GET','/mot-de-passe-oublier');
+        $this->assertTrue($client->getResponse()->isSuccessful());
 
     }
 }
