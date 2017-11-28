@@ -2,3 +2,5 @@
 swiftmailer:
     #  send all emails to a specific address
     delivery_addresses: ['eletestu@gmail.com']
+    disable_delivery: false
+
