@@ -55,7 +55,7 @@ class IndexController extends Controller
      */
     public function browseReport(Request $request)
     {
-        $view =  $this->get('App\Services\Search')
+        $view =  $this->get('App\Services\BrowserFilter')
             ->createFilter($request)
         ;
 
@@ -72,7 +72,7 @@ class IndexController extends Controller
      */
     public function browseUnvalidated(Request $request)
     {
-        $view =  $this->get('App\Services\Search')
+        $view =  $this->get('App\Services\BrowserFilter')
             ->createFilter($request)
         ;
 
@@ -86,7 +86,7 @@ class IndexController extends Controller
 
     public function search(Request $request)
     {
-        $view =  $this->get('App\Services\Search')
+        $view =  $this->get('App\Services\BrowserFilter')
             ->processFilter($request)
         ;
 
