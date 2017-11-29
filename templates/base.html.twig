@@ -56,7 +56,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ path('report') }}">
+                            <a href="{{ path('report',{'state' : 'valide'}) }}">
                                 <i class="fa fa-binoculars" aria-hidden="true"></i>
                                 Observations
                             </a>
@@ -69,7 +69,7 @@
                         </li>
                         {% if is_granted('ROLE_VALIDATOR') and app.user.onHold == 0 %}
                         <li>
-                            <a href="{{ path('unvalidatedReport') }}">
+                            <a href="{{ path('report',{'state' : 'en-attente-de-validation'}) }}">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
                                 En attente de validation
                             </a>
