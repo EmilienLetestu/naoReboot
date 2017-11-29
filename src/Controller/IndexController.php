@@ -56,31 +56,16 @@ class IndexController extends Controller
     public function browseReport(Request $request)
     {
         $view =  $this->get('App\Services\BrowserFilter')
-            ->createFilter($request)
+            ->processFilter($request)
         ;
 
         return $this->render('nao\browseReport.html.twig',[
             'filter'   => $view[0],
             'reports'  => $view[1],
-            'title'    => $view[2]
+            'title'    => $view[2],
+            'birdId'   => $view[3]
         ]);
     }
-
-
-    public function search(Request $request)
-    {
-        $view =  $this->get('App\Services\BrowserFilter')
-            ->processFilter($request)
-        ;
-
-        return $this->render('nao\browseReport.html.twig',[
-            'filter'    => $view[0],
-            'reports'   => $view[1],
-            'title'     => $view[2],
-            'birdId'    => $view[3],
-        ]);
-    }
-
 
     /**
      * @param AuthenticationUtils $authUtils
