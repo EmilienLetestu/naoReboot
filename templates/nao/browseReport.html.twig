@@ -7,19 +7,13 @@
 {% block body %}
 
 
-
     <div>
         <h1 class="pageTitle">{{ title }}</h1>
     </div>
 
     <div class="filter">
         <i class="material-icons" v-on:mouseover="filter = true" v-show ="!filter">keyboard_arrow_down</i>
-            {{ form_start(filter, {'action': path('search'),'attr':{'class' : 'form-inline','v-show' : 'filter'}}) }}
-            {% if is_granted('ROLE_VALIDATOR') %}
-            <div class="form-group-row">
-                {{ form_widget(filter.route) }}
-            </div>
-            {% endif %}
+            {{ form_start(filter, {'attr':{'class' : 'form-inline','v-show' : 'filter'}}) }}
             <div class="form-group-row">
                 {{ form_widget(filter.order) }}
             </div>
@@ -33,7 +27,7 @@
             {{ form_end(filter) }}
       </div>
 
-    {% if  birdId is defined and birdId != null %}
+    {% if  birdId is defined and birdId != null and app.request.getPathInfo == '/observations/valide' %}
     <div id ="map"></div>
     <div>
         <table class="table">
