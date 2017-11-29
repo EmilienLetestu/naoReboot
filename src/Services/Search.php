@@ -19,24 +19,11 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 class Search
 {
     private $formFactory;
-    private $doctrine;
-    private $reportManager;
-    private $token;
-    private $authCheck;
 
-    public function __construct(
-        FormFactory          $formFactory,
-        EntityManager        $doctrine,
-        ReportManager        $reportManager,
-        TokenStorage         $token,
-        AuthorizationChecker $authCheck
-    )
+
+    public function __construct(FormFactory  $formFactory)
     {
         $this->formFactory       = $formFactory;
-        $this->doctrine          = $doctrine;
-        $this->reportManager     = $reportManager;
-        $this->token             = $token;
-        $this->authCheck         = $authCheck;
     }
 
     public function processSearch(Request $request)

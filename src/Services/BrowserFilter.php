@@ -15,8 +15,6 @@ use App\Managers\ReportManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 
 class BrowserFilter
@@ -24,22 +22,16 @@ class BrowserFilter
     private $formFactory;
     private $doctrine;
     private $reportManager;
-    private $token;
-    private $authCheck;
 
     public function __construct(
         FormFactory          $formFactory,
         EntityManager        $doctrine,
-        ReportManager        $reportManager,
-        TokenStorage         $token,
-        AuthorizationChecker $authCheck
+        ReportManager        $reportManager
     )
     {
         $this->formFactory       = $formFactory;
         $this->doctrine          = $doctrine;
         $this->reportManager     = $reportManager;
-        $this->token             = $token;
-        $this->authCheck         = $authCheck;
     }
 
     /**

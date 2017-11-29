@@ -36,7 +36,7 @@ class UnvalidatedFilterType extends AbstractType
                                 'placeholder'   => 'Rechercher une espèce',
                                 'required'      => false,
                                 'query_builder' => function(ReportRepository $repository){
-                                    return $repository->findSpeciesForForm($validated = 0);
+                                    return $repository->findSpeciesForForm(0);
                                 }
             ])
         ;

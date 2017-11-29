@@ -38,7 +38,7 @@ class FilterType extends AbstractType
                                 'placeholder' => 'Rechercher une espèce',
                                 'required' => false,
                                 'query_builder' => function(ReportRepository $repository){
-                                    return $repository->findSpeciesForForm($validated = 1);
+                                    return $repository->findSpeciesForForm(1);
                                 }
             ])
         ;
