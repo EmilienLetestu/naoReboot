@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="_password" class="form-control" v-model="pswd"/>
+                    <input type="password" id="password" name="_password" class="form-control"  v-model="pswd"/>
                     <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
                 </div>
                 <div class="form-group">
@@ -43,27 +43,27 @@
             {{ form_start(form, {'attr':{'id':'registerForm', 'v-on:submit':'validateRegister' }}) }}
             <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingName' }">
                 {{ form_label(form.name) }}
-                {{ form_widget(form.name, { 'attr': { 'class': 'form-control','v-model': 'name' } }) }}
+                {{ form_widget(form.name, { 'attr': { 'v-model': 'name' } }) }}
                 <div class="form-control-feedback" v-if="submit && missingName">Le prénom doit contenir 3 lettres minimum</div>
             </div>
             <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingSurname' }">
                 {{ form_label(form.surname) }}
-                {{ form_widget(form.surname, { 'attr': { 'class': 'form-control','v-model': 'surname' } }) }}
+                {{ form_widget(form.surname, { 'attr': { 'v-model': 'surname' } }) }}
                 <div class="form-control-feedback" v-if="submit && missingSurname">Le nom doit contenir 3 lettres minimum</div>
             </div>
             <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingEmail' }">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email,  { 'attr': { 'class': 'form-control','v-model': 'email' } }) }}
+                {{ form_widget(form.email,  { 'attr': { 'v-model': 'email' } }) }}
                 <div class="form-control-feedback" v-if="submit && missingEmail">Veuillez fournir un e-mail</div>
             </div>
             <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
                 {{ form_label(form.pswd) }}
-                {{ form_widget(form.pswd, { 'attr': { 'class': 'form-control','v-model': 'pswd' } }) }}
+                {{ form_widget(form.pswd, { 'attr': { 'v-model': 'pswd' } }) }}
                 <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.accessLevel) }}
-                {{ form_widget(form.accessLevel, {'attr': {'class': 'form-control' } }) }}
+                {{ form_widget(form.accessLevel) }}
             </div>
             <div>
                 {{ form_label(form.termsAgreement) }}
@@ -81,7 +81,7 @@
             {{ form_start(form, {'attr':{'id':'askResetForm'}}) }}
             <div class="form-group">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email, {'attr': {'class': 'form-control' } }) }}
+                {{ form_widget(form.email) }}
             </div>
             <div class="form-group">
                 <button class="btn btn-success" type="submit">Valider</button>
@@ -95,12 +95,12 @@
             {{ form_start(form, {'attr':{'id':'resetForm', 'v-on:submit':'validateResetPswd'}}) }}
             <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
                 {{ form_label(form.pswd) }}
-                {{ form_widget(form.pswd, { 'attr': { 'class': 'form-control','v-model': 'pswd' } }) }}
+                {{ form_widget(form.pswd, { 'attr': { 'v-model': 'pswd' } }) }}
                 <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
             <div class="form-group" v-bind:class="{ 'has-warning': 'submit && matchLess' }">
                 {{ form_label(form.confirmPswd) }}
-                {{ form_widget(form.confirmPswd, { 'attr': { 'class': 'form-control','v-model': 'confirmPswd' } }) }}
+                {{ form_widget(form.confirmPswd, { 'attr': { 'v-model': 'confirmPswd' } }) }}
                 <div class="form-control-feedback" v-if="submit && matchLess">Les mots de passes ne correspondent pas</div>
             </div>
             <div class="form-group">
