@@ -105,12 +105,45 @@ class ReportRepository extends EntityRepository
         ;
     }
 
+    public function findSpeciesForForm($validated)
+    {
+       return $this
+                ->createQueryBuilder('r')
+                ->andWhere('r.validated = :validated')
+                ->setParameter('validated', $validated)
+       ;
+
+
+    }
+
     public function findSelectionWithBird($validated,$order,$sort,$limit=null,$birdId)
     {
         $queryBuilder = $this->createQueryBuilder('r');
 
         $this->whereValidated($queryBuilder,$validated,$order,$sort,$limit);
         $this->whereReportedBird($queryBuilder, $birdId);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function findAllWithBirdName($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder
+            ->innerJoin('r.bird','b')
+            ->addSelect('b')
+
+        ;
+        $queryBuilder
+            ->where($queryBuilder->expr()->in('b.id',$id))
+            ->andWhere('r.validated = 1');
 
         return $queryBuilder
             ->getQuery()
@@ -169,27 +202,6 @@ class ReportRepository extends EntityRepository
         ;
     }
 
-    /**
-     * @param $id
-     * @return array
-     */
-    public function findAllWithBirdName($id)
-    {
-        $queryBuilder = $this->createQueryBuilder('r');
-        $queryBuilder
-            ->innerJoin('r.bird','b')
-            ->addSelect('b')
-
-        ;
-        $queryBuilder
-            ->where($queryBuilder->expr()->in('b.id',$id))
-            ->andWhere('r.validated = 1');
-
-        return $queryBuilder
-            ->getQuery()
-            ->getResult()
-        ;
-    }
 
     /**
      * Will return all superior or equal to a given access level
