@@ -48,21 +48,16 @@ validation:
         token: ([^']{40,})
 
 report:
-    path: /observations
+    path: /observations/{state}
     defaults:
         _controller: App\Controller\IndexController::browseReport
     requirements:
-        filtre: valides||en-attentes-de-validation
+        state: valide||en-attente-de-validation
 
 search:
     path: /observations/resultat-de-la-recherche
     defaults:
         _controller: App\Controller\IndexController::search
-
-unvalidatedReport:
-     path: /observations/en-attente-de-validation
-     defaults:
-         _controller: App\Controller\IndexController::browseUnvalidated
 
 addReport:
      path: /observations/nouvelle-observation

@@ -66,23 +66,6 @@ class IndexController extends Controller
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function browseUnvalidated(Request $request)
-    {
-        $view =  $this->get('App\Services\BrowserFilter')
-            ->createFilter($request)
-        ;
-
-        return $this->render('nao\browseReport.html.twig',[
-            'filter'   => $view[0],
-            'reports'  => $view[1],
-            'title'    => $view[2]
-        ]);
-    }
-
 
     public function search(Request $request)
     {
