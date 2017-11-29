@@ -22,13 +22,13 @@
 
     <ul class="list-inline info1">
         <li class="list-inline-item">
-            {% if app.request.get('_route') != ('unvalidatedReport') %}
+            {% if report.validated == 1 %}
                     <a class="stared" href="{{ path('star', {'reportId': report.id}) }}">
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         {{ report.starNbr }}
                     </a>
             {% endif %}
-            {% if app.request.get('_route') == ('unvalidatedReport') %}
+            {% if report.validated == 0 %}
                 <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     {{ report.user.name }} {{ report.user.surname }}
@@ -42,13 +42,13 @@
     </ul>
     <ul class="list-inline info2">
         <li class="list-inline-item">
-            {% if app.request.get('_route') != ('unvalidatedReport') %}
+            {% if report.validated == 1 %}
                 <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     {{ report.user.name }} {{ report.user.surname }}
                 </a>
             {% endif %}
-            {% if app.request.get('_route') == ('unvalidatedReport') %}
+            {% if report.validated == 0 %}
               Inscrit depuis le: {{ report.user.createdOn|date('d/m/Y') }}
             {% endif %}
         </li>
@@ -71,7 +71,7 @@
         {% if report.comment == null %}
             <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>
         {% endif %}
-        {% if app.request.get('_route') == ('unvalidatedReport') %}
+        {% if report.validated == 0 %}
         <ul class="list-inline">
             <li class="list-inline-item">
                 <a href="{{ path('validateReport', {'reportId': report.id}) }}">
