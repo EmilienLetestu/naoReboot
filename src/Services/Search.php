@@ -12,7 +12,7 @@ namespace App\Services;
 
 use App\Entity\Report;
 use App\Form\FilterType;
-use App\Form\SearchType;
+use App\Form\NavSearchType;
 use App\Form\UserFilterType;
 use App\Managers\ReportManager;
 use Doctrine\ORM\EntityManager;
@@ -28,6 +28,7 @@ class Search
     private $reportManager;
     private $token;
     private $authCheck;
+    private $request;
 
     public function __construct(
         FormFactory          $formFactory,
@@ -46,19 +47,12 @@ class Search
 
     public function processSearch(Request $request)
     {
-        $searchForm = $this->formFactory->create(SearchType::class);
-
+        $searchForm = $this->formFactory->create(NavSearchType::class);
         $searchForm->handleRequest($request);
 
         if($searchForm->isSubmitted() && $searchForm->isValid())
         {
-            $birdId = $searchForm->get('bird')->getData();
 
-            $repository = $this->doctrine->getRepository(Report::class);
-
-            $report = $repository->findAllWithBirdName($birdId);
-
-            return $report;
         }
 
         return $searchForm->createView();

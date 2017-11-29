@@ -21,7 +21,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class IndexController extends Controller
 {
-
     public function landing(Request $request)
     {
         $view = $this->get('App\Services\Register')
