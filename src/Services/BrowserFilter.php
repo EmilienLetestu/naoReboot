@@ -62,12 +62,12 @@ class BrowserFilter
     public function createFilter(Request $request)
     {
         $filterForm = $this->getFormToGenerate();
-        $route = $request->attributes->get('_route');
+        $state = $request->attributes->get('state');
 
         return [
             $filterForm->createView(),
             $this->getReportToDisplay($request),
-            $this->getTitle($route,null)
+            $this->getTitle($state)
         ];
     }
 
@@ -78,22 +78,21 @@ class BrowserFilter
      */
     public function getReportToDisplay(Request $request)
     {
-        $route = $request->attributes->get('_route');
+        $state = $request->attributes->get('state');
 
-        return $route === 'report' ?
+        return $state === 'valide' ?
             $this->reportManager->displayAllValidated() :
             $this->reportManager->displayAllUnvalidated()
-            ;
+        ;
     }
 
     /**
-     * @param $route
-     * @param $validated
+     * @param $state
      * @return string
      */
-    public function getTitle($route,$validated)
+    public function getTitle($state)
     {
-        return $route === 'report' || $validated === 1 ?
+        return $state === 'valide' ?
             'Observations validées' : 'Observations en attentes de validation'
             ;
     }
