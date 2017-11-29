@@ -93,6 +93,7 @@ class ActivitiesTracker
         $reportedList = $this->doctrine->getRepository(Report::class)
             ->findAllWithBirdName($birdId);
 
+
         foreach ($reportedList as $report)
         {
             $specimens[] = $report->getNbrOfBirds();

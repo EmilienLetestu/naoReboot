@@ -10,7 +10,7 @@ namespace App\Services;
 
 use App\Entity\Report;
 use App\Form\FilterType;
-use App\Form\UserFilterType;
+use App\Form\UnvalidatedFilterType;
 use App\Managers\ReportManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
@@ -43,15 +43,16 @@ class BrowserFilter
     }
 
     /**
-     * Decide which form builder to call based on user role
+     * Decide which form builder to call based on route param
+     * @param $state
      * @return \Symfony\Component\Form\FormInterface
      */
-    public function getFormToGenerate()
+    public function generateForm($state)
     {
-        return $this->authCheck->isGranted('ROLE_VALIDATOR')?
+        return $state === 'valide' ?
             $this->formFactory->create(FilterType::class):
-            $this->formFactory->create(UserFilterType::class)
-            ;
+            $this->formFactory->create(UnvalidatedFilterType::class)
+        ;
     }
 
     /**
@@ -61,8 +62,8 @@ class BrowserFilter
      */
     public function createFilter(Request $request)
     {
-        $filterForm = $this->getFormToGenerate();
         $state = $request->attributes->get('state');
+        $filterForm = $this->generateForm($state);
 
         return [
             $filterForm->createView(),
@@ -72,13 +73,11 @@ class BrowserFilter
     }
 
     /**
-     * select report list based on url
-     * @param Request $request
-     * @return array|mixed
+     * @param $state
+     * @return mixed
      */
-    public function getReportToDisplay(Request $request)
+    public function getReportToDisplay($state)
     {
-        $state = $request->attributes->get('state');
 
         return $state === 'valide' ?
             $this->reportManager->displayAllValidated() :
@@ -98,16 +97,16 @@ class BrowserFilter
     }
 
     /**
+     * @param $state
      * @param $bird
-     * @param $validated
      * @return string
      */
-    public function getBirdTitle($validated ,$bird)
+    public function getBirdTitle($state ,$bird)
     {
-        return $validated === 1 ?
+        return $state === 'valide' ?
             'Historique des observations: '.$bird :
             'Observations en attentes de validation: '.$bird
-            ;
+       ;
     }
 
     /**
@@ -117,20 +116,19 @@ class BrowserFilter
      */
     public function processFilter(Request $request)
     {
+        $state = $request->attributes->get('state');
 
-        $filterForm = $this->getFormToGenerate();
+        $filterForm = $this->generateForm($state);
         $filterForm->handleRequest($request);
 
-        $user = $this->token->getToken()->getUser();
-
+        
         if($filterForm->isSubmitted() && $filterForm->isValid())
         {
-            $user->getOnHold() === true ? $route = 1 : $route = $filterForm->get('route')->getData();
             $ordering  = $filterForm->get('order')->getData();
             $bird   = $filterForm->get('bird')->getData();
 
             //prepare query
-            $validated = $route === 1 ? $route = 1 : $route = 0;
+            $state === 'valide' ? $validated = 1 : $validated = 0;
             $ordering === 3 ? $order = 'bird' : $order = 'addedOn';
             $order === 'addedOn' && $ordering === 1 ? $sort = 'DESC' : $sort = 'ASC';
 
@@ -141,7 +139,7 @@ class BrowserFilter
                 return [
                     $filterForm->createView(),
                     $repository->findSelection($validated , $sort, $order),
-                    $this->getTitle($route,$validated),
+                    $this->getTitle($state),
                     null
 
                 ];
@@ -149,9 +147,16 @@ class BrowserFilter
             return [
                 $filterForm->createView(),
                 $repository->findSelectionWithBird($validated,$sort,$order,null,$bird->getBird()->getId()),
-                $this->getBirdTitle($validated, $bird->getBird()->getSpeciesFr()),
+                $this->getBirdTitle($state, $bird->getBird()->getSpeciesFr()),
                 $bird->getBird()->getId(),
             ];
         }
+
+        return [
+            $filterForm->createView(),
+            $this->getReportToDisplay($state),
+            $this->getTitle($state),
+            null
+        ];
     }
 }
