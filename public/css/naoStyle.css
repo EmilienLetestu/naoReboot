@@ -30,7 +30,8 @@ li
 a,
 a:hover,
 a:active,
-a:visited
+a:visited,
+a:focus
 {
     text-decoration: none;
     color: inherit;
@@ -424,6 +425,38 @@ footer .list-group
     font-size: 1.5rem;
     color: #FFFFFF;
 }
+/*---------------------------connection forms---------------------------*/
+
+.connectionForms{
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.pswdForm{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.connectionForms button{
+    background-color: transparent;
+    color: #5fdda1;
+    border-color: #5fdda1;
+}
+
+.connectionForms button:hover{
+    background-color:  #5fdda1;
+    color: #FFFFFF;
+    border-color: #5fdda1;
+}
+
+#forgottenPswd{
+    color: #ffa500;
+    margin-left: 5%;
+}
+
+
 /*---------------------------home page---------------------------*/
 
 .mostWanted{
