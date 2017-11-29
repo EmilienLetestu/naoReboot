@@ -22,7 +22,8 @@ class TitleTypeExtension extends \Twig_Extension
     {
         $title=['login'      => 'CONNEXION',
                 'askNewPswd' => 'MOT DE PASSE PERDU',
-                'register'   => 'CREER UN COMPTE'
+                'register'   => 'CREER UN COMPTE',
+                'resetPswd'  => 'NOUVEAU MOT DE PASSE'
         ];
 
         return $title[$route];
