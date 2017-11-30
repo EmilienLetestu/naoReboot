@@ -65,9 +65,9 @@ search:
         _controller: App\Controller\IndexController::search
 
 historic:
-    path: /historique-des-observations/{birdId}
+    path: /historique-des-observations/{species}/{birdId}
     defaults:
-        _controller: App\Controller\IndexController::
+        _controller: App\Controller\IndexController::birdHistory
     requirements:
         birdId: \d+
 
