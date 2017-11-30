@@ -17,6 +17,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Class Bird
  * @package App\Entity
  * @ORM\Entity
+ * @ORM\Table(name="bird")
+ * @ORM\Entity(repositoryClass="App\Repository\BirdRepository")
  */
 class Bird
 {
