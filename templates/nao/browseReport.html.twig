@@ -27,7 +27,6 @@
             {{ form_end(filter) }}
       </div>
 
-    {% if  birdId is defined and birdId != null and app.request.getPathInfo == '/observations/valide' %}
     <div id ="map"></div>
     <div>
         <table class="table">
@@ -49,7 +48,6 @@
             </tbody>
         </table>
     </div>
-    {% endif %}
 
     <div class="cardHolder">
         {% for report in reports %}
@@ -61,10 +59,7 @@
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('vueJs/ux.js') }}"></script>
-    {% if  birdId is defined and birdId != null %}
-        <script src="{{ asset('js/maps.js') }}"></script>
-    {% else %}
-        <script src="{{ asset('js/reportMap.js') }}"></script>
+    <script src="{{ asset('js/reportMap.js') }}"></script>
     {% endif %}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg"
             type="text/javascript"></script>

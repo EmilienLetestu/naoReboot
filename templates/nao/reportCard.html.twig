@@ -2,7 +2,9 @@
     <div class="cardHeader">
         <ul class="list-inline">
             <li class="list-inline-item">
-                {{  report.bird.speciesLatin|species }}
+                <a href="{{ path('historic',{'species':report.bird.speciesLatin|species|replaceSpace,'birdId': report.bird.id}) }}" class="historicLink">
+                    {{report.bird.speciesLatin|species }}
+                </a>
             </li>
             <li class="list-inline-item pull-right">
                 {{  report.addedOn|date('d-m-Y') }}
@@ -85,4 +87,6 @@
         {% endif %}
     </div>
 </div>
+
+
 

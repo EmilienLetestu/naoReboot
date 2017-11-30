@@ -17,7 +17,7 @@
         <ul>
             {% for bird in results %}
                 <li>
-                    <a href="{{ path('historic',{'birdId': bird.id}) }}" class="historicLink">
+                    <a href="{{ path('historic',{'species':bird.speciesLatin|species|replaceSpace,'birdId': bird.id}) }}" class="historicLink">
                         {{ bird.speciesLatin|species }} {{ bird.speciesFr|speciesFr }}
                     </a>
                 </li>
