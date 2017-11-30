@@ -24,12 +24,9 @@
                 NAO
             </a>
             <div class="search-bar">
-                <form class="form-inline">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Rechercher" aria-describedby="basic-addon1">
-                        <span class="input-group-addon" id="basic-addon1"><i class="material-icons">search</i></span>
-                    </div>
-                </form>
+               {{ form_start(search.createSearch,{'action': path('search')}) }}
+                <button class="btn btn-success" type="submit">Valider</button>
+                {{ form_end(search.createSearch) }}
             </div>
             {% if  not is_granted('ROLE_USER') %}
             <div class="nav navbar-nav ml-auto" id="connection">

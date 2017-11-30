@@ -13,6 +13,7 @@ use Doctrine\ORM\QueryBuilder;
 
 class ReportRepository extends EntityRepository
 {
+
     /**
      * @param QueryBuilder $queryBuilder
      * @param $birdId

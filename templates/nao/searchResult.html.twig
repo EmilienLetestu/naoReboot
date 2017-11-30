@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Bienvenue sur l’application Nos Amis les Oiseaux, leréseau des passionnés d’ornithologie
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h1 class="pageTitle">RESULTAT DE VOTRE RECHERCHE POUR : "{{ userSearch|lower }}"</h1>
+    </div>
+
+    <div>
+        <div>
+            <h2>Voir l'historique des observations de :</h2>
+        </div>
+        <ul id="searchResults">
+            {% for bird in results %}
+                <li>
+                    <a href="" class="historicLink">
+                        {{ bird.speciesLatin|species }} {{ bird.speciesFr|speciesFr }}
+                    </a>
+                </li>
+            {% endfor %}
+    </div>
+
+
+
+{% endblock %}
