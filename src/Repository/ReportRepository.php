@@ -94,6 +94,13 @@ class ReportRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param $validated
+     * @param $order
+     * @param $sort
+     * @param null $limit
+     * @return array
+     */
     public function findSelection($validated,$order,$sort,$limit = null)
     {
         $queryBuilder = $this->createQueryBuilder('r');
@@ -106,6 +113,10 @@ class ReportRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param $validated
+     * @return QueryBuilder
+     */
     public function findSpeciesForForm($validated)
     {
        return $this
@@ -113,8 +124,6 @@ class ReportRepository extends EntityRepository
                 ->andWhere('r.validated = :validated')
                 ->setParameter('validated', $validated)
        ;
-
-
     }
 
     public function findSelectionWithBird($validated,$order,$sort,$limit=null,$birdId)
