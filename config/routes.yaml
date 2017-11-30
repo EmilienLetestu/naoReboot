@@ -59,6 +59,12 @@ addReport:
      defaults:
          _controller: App\Controller\IndexController::addReport
 
+search:
+    path: /resultat-de-la-recherche
+    defaults:
+        _controller: App\Controller\IndexController::search
+                
+
 notification:
      path: /notification
      defaults:
