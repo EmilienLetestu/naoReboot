@@ -79,6 +79,19 @@ class IndexController extends Controller
         ]);
     }
 
+    public function birdHistory(Request $request)
+    {
+        $view = $this->get('App\Builders\HistoryBuilder')
+            ->buildHistory($request)
+        ;
+
+        return $this->render('nao\birdHistory.html.twig',[
+            'reports' => $view[0],
+            'birdId'  => $view[1],
+            'species' => $view[2]
+        ]);
+    }
+
     /**
      * @param AuthenticationUtils $authUtils
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
