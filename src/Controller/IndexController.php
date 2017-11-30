@@ -67,6 +67,18 @@ class IndexController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        $view =  $this->get('App\Services\Search')
+          ->processSearch($request)
+        ;
+
+        return $this->render('nao\searchResult.html.twig',[
+            'results'    => $view[0],
+            'userSearch' => $view[1]
+        ]);
+    }
+
     /**
      * @param AuthenticationUtils $authUtils
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
