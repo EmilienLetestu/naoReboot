@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} Découvrez les derniers oiseaux observés par nos membres
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h1 class="pageTitle">HISTORIQUE DES OBSERVATIONS {{ species|apostrophe|upper }} </h1>
+    </div>
+
+    <div id ="map"></div>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre de spécimens</th>
+                <th>Spécimens par observation</th>
+                <th>Dernière observation</th>
+                <th>Coordonnées</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>{{ birdId|statistics['population'] }}</th>
+                <th>{{ birdId|statistics['avgByReport'] }}</th>
+                <th>{{ birdId|lastReported['date'] }}</th>
+                <th>{{ birdId|lastReported['satNav'] }}</th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {% for report in reports %}
+        <input type="hidden"  class="locations" value="{{ report.satNav }}">
+    {% endfor %}
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('vueJs/ux.js') }}"></script>
+    <script src="{{ asset('js/speciesMap.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg&callback=initMap"
+            type="text/javascript"></script>
+{% endblock %}
