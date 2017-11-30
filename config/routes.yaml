@@ -63,7 +63,14 @@ search:
     path: /resultat-de-la-recherche
     defaults:
         _controller: App\Controller\IndexController::search
-                
+
+historic:
+    path: /historique-des-observations/{birdId}
+    defaults:
+        _controller: App\Controller\IndexController::
+    requirements:
+        birdId: \d+
+
 
 notification:
      path: /notification
