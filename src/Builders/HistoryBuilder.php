@@ -16,11 +16,19 @@ class HistoryBuilder
 {
     private $doctrine;
 
+    /**
+     * HistoryBuilder constructor.
+     * @param EntityManager $doctrine
+     */
     public function __construct(EntityManager $doctrine)
     {
         $this->doctrine  = $doctrine;
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function buildHistory(Request $request)
     {
         $bird    = $request->attributes->get('birdId');
