@@ -13,6 +13,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ActivateResponder
 {
+    /**
+     * @return RedirectResponse
+     */
     public function __invoke()
     {
         return new RedirectResponse('/accueil');

@@ -70,6 +70,11 @@ class ActivateAction
     }
 
 
+    /**
+     * @param Request $request
+     * @param ActivateResponder $responder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function __invoke(Request $request, ActivateResponder $responder)
     {
         $email = $request->attributes->get('email');
