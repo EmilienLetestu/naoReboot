@@ -22,17 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class IndexController extends Controller
 {
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function activate(Request $request)
-    {
-        $this->get('App\Services\ActivateAccount')
-            ->ActivateUserAccount($request);
-
-        return $this->redirectToRoute('home');
-    }
 
     public function resetPswdMail(Request $request)
     {
