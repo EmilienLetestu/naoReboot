@@ -37,17 +37,6 @@ class IndexController extends Controller
         ]);
     }
 
-    public function home()
-    {
-
-        $view = $this->get('App\Builders\HomePageBuilder')
-            ->buildHomePage();
-
-        return $this->render('nao\home.html.twig',[
-            'reports' => $view[0],
-            'homeImg' => $view[1]
-        ]);
-    }
 
     /**
      * @param Request $request
