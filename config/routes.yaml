@@ -22,7 +22,7 @@ logout:
 register:
     path: /connexion/inscription
     defaults:
-        _controller: App\Controller\IndexController::register
+        _controller: App\Action\Security\RegisterAction
 
 askNewPswd:
     path: /mot-de-passe-oublier

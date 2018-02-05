@@ -1,24 +1,26 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: emilien
- * Date: 26/09/17
- * Time: 14:47
+ * User: Emilien
+ * Date: 05/02/2018
+ * Time: 14:55
  */
 
-namespace App\Services;
+namespace App\Action\Security;
+
 
 use App\Entity\User;
 use App\Form\RegisterType;
-
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\Form\FormFactory;
+use App\Responder\Security\RegisterResponder;
+use App\Services\Mails;
+use App\Services\Tools;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
-class Register
+class RegisterAction
 {
     private $formFactory;
     private $doctrine;
@@ -27,40 +29,24 @@ class Register
     private $tools;
     private $session;
 
-    /**
-     * Register constructor.
-     * @param FormFactory $formFactory
-     * @param EntityManager $doctrine
-     * @param \Swift_Mailer $swift
-     * @param Mails $mailService
-     * @param Tools $tools
-     * @param Session $session
-     */
-    public  function __construct(
-        FormFactory         $formFactory,
-        EntityManager       $doctrine,
-        \Swift_Mailer       $swift,
-        Mails               $mailService,
-        Tools               $tools,
-        Session             $session
-
-
+    public function __construct(
+        FormFactoryInterface   $formFactory,
+        EntityManagerInterface $doctrine,
+        \Swift_Mailer          $swift,
+        Mails                  $mailService,
+        Tools                  $tools,
+        SessionInterface       $session
     )
     {
-        $this->formFactory  = $formFactory;
-        $this->doctrine     = $doctrine;
-        $this->swift        = $swift;
-        $this->mailService  = $mailService;
-        $this->tools        = $tools;
-        $this->session      = $session;
+        $this->formFactory = $formFactory;
+        $this->doctrine    = $doctrine;
+        $this->swift       = $swift;
+        $this->mailService = $mailService;
+        $this->tools       = $tools;
+        $this->session     = $session;
     }
 
-
-    /**
-     * @param Request $request
-     * @return array|string
-     */
-    public function registerUser(Request $request)
+    public function __invoke(Request $request, RegisterResponder $responder)
     {
         $user = new User();
         $registerForm = $this->formFactory->create(RegisterType::class, $user);
@@ -83,7 +69,7 @@ class Register
                         'Cette email est déjà utilisé'
                     )
                 ;
-                return $registerForm->createView();
+                return $responder($registerForm->createView());
             }
 
             //check if user requested an access level 1 or 2
@@ -115,9 +101,9 @@ class Register
                 )
             ;
 
-            return 'home';
+            return new RedirectResponse('/accueil');
         }
 
-        return $registerForm->createView();
+        return $responder($registerForm->createView());
     }
 }
