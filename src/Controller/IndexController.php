@@ -22,18 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class IndexController extends Controller
 {
 
-
-    public function resetPswdMail(Request $request)
-    {
-        $view = $this->get('App\Services\UpdatePswd')
-            ->askReset($request);
-
-        return $this->render(
-            'nao\connectionForms.html.twig',
-            ['form'=>$view]
-        );
-    }
-
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response

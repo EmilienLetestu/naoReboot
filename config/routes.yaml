@@ -27,7 +27,7 @@ register:
 askNewPswd:
     path: /mot-de-passe-oublier
     defaults:
-        _controller: App\Controller\IndexController::resetPswdMail
+        _controller: App\Action\ResetPswdMailAction
 
 resetPswd:
     path: /mot-de-passe-oublier/{expireOn}/{email}/{token}
