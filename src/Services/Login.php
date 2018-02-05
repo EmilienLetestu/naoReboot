@@ -49,30 +49,6 @@ class Login
     }
 
     /**
-     * @param AuthenticationUtils $authUtils
-     * @return array|string
-     */
-    public function processLogin(AuthenticationUtils $authUtils)
-    {
-        if ( $this->authCheck->isGranted('IS_AUTHENTICATED_REMEMBERED'))
-        {
-            return 'home';
-        }
-
-        // get the login error if there is one
-        $error = $authUtils->getLastAuthenticationError();
-
-        // last username entered by the user
-        $lastUsername = $authUtils->getLastUsername();
-
-        return [
-            $lastUsername,
-            $error,
-            ]
-        ;
-    }
-
-    /**
      * fetch all stars and validations added by user,
      * store them into session
      * @return null

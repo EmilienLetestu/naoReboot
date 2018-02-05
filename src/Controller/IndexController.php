@@ -23,23 +23,6 @@ class IndexController extends Controller
 {
 
     /**
-     * @param AuthenticationUtils $authUtils
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @Route("/connexion", name="login")
-     */
-    public function login(AuthenticationUtils $authUtils)
-    {
-        $view = $this->get('App\Services\Login')->processLogin($authUtils);
-
-        return $this->render(
-            'nao\connectionForms.html.twig',
-            [
-                'last_username' =>$view[0],
-                'error' => $view[1]]
-        );
-    }
-
-    /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */

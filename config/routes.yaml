@@ -11,7 +11,7 @@ home:
 login:
     path: /connexion
     defaults:
-        _controller: App\Controller\IndexController::login
+        _controller: App\Action\Security\LoginAction
 
 login_check:
     path: /login
