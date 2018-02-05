@@ -50,7 +50,7 @@ validation:
 report:
     path: /observations/{state}
     defaults:
-        _controller: App\Controller\IndexController::browseReport
+        _controller: App\Action\BrowseReportAction
     requirements:
         state: valide||en-attente-de-validation
 

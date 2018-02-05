@@ -22,24 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class IndexController extends Controller
 {
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function browseReport(Request $request)
-    {
-        $view =  $this->get('App\Services\BrowserFilter')
-            ->processFilter($request)
-        ;
-
-        return $this->render('nao\browseReport.html.twig',[
-            'filter'   => $view[0],
-            'reports'  => $view[1],
-            'title'    => $view[2],
-            'birdId'   => $view[3]
-        ]);
-    }
-
     public function search(Request $request)
     {
         $view =  $this->get('App\Services\Search')
