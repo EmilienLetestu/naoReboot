@@ -57,7 +57,7 @@ report:
 addReport:
      path: /observations/nouvelle-observation
      defaults:
-         _controller: App\Controller\IndexController::addReport
+         _controller: App\Action\AddReportAction
 
 search:
     path: /resultat-de-la-recherche

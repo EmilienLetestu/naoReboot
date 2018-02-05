@@ -1,26 +1,25 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: emilien
- * Date: 27/09/17
- * Time: 15:22
+ * User: Emilien
+ * Date: 05/02/2018
+ * Time: 16:40
  */
 
-namespace App\Services;
+namespace App\Action;
 
 use App\Entity\Report;
-use App\Entity\User;
 use App\Form\ReportType;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Form\FormFactory;
+use App\Responder\AddReportResponder;
+use App\Services\Tools;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-
-class AddReport
+class AddReportAction
 {
     private $formFactory;
     private $doctrine;
@@ -29,19 +28,19 @@ class AddReport
     private $token;
 
     /**
-     * AddReport constructor.
-     * @param FormFactory $formFactory
-     * @param EntityManager $doctrine
-     * @param Session $session
+     * AddReportAction constructor.
+     * @param FormFactoryInterface $formFactory
+     * @param EntityManagerInterface $doctrine
+     * @param SessionInterface $session
      * @param Tools $tools
-     * @param TokenStorage $token
+     * @param TokenStorageInterface $token
      */
     public function __construct(
-        FormFactory   $formFactory,
-        EntityManager $doctrine,
-        Session       $session,
-        Tools         $tools,
-        TokenStorage  $token
+        FormFactoryInterface   $formFactory,
+        EntityManagerInterface $doctrine,
+        SessionInterface       $session,
+        Tools                  $tools,
+        TokenStorageInterface  $token
 
     )
     {
@@ -52,8 +51,7 @@ class AddReport
         $this->token        = $token;
     }
 
-
-    public function addReportProcess(Request $request)
+    public function __invoke(Request $request, AddReportResponder $responder)
     {
         //generate form and required object
         $report = new Report();
@@ -70,7 +68,7 @@ class AddReport
             $user    = $this->token->getToken()->getUser();
 
             //prepare report default data
-            $default = $this->reportGateways($level,$onHold);
+            $default = $this->tools->reportGateways($level,$onHold);
 
             //hydrate report object
             $report
@@ -80,7 +78,7 @@ class AddReport
                 ->setUser($user);
             if($reportForm->get('comment')->getData())
             {
-                    $report->setComment($reportForm->get('comment')->getData());
+                $report->setComment($reportForm->get('comment')->getData());
             }
             //----process pict----//
             //--1 generate filename
@@ -110,26 +108,9 @@ class AddReport
 
             $this->session->getFlashBag()->add('success','Votre observation a bien été ajoutée !');
 
-            return $reportForm->createView();
+            return new RedirectResponse('/observations/nouvelle-observation');
         }
 
-        return $reportForm->createView();
-    }
-
-    /**
-     * set default report data based on user accessLevel
-     * @param $accessLevel
-     * @return array
-     */
-    public function reportGateways($accessLevel, $onHold)
-    {
-        $gateWays = [
-            $validated = $accessLevel || $onHold == 1 ? false : true,
-            $validated === true ? 5 : 0,
-            0
-        ];
-
-        return $gateWays;
+        return $responder($reportForm->createView());
     }
 }
-

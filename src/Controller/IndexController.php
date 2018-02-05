@@ -23,23 +23,6 @@ class IndexController extends Controller
 {
     
     /**
-     * @Security("has_role('ROLE_USER')")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function addReport(Request $request)
-    {
-        $view = $this->get('App\Services\AddReport')
-            ->addReportProcess($request)
-        ;
-
-        return $this->render(
-            'nao\addReportForm.html.twig',
-            ['form' => $view]
-        );
-    }
-
-    /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */

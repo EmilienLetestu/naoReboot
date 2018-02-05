@@ -71,5 +71,21 @@ class Tools
                 'fr'       => trim($extractDataFr[0])
         ];
     }
+
+    /**
+     * set default report data based on user accessLevel
+     * @param $accessLevel
+     * @return array
+     */
+    public function reportGateways($accessLevel, $onHold)
+    {
+        $gateWays = [
+            $validated = $accessLevel < 2 || $onHold == 1 ? false : true,
+            $validated === true ? 5 : 0,
+            0
+        ];
+
+        return $gateWays;
+    }
 }
 
