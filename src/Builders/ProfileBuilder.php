@@ -12,48 +12,35 @@ use App\Entity\User;
 use App\Services\ActivitiesTracker;
 use App\Services\UpdatePswd;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ProfileBuilder
 {
     private $doctrine;
-    private $token;
-    private $updatePswd;
-    private $activitiesTracker;
 
     /**
      * ProfileBuilder constructor.
-     * @param EntityManager $doctrine
-     * @param TokenStorage $token
-     * @param UpdatePswd $updatePswd
-     * @param ActivitiesTracker $activitiesTracker
+     * @param EntityManagerInterface $doctrine
      */
     public function __construct(
-        EntityManager     $doctrine,
-        TokenStorage      $token,
-        UpdatePswd        $updatePswd,
-        ActivitiesTracker $activitiesTracker
-
+        EntityManagerInterface     $doctrine
     )
     {
-        $this->doctrine          = $doctrine;
-        $this->token             = $token;
-        $this->updatePswd        = $updatePswd;
-        $this->activitiesTracker = $activitiesTracker;
+        $this->doctrine  = $doctrine;
     }
 
     /**
      * @param Request $request
      * @return array
      */
-    public function getProfileVersion(Request $request)
+    public function getProfileVersion($request, $id, $userId, $user, $activitiesTracker, $updatePswd)
     {
-        $id = $request->attributes->get('id');
-        $userId = $this->token->getToken()->getUser()->getId();
-
         return
-            intval($id) == $userId ? $this->buildPrivateProfile($request) : $this->buildPublicProfile($id)
+            intval($id) == $userId ?
+                $this->buildPrivateProfile($request, $user, $activitiesTracker, $updatePswd) :
+                $this->buildPublicProfile($id, $activitiesTracker)
         ;
     }
 
@@ -61,12 +48,9 @@ class ProfileBuilder
      * @param Request $request
      * @return array
      */
-    public function buildPrivateProfile(Request $request)
+    public function buildPrivateProfile($request, $user, $activitiesTracker, $updatePswd)
     {
-        //fetch id and createdOn into tokenStorage
-        $user        = $this->token->getToken()->getUser();
         $id          = $user->getId();
-
         //create array with account creation date, chg pswd process and account type
         $accountInfo = [
             'title'        => 'Mon Profil',
@@ -75,7 +59,7 @@ class ProfileBuilder
             'email'        => $user->getEmail(),
             'accessLevel'  => $user->getAccessLevel(),
             'creationDate' => $user->getCreatedOn()->format('d-m-Y'),
-            'updatePswd'   => $this->updatePswd->changePswd($request)
+            'updatePswd'   => $updatePswd->changePswd($request)
         ];
 
         //fetch all user reports
@@ -83,17 +67,16 @@ class ProfileBuilder
 
         return [
             $accountInfo,
-            $this->activitiesTracker
+            $activitiesTracker
                 ->getLastPublicationData($id),
             $reportList,
-            $this->activitiesTracker
+            $activitiesTracker
                 ->getActivitiesData($reportList)
         ];
     }
 
-    public function buildPublicProfile($id)
+    public function buildPublicProfile($id,$activitiesTracker)
     {
-        //fetch profile info from db
         $user = $this->doctrine->getRepository(User::class)
             ->findOneBy(['id'=>$id]);
 
@@ -111,10 +94,10 @@ class ProfileBuilder
 
         return [
             $accountInfo,
-            $this->activitiesTracker
+            $activitiesTracker
                 ->getLastPublicationData($id),
             $reportList,
-            $this->activitiesTracker
+            $activitiesTracker
                 ->getActivitiesData($reportList)
         ];
     }

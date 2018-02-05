@@ -21,25 +21,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class IndexController extends Controller
 {
-    
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function profile(Request $request)
-    {
-        $view = $this->get('App\Builders\ProfileBuilder')
-            ->getProfileVersion($request)
-        ;
-
-        return $this->render('nao\profile.html.twig',[
-            'accountInfo' => $view[0],
-            'lastInfo'    => $view[1],
-            'reportList'  => $view[2],
-            'reportInfo'  => $view[3]
-        ]);
-
-    }
 
     /**
      * @Security("has_role('ROLE_USER')")

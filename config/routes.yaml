@@ -80,7 +80,7 @@ notification:
 profile:
     path: /mon-profil/{name}-{surname}/{id}
     defaults:
-        _controller: App\Controller\IndexController::profile
+        _controller: App\Action\ProfileAction
     requirements:
         name: ([a-zA-z]{3,})
         surname: ([a-zA-z]{3,})
