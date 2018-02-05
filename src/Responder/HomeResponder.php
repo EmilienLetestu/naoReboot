@@ -15,6 +15,9 @@ use Twig\Environment;
 
 class HomeResponder
 {
+    /**
+     * @var Environment
+     */
     private $twig;
 
     /**
@@ -26,6 +29,11 @@ class HomeResponder
         $this->twig = $twig;
     }
 
+    /**
+     * @param $reports
+     * @param $homeImg
+     * @return Response
+     */
     public function __invoke($reports, $homeImg)
     {
         return new Response(

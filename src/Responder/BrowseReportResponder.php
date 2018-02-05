@@ -14,6 +14,9 @@ use Twig\Environment;
 
 class BrowseReportResponder
 {
+    /**
+     * @var Environment
+     */
     private $twig;
 
     /**

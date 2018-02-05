@@ -14,7 +14,14 @@ use App\Services\HomeImg;
 
 class HomeAction
 {
+    /**
+     * @var ReportManager
+     */
     private $reportManager;
+
+    /***
+     * @var HomeImg
+     */
     private $homeImg;
 
     /**

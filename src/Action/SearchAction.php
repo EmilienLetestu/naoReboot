@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SearchAction
 {
+    /**
+     * @var Search
+     */
     private $search;
 
     /**

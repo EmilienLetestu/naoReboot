@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BrowseReportAction
 {
+    /**
+     * @var BrowserFilter
+     */
     private $browserFilter;
 
     /**

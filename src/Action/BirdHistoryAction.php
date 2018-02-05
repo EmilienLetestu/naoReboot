@@ -17,13 +17,25 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BirdHistoryAction
 {
+    /**
+     * @var EntityManagerInterface
+     */
     private $doctrine;
 
+    /**
+     * BirdHistoryAction constructor.
+     * @param EntityManagerInterface $doctrine
+     */
     public function __construct(EntityManagerInterface $doctrine)
     {
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * @param Request $request
+     * @param BirdHistoryResponder $responder
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function __invoke(Request $request, BirdHistoryResponder $responder)
     {
       $repository = $this->doctrine->getRepository(Report::class);

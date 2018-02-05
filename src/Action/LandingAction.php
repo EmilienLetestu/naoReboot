@@ -17,9 +17,21 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class LandingAction
 {
+    /**
+     * @var Register
+     */
     private $register;
+
+    /**
+     * @var UrlGeneratorInterface
+     */
     private $urlGenerator;
 
+    /**
+     * LandingAction constructor.
+     * @param Register $register
+     * @param UrlGeneratorInterface $urlGenerator
+     */
     public function __construct(
         Register $register,
         UrlGeneratorInterface $urlGenerator
@@ -29,6 +41,11 @@ class LandingAction
         $this->urlGenerator = $urlGenerator;
     }
 
+    /**
+     * @param Request $request
+     * @param LandingResponder $responder
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function __invoke(Request $request, LandingResponder $responder)
     {
         $form = $this->register->registerUser($request);

@@ -14,6 +14,9 @@ use Twig\Environment;
 
 class BirdHistoryResponder
 {
+    /**
+     * @var Environment
+     */
     private $twig;
 
     /**
@@ -25,6 +28,12 @@ class BirdHistoryResponder
         $this->twig = $twig;
     }
 
+    /**
+     * @param string $birdId
+     * @param array $reports
+     * @param string $species
+     * @return Response
+     */
     public function __invoke(string $birdId, array $reports, string $species)
     {
         return new Response(

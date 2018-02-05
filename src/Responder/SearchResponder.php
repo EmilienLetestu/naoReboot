@@ -14,6 +14,9 @@ use Twig\Environment;
 
 class SearchResponder
 {
+    /**
+     * @var Environment
+     */
     private $twig;
 
     /**
@@ -25,7 +28,12 @@ class SearchResponder
         $this->twig = $twig;
     }
 
-    public function __invoke(array $results, $userSearch)
+    /**
+     * @param array $results
+     * @param string $userSearch
+     * @return Response
+     */
+    public function __invoke(array $results, string $userSearch)
     {
         return new Response(
             $this->twig->render('nao\searchResult.html.twig',[

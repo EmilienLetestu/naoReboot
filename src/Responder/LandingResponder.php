@@ -8,14 +8,14 @@
 
 namespace App\Responder;
 
-
-
-use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
 class LandingResponder
 {
+    /**
+     * @var Environment
+     */
     private $twig;
 
     /**
@@ -27,6 +27,10 @@ class LandingResponder
         $this->twig = $twig;
     }
 
+    /**
+     * @param $form
+     * @return Response
+     */
     public function __invoke($form)
     {
         return new Response(
