@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8eafdd50-1ff4-4c46-921d-f55fb371465f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Action/ResetPswdMailAction.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Responder/ResetPswdMailResponder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Action/ResetPswdFormAction.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Responder/ResetPswdFormResponder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.yaml" afterPath="$PROJECT_DIR$/config/routes.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" />
@@ -27,8 +27,8 @@
             <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="27">
-                    <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+                  <state relative-caret-position="81">
+                    <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
                     <folding>
                       <element signature="e#116#135#0#PHP" expanded="true" />
                     </folding>
@@ -44,30 +44,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ActivateAction.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Action/ActivateAction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-876">
-              <caret line="75" column="65" lean-forward="false" selection-start-line="75" selection-start-column="65" selection-end-line="75" selection-end-column="65" />
-              <folding>
-                <element signature="e#115#135#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LandingResponder.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Responder/LandingResponder.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-              <folding>
-                <element signature="e#117#153#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ActivateResponder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Responder/ActivateResponder.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,23 +64,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+            <state relative-caret-position="486">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResetPswdMailAction.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResetPswdMailAction.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Action/ResetPswdMailAction.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="906">
-              <caret line="131" column="1" lean-forward="true" selection-start-line="131" selection-start-column="1" selection-end-line="131" selection-end-column="1" />
+            <state relative-caret-position="-2226">
+              <caret line="21" column="87" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="21" selection-end-column="87" />
               <folding>
                 <element signature="e#115#135#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResetPswdFormAction.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Action/ResetPswdFormAction.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1149">
+              <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+              <folding>
+                <element signature="e#114#134#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResetPswdFormResponder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Responder/ResetPswdFormResponder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="40" column="1" lean-forward="false" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+              <folding>
+                <element signature="e#118#154#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,8 +125,8 @@
       <file leaf-file-name="UpdatePswd.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Services/UpdatePswd.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="717">
+              <caret line="171" column="40" lean-forward="false" selection-start-line="106" selection-start-column="7" selection-end-line="171" selection-end-column="40" />
               <folding>
                 <element signature="e#115#135#0#PHP" expanded="true" />
               </folding>
@@ -180,8 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/nao/landingPage.html.twig" />
-        <option value="$PROJECT_DIR$/public/css/naoStyle.css" />
         <option value="$PROJECT_DIR$/src/Twig/TitleTypeExtension.php" />
         <option value="$PROJECT_DIR$/src/Form/SearchType.php" />
         <option value="$PROJECT_DIR$/src/Form/NavSearchType.php" />
@@ -227,9 +225,11 @@
         <option value="$PROJECT_DIR$/src/Responder/ActivateResponder.php" />
         <option value="$PROJECT_DIR$/src/Responder/ResetPswdResponder.php" />
         <option value="$PROJECT_DIR$/src/Action/ResetPswdAction.php" />
-        <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/src/Responder/ResetPswdMailResponder.php" />
         <option value="$PROJECT_DIR$/src/Action/ResetPswdMailAction.php" />
+        <option value="$PROJECT_DIR$/src/Responder/ResetPswdFormResponder.php" />
+        <option value="$PROJECT_DIR$/src/Action/ResetPswdFormAction.php" />
+        <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/IndexController.php" />
       </list>
     </option>
@@ -703,18 +703,18 @@
       <workItem from="1512557914305" duration="605000" />
       <workItem from="1512562362894" duration="148000" />
       <workItem from="1512562530503" duration="2596000" />
-      <workItem from="1517818887100" duration="24642000" />
+      <workItem from="1517818887100" duration="25554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1587025000" />
+    <option name="totallyTimeSpent" value="1587937000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17291667" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17291667" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -766,20 +766,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/routes/dev/twig.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/swiftmailer.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1144,10 +1130,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Action/SearchAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#115#149#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Responder/ResetPswdMailResponder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="19" column="7" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding>
+            <element signature="e#118#154#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Services/UpdatePswd.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        <state relative-caret-position="717">
+          <caret line="171" column="40" lean-forward="false" selection-start-line="106" selection-start-column="7" selection-end-line="171" selection-end-column="40" />
           <folding>
             <element signature="e#115#135#0#PHP" expanded="true" />
           </folding>
@@ -1164,50 +1170,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Action/SearchAction.php">
+    <entry file="file://$PROJECT_DIR$/src/Action/ResetPswdMailAction.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="-2226">
+          <caret line="21" column="87" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="21" selection-end-column="87" />
           <folding>
-            <element signature="e#115#149#0#PHP" expanded="true" />
+            <element signature="e#115#135#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
+    <entry file="file://$PROJECT_DIR$/src/Action/ResetPswdFormAction.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-          <folding />
+        <state relative-caret-position="1149">
+          <caret line="152" column="1" lean-forward="false" selection-start-line="152" selection-start-column="1" selection-end-line="152" selection-end-column="1" />
+          <folding>
+            <element signature="e#114#134#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Responder/ResetPswdMailResponder.php">
+    <entry file="file://$PROJECT_DIR$/src/Responder/ResetPswdFormResponder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="19" column="7" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="663">
+          <caret line="40" column="1" lean-forward="false" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
           <folding>
             <element signature="e#118#154#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
+    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding>
-            <element signature="e#116#135#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="486">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Action/ResetPswdMailAction.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="906">
-          <caret line="131" column="1" lean-forward="true" selection-start-line="131" selection-start-column="1" selection-end-line="131" selection-end-column="1" />
+        <state relative-caret-position="81">
+          <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
           <folding>
-            <element signature="e#115#135#0#PHP" expanded="true" />
+            <element signature="e#116#135#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

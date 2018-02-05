@@ -21,27 +21,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class IndexController extends Controller
 {
-
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function resetPswdForm(Request $request)
-    {
-        $view = $this->get('App\Services\UpdatePswd')
-            ->resetPswd($request);
-
-        if($view === 'home')
-        {
-            return $this->redirectToRoute($view);
-        }
-
-        return $this->render(
-            'nao\connectionForms.html.twig',
-            ['form'=> $view]
-        );
-    }
-
+    
     /**
      * @Security("has_role('ROLE_USER')")
      * @param Request $request
