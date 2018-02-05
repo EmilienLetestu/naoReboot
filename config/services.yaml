@@ -29,10 +29,6 @@ services:
         resource: '../src/Builders'
         public: true
 
-    App\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']
-
     App\Services\:
         resource: '../src/Services'
         public: true
@@ -40,6 +36,12 @@ services:
     App\Managers\:
         resource: '../src/Managers'
         public: true
+
+    App\Action\:
+        resource: '../src/Action'
+        tags:
+            - 'controller.service_arguments'
+
 
     App\Twig\:
         resource: '../src/Twig'
