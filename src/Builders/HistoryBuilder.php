@@ -41,5 +41,4 @@ class HistoryBuilder
             $request->attributes->get('species')
         ];
     }
-
 }
