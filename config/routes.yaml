@@ -6,7 +6,7 @@ landing:
 home:
     path: /accueil
     defaults:
-        _controller: App\Controller\IndexController::home
+        _controller: App\Action\HomeAction
 
 login:
     path: /connexion
