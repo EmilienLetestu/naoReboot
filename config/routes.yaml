@@ -62,7 +62,7 @@ addReport:
 search:
     path: /resultat-de-la-recherche
     defaults:
-        _controller: App\Controller\IndexController::search
+        _controller: App\Action\SearchAction
 
 historic:
     path: /historique-des-observations/{species}/{birdId}
