@@ -67,7 +67,7 @@ search:
 historic:
     path: /historique-des-observations/{species}/{birdId}
     defaults:
-        _controller: App\Controller\IndexController::birdHistory
+        _controller: App\Action\BirdHistoryAction
     requirements:
         birdId: \d+
 
