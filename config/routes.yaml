@@ -41,7 +41,7 @@ resetPswd:
 validation:
     path: /validation/{expireOn}/{email}/{token}
     defaults:
-        _controller: App\Controller\IndexController::activate
+        _controller: App\Action\ActivateAction
     requirements:
         expireOn: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])
         email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
