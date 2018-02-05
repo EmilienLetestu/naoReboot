@@ -1,7 +1,7 @@
 landing:
     path: /
     defaults:
-        _controller: App\Controller\IndexController::landing
+        _controller: App\Action\LandingAction
 
 home:
     path: /accueil
