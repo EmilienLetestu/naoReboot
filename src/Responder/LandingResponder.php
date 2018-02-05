@@ -8,6 +8,7 @@
 
 namespace App\Responder;
 
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
@@ -31,7 +32,7 @@ class LandingResponder
      * @param $form
      * @return Response
      */
-    public function __invoke($form)
+    public function __invoke(FormView $form)
     {
         return new Response(
             $this->twig->render('nao\landingPage.html.twig',[

@@ -9,55 +9,101 @@
 namespace App\Action;
 
 
+use App\Entity\User;
+use App\Form\RegisterType;
 use App\Responder\LandingResponder;
-use App\Services\Register;
+use App\Services\Mails;
+use App\Services\Tools;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class LandingAction
 {
-    /**
-     * @var Register
-     */
-    private $register;
+    private $formFactory;
+    private $doctrine;
+    private $swift;
+    private $mailService;
+    private $tools;
+    private $session;
 
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * LandingAction constructor.
-     * @param Register $register
-     * @param UrlGeneratorInterface $urlGenerator
-     */
     public function __construct(
-        Register $register,
-        UrlGeneratorInterface $urlGenerator
+        FormFactoryInterface   $formFactory,
+        EntityManagerInterface $doctrine,
+        \Swift_Mailer          $swift,
+        Mails                  $mailService,
+        Tools                  $tools,
+        SessionInterface       $session
     )
     {
-        $this->register     = $register;
-        $this->urlGenerator = $urlGenerator;
+        $this->formFactory = $formFactory;
+        $this->doctrine    = $doctrine;
+        $this->swift       = $swift;
+        $this->mailService = $mailService;
+        $this->tools       = $tools;
+        $this->session     = $session;
     }
 
-    /**
-     * @param Request $request
-     * @param LandingResponder $responder
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
     public function __invoke(Request $request, LandingResponder $responder)
     {
-        $form = $this->register->registerUser($request);
+        $user = new User();
+        $registerForm = $this->formFactory->create(RegisterType::class, $user);
 
-        if($form === 'home')
+        $registerForm->handleRequest($request);
+        if($registerForm->isSubmitted() && $registerForm->isValid())
         {
-            return new RedirectResponse(
-                $this->urlGenerator
-                     ->generate('home')
+            //hydrate with submitted data
+            $user
+                ->setCreatedOn('Y-m-d');
+
+            $emailInDb = $this->mailService
+                ->checkMailAvailability($user->getEmail())
+            ;
+
+            if ($emailInDb !== null)
+            {
+                $this->session->getFlashBag()
+                    ->add('denied',
+                        'Cette email est déjà utilisé'
+                    )
+                ;
+                return $responder($registerForm->createView());
+            }
+
+            //check if user requested an access level 1 or 2
+            $status = $this->tools->getUserAccountStatus($user->getAccessLevel());
+
+            //hydrate with default value
+            $user
+                ->setOnHold($status)
+                ->setConfirmationToken(40);
+
+            //prepare email
+            $message = $this->mailService->validationMail(
+                $user->getName(),
+                $user->getSurname(),
+                $user->getConfirmationToken(),
+                $user->getEmail()
             );
+
+            //save
+            $this->doctrine->persist($user);
+            $this->doctrine->flush();
+
+            //send validation email
+            $this->swift->send($message);
+
+            $this->session->getFlashBag()
+                ->add('success',
+                    'Compte créé avec succès ! Un email d\'activation à été envoyé.'
+                )
+            ;
+
+            return new RedirectResponse('/accueil');
         }
 
-        return $responder ($form);
+        return $responder($registerForm->createView());
     }
 }
