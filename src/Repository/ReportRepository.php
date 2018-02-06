@@ -176,7 +176,6 @@ class ReportRepository extends EntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
-
     }
 
     /**
@@ -225,6 +224,21 @@ class ReportRepository extends EntityRepository
         $queryBuilder
             ->innerJoin('r.user', 'u', 'WITH', 'u.accessLevel >= :accessLevel')
             ->setParameter('accessLevel',$accessLevel);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
+    }
+
+    /**
+     * @return array
+     */
+    public function countWithLowerAccessLevel()
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder
+            ->innerJoin('r.user', 'u', 'WITH', 'u.accessLevel = 1');
 
         return $queryBuilder
             ->getQuery()

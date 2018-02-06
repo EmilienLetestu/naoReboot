@@ -31,7 +31,7 @@ class UnactivatedListAction
 
     /**
      * @param UnactivatedListResponder $responder
-     * @return \Symfony\Component\BrowserKit\Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function __invoke(UnactivatedListResponder $responder)
     {
