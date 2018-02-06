@@ -39,7 +39,7 @@ class ContactForm extends AbstractType
            ])
            ->add('email', EmailType::class,[
                                 'constraints'=>[ new NotBlank(),
-                                                new Email(['message' => 'Ceci n\'est pas un email valide']),
+                                                 new Email(['message' => 'Ceci n\'est pas un email valide']),
                                 ],
                                 'attr' => [
                                     'placeholder' => 'Votre email'

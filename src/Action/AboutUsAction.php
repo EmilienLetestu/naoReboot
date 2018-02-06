@@ -10,6 +10,7 @@ namespace App\Action;
 
 use App\Form\ContactForm;
 
+use App\Handler\ContactHandler;
 use App\Responder\AboutUsResponder;
 use App\Services\Mails;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -19,30 +20,37 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class AboutUsAction
 {
+    /**
+     * @var FormFactoryInterface
+     */
     private $formFactory;
-    private $mailService;
-    private $swift;
-    private $session;
 
     /**
-     * ContactAction constructor.
+     * @var \Swift_Mailer
+     */
+    private $swift;
+
+    /**
+     * @var ContactHandler
+     */
+    private $contactHandler;
+
+    /**
+     * AboutUsAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param Mails $mailService
      * @param \Swift_Mailer $swift
-     * @param SessionInterface $session
+     * @param ContactHandler $contactHandler
      */
     public function  __construct(
         FormFactoryInterface $formFactory,
-        Mails                $mailService,
         \Swift_Mailer        $swift,
-        SessionInterface     $session
+        ContactHandler       $contactHandler
 
     )
     {
-        $this->formFactory  = $formFactory;
-        $this->mailService  = $mailService;
-        $this->swift        = $swift;
-        $this->session      = $session;
+        $this->formFactory    = $formFactory;
+        $this->swift          = $swift;
+        $this->contactHandler = $contactHandler;
     }
 
     /**
@@ -52,30 +60,22 @@ class AboutUsAction
      */
     public function __invoke(Request $request, AboutUsResponder $responder)
     {
-        $contactForm = $this->formFactory->create(ContactForm::class);
-        $contactForm->handleRequest($request);
+        $form = $this->formFactory
+                     ->create(ContactForm::class)
+                     ->handleRequest($request)
+        ;
 
-        if($contactForm->isSubmitted() && $contactForm->isValid())
+        $handler = $this->contactHandler->handle($form);
+
+        if($handler)
         {
-            $subject = $contactForm->get('subject')->getData();
-            $message = $this->mailService->contactMail(
-                $contactForm->get('fullname')->getData(),
-                $contactForm->get('email')->getData(),
-                $subject === null ? 'Sujet non spécifié' : $subject,
-                $contactForm->get('message')->getData()
-            );
-            $this->swift->send($message);
+            $this->swift->send($handler);
 
-            $this->session->getFlashBag()
-                ->add('success',
-                    'Message envoyé, nous vous répondrons au plus vite'
-                )
-            ;
             return new RedirectResponse('/accueil');
         }
 
         return $responder(
-            $contactForm->createView()
+            $form->createView()
         );
     }
 }
