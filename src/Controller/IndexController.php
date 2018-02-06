@@ -22,29 +22,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class IndexController extends Controller
 {
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function administration(Request $request)
-    {
-       $view = $this->get('App\Builders\AdminBuilder')
-           ->buildAdminHome($request)
-       ;
 
-       if($view[3] === 'admin')
-       {
-           return $this->redirectToRoute('admin');
-       }
-
-        return $this->render('admin\admin.html.twig',[
-            'minLevel' => $view[0],
-            'maxLevel' => $view[1],
-            'homeImg'  => $view[2],
-            'form'     => $view[3],
-            'title'    => $view[4]
-        ]);
-    }
 
 
     /**

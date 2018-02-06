@@ -34,24 +34,6 @@ class AdminBuilder
         $this->userManager = $userManager;
     }
 
-    /**
-     * @param Request $request
-     * @return array
-     */
-    public function buildAdminHome(Request $request)
-    {
-        //get user list
-        $repository = $this->doctrine->getRepository(User::class);
-
-        //homepage img modification
-        Return [
-            count($repository->countAllWithAccessLevel(1)),
-            count($repository->countAllWithAccessLevel(2)),
-            $this->homeImg->getHomeImage(),
-            $this->homeImg->addPictureToHomePage($request),
-            'Espace d\'administration'
-        ];
-    }
 
     /**
      * @return mixed
