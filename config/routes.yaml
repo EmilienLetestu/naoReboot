@@ -127,7 +127,7 @@ bird:
 statistics:
     path: /admin/statistiques
     defaults:
-        _controller: App\Controller\IndexController::statistics
+        _controller: App\Action\Admin\StatisticsAction
 
 aboutUs:
     path: /nao-et-ses-partenaires

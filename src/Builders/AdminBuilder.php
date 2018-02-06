@@ -34,55 +34,6 @@ class AdminBuilder
         $this->userManager = $userManager;
     }
 
-    /**
-     * @return array
-     */
-    public function buildStatistics()
-    {
-
-        // total of validated report
-        $repoReport = $this->doctrine->getRepository(Report::class);
-        $repoUser   = $this->doctrine->getRepository(User::class);
-
-
-        //total
-        $totalReport = count(
-            $repoReport->countAllValidated()
-        );
-        $totalUser = count(
-            $repoUser->countAllActivated()
-        );
-
-        // reference value for date based stats
-        $yearlyTotal = count(
-            $repoReport->countValidatedThisYear(date('Y'))
-        );
-
-        // reference values for user based stats
-        $allReportByUserLevel2 = count(
-            $repoReport->countWithUserAccessLevel(1)
-        );
-        $allReportByUserLevel1 = $totalReport - $allReportByUserLevel2;
-
-
-        // prevent to divide by 0
-        $average1 = $allReportByUserLevel1 > 0 ? $totalReport / $allReportByUserLevel1 : 0;
-        $average2 = $allReportByUserLevel2 > 0 ? $totalReport / $allReportByUserLevel2 : 0;
-
-        return [
-            $totalReport,
-            count($repoReport->countValidatedThisMonth(date('Y'),date('m'))),
-            $yearlyTotal,
-            $yearlyTotal / 365.4,
-            $yearlyTotal / 12,
-            $totalReport / $totalUser,
-            $allReportByUserLevel1,
-            $allReportByUserLevel2,
-            $average1,
-            $average2,
-        ];
-    }
-
 
     /**
      * @param Request $request

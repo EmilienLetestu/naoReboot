@@ -26,30 +26,6 @@ class IndexController extends Controller
 
     /**
      * @param Request $request
-     * @return Response
-     */
-    public function statistics(Request $request)
-    {
-        $view = $this->get('App\Builders\AdminBuilder')
-            ->buildStatistics($request)
-        ;
-
-        return $this->render('admin\adminStats.html.twig',[
-            'totalReport'     => $view[0],
-            'monthlyTotal'    => $view[1],
-            'yearlyTotal'     => $view[2],
-            'dailyAverage'    => $view[3],
-            'monthlyAverage'  => $view[4],
-            'averageByUser'   => $view[5],
-            'totalByLevel1'   => $view[6],
-            'totalByLevel2'   => $view[7],
-            'averageByLevel1' => $view[8],
-            'averageByLevel2' => $view[9]
-        ]);
-    }
-
-    /**
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function accountManagement(Request $request)
