@@ -75,7 +75,7 @@ historic:
 notification:
      path: /notification
      defaults:
-         _controller: App\Controller\IndexController::userNotification
+         _controller: App\Action\NotificationAction
 
 profile:
     path: /mon-profil/{name}-{surname}/{id}

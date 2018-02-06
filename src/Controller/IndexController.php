@@ -25,20 +25,6 @@ class IndexController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function userNotification()
-    {
-        $view = $this->get('App\Managers\NotificationManager')
-            ->getNotificationToDisplay()
-        ;
-
-        return $this->render('nao\notification.html.twig',[
-           'notificationList' => $view
-        ]);
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function terms()
     {
         return $this->render('nao\terms.html.twig');
