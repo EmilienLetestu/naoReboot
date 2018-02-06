@@ -113,7 +113,7 @@ exportCsv:
 accountValidation:
     path: /admin/demande-accès-naturaliste
     defaults:
-        _controller: App\Controller\IndexController::accountLvl2Request
+        _controller: App\Action\Admin\Level2RequestAction
 
 unactivated:
         path: /admin/comptes-innactifs

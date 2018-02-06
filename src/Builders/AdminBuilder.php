@@ -35,21 +35,6 @@ class AdminBuilder
     }
 
 
-    /**
-     * @return mixed
-     */
-    public function buildAccountLvl2Request()
-    {
-        //get all activated account
-        $repository = $this->doctrine->getRepository(User::class);
-
-        return [
-            $repository->findAllAccessLvl2Request(),
-            'Demande d\'accès naturaliste'
-        ];
-
-    }
-
 
     public function buildUnactivatedList()
     {

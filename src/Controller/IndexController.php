@@ -28,21 +28,6 @@ class IndexController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function accountLvl2Request()
-    {
-       $view = $this->get('App\Builders\AdminBuilder')
-           ->buildAccountLvl2Request()
-       ;
-
-       return $this->render('admin\adminMembers.html.twig',[
-           'userList' => $view[0],
-           'title'    => $view[1]
-       ]);
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function unactivatedAccount()
     {
         $view  = $this->get('App\Builders\AdminBuilder')
