@@ -211,7 +211,6 @@ class ReportRepository extends EntityRepository
         ;
     }
 
-
     /**
      * Will return all superior or equal to a given access level
      * Use to cover access level 2 and 3 on buildStatistics()
@@ -303,7 +302,7 @@ class ReportRepository extends EntityRepository
         return $queryBuilder
             ->getQuery()
             ->getScalarResult()
-            ;
+        ;
     }
 
 }
