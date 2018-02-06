@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8eafdd50-1ff4-4c46-921d-f55fb371465f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Action/NotificationAction.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Responder/NotificationResponder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Action/TermsAction.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Responder/TermsResponder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.yaml" afterPath="$PROJECT_DIR$/config/routes.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,8 +25,8 @@
             <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="81">
-                    <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+                  <state relative-caret-position="270">
+                    <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="49" />
                     <folding>
                       <element signature="e#116#135#0#PHP" expanded="true" />
                     </folding>
@@ -47,8 +45,8 @@
       <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+            <state relative-caret-position="420">
+              <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,8 +89,30 @@
       <file leaf-file-name="NotificationResponder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Responder/NotificationResponder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="729">
+            <state relative-caret-position="972">
               <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+              <folding>
+                <element signature="e#118#164#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TermsAction.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Action/TermsAction.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TermsResponder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Responder/TermsResponder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="771">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="e#118#164#0#PHP" expanded="true" />
               </folding>
@@ -132,16 +152,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tools.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Services/Tools.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="88" column="5" lean-forward="false" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -164,8 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/nao/searchResult.html.twig" />
-        <option value="$PROJECT_DIR$/src/Twig/StringUrlTypeExtension.php" />
         <option value="$PROJECT_DIR$/src/Twig/ApostropheExtension.php" />
         <option value="$PROJECT_DIR$/templates/nao/birdHistory.html.twig" />
         <option value="$PROJECT_DIR$/templates/nao/reportCard.html.twig" />
@@ -213,8 +221,10 @@
         <option value="$PROJECT_DIR$/src/Action/ValidateReportAction.php" />
         <option value="$PROJECT_DIR$/src/Responder/NotificationResponder.php" />
         <option value="$PROJECT_DIR$/src/Action/NotificationAction.php" />
-        <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/IndexController.php" />
+        <option value="$PROJECT_DIR$/src/Responder/TermsResponder.php" />
+        <option value="$PROJECT_DIR$/src/Action/TermsAction.php" />
+        <option value="$PROJECT_DIR$/config/routes.yaml" />
       </list>
     </option>
   </component>
@@ -705,12 +715,12 @@
       <workItem from="1512557914305" duration="605000" />
       <workItem from="1512562362894" duration="148000" />
       <workItem from="1512562530503" duration="2596000" />
-      <workItem from="1517818887100" duration="51942000" />
+      <workItem from="1517818887100" duration="54995000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1614325000" />
+    <option name="totallyTimeSpent" value="1617378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -768,24 +778,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Twig/BirdStatisticsTypeExtension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/NotificationRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding>
-            <element signature="e#115#145#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Builders/HomePageBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-442">
@@ -1203,16 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Responder/NotificationResponder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-          <folding>
-            <element signature="e#118#164#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Action/NotificationAction.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="783">
@@ -1223,20 +1205,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Responder/NotificationResponder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <element signature="e#118#164#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        <state relative-caret-position="270">
+          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="49" />
           <folding>
             <element signature="e#116#135#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Responder/TermsResponder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="771">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#118#164#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Action/TermsAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+        <state relative-caret-position="420">
+          <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
           <folding />
         </state>
       </provider>

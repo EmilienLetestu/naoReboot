@@ -137,7 +137,7 @@ aboutUs:
 terms:
     path: /conditions-generales-d-utilisation
     defaults:
-        _controller: App\Controller\IndexController::terms
+        _controller: App\Action\TermsAction
 
 star:
    path: /star/{reportId}
