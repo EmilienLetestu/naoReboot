@@ -132,7 +132,7 @@ statistics:
 aboutUs:
     path: /nao-et-ses-partenaires
     defaults:
-        _controller:  App\Controller\IndexController::aboutUs
+        _controller:  App\Action\AboutUsAction
 
 terms:
     path: /conditions-generales-d-utilisation
