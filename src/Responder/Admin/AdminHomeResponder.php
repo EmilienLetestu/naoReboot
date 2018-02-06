@@ -6,7 +6,7 @@
  * Time: 10:41
  */
 
-namespace App\Responder;
+namespace App\Responder\Admin;
 
 
 

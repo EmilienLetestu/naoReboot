@@ -10,7 +10,7 @@ namespace App\Action\Admin;
 
 
 use App\Entity\User;
-use App\Responder\AdminHomeResponder;
+use App\Responder\Admin\AdminHomeResponder;
 use App\Services\HomeImg;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
