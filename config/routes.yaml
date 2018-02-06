@@ -122,7 +122,7 @@ unactivated:
 bird:
     path: /admin/liste-des-espèces
     defaults:
-        _controller:  App\Controller\IndexController::listReportedBird
+        _controller:  App\Action\Admin\ReportedBirdAction
 
 statistics:
     path: /admin/statistiques
@@ -153,9 +153,7 @@ validateReport:
    requirements:
        reportId: \d+
 
-controllers:
-   resource: ../src/Controller/
-   type: annotation
+
 
 
 
