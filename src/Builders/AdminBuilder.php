@@ -34,19 +34,6 @@ class AdminBuilder
         $this->userManager = $userManager;
     }
 
-
-
-    public function buildUnactivatedList()
-    {
-        $repository = $this->doctrine->getRepository(User::class);
-
-        return [
-            $repository->findDeletableAccount('- 60 day'),
-            'Compte innactifs'
-            ];
-
-    }
-
     /**
      * @return array
      */

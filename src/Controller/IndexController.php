@@ -24,21 +24,6 @@ class IndexController extends Controller
 
 
 
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function unactivatedAccount()
-    {
-        $view  = $this->get('App\Builders\AdminBuilder')
-            ->buildUnactivatedList();
-
-        return $this->render('admin\unactivatedAccount.html.twig',[
-            'userList' => $view[0],
-            'title'    => $view[1]
-        ]);
-    }
-
     /**
      * @param Request $request
      * @return Response
