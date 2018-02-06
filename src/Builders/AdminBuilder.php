@@ -50,33 +50,6 @@ class AdminBuilder
 
     }
 
-    /**
-     * @return array
-     */
-    public function buildUserList()
-    {
-        //get all activated account
-        $repository = $this->doctrine->getRepository(User::class);
-        $repo = $this->doctrine->getRepository(Report::class);
-
-        $userList = $repository->findAllActivated();
-
-        foreach ($userList as $user)
-        {
-            $idList[] = $user->getId();
-        }
-
-        foreach ($idList as $id)
-        {
-            $report[] = $repo->findUserLastPublication($id);
-        }
-
-        Return [
-            $repository->findAllActivated(),
-            $report,
-            'Liste des membres'
-        ];
-    }
 
     public function buildUnactivatedList()
     {

@@ -85,6 +85,7 @@ profile:
         name: ([a-zA-z]{3,})
         surname: ([a-zA-z]{3,})
         id: \d+
+
 admin:
     path: /admin
     defaults:
@@ -93,7 +94,7 @@ admin:
 userList:
     path: /admin/liste-des-membres
     defaults:
-        _controller: App\Controller\IndexController::userList
+        _controller: App\Action\Admin\UserListAction
 
 userManagement:
     path: /admin/{action}/{id}
@@ -108,7 +109,6 @@ exportCsv:
     path: /admin/export-report
     defaults:
         _controller: App\Action\Admin\ExportCsvAction
-
 
 accountValidation:
     path: /admin/demande-accès-naturaliste
