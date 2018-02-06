@@ -11,11 +11,9 @@ namespace App\Managers;
 use App\Entity\Report;
 use App\Entity\Star;
 
-use App\Services\Tools;
-
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 
 class StarManager
@@ -25,9 +23,9 @@ class StarManager
     private $token;
 
     public function __construct(
-        EntityManager $doctrine,
-        Session       $session,
-        TokenStorage  $token
+        EntityManagerInterface $doctrine,
+        SessionInterface       $session,
+        TokenStorageInterface  $token
 
     )
     {
