@@ -49,7 +49,7 @@ class Tools
      * @param $userId
      * @return array
      */
-    public function generateDataForUserImg($birdSpecies, $userId)
+    public function generateDataForUserImg($birdSpecies, $userId) :array
     {
         return [ uniqid("{$userId}_"),
                 "observation de {$birdSpecies} sur NAO.fr"];
@@ -60,7 +60,7 @@ class Tools
      * @param bool $speciesFr
      * @return array
      */
-    public function birdWiki($speciesLatin, $speciesFr = false)
+    public function birdWiki($speciesLatin, $speciesFr = false) :array
     {
         $extractDataLatin = preg_split('#[\(,\)]#',$speciesLatin);
         $extractDataFr    = explode(',',$speciesFr);
@@ -77,7 +77,7 @@ class Tools
      * @param $accessLevel
      * @return array
      */
-    public function reportGateways($accessLevel, $onHold)
+    public function reportGateways($accessLevel, $onHold) :array
     {
         $gateWays = [
             $validated = $accessLevel < 2 || $onHold == 1 ? false : true,
@@ -86,6 +86,20 @@ class Tools
         ];
 
         return $gateWays;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTimeElapsed() :array
+    {
+        $onlineSince = new \DateTime(date('2017-11-01 00:00:00'));
+        $today = new \DateTime(date('Y-m-d h:i:s'));
+        $diff = $onlineSince->diff($today);
+
+        return ['days'  => $diff->days,
+                'months'=> ($diff->format('%Y')*12) + ($diff->format('%m'))
+        ];
     }
 
 }
