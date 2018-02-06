@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8eafdd50-1ff4-4c46-921d-f55fb371465f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Managers/StarManager.php" afterPath="$PROJECT_DIR$/src/Managers/StarManager.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Action/ValidateReportAction.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Responder/ValidateReportResponder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.yaml" afterPath="$PROJECT_DIR$/config/routes.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,16 +20,18 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DockManager">
-    <window id="7">
+    <window id="8">
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="StarManager.php" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Managers/StarManager.php">
+            <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-2305">
-                    <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-                    <folding />
+                  <state relative-caret-position="459">
+                    <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+                    <folding>
+                      <element signature="e#116#135#0#PHP" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -38,21 +44,33 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state relative-caret-position="393">
+              <caret line="151" column="51" lean-forward="false" selection-start-line="151" selection-start-column="51" selection-end-line="151" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StarReportAction.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ValidateReportAction.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Action/ValidateReportAction.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <element signature="e#114#149#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StarReportAction.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Action/StarReportAction.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+            <state relative-caret-position="702">
+              <caret line="46" column="1" lean-forward="false" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
               <folding>
                 <element signature="e#115#144#0#PHP" expanded="true" />
               </folding>
@@ -60,14 +78,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchAction.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Action/SearchAction.php">
+      <file leaf-file-name="ValidateReportResponder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Responder/ValidateReportResponder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="e#115#149#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="432">
+              <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,40 +94,6 @@
             <state relative-caret-position="459">
               <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivateAction.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Action/ActivateAction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-297">
-              <caret line="75" column="65" lean-forward="false" selection-start-line="75" selection-start-column="65" selection-end-line="75" selection-end-column="65" />
-              <folding>
-                <element signature="e#115#135#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivateResponder.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Responder/ActivateResponder.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileAction.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Action/ProfileAction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-              <folding>
-                <element signature="e#115#147#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -148,8 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Services/Search.php" />
-        <option value="$PROJECT_DIR$/src/Repository/BirdRepository.php" />
         <option value="$PROJECT_DIR$/src/Repository/ReportRepository.php" />
         <option value="$PROJECT_DIR$/public/js/maps.js" />
         <option value="$PROJECT_DIR$/templates/nao/searchResult.html.twig" />
@@ -195,10 +175,12 @@
         <option value="$PROJECT_DIR$/src/Builders/ProfileBuilder.php" />
         <option value="$PROJECT_DIR$/src/Action/ProfileAction.php" />
         <option value="$PROJECT_DIR$/src/Responder/StarReportResponder.php" />
-        <option value="$PROJECT_DIR$/config/routes.yaml" />
-        <option value="$PROJECT_DIR$/src/Controller/IndexController.php" />
         <option value="$PROJECT_DIR$/src/Action/StarReportAction.php" />
         <option value="$PROJECT_DIR$/src/Managers/StarManager.php" />
+        <option value="$PROJECT_DIR$/src/Responder/ValidateReportResponder.php" />
+        <option value="$PROJECT_DIR$/src/Action/ValidateReportAction.php" />
+        <option value="$PROJECT_DIR$/src/Controller/IndexController.php" />
+        <option value="$PROJECT_DIR$/config/routes.yaml" />
       </list>
     </option>
   </component>
@@ -689,12 +671,12 @@
       <workItem from="1512557914305" duration="605000" />
       <workItem from="1512562362894" duration="148000" />
       <workItem from="1512562530503" duration="2596000" />
-      <workItem from="1517818887100" duration="50196000" />
+      <workItem from="1517818887100" duration="50920000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1612579000" />
+    <option name="totallyTimeSpent" value="1613303000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -752,22 +734,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/packages/twig.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Twig/CheckNotificationTypeExtension.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1165,38 +1131,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Responder/StarReportResponder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Action/SearchAction.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="e#115#149#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-          <folding>
-            <element signature="e#116#135#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1209,13 +1149,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Responder/StarReportResponder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Action/StarReportAction.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+        <state relative-caret-position="702">
+          <caret line="46" column="1" lean-forward="false" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
           <folding>
             <element signature="e#115#144#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <element signature="e#116#135#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Action/ValidateReportAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#114#149#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Responder/ValidateReportResponder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="151" column="51" lean-forward="false" selection-start-line="151" selection-start-column="51" selection-end-line="151" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -23,20 +23,6 @@ class IndexController extends Controller
 {
 
     /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function validateReport(Request $request)
-    {
-        $this->get('App\Managers\ValidationManager')
-            ->validationProcess($request->get('reportId'))
-        ;
-        $redirect = $request->headers->get('referer');
-        return $this->redirect($redirect);
-
-    }
-
-    /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function userNotification()

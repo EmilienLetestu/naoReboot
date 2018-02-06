@@ -149,7 +149,7 @@ star:
 validateReport:
    path: /validation/{reportId}
    defaults:
-       _controller: App\Controller\IndexController::validateReport
+       _controller: App\Action\ValidateReportAction
    requirements:
        reportId: \d+
 
