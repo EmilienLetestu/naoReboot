@@ -75,6 +75,7 @@ class Tools
     /**
      * set default report data based on user accessLevel
      * @param $accessLevel
+     * @param $onHold
      * @return array
      */
     public function reportGateways($accessLevel, $onHold) :array
