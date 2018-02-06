@@ -86,14 +86,14 @@ class ActivateAccount
 
             return $this->session->getFlashBag()
                 ->add('denied','L\'email a expiré, un nouvel email à été envoyé.')
-                ;
+            ;
         }
 
         if(!$user)
         {
             return $this->session->getFlashBag()
                 ->add('error','Utilisateur inconnu')
-                ;
+            ;
         }
 
         $user->setActivated(true);
@@ -101,6 +101,6 @@ class ActivateAccount
 
         return $this->session->getFlashBag()
             ->add('success','Votre compte est activé !')
-            ;
+        ;
     }
 }

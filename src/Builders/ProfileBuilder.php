@@ -101,7 +101,6 @@ class ProfileBuilder
                 ->getActivitiesData($reportList)
         ];
     }
-
 }
 
 
