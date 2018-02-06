@@ -42,7 +42,6 @@ services:
         tags:
             - 'controller.service_arguments'
 
-
     App\Twig\:
         resource: '../src/Twig'
         tags: ['twig.extension']
