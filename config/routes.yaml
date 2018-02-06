@@ -107,7 +107,7 @@ userManagement:
 exportCsv:
     path: /admin/export-report
     defaults:
-        _controller: App\Controller\IndexController::export
+        _controller: App\Action\Admin\ExportCsvAction
 
 
 accountValidation:

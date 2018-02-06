@@ -142,15 +142,5 @@ class IndexController extends Controller
             'reportedBird' => $view,
         ]);
     }
-
-    /**
-     * @return mixed
-     */
-    public function export(){
-
-        return $this->get('App\Services\ExportCsv')
-            ->encodeTable()
-        ;
-    }
 }
 
