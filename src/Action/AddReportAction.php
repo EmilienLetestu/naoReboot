@@ -64,7 +64,7 @@ class AddReportAction
         {
             //get user level and object
             $level   = $this->token->getToken()->getUser()->getAccessLevel();
-            $onHold  = $this->token->getToken()->getUser()->getAccessLevel();
+            $onHold  = $this->token->getToken()->getUser()->getOnHold();
             $user    = $this->token->getToken()->getUser();
 
             //prepare report default data
