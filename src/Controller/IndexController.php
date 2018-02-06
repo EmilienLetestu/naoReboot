@@ -23,21 +23,6 @@ class IndexController extends Controller
 {
 
     /**
-     * @Security("has_role('ROLE_USER')")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function starReport(Request $request)
-    {
-
-       $this->get('App\Managers\StarManager')
-           ->starProcess($request->get('reportId'))
-       ;
-       $redirect = $request->headers->get('referer');
-       return $this->redirect($redirect);
-    }
-
-    /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */

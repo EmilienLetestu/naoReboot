@@ -142,7 +142,7 @@ terms:
 star:
    path: /star/{reportId}
    defaults:
-      _controller: App\Controller\IndexController::starReport
+      _controller: App\Action\StarReportAction
    requirements:
        reportId: \d+
 
