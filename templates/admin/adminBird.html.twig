@@ -65,7 +65,7 @@
             <tr>
                 <td colspan="3">
                     <div id="birdStatMap{{ loop.index }}" class="gBird">
-                    {% for report in key|birdLocation %}
+                    {% for report in key|birdLocation if report.validated == 1 %}
                     <input type="hidden" id="reportMapSatNav{{ loop.index }}" class="birdLocation_{{ report.bird.id }}" value="{{ report.satNav }}">
                     {% endfor %}
                     </div>
