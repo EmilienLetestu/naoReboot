@@ -98,8 +98,9 @@ class Tools
         $today = new \DateTime(date('Y-m-d h:i:s'));
         $diff = $onlineSince->diff($today);
 
-        return ['days'  => $diff->days,
-                'months'=> ($diff->format('%Y')*12) + ($diff->format('%m'))
+        return [
+            'days'  => $diff->days,
+            'months'=> ($diff->format('%Y')*12) + ($diff->format('%m'))
         ];
     }
 
