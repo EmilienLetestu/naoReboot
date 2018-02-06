@@ -22,21 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class IndexController extends Controller
 {
 
-
-
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function accountManagement(Request $request)
-    {
-        $this->get('App\Builders\AdminBuilder')
-            ->buildAccountManagement($request)
-        ;
-        $redirect = $request->headers->get('referer');
-        return $this->redirect($redirect);
-    }
-
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */

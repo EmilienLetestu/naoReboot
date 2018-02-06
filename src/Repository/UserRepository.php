@@ -221,6 +221,7 @@ class UserRepository extends EntityRepository
 
        $this->whereActivated($queryBuilder,1);
        $this->whereOnHold($queryBuilder,0);
+       $this->whereDeactivated($queryBuilder,0);
 
        return $queryBuilder
            ->getQuery()

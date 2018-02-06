@@ -91,9 +91,10 @@ class UserManager
     }
 
     /**
+     * use for soft delete
      * @param $id
      */
-    public function softDeleteById($id)
+    public function deactivateUser($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneById($id);
@@ -115,9 +116,10 @@ class UserManager
     }
 
     /**
+     * change user access level
      * @param $id
      */
-    public function changeAccessLevel($id)
+    public function privilegeUser($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneBy([
@@ -136,7 +138,7 @@ class UserManager
      * validate a professional account request
      * @param $id
      */
-    public function validateAccountRequest($id)
+    public function validateUser($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneById($id);
@@ -151,11 +153,11 @@ class UserManager
      * deny a professional account request
      * @param $id
      */
-    public function denyAccountRequest($id)
+    public function denyUser($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneById($id);
-        $user->setOnHold(true);
+        $user->setOnHold(false);
         $user->setAccessLevel(1);
         $this->notificationManager->notifyUser(4, $user);
         $this->doctrine->persist($user);

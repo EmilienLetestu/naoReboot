@@ -99,7 +99,7 @@ userList:
 userManagement:
     path: /admin/{action}/{id}
     defaults:
-        _controller: App\Controller\IndexController::accountManagement
+        _controller: App\Action\Admin\AccountManagementAction
         id: null
     requirements:
         action: deactivate||ban||privilege||validate||deny||delete

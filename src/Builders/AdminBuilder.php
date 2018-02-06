@@ -36,37 +36,6 @@ class AdminBuilder
 
 
     /**
-     * @param Request $request
-     */
-    public function buildAccountManagement(Request $request)
-    {
-        $action = $request->attributes->get('action');
-        $id     = $request->attributes->get('id');
-
-       //get action to apply from url
-       switch ($action):
-           case 'deactivate':
-               $this->userManager->softDeleteById($id);
-               break;
-           case 'ban':
-               $this->userManager->banUser($id);
-               break;
-           case 'privilege':
-               $this->userManager->changeAccessLevel($id);
-               break;
-           case 'deny':
-               $this->userManager->denyAccountRequest($id);
-               break;
-           case 'validate':
-               $this->userManager->validateAccountRequest($id);
-               break;
-           case 'delete':
-               $this->userManager->getDelete($id,'- 60 day');
-               break;
-       endswitch;
-    }
-
-    /**
      * @return array
      */
     public function buildReportedBird()
