@@ -20,11 +20,33 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RegisterAction
 {
+    /**
+     * @var FormFactoryInterface
+     */
     private $formFactory;
+
+    /**
+     * @var EntityManagerInterface
+     */
     private $doctrine;
+
+    /**
+     * @var \Swift_Mailer
+     */
     private $swift;
+
+    /**
+     * @var RegisterHandler
+     */
     private $registerHandler;
 
+    /**
+     * RegisterAction constructor.
+     * @param FormFactoryInterface $formFactory
+     * @param EntityManagerInterface $doctrine
+     * @param \Swift_Mailer $swift
+     * @param RegisterHandler $registerHandler
+     */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
@@ -38,6 +60,11 @@ class RegisterAction
         $this->registerHandler = $registerHandler;
     }
 
+    /**
+     * @param Request $request
+     * @param RegisterResponder $responder
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function __invoke(Request $request, RegisterResponder $responder)
     {
         $user = new User();
