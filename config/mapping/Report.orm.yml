@@ -1,0 +1,64 @@
+App\Entity\Report:
+    type: entity
+    table: report
+    repository: App\Repository\ReportRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        starNbr:
+            type: integer
+            options:
+                default: 0
+        location:
+            type: string
+            length: 50
+            nullable: false
+        satNav:
+            type: string
+            length: 50
+            nullable: false
+        addedOn:
+            type: date
+            nullable: false
+        nbrOfBirds:
+            type: smallint
+            nullable: false
+        comment:
+            type: text
+            nullable: true
+        pictRef:
+            type: string
+            length: 40
+            nullable: true
+            unique: true
+        validated:
+            type: boolean
+            nullable: false
+        validationScore:
+            type: smallint
+            nullable: false
+    oneToMany:
+        validations:
+            targetEntity: App\Entity\Validation
+            mappedBy: report
+            cascade: ['persist', 'remove']
+        stars:
+            targetEntity: App\Entity\Validation
+            mappedBy: report
+            cascade: ['persist', 'remove']
+    manyToOne:
+        bird:
+            targetEntity: App\Entity\Bird
+            mappedBy: reports
+            joinColumn:
+                name: bird_id
+                referencedColumnName: id
+        user:
+            targetEntity: App\Entity\User
+            inversedBy: reports
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
