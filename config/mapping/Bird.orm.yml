@@ -1,0 +1,30 @@
+App\Entity\Bird:
+    type: entity
+    table: bird
+    repositoryClass: App\Repository\BirdRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        speciesLatin:
+            type: string
+            length: 90
+        synonymous:
+            type: string
+            length: 255
+        speciesFr:
+            type: string
+            length: 110
+        breed:
+            type: string
+            length: 55
+        birdGroup:
+            type: string
+            length: 60
+    oneToMany:
+        reports:
+            targetEntity: App\Entity\Report
+            mappedBy: bird
+            cascade: ['persist', 'remove']
