@@ -120,7 +120,7 @@ class Bird
      */
     public function getSpeciesFr()
     {
-        return $this->speciesFr;
+        return $this->speciesFr == '' ? $this->getSpeciesNameOnly() : $this->speciesFr;
     }
 
     /**
