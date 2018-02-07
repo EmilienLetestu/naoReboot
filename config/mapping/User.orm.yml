@@ -50,7 +50,6 @@ App\Entity\User:
             type: boolean
             options:
                 default: false
-
     oneToMany:
         reports:
             targetEntity: App\Entity\Report
