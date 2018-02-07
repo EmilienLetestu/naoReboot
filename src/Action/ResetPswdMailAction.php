@@ -11,6 +11,7 @@ namespace App\Action;
 
 use App\Entity\User;
 use App\Form\AskResetType;
+use App\Handler\AskResetHandler;
 use App\Responder\ResetPswdMailResponder;
 use App\Services\Mails;
 use App\Services\Tools;
@@ -33,100 +34,54 @@ class ResetPswdMailAction
      */
     private $doctrine;
 
-    /**
-     * @var Mails
-     */
-    private $mailService;
-
-    /**
-     * @var Tools
-     */
-    private $tools;
 
     /**
      * @var \Swift_Mailer
      */
     private $swift;
 
-    /**
-     * @var SessionInterface
-     */
-    private $session;
+    private $askResetHandler;
+
 
     /**
-     * @var TokenStorageInterface
-     */
-    private $token;
-
-    /**
-     * ResetPswdAction constructor.
+     * ResetPswdMailAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
-     * @param Mails $mailService
-     * @param Tools $tools
      * @param \Swift_Mailer $swift
-     * @param SessionInterface $session
-     * @param TokenStorageInterface $token
+     * @param AskResetHandler $askResetHandler
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
-        Mails                  $mailService,
-        Tools                  $tools,
         \Swift_Mailer          $swift,
-        SessionInterface       $session,
-        TokenStorageInterface  $token
+        AskResetHandler        $askResetHandler
+
     )
     {
-        $this->formFactory  = $formFactory;
-        $this->doctrine     = $doctrine;
-        $this->mailService  = $mailService;
-        $this->tools        = $tools;
-        $this->swift        = $swift;
-        $this->session      = $session;
-        $this->token        = $token;
+        $this->formFactory     = $formFactory;
+        $this->doctrine        = $doctrine;
+        $this->swift           = $swift;
+        $this->askResetHandler = $askResetHandler;
     }
+
 
     public function __invoke(Request $request, ResetPswdMailResponder $responder)
     {
         //generate needed object and form
         $user = new User();
-        $askResetForm = $this->formFactory->create(AskResetType::class, $user);
-        $askResetForm->handleRequest($request);
+        $form = $this->formFactory
+                     ->create(AskResetType::class, $user)
+                     ->handleRequest($request)
+        ;
+        $handler = $this->askResetHandler->handle($form, $user);
 
-        //process form
-        if($askResetForm->isSubmitted() && $askResetForm->isValid())
+        if($handler)
         {
-            //check if mail exist
-            $user=$this->mailService->checkMailAvailability($user->getEmail());
-
-            if(!$user)
-            {
-                $this->session->getFlashBag()
-                    ->add('denied',
-                        'Adresse e-mail inconnue'
-                    )
-                ;
-                return $responder($askResetForm->createView());
-            }
-            //prepare email and send it
-            $message = $this->mailService->resetPswdMail(
-                $user->getName(),
-                $user->getSurname(),
-                $user->getConfirmationToken(),
-                $user->getEmail())
-            ;
-            $this->swift->send($message);
-
-            $this->session->getFlashBag()
-                ->add('success',
-                    'Un email de changement de mot de passe vous a été envoyé !'
-                )
-            ;
+            $this->swift->send($handler);
 
             return new RedirectResponse('/accueil');
         }
 
-        return $responder($askResetForm->createView());
+        return $responder($form->createView());
     }
 }
