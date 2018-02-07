@@ -11,6 +11,7 @@ namespace App\Action;
 use App\Entity\User;
 use App\Form\AskResetType;
 use App\Form\ResetPswdType;
+use App\Handler\ResetPswdHandler;
 use App\Responder\ResetPswdFormResponder;
 use App\Services\Mails;
 use App\Services\Tools;
@@ -57,8 +58,10 @@ class ResetPswdFormAction
      */
     private $token;
 
+    private $resetPswdHandler;
+
     /**
-     * ResetPswdAction constructor.
+     * ResetPswdFormAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
      * @param Mails $mailService
@@ -66,6 +69,7 @@ class ResetPswdFormAction
      * @param \Swift_Mailer $swift
      * @param SessionInterface $session
      * @param TokenStorageInterface $token
+     * @param ResetPswdHandler $resetPswdHandler
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
@@ -74,7 +78,8 @@ class ResetPswdFormAction
         Tools                  $tools,
         \Swift_Mailer          $swift,
         SessionInterface       $session,
-        TokenStorageInterface  $token
+        TokenStorageInterface  $token,
+        ResetPswdHandler       $resetPswdHandler
     )
     {
         $this->formFactory  = $formFactory;
@@ -84,6 +89,7 @@ class ResetPswdFormAction
         $this->swift        = $swift;
         $this->session      = $session;
         $this->token        = $token;
+        $this->resetPswdHandler = $resetPswdHandler;
     }
 
     public function __invoke(Request $request, ResetPswdFormResponder $responder)
@@ -133,12 +139,14 @@ class ResetPswdFormAction
         }
 
         //generate needed object and form
-        $resetForm = $this->formFactory->create(ResetPswdType::class, $user);
-        $resetForm->handleRequest($request);
+        $form = $this->formFactory
+                     ->create(ResetPswdType::class, $user)
+                     ->handleRequest($request)
+        ;
 
-        if($resetForm->isSubmitted() && $resetForm->isValid())
+        if($this->resetPswdHandler->handle($form, $user))
         {
-            $user->setPswd($resetForm->get('pswd')->getData());
+            $this->doctrine->persist($user);
             $this->doctrine->flush();
 
             $this->session->getFlashBag()
@@ -148,6 +156,6 @@ class ResetPswdFormAction
             return new RedirectResponse('/accueil');
         }
 
-        return $responder($resetForm->createView());
+        return $responder($form->createView());
     }
 }
