@@ -14,98 +14,76 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Report
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="report")
- * @ORM\Entity(repositoryClass="App\Repository\ReportRepository")
  */
 class Report
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Bird", inversedBy="reports")
-     * @ORM\JoinColumn(name="bird_id", referencedColumnName="id")
      */
     private $bird;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reports")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
      * @var
-     * @ORM\Column(type="integer", options={"default"=0})
      */
     private $starNbr;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=50)
      */
     private $location;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=50)
      */
     private $satNav;
 
     /**
      * @var
-     * @ORM\Column(type="date")
      */
     private $addedOn;
 
     /**
      * @var
-     * @ORM\Column(type="smallint")
      */
     private $nbrOfBirds;
 
     /**
      * @var
-     * @ORM\Column(type="text", nullable=true)
      */
     private $comment = null;
 
     /**
      * @var null
-     * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $pictRef = null;
 
     /**
      * @var
-     * @ORM\Column(type="boolean")
-     *
      */
     private $validated;
 
     /**
      * @var
-     * @ORM\Column(type="smallint")
      */
     private $validationScore;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Validation", mappedBy="report")
      */
     private $validations;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="report")
      */
     private $stars;
 

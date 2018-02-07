@@ -13,46 +13,34 @@ Use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Notification
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="notification")
- * @ORM\Entity(repositoryClass="App\Repository\NotificationRepository")
  */
 class Notification
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="notifications")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *
      */
     private $user;
 
     /**
      * @var
-     * @ORM\Column(type="smallint")
      * notification array index value
      */
     private $type;
 
     /**
      * @var
-     * @ORM\Column(type="boolean")
      * if you user hasn't seen it yet value = 0
-     * if user saw it value = 1
+     * if user saw it => value = 1
      */
     private $seen;
 
     /**
      * @var
-     * @ORM\Column(type="date")
      */
     private $notifiedOn;
 

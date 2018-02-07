@@ -13,32 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Star
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="star")
- * @ORM\Entity(repositoryClass="App\Repository\StarRepository")
  */
 class Star
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report", inversedBy="stars")
-     * @ORM\JoinColumn(name="report_id", referencedColumnName="id")
      * id from starred report
      */
     private $report;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="stars")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * id from user whom was adding star
      */
     private $user;

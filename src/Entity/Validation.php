@@ -13,32 +13,21 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Validation
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="validation")
- * @ORM\Entity(repositoryClass="App\Repository\ValidationRepository")
  */
 class Validation
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Report", inversedBy="validations")
-     * @ORM\JoinColumn(name="report_id", referencedColumnName="id")
      * Id from validated report
      */
     private $report;
 
     /**
-     * @var
-     * @ORM\ManyToONe(targetEntity="App\Entity\User", inversedBy="validations")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * Id from user whom was adding validation point
      */
     private $user;

@@ -16,54 +16,42 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Class Bird
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="bird")
- * @ORM\Entity(repositoryClass="App\Repository\BirdRepository")
  */
 class Bird
 {
 
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=90)
      */
     private $speciesLatin;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=255)
      */
     private $synonymous;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=110)
      */
     private $speciesFr;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=55)
      */
     private $breed;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=60)
      */
     private $birdGroup;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="bird")
      */
     private $reports;
 
