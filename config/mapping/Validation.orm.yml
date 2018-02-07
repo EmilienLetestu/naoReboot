@@ -1,0 +1,22 @@
+App\Entity\Validation:
+    type: entity
+    table: validation
+    repositoryClass: App\Repository\ValidationRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        report:
+            targetEntity: App\Entity\Report
+            inversedBy: reports
+            joinColumn:
+                name: report_id
+                referencedColumnName: id
+        user:
+            targetEntity: App\Entity\User
+            invesedBy: users
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
