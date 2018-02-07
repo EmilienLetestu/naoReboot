@@ -1,0 +1,70 @@
+App\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: App\Repository\UserRepository
+    id:
+        id:
+            type: intger
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 30
+            nullable: false
+        surname:
+            type: string
+            length: 30
+            nullable: false
+        email:
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        createdOn:
+            type: date
+            nullable: false
+        accessLevel:
+            type: smallint
+            nullable: false
+        pswd:
+            type: string
+            nullable: false
+        activated:
+            type: boolean
+            options:
+                default: false
+        onHold:
+            type: boolean
+            nullable: false
+        confirmationToken:
+            type: string
+            length: 40
+            nullable: false
+            unique: true
+        ban:
+            type: boolean
+            options:
+                default: false
+        deactivated:
+            type: boolean
+            options:
+                default: false
+
+    oneToMany:
+        reports:
+            targetEntity: App\Entity\Report
+            mappedBy: user
+            cascade: ['persist', 'remove']
+        validations:
+            targetEntity: App\Entity\Validation
+            mappedBy: user
+            cascade: ['persist']
+        stars:
+            targetEntity: App\Entity\Star
+            mappedBy: user
+            cascade: ['persist', 'remove']
+        notifications:
+            targetEntity: App\Entity\Notification
+            mappedBy: user
+            cascade: ['persist', 'remove']
