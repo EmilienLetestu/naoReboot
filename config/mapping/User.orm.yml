@@ -4,7 +4,7 @@ App\Entity\User:
     repositoryClass: App\Repository\UserRepository
     id:
         id:
-            type: intger
+            type: integer
             generator:
                 strategy: AUTO
     fields:

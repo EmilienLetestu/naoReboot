@@ -7,16 +7,16 @@ App\Entity\Notification:
             type: integer
             generator:
                 strategy: AUTO
-    fileds:
+    fields:
         type:
-           type: smallint
-           nullable: false
+            type: smallint
+            nullable: false
         seen:
-           type: boolean
-           nullable: false
+            type: boolean
+            nullable: false
         notifiedOn:
-           type: date
-           nullable: false
+            type: date
+            nullable: false
     manyToOne:
         user:
             targetEntity: App\Entity\User

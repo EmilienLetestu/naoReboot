@@ -10,13 +10,13 @@ App\Entity\Validation:
     manyToOne:
         report:
             targetEntity: App\Entity\Report
-            inversedBy: reports
+            inversedBy: validations
             joinColumn:
                 name: report_id
                 referencedColumnName: id
         user:
             targetEntity: App\Entity\User
-            invesedBy: users
+            inversedBy: validations
             joinColumn:
                 name: user_id
                 referencedColumnName: id

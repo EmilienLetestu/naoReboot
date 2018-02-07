@@ -1,7 +1,7 @@
 App\Entity\Report:
     type: entity
     table: report
-    repository: App\Repository\ReportRepository
+    repositoryClass: App\Repository\ReportRepository
     id:
         id:
             type: integer
@@ -46,13 +46,13 @@ App\Entity\Report:
             mappedBy: report
             cascade: ['persist', 'remove']
         stars:
-            targetEntity: App\Entity\Validation
+            targetEntity: App\Entity\Star
             mappedBy: report
             cascade: ['persist', 'remove']
     manyToOne:
         bird:
             targetEntity: App\Entity\Bird
-            mappedBy: reports
+            inversedBy: reports
             joinColumn:
                 name: bird_id
                 referencedColumnName: id
