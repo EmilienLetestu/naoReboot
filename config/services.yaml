@@ -25,9 +25,6 @@ services:
     # controllers are imported separately to make sure they
     # have the tag that allows actions to type-hint services
 
-    App\Builders\:
-        resource: '../src/Builders'
-        public: true
 
     App\Services\:
         resource: '../src/Services'
