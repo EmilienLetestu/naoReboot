@@ -1,0 +1,22 @@
+App\Entity\Star:
+    type: entity
+    table: star
+    repositoryClass: App\Repository\StarRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        report:
+            targetEntity: App\Entity\Report
+            inversedBy: stars
+            joinColumn:
+                name: report_id
+                referencedColumnName: id
+        user:
+            targetEntity: App\Entity\User
+            inversedBy: stars
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
