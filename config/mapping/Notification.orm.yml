@@ -1,0 +1,26 @@
+App\Entity\Notification:
+    type: entity
+    table: notification
+    repositoryClass: App\Repository\NotificationRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fileds:
+        type:
+           type: smallint
+           nullable: false
+        seen:
+           type: boolean
+           nullable: false
+        notifiedOn:
+           type: date
+           nullable: false
+    manyToOne:
+        user:
+            targetEntity: App\Entity\User
+            inversedBy: notifications
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
