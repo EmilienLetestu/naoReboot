@@ -28,6 +28,7 @@ class BirdSpeciesFrTypeExtension extends \Twig_Extension
         $splitFr = preg_split('/;|,/',$fr);
         $sanitizeFr = preg_split('/\(|\)/',$splitFr[0]);
 
+
         return  $sanitizeFr[0] === ''  ? $bird->getSpeciesNameOnly() : $sanitizeFr[0];
 
     }
