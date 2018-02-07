@@ -19,10 +19,22 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class Search
 {
+    /**
+     * @var FormFactory
+     */
     private $formFactory;
+
+    /**
+     * @var EntityManager
+     */
     private $doctrine;
 
 
+    /**
+     * Search constructor.
+     * @param FormFactory $formFactory
+     * @param EntityManager $doctrine
+     */
     public function __construct(
         FormFactory   $formFactory,
         EntityManager $doctrine
@@ -32,6 +44,10 @@ class Search
         $this->doctrine     = $doctrine;
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function processSearch(Request $request)
     {
         $searchForm = $this->formFactory->create(NavSearchType::class);
@@ -50,6 +66,9 @@ class Search
 
     }
 
+    /**
+     * @return \Symfony\Component\Form\FormView
+     */
     public function createSearch()
     {
         $searchForm = $this->formFactory->create(NavSearchType::class);
