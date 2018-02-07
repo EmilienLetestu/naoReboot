@@ -15,104 +15,86 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * Class User
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements AdvancedUserInterface, \Serializable
 {
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var
      */
     private $id;
 
     /**
-     * @ORM\column(type="string", length =30)
+     * @var
      */
     private $name;
 
     /**
-     * @ORM\column(type="string", length =30)
+     * @var
      */
     private $surname;
 
     /**
      * @var
-     * @ORM\column(type="string", length=255)
      */
     private $email;
 
     /**
      * @var
-     * @ORM\column(type="date")
      */
     private $createdOn;
 
     /**
      * @var
-     * @ORM\column(type="smallint")
      */
     private $accessLevel;
 
     /**
      * @var
-     * @ORM\column(type="string")
      */
     private $pswd;
 
     /**
      * @var
-     * @ORM\column(type="boolean", options={"default"=false})
      */
     private $activated = false;
 
     /**
      * @var
-     * @ORM\column(type="boolean")
      */
     private $onHold;
 
     /**
      * @var
-     * @ORM\column(type="string", length=40)
      */
     private $confirmationToken;
 
     /**
      * @var
-     * @ORM\column(type="boolean", options={"default"=false})
      */
     private $ban = false;
 
     /**
      * @var
-     * @ORM\column(type="boolean", options={"default"=false})
      */
     private $deactivated = false;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Report", mappedBy="user")
      */
     private $reports;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Validation", mappedBy="user")
      */
     private $validations;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Star", mappedBy="user")
      */
     private $stars;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="user")
      */
     private $notifications;
 
