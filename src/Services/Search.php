@@ -43,9 +43,7 @@ class Search
           $repository = $this->doctrine->getRepository(Bird::class);
 
            return[
-               $repository->findBirdLike($searchForm
-                   ->get('search')->getData()
-               ),
+               $repository->findBirdLike($searchForm->get('search')->getData()),
                $searchForm->get('search')->getData()
            ];
         }
