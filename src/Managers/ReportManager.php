@@ -10,10 +10,7 @@ namespace App\Managers;
 
 
 use App\Entity\Report;
-use ClassesWithParents\E;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class ReportManager
 {
@@ -72,3 +69,4 @@ class ReportManager
 
 
 }
+
