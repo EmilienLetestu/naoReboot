@@ -9,9 +9,9 @@
 namespace App\Action;
 
 
-use App\Builders\ProfileBuilder;
 use App\Responder\ProfileResponder;
 use App\Services\ActivitiesTracker;
+use App\Services\ProfileBuilder;
 use App\Services\UpdatePswd;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -28,6 +28,7 @@ class ProfileAction
      * @param TokenStorageInterface $token
      * @param UpdatePswd $updatePswd
      * @param ActivitiesTracker $activitiesTracker
+     * @param ProfileBuilder $profileBuilder
      */
     public function __construct(
         TokenStorageInterface      $token,
