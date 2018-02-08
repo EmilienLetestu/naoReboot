@@ -3,7 +3,7 @@ new Vue({
     el: '#wrapper',
     data:{
         show: null,
-        nav: null,
+        nav: false,
         seen: null,
         reportList: null,
         filter: null,
@@ -109,7 +109,24 @@ new Vue({
         showMap: function (btn) {
            this.map = btn;
            this.bird = btn;
+        },
+
+        offcanvas:function () {
+            this.nav == false ? this.nav = true : this.nav = false;
+            document.getElementById('adminNav').style.width = "250px";
+            if(this.nav == true)
+            {
+                document.getElementById('adminNavTrigger').style.left = "250px";
+                document.getElementById('adminNavBtn').classList.remove('fa-caret-right');
+                document.getElementById('adminNavBtn').classList.add('fa-caret-left');
+            } else{
+                document.getElementById('adminNavTrigger').style.left = "0";
+                document.getElementById('adminNavBtn').classList.remove('fa-caret-left');
+                document.getElementById('adminNavBtn').classList.add('fa-caret-right');
+            }
+
         }
+
     }
 });
 

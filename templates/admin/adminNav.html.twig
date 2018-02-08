@@ -1,8 +1,11 @@
-<div class="headBanner">
-    <i class="fa fa-caret-square-o-down" aria-hidden="true" id="adminNavBtn"  v-on:mouseover="nav = true"></i>
-</div>
-<div id="adminNav" v-if="nav">
-    <ul v-on:mouseleave="nav= false">
+<span id="adminNavTrigger" v-on:click=offcanvas>
+    <i class="fa fa-caret-right fa-2x" aria-hidden="true" id="adminNavBtn"></i>
+</span>
+
+
+<div id="adminNav" v-show="nav">
+    <h3>Administration</h3>
+    <ul>
         <li>
             <a href="{{ path('admin') }}">Accueil</a>
         </li>

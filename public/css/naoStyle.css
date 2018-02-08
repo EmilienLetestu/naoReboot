@@ -14,6 +14,7 @@ body, #wrapper
 main
 {
     flex: 1;
+    margin-top: 140px;
 }
 
 footer
@@ -728,25 +729,44 @@ footer .list-group
 
 
 /*---------------------------admin menu------------------------------*/
-#adminNav{
-    z-index: 1;
+#adminNavTrigger{
+    background-color: #ffa500;
+    color: #FFFFFF;
+    border-color: transparent;
+    position: fixed;
+    top: 140px;
+    padding: 5px 15px;
 }
+
+
+
+#adminNav{
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 140px;
+    left: 0;
+    background-color: #ffa500;
+    overflow-x: hidden;
+    padding-top: 60px;
+    width: 0;
+}
+
 #adminNav li
 {
     color:  #FFFFFF;
-    margin-bottom: 1px;
+    margin-bottom: 10%;
+    padding-left: 5%;
 }
 
 #adminNav li a
 {
-    display: block ;
-    color:  #2C2C2C ;
+    display: block;
+    font-size: 20px;
 }
 
-
-#adminNav li:not(:last-child)
-{
-    border-bottom: 1px solid #ffa500;
+#adminNav h3{
+    padding: 5%;
 }
 
 #adminNav li i
@@ -765,7 +785,6 @@ footer .list-group
     margin: 0;
     padding:0;
     border:1px solid #ffa500;
-    background:#FFFFFF;
     font-size: 1.1em;
 }
 /*---------------------------admin memberList-------------------------*/
