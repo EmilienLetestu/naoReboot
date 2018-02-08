@@ -12,90 +12,67 @@
     {{ include('admin/adminNav.html.twig') }}
 
     <div class="memberList">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th><i class="material-icons">person</i></th>
-                    <th class="centered"><i class="material-icons">date_range</i></th>
-                    <th class="centered"><i class="material-icons">info_outline</i></th>
-                </tr>
-            </thead>
-            <tbody>
             {% for user in userList %}
-                <tr>
-                    <td>
-                        {{ user.surname }} {{ user.name }}
-                    </td>
-                    <td class="centered">
-                        {{ user.createdOn|date('d/m/Y') }}
-                    </td>
-                    <td class="centered">
-                        <button class="btn btn-success" v-on:click="showInfo({{ loop.index }})" value="{{ loop.index }}">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </td>
-                </tr>
-                <tr v-if="info == {{ loop.index }}" class="info{{ loop.index }}">
-                    <td colspan="3">
-                        <div class="accountDetails">
-                            <span class="accountScore">
-                                <i class="material-icons">grade</i>
+                <div class="memberInfo">
+                    <ul class="list-inline reminder">
+                        <li class="list-inline-item">
+                            <i class="fa fa-user">
+                                {{ user.surname }} {{ user.name }}
+                            </i>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar">
+                                {{ user.createdOn|date('d/m/Y') }}
+                            </i>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-envelope">
+                                {{ user.email }}
+                            </i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star">
                                 {{ user.reports|activities['starsGathered'] }}
-                            </span>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                   Adresse email: {{ user.email }}
-                                </li>
-                                <li class="list-inline-item">
-                                    Type de compte: {{ user.accessLevel|account }}
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr v-if="info == {{ loop.index }}">
-                    <td colspan="3">
+                            </i>
+                        </li>
+                        <li class="list-inline-item">
+                            {{ user.accessLevel|account }}
+                        </li>
+                    </ul>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Total d'observations</th>
+                            <th>En attente de validation</th>
+                            <th>Dernière observation</th>
+                            <th>Dernière espèce observée</th>
+                            <th>Coordonnées</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                {{ user.reports|activities['validated'] }}
+                            <td>
+                                {{ user.reports|activities['unvalidated'] }}
+                            </td>
+                            <td>
+                                {{ user.id|lastPublication['date'] }}
+                            </td>
+                            <td>
+                                {{ user.id|lastPublication['bird'] }}
+                            </td>
+                            <td>
+                                {{ user.id|lastPublication['satNav'] }}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div>
                         {{ include('admin/actions.html.twig') }}
-                    </td>
-                </tr>
-                <tr v-if="info == {{ loop.index }}">
-                    <td colspan="3">
-                        <table class="resume">
-                            <thead>
-                            <tr>
-                                <th>Total d'observations</th>
-                                <th>En attente de validation</th>
-                                <th>Dernière observation</th>
-                                <th>Dernière espèce observée</th>
-                                <th>Coordonnées</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    {{ user.reports|activities['validated'] }}
-                                <td>
-                                    {{ user.reports|activities['unvalidated'] }}
-                                </td>
-                                <td>
-                                    {{ user.id|lastPublication['date'] }}
-                                </td>
-                                <td>
-                                    {{ user.id|lastPublication['bird'] }}
-                                </td>
-
-                                </td>
-                                <td>
-                                    {{ user.id|lastPublication['satNav'] }}
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             {% endfor %}
-            </tbody>
-        </table>
     </div>
 {% endblock %}
 
