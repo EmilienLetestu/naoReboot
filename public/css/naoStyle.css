@@ -93,7 +93,7 @@ h1
 }
 
 .search-bar input{
-    padding-top: 5%;
+    padding-top: 9.5px;
 }
 
 .search-bar input:focus{
@@ -107,7 +107,7 @@ h1
     color: #FFFFFF;
 }
 
-.search-bar .form-group:nth-child(2){
+#nav_search_submit{
     position: fixed;
     left: 20%;
     top: 2.5%;
