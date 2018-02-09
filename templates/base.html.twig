@@ -23,9 +23,8 @@
                 <i class="material-icons">home</i>
                 NAO
             </a>
-            <div class="search-bar">
+            <div class="search-bar ">
                {{ form_start(search.createSearch,{'action': path('search')}) }}
-                <button class="btn btn-success" type="submit">Valider</button>
                 {{ form_end(search.createSearch) }}
             </div>
             {% if  not is_granted('ROLE_USER') %}

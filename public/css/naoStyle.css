@@ -85,6 +85,36 @@ h1
     text-align: center;
 }
 
+.search-bar{
+    position: fixed;
+    top: 2.4%;
+    left: 10%;
+}
+
+.search-bar input{
+    padding-top: 5%;
+}
+
+.search-bar input:focus{
+    border: solid 1px;
+}
+
+.search-bar .btn{
+    border-left: 1px solid;
+    border-radius: 0 0.25rem 0.25rem 0;
+    background-color: #ffa500;
+    color: #FFFFFF;
+}
+
+.search-bar .form-group:nth-child(2){
+    position: fixed;
+    left: 20%;
+    top: 2.5%;
+}
+
+.search-bar label{
+    display: none;
+}
 
 
 /*---------------------landing page---------------------*/
