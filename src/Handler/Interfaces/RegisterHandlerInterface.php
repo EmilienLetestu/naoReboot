@@ -7,7 +7,7 @@
  * Time: 21:56
  */
 
-namespace App\Handler\Inter;
+namespace App\Handler\Interfaces;
 
 use App\Entity\User;
 use Symfony\Component\Form\FormInterface;

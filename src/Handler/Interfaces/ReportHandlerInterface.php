@@ -6,7 +6,7 @@
  * Time: 08:14
  */
 
-namespace App\Handler\Inter;
+namespace App\Handler\Interfaces;
 
 
 use App\Entity\Report;

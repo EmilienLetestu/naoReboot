@@ -6,7 +6,7 @@
  * Time: 14:04
  */
 
-namespace App\Handler\Inter;
+namespace App\Handler\Interfaces;
 
 
 use App\Entity\User;

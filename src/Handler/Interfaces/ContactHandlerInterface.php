@@ -6,7 +6,7 @@
  * Time: 22:37
  */
 
-namespace App\Handler\Inter;
+namespace App\Handler\Interfaces;
 
 
 

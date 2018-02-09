@@ -9,7 +9,7 @@
 namespace App\Handler;
 
 
-use App\Handler\Inter\UpdateHomeHandlerInterface;
+use App\Handler\Interfaces\UpdateHomeHandlerInterface;
 use App\Services\HomeImg;
 use App\Services\Tools;
 use Symfony\Component\Form\FormInterface;

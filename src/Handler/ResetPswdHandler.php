@@ -10,7 +10,7 @@ namespace App\Handler;
 
 
 use App\Entity\User;
-use App\Handler\Inter\ResetPswdHandlerInterface;
+use App\Handler\Interfaces\ResetPswdHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 
 class ResetPswdHandler implements ResetPswdHandlerInterface

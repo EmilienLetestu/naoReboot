@@ -10,7 +10,7 @@
 namespace App\Handler;
 
 use App\Entity\User;
-use App\Handler\Inter\RegisterHandlerInterface;
+use App\Handler\Interfaces\RegisterHandlerInterface;
 use App\Services\Mails;
 use App\Services\Tools;
 use Symfony\Component\Form\FormInterface;

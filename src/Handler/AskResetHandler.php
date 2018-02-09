@@ -10,7 +10,7 @@ namespace App\Handler;
 
 
 use App\Entity\User;
-use App\Handler\Inter\AskResetHandlerInterface;
+use App\Handler\Interfaces\AskResetHandlerInterface;
 use App\Services\Mails;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;

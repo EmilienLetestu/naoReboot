@@ -10,7 +10,7 @@ namespace App\Handler;
 
 
 use App\Entity\Report;
-use App\Handler\Inter\ReportHandlerInterface;
+use App\Handler\Interfaces\ReportHandlerInterface;
 use App\Services\Tools;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;

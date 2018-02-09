@@ -9,7 +9,7 @@
 namespace App\Handler;
 
 
-use App\Handler\Inter\ContactHandlerInterface;
+use App\Handler\Interfaces\ContactHandlerInterface;
 use App\Services\Mails;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
