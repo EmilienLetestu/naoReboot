@@ -9,11 +9,13 @@
 namespace App\Action\Admin;
 
 
+use App\Entity\Report;
 use App\Entity\User;
 use App\Form\UpdateHomeType;
 use App\Handler\UpdateHomeHandler;
 use App\Responder\Admin\AdminHomeResponder;
 use App\Services\HomeImg;
+use App\Services\Tools;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -42,17 +44,24 @@ class AdminHomeAction
     private $formFactory;
 
     /**
+     * @var Tools
+     */
+    private $tools;
+
+    /**
      * AdminHomeAction constructor.
      * @param EntityManagerInterface $doctrine
      * @param HomeImg $homeImg
      * @param UpdateHomeHandler $updateHomeHandler
      * @param FormFactoryInterface $formFactory
+     * @param Tools $tools
      */
     public function __construct(
         EntityManagerInterface $doctrine,
         HomeImg                $homeImg,
         UpdateHomeHandler      $updateHomeHandler,
-        FormFactoryInterface   $formFactory
+        FormFactoryInterface   $formFactory,
+        Tools                  $tools
 
     )
     {
@@ -60,6 +69,7 @@ class AdminHomeAction
         $this->homeImg           = $homeImg;
         $this->updateHomeHandler = $updateHomeHandler;
         $this->formFactory       = $formFactory;
+        $this->tools             = $tools;
     }
 
     /**
@@ -70,10 +80,30 @@ class AdminHomeAction
     public function __invoke(Request $request, AdminHomeResponder $responder)
     {
         $repository = $this->doctrine->getRepository(User::class);
+        $repoReport = $this->doctrine->getRepository(Report::class);
+
         $form = $this->formFactory
                      ->create(UpdateHomeType::class)
                      ->handleRequest($request)
         ;
+
+        $diff = $this->tools->getTimeElapsed();
+
+        //total
+        $totalReport = count(
+            $repoReport->countAllValidated()
+        );
+        $totalUser = count(
+            $repository->countAllActivated()
+        );
+
+        // reference values for user based stats
+        $allReportByUserLevel2 = count(
+            $repoReport->countWithUserAccessLevel(1)
+        );
+        $allReportByUserLevel1 = count(
+            $repoReport->countWithLowerAccessLevel()
+        );
 
         if($this->updateHomeHandler->handle($form))
         {
@@ -81,8 +111,16 @@ class AdminHomeAction
         }
 
         return $responder(
-            count($repository->countAllWithAccessLevel(1)),
-            count($repository->countAllWithAccessLevel(2)),
+            $totalReport,
+            count($repoReport->countValidatedThisMonth(date('Y'),date('m'))),
+            count($repoReport->countValidatedThisYear(date('Y'))),
+            $totalReport / $diff['days'],
+            $totalReport / $diff['months'],
+            $totalReport / $totalUser,
+            $allReportByUserLevel1,
+            $allReportByUserLevel2,
+            $allReportByUserLevel1 > 0 ? $totalReport / $allReportByUserLevel1 : 0,
+            $allReportByUserLevel2 > 0 ? $totalReport / $allReportByUserLevel2 : 0,
             $this->homeImg->getHomeImage(),
             $form->createView(),
             'Espace d\'administration'

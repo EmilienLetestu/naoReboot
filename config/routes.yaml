@@ -124,11 +124,6 @@ bird:
     defaults:
         _controller:  App\Action\Admin\ReportedBirdAction
 
-statistics:
-    path: /admin/statistiques
-    defaults:
-        _controller: App\Action\Admin\StatisticsAction
-
 aboutUs:
     path: /nao-et-ses-partenaires
     defaults:
