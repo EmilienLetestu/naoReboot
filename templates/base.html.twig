@@ -16,14 +16,14 @@
             <link href="{{ asset("css/naoStyle.css") }}" rel="stylesheet">
         {% endblock %}
     </head>
-    <body>
+    <body onclick="searchWidth()">
     <div class="d-flex flex-column" id="wrapper" onclick="">
         <nav class="navbar fixed-top navbar-toggleable-md">
             <a class="navbar-brand" href="{{ path('home') }}">
                 <i class="material-icons">home</i>
                 NAO
             </a>
-            <div class="search-bar ">
+            <div class="search-bar" id="search">
                {{ form_start(search.createSearch,{'action': path('search')}) }}
                 {{ form_end(search.createSearch) }}
             </div>
@@ -158,6 +158,7 @@
     </div>
         {% block javascripts %}
             <script src="{{ asset('vueJs/ux.js') }}"></script>
+            <script src="{{ asset('js/navBar.js') }}"></script>
         {% endblock %}
     </body>
 </html>

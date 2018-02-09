@@ -76,10 +76,8 @@
     </table>
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('vueJs/ux.js') }}"></script>
-    {% if app.request.attributes.get('_route') == 'bird' %}
-        <script src="{{ asset('js/birdMap.js') }}"></script>
-    {% endif %}
+    {{ parent() }}
+    <script src="{{ asset('js/birdMap.js') }}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg&callback=initMap"
             type="text/javascript"></script>
 {% endblock %}
