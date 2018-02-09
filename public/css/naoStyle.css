@@ -20,6 +20,7 @@ main
 footer
 {
     background-color: #5e5e5e;
+    z-index: 3;
 }
 
 footer li
@@ -782,7 +783,7 @@ footer .list-group
     color: #FFFFFF;
     border-color: transparent;
     position: fixed;
-    top: 140px;
+    top: 70px;
     padding: 5px 15px;
 }
 
@@ -792,7 +793,7 @@ footer .list-group
     height: 100%;
     position: fixed;
     z-index: 1;
-    top: 140px;
+    top: 70px;
     left: 0;
     background-color: #ffa500;
     overflow-x: hidden;
