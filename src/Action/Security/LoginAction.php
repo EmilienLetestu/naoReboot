@@ -10,6 +10,7 @@ namespace App\Action\Security;
 
 use App\Responder\Security\LoginResponder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -21,24 +22,36 @@ class LoginAction
     private $authCheck;
 
     /**
+     * @var
+     */
+    private $urlGenerator;
+
+    /**
      * LoginAction constructor.
      * @param AuthorizationCheckerInterface $authCheck
+     * @param UrlGeneratorInterface $urlGenerator
      */
-    public function __construct(AuthorizationCheckerInterface $authCheck)
+    public function __construct(
+        AuthorizationCheckerInterface $authCheck,
+        UrlGeneratorInterface         $urlGenerator
+    )
     {
-        $this->authCheck = $authCheck;
+        $this->authCheck    = $authCheck;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
      * @param AuthenticationUtils $authenticationUtils
      * @param LoginResponder $responder
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return string|\Symfony\Component\HttpFoundation\Response
      */
     public function __invoke(AuthenticationUtils $authenticationUtils, LoginResponder $responder)
     {
         if($this->authCheck->isGranted('IS_AUTHENTICATED_REMEMBERED'))
         {
-            return new RedirectResponse('/accueil');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         return $responder(

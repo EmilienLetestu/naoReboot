@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class RegisterAction
 {
@@ -29,12 +30,14 @@ class RegisterAction
      * @var EntityManagerInterface
      */
     private $doctrine;
-    
+
 
     /**
      * @var RegisterHandler
      */
     private $registerHandler;
+
+    private $urlGenerator;
 
     /**
      * RegisterAction constructor.
@@ -45,18 +48,20 @@ class RegisterAction
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
-        RegisterHandler        $registerHandler
+        RegisterHandler        $registerHandler,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
-        $this->formFactory = $formFactory;
-        $this->doctrine    = $doctrine;
+        $this->formFactory     = $formFactory;
+        $this->doctrine        = $doctrine;
         $this->registerHandler = $registerHandler;
+        $this->urlGenerator    = $urlGenerator;
     }
 
     /**
      * @param Request $request
      * @param RegisterResponder $responder
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return string|\Symfony\Component\HttpFoundation\Response
      */
     public function __invoke(Request $request, RegisterResponder $responder)
     {
@@ -72,7 +77,9 @@ class RegisterAction
             $this->doctrine->persist($user);
             $this->doctrine->flush();
 
-            return new RedirectResponse('/accueil');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         return $responder($form->createView());

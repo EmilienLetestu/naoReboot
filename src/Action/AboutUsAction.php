@@ -16,7 +16,9 @@ use App\Services\Mails;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AboutUsAction
 {
@@ -30,29 +32,40 @@ class AboutUsAction
      */
     private $contactHandler;
 
+    /**
+     * @var SessionInterface
+     */
     private $session;
+
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
 
     /**
      * AboutUsAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param ContactHandler $contactHandler
      * @param SessionInterface $session
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function  __construct(
-        FormFactoryInterface $formFactory,
-        ContactHandler       $contactHandler,
-        SessionInterface     $session
+        FormFactoryInterface  $formFactory,
+        ContactHandler        $contactHandler,
+        SessionInterface      $session,
+        UrlGeneratorInterface $urlGenerator
     )
     {
         $this->formFactory    = $formFactory;
         $this->contactHandler = $contactHandler;
         $this->session        = $session;
+        $this->urlGenerator   = $urlGenerator;
     }
 
     /**
      * @param Request $request
      * @param AboutUsResponder $responder
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return string|\Symfony\Component\HttpFoundation\Response
      */
     public function __invoke(Request $request, AboutUsResponder $responder)
     {
@@ -69,7 +82,9 @@ class AboutUsAction
                 )
             ;
 
-            return new RedirectResponse('/accueil');
+            return  new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         return $responder(
@@ -77,3 +92,4 @@ class AboutUsAction
         );
     }
 }
+
