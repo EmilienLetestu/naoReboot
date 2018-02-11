@@ -29,11 +29,7 @@ class RegisterAction
      * @var EntityManagerInterface
      */
     private $doctrine;
-
-    /**
-     * @var \Swift_Mailer
-     */
-    private $swift;
+    
 
     /**
      * @var RegisterHandler
@@ -44,19 +40,16 @@ class RegisterAction
      * RegisterAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
-     * @param \Swift_Mailer $swift
      * @param RegisterHandler $registerHandler
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
-        \Swift_Mailer          $swift,
         RegisterHandler        $registerHandler
     )
     {
         $this->formFactory = $formFactory;
         $this->doctrine    = $doctrine;
-        $this->swift       = $swift;
         $this->registerHandler = $registerHandler;
     }
 
@@ -73,16 +66,11 @@ class RegisterAction
                      ->handleRequest($request)
         ;
 
-        $handler = $this->registerHandler->handle($form, $user);
-
-        if($handler)
+        if($this->registerHandler->handle($form, $user))
         {
             //save
             $this->doctrine->persist($user);
             $this->doctrine->flush();
-
-            //send validation email
-            $this->swift->send($handler);
 
             return new RedirectResponse('/accueil');
         }

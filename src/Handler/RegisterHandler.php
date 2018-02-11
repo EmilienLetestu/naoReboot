@@ -18,22 +18,53 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class RegisterHandler implements RegisterHandlerInterface
 {
+    /**
+     * @var Mails
+     */
     private $mailService;
+
+    /**
+     * @var Tools
+     */
     private $tools;
+
+    /**
+     * @var SessionInterface
+     */
     private $session;
 
+    /**
+     * @var \Swift_Mailer
+     */
+    private $swift;
+
+
+    /**
+     * RegisterHandler constructor.
+     * @param Mails $mailService
+     * @param Tools $tools
+     * @param SessionInterface $session
+     * @param \Swift_Mailer $swift
+     */
     public function __construct(
         Mails                  $mailService,
         Tools                  $tools,
-        SessionInterface       $session
+        SessionInterface       $session,
+        \Swift_Mailer          $swift
     )
     {
         $this->mailService = $mailService;
         $this->tools       = $tools;
         $this->session     = $session;
+        $this->swift       = $swift;
     }
 
-    public function handle(FormInterface $form, User $user)
+    /**
+     * @param FormInterface $form
+     * @param User $user
+     * @return bool
+     */
+    public function handle(FormInterface $form, User $user):bool
     {
         if($form->isSubmitted() && $form->isValid())
         {
@@ -75,7 +106,9 @@ class RegisterHandler implements RegisterHandlerInterface
                 )
             ;
 
-            return $message;
+            $this->swift->send($message);
+
+            return true;
         }
 
         return false;
