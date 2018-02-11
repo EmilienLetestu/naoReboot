@@ -20,6 +20,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AdminHomeAction
 {
@@ -49,19 +50,26 @@ class AdminHomeAction
     private $tools;
 
     /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    /**
      * AdminHomeAction constructor.
      * @param EntityManagerInterface $doctrine
      * @param HomeImg $homeImg
      * @param UpdateHomeHandler $updateHomeHandler
      * @param FormFactoryInterface $formFactory
      * @param Tools $tools
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         EntityManagerInterface $doctrine,
         HomeImg                $homeImg,
         UpdateHomeHandler      $updateHomeHandler,
         FormFactoryInterface   $formFactory,
-        Tools                  $tools
+        Tools                  $tools,
+        UrlGeneratorInterface  $urlGenerator
 
     )
     {
@@ -70,6 +78,7 @@ class AdminHomeAction
         $this->updateHomeHandler = $updateHomeHandler;
         $this->formFactory       = $formFactory;
         $this->tools             = $tools;
+        $this->urlGenerator      = $urlGenerator;
     }
 
     /**
@@ -107,7 +116,9 @@ class AdminHomeAction
 
         if($this->updateHomeHandler->handle($form))
         {
-            return new RedirectResponse('/admin');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('admin')
+            );
         }
 
         return $responder(
