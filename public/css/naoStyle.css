@@ -407,6 +407,7 @@ input[type="email"]:focus{
     top: 102%;
     width: 20%;
     z-index: 1;
+    display: none;
 }
 
 #dashboard li
@@ -624,6 +625,7 @@ footer .list-group
     box-shadow: 0 0 8px #9b9b9b;
     width:98%;
     margin-left: 1%;
+    display: none;
 }
 
 .cardCmt i{
