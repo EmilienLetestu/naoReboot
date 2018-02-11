@@ -23,6 +23,11 @@ class AskResetHandler implements AskResetHandlerInterface
     private $mailService;
 
     /**
+     * @var \Swift_Mailer
+     */
+    private $swift;
+
+    /**
      * @var SessionInterface
      */
     private $session;
@@ -34,19 +39,21 @@ class AskResetHandler implements AskResetHandlerInterface
      */
     public function __construct(
         Mails            $mailService,
+        \Swift_Mailer    $swift,
         SessionInterface $session
     )
     {
         $this->mailService = $mailService;
+        $this->swift       = $swift;
         $this->session     = $session;
     }
 
     /**
      * @param FormInterface $form
      * @param User $user
-     * @return bool|\Swift_Message
+     * @return bool
      */
-    public function handle(FormInterface $form, User $user)
+    public function handle(FormInterface $form, User $user):bool
     {
         if($form->isSubmitted() && $form->isValid())
         {
@@ -71,13 +78,10 @@ class AskResetHandler implements AskResetHandlerInterface
                 $user->getConfirmationToken(),
                 $user->getEmail())
             ;
-            $this->session->getFlashBag()
-                ->add('success',
-                    'Un email de changement de mot de passe vous a été envoyé !'
-                )
-            ;
 
-            return $message;
+            $this->swift->send($message);
+
+            return true;
         }
 
         return false;

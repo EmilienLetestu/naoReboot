@@ -36,10 +36,13 @@ class ResetPswdMailAction
 
 
     /**
-     * @var \Swift_Mailer
+     * @var SessionInterface
      */
-    private $swift;
+    private $session;
 
+    /**
+     * @var AskResetHandler
+     */
     private $askResetHandler;
 
 
@@ -47,24 +50,29 @@ class ResetPswdMailAction
      * ResetPswdMailAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
-     * @param \Swift_Mailer $swift
+     * @param SessionInterface $session
      * @param AskResetHandler $askResetHandler
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
-        \Swift_Mailer          $swift,
+        SessionInterface       $session,
         AskResetHandler        $askResetHandler
 
     )
     {
         $this->formFactory     = $formFactory;
         $this->doctrine        = $doctrine;
-        $this->swift           = $swift;
+        $this->session         = $session;
         $this->askResetHandler = $askResetHandler;
     }
 
 
+    /**
+     * @param Request $request
+     * @param ResetPswdMailResponder $responder
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function __invoke(Request $request, ResetPswdMailResponder $responder)
     {
         //generate needed object and form
@@ -73,11 +81,15 @@ class ResetPswdMailAction
                      ->create(AskResetType::class, $user)
                      ->handleRequest($request)
         ;
-        $handler = $this->askResetHandler->handle($form, $user);
 
-        if($handler)
+        if($this->askResetHandler->handle($form, $user))
         {
-            $this->swift->send($handler);
+
+            $this->session->getFlashBag()
+                ->add('success',
+                    'Un email de changement de mot de passe vous a été envoyé !'
+                )
+            ;
 
             return new RedirectResponse('/accueil');
         }

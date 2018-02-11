@@ -17,8 +17,8 @@ Interface AskResetHandlerInterface
     /**
      * @param FormInterface $form
      * @param User $user
-     * @return mixed
+     * @return bool
      */
-    public function handle(FormInterface $form, User $user);
+    public function handle(FormInterface $form, User $user) :bool;
 
 }
