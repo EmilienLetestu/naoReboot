@@ -1,4 +1,6 @@
 <div class="card" style="width: 25%; height: 450px">
+    {% set mapId = 'reportMap'~loop.index%}
+    {% set cmtId = 'cmt'~loop.index %}
     <div class="cardHeader">
         <ul class="list-inline">
             <li class="list-inline-item">
@@ -17,7 +19,7 @@
     </div>
 
     <div>
-        <div id="reportMap{{ loop.index }}" class="gMap" v-show="map == {{ loop.index }}">
+        <div id="reportMap{{ loop.index }}" class="gMap">
         </div>
         <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav }}">
     </div>
@@ -38,7 +40,7 @@
             {% endif %}
         </li>
         <li class="list-inline-item pull-right">
-                <i class="fa fa-compass" onmouseover="initMap({{ loop.index }})" v-on:mouseover="showMap({{ loop.index }})" aria-hidden="true"></i>
+                <i class="fa fa-compass" onmouseover="initMap({{ loop.index }});show('{{ mapId }}')" aria-hidden="true"></i>
                 {{ report.satNav }}
         </li>
     </ul>
@@ -62,9 +64,9 @@
     <div class="cardFooter">
         <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
         {% if report.comment != null %}
-            <button class="btn btn-outline" v-on:click="cmt = true">Lire le commentaire</button>
-            <div class="cardCmt" v-if="cmt">
-                <i v-on:click="cmt = false" class="material-icons">close</i>
+            <button class="btn btn-outline" onclick="show('{{ cmtId }}')">Lire le commentaire</button>
+            <div class="cardCmt" id="{{ cmtId }}">
+                <i onclick="hide('{{ cmtId }}')" class="material-icons">close</i>
                 <p class="reportCmt">
                     {{ report.comment }}
                 </p>

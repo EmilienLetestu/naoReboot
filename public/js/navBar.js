@@ -14,3 +14,11 @@ function searchWidth() {
         document.getElementById('nav_search_submit').style.left="20%";
     }
 }
+
+function show(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+function hide(id){
+    document.getElementById(id).style.display = "none"
+}
