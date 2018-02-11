@@ -26,31 +26,27 @@ class AboutUsAction
     private $formFactory;
 
     /**
-     * @var \Swift_Mailer
-     */
-    private $swift;
-
-    /**
      * @var ContactHandler
      */
     private $contactHandler;
 
+    private $session;
+
     /**
      * AboutUsAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param \Swift_Mailer $swift
      * @param ContactHandler $contactHandler
+     * @param SessionInterface $session
      */
     public function  __construct(
         FormFactoryInterface $formFactory,
-        \Swift_Mailer        $swift,
-        ContactHandler       $contactHandler
-
+        ContactHandler       $contactHandler,
+        SessionInterface     $session
     )
     {
         $this->formFactory    = $formFactory;
-        $this->swift          = $swift;
         $this->contactHandler = $contactHandler;
+        $this->session        = $session;
     }
 
     /**
@@ -65,11 +61,13 @@ class AboutUsAction
                      ->handleRequest($request)
         ;
 
-        $handler = $this->contactHandler->handle($form);
-
-        if($handler)
+        if($this->contactHandler->handle($form))
         {
-            $this->swift->send($handler);
+            $this->session->getFlashBag()
+                ->add('success',
+                    'Message envoyé, nous vous répondrons au plus vite'
+                )
+            ;
 
             return new RedirectResponse('/accueil');
         }
