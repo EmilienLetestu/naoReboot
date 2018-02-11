@@ -20,6 +20,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ResetPswdMailAction
@@ -45,6 +46,11 @@ class ResetPswdMailAction
      */
     private $askResetHandler;
 
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
 
     /**
      * ResetPswdMailAction constructor.
@@ -52,12 +58,14 @@ class ResetPswdMailAction
      * @param EntityManagerInterface $doctrine
      * @param SessionInterface $session
      * @param AskResetHandler $askResetHandler
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
         SessionInterface       $session,
-        AskResetHandler        $askResetHandler
+        AskResetHandler        $askResetHandler,
+        UrlGeneratorInterface  $urlGenerator
 
     )
     {
@@ -65,6 +73,7 @@ class ResetPswdMailAction
         $this->doctrine        = $doctrine;
         $this->session         = $session;
         $this->askResetHandler = $askResetHandler;
+        $this->urlGenerator    = $urlGenerator;
     }
 
 
@@ -91,7 +100,9 @@ class ResetPswdMailAction
                 )
             ;
 
-            return new RedirectResponse('/accueil');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         return $responder($form->createView());

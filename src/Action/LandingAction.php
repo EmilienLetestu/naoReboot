@@ -20,6 +20,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class LandingAction
 {
@@ -44,23 +45,31 @@ class LandingAction
     private $registerHandler;
 
     /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    /**
      * LandingAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
      * @param \Swift_Mailer $swift
      * @param RegisterHandler $registerHandler
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
         \Swift_Mailer          $swift,
-        RegisterHandler        $registerHandler
+        RegisterHandler        $registerHandler,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
         $this->formFactory     = $formFactory;
         $this->doctrine        = $doctrine;
         $this->swift           = $swift;
         $this->registerHandler = $registerHandler;
+        $this->urlGenerator    = $urlGenerator;
     }
 
     /**
@@ -76,18 +85,16 @@ class LandingAction
                      ->handleRequest($request)
         ;
 
-        $handler = $this->registerHandler->handle($form, $user);
 
-        if($handler)
+        if($this->registerHandler->handle($form, $user))
         {
             //save
             $this->doctrine->persist($user);
             $this->doctrine->flush();
 
-            //send validation email
-            $this->swift->send($handler);
-
-            return new RedirectResponse('/accueil');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         return $responder($form->createView());

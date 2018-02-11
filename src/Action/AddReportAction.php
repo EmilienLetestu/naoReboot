@@ -18,6 +18,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class AddReportAction
@@ -38,20 +39,28 @@ class AddReportAction
     private $reportHandler;
 
     /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    /**
      * AddReportAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
      * @param ReportHandler $reportHandler
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
-        ReportHandler          $reportHandler
+        ReportHandler          $reportHandler,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
         $this->formFactory   = $formFactory;
         $this->doctrine      = $doctrine;
         $this->reportHandler = $reportHandler;
+        $this->urlGenerator  = $urlGenerator;
     }
 
     /**
@@ -67,15 +76,15 @@ class AddReportAction
                      ->handleRequest($request)
         ;
 
-        $handler = $this->reportHandler->handle($form, $report);
-
-        if($handler)
+        if($this->reportHandler->handle($form, $report))
         {
             $this->doctrine->getRepository(Report::class);
             $this->doctrine->persist($report);
             $this->doctrine->flush();
 
-            return new RedirectResponse('/observations/nouvelle-observation');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('addReport')
+            );
         }
 
         return $responder($form->createView());

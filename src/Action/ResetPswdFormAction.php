@@ -20,6 +20,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 class ResetPswdFormAction
 {
@@ -58,7 +59,13 @@ class ResetPswdFormAction
      */
     private $token;
 
+    /**
+     * @var ResetPswdHandler
+     */
     private $resetPswdHandler;
+
+
+    private $urlGenerator;
 
     /**
      * ResetPswdFormAction constructor.
@@ -79,17 +86,19 @@ class ResetPswdFormAction
         \Swift_Mailer          $swift,
         SessionInterface       $session,
         TokenStorageInterface  $token,
-        ResetPswdHandler       $resetPswdHandler
+        ResetPswdHandler       $resetPswdHandler,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
-        $this->formFactory  = $formFactory;
-        $this->doctrine     = $doctrine;
-        $this->mailService  = $mailService;
-        $this->tools        = $tools;
-        $this->swift        = $swift;
-        $this->session      = $session;
-        $this->token        = $token;
+        $this->formFactory      = $formFactory;
+        $this->doctrine         = $doctrine;
+        $this->mailService      = $mailService;
+        $this->tools            = $tools;
+        $this->swift            = $swift;
+        $this->session          = $session;
+        $this->token            = $token;
         $this->resetPswdHandler = $resetPswdHandler;
+        $this->urlGenerator     = $urlGenerator;
     }
 
     public function __invoke(Request $request, ResetPswdFormResponder $responder)
@@ -113,7 +122,10 @@ class ResetPswdFormAction
                     'Adresse e-mail inconnue'
                 )
             ;
-            return new RedirectResponse('/accueil');
+
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         //check if mail still valid
@@ -135,7 +147,9 @@ class ResetPswdFormAction
             ;
             $this->swift->send($message);
 
-            return new RedirectResponse('/accueil');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         //generate needed object and form
@@ -153,7 +167,9 @@ class ResetPswdFormAction
                 ->add('success', 'Le mot de passe  été modifier')
             ;
 
-            return new RedirectResponse('/accueil');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         return $responder($form->createView());
