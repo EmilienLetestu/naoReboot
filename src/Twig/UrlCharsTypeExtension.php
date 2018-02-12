@@ -23,3 +23,4 @@ class UrlCharsTypeExtension extends \Twig_Extension
         return str_replace('ç','c',$name);
     }
 }
+
