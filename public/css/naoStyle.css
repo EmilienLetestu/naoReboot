@@ -676,6 +676,10 @@ footer .list-group
     margin-bottom: 0 !important;
 }
 
+#pswdModal{
+    display: none;
+}
+
 #pswdModal i
 {
     margin-top: 1px;

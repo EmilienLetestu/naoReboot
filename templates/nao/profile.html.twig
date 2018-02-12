@@ -31,14 +31,14 @@
         </div>
     {% if app.user.id == app.request.get('id') %}
         <div id="modifyPswd">
-            <button v-on:click="seen = !seen" class="btn btn-outline">Modifier mes informations</button>
+            <button onclick="show('pswdModal')" class="btn btn-outline">Modifier mes informations</button>
         </div>
     {% endif %}
     </div>
 
     {% if app.user.id == app.request.get('id') %}
-    <div class="modalForm" id="pswdModal" v-if="seen">
-        <i v-on:click="close" class="material-icons">close</i>
+    <div class="modalForm" id="pswdModal">
+        <i onclick="hide('pswdModal')" class="material-icons">close</i>
             {{ form_start(accountInfo.updatePswd, {'attr':{'id':'changePswd', 'v-on:submit':'validateChangePswd'}}) }}
             <div class="form-group col-sm-6">
                 {{ form_label(accountInfo.updatePswd.currentPswd) }}
