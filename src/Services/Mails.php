@@ -55,7 +55,7 @@ class Mails
     {
         $message = (new \Swift_Message('Activation de votre compte Nao'));
         $message
-            ->setFrom('eltestu@gmail.com')
+            ->setFrom('activation@nao.fr')
             ->setTo($email)
             ->setBody($this->twig->render('validationMail.html.twig', [
                 'name'     => $name,
