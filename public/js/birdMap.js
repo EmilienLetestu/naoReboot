@@ -14,7 +14,7 @@ function initMap(){
        var locations = maps[i].querySelectorAll('*[id^="reportMapSatNav"]');
        var index = i + parseInt(1);
        var mapId = 'birdStatMap'+index;
-       var map = new google.maps.Map(document.getElementById(mapId), {
+       var map = new google.maps.Map($id(mapId), {
            zoom: 6,
            center: center
        });

@@ -6,8 +6,8 @@
 
     //bird map
     var center = new google.maps.LatLng(46.7667, 2.45);
-    var birdLocations = document.getElementsByClassName('locations');
-    var birdMap = new google.maps.Map(document.getElementById('map'), {
+    var birdLocations = $class('locations');
+    var birdMap = new google.maps.Map($id('map'), {
         zoom: 5,
         center:  center
 

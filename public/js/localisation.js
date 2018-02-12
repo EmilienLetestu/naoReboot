@@ -1,7 +1,7 @@
 var geocoder;
 
-var btn = document.getElementById("localize");
-var address = document.getElementById("report_location").value;
+var btn = $id("localize");
+var address = $id("report_location").value;
 
 
 //initialize Google Map
