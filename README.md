@@ -1,2 +1,2 @@
 # naoReboot
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6ba78648-8ba1-4cd0-96b5-c5216d837948/big.png)](https://insight.sensiolabs.com/projects/6ba78648-8ba1-4cd0-96b5-c5216d837948)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/50ab29e6-ca73-4e7b-9456-6169487b17ce/big.png)](https://insight.sensiolabs.com/projects/50ab29e6-ca73-4e7b-9456-6169487b17ce)
