@@ -6,7 +6,7 @@
  * Time: 13:32
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Entity\Bird;
 use App\Validators\CommentLength;

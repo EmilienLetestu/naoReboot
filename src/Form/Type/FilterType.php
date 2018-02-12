@@ -6,7 +6,7 @@
  * Time: 13:45
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Repository\ReportRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

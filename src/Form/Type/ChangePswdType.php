@@ -6,7 +6,7 @@
  * Time: 22:21
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
 
 use App\Validators\PswdFormat;

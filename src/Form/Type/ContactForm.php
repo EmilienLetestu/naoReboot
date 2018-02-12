@@ -6,7 +6,7 @@
  * Time: 14:17
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
 
 use App\Validators\CommentLength;

@@ -6,7 +6,7 @@
  * Time: 16:49
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use App\Repository\ReportRepository;
