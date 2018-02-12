@@ -21,9 +21,6 @@ class UpdatePswd
 {
     private $formFactory;
     private $doctrine;
-    private $mailService;
-    private $tools;
-    private $swift;
     private $session;
     private $token;
 
@@ -31,27 +28,18 @@ class UpdatePswd
      * UpdatePswd constructor.
      * @param FormFactory $formFactory
      * @param EntityManager $doctrine
-     * @param Mails $mailService
-     * @param Tools $tools
-     * @param \Swift_Mailer $swift
      * @param Session $session
      * @param TokenStorage $token
      */
     public function __construct(
         FormFactory   $formFactory,
         EntityManager $doctrine,
-        Mails         $mailService,
-        Tools         $tools,
-        \Swift_Mailer $swift,
         Session       $session,
         TokenStorage  $token
     )
     {
         $this->formFactory  = $formFactory;
         $this->doctrine     = $doctrine;
-        $this->mailService  = $mailService;
-        $this->tools        = $tools;
-        $this->swift        = $swift;
         $this->session      = $session;
         $this->token        = $token;
     }
