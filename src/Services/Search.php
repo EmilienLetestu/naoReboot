@@ -10,12 +10,9 @@ namespace App\Services;
 
 use App\Entity\Bird;
 use App\Form\Type\NavSearchType;
-use App\Managers\ReportManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class Search
 {

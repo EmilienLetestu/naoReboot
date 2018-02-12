@@ -68,3 +68,4 @@ class ContactForm extends AbstractType
        ;
     }
 }
+

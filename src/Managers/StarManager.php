@@ -117,3 +117,4 @@ class StarManager
         return  in_array($loggedId, $idList) ? 'has voted' : false;
     }
 }
+

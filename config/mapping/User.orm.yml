@@ -67,3 +67,4 @@ App\Entity\User:
             targetEntity: App\Entity\Notification
             mappedBy: user
             cascade: ['persist', 'remove']
+

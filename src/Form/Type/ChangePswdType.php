@@ -54,3 +54,4 @@ class ChangePswdType extends AbstractType
         $resolver->setDefaults(['data_class' => 'App\Entity\User']);
     }
 }
+

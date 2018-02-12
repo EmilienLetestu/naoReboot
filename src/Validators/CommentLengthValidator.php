@@ -28,3 +28,4 @@ class CommentLengthValidator extends ConstraintValidator
         }
     }
 }
+

@@ -91,3 +91,4 @@ class NotificationRepository extends EntityRepository
             ->getScalarResult();
     }
 }
+

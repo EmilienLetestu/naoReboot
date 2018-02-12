@@ -114,3 +114,4 @@ class RegisterHandler implements RegisterHandlerInterface
         return false;
     }
 }
+

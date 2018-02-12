@@ -94,3 +94,4 @@ class ReportType extends AbstractType
         $resolver->setDefaults(['data-class' => 'App\Entity\Report']);
     }
 }
+

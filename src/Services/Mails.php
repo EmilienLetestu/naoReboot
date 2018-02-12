@@ -121,3 +121,4 @@ class Mails
         return $message;
     }
 }
+

@@ -57,3 +57,4 @@ class ResetPswdType extends AbstractType
     }
 
 }
+

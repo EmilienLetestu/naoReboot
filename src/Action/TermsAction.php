@@ -18,3 +18,4 @@ class TermsAction
         return $responder();
     }
 }
+

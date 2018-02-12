@@ -65,3 +65,4 @@ class ContactHandler implements ContactHandlerInterface
         return false;
     }
 }
+

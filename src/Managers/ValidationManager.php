@@ -128,3 +128,4 @@ class ValidationManager
         return in_array($loggedId, $idList) ? 'has validated' : false;
     }
 }
+

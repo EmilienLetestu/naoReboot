@@ -28,3 +28,4 @@ class NavSearchType extends AbstractType
        ;
     }
 }
+
