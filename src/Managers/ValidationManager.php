@@ -10,9 +10,6 @@ namespace App\Managers;
 
 use App\Entity\Report;
 use App\Entity\Validation;
-
-use App\Services\Tools;
-
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;

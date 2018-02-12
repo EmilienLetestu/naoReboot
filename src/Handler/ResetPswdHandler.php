@@ -9,7 +9,6 @@
 namespace App\Handler;
 
 
-use App\Entity\User;
 use App\Handler\Interfaces\ResetPswdHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 

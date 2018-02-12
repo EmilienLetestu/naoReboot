@@ -10,7 +10,7 @@ namespace App\Action\Security;
 
 
 use App\Entity\User;
-use App\Form\RegisterType;
+use App\Form\Type\RegisterType;
 use App\Handler\RegisterHandler;
 use App\Responder\Security\RegisterResponder;
 use Doctrine\ORM\EntityManagerInterface;

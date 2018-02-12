@@ -10,9 +10,9 @@ namespace App\Services;
 
 
 use App\Entity\User;
-use App\Form\AskResetType;
-use App\Form\ChangePswdType;
-use App\Form\ResetPswdType;
+use App\Form\Type\AskResetType;
+use App\Form\Type\ChangePswdType;
+use App\Form\Type\ResetPswdType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;

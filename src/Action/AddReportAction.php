@@ -9,17 +9,14 @@
 namespace App\Action;
 
 use App\Entity\Report;
-use App\Form\ReportType;
+use App\Form\Type\ReportType;
 use App\Handler\ReportHandler;
 use App\Responder\AddReportResponder;
-use App\Services\Tools;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class AddReportAction
 {

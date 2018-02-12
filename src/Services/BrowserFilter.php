@@ -9,8 +9,8 @@
 namespace App\Services;
 
 use App\Entity\Report;
-use App\Form\FilterType;
-use App\Form\UnvalidatedFilterType;
+use App\Form\Type\FilterType;
+use App\Form\Type\UnvalidatedFilterType;
 use App\Managers\ReportManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;

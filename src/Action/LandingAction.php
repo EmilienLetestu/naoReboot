@@ -10,16 +10,13 @@ namespace App\Action;
 
 
 use App\Entity\User;
-use App\Form\RegisterType;
+use App\Form\Type\RegisterType;
 use App\Handler\RegisterHandler;
 use App\Responder\LandingResponder;
-use App\Services\Mails;
-use App\Services\Tools;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class LandingAction

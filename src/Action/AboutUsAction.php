@@ -8,15 +8,12 @@
 
 namespace App\Action;
 
-use App\Form\ContactForm;
-
+use App\Form\Type\ContactForm;
 use App\Handler\ContactHandler;
 use App\Responder\AboutUsResponder;
-use App\Services\Mails;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 

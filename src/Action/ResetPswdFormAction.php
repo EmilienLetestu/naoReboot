@@ -9,8 +9,7 @@
 namespace App\Action;
 
 use App\Entity\User;
-use App\Form\AskResetType;
-use App\Form\ResetPswdType;
+use App\Form\Type\ResetPswdType;
 use App\Handler\ResetPswdHandler;
 use App\Responder\ResetPswdFormResponder;
 use App\Services\Mails;

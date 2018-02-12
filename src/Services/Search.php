@@ -9,7 +9,7 @@
 namespace App\Services;
 
 use App\Entity\Bird;
-use App\Form\NavSearchType;
+use App\Form\Type\NavSearchType;
 use App\Managers\ReportManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;

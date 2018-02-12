@@ -10,18 +10,15 @@ namespace App\Action;
 
 
 use App\Entity\User;
-use App\Form\AskResetType;
+use App\Form\Type\AskResetType;
 use App\Handler\AskResetHandler;
 use App\Responder\ResetPswdMailResponder;
-use App\Services\Mails;
-use App\Services\Tools;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ResetPswdMailAction
 {
