@@ -11,7 +11,7 @@ namespace App\Action\Admin;
 
 use App\Entity\Report;
 use App\Entity\User;
-use App\Form\UpdateHomeType;
+use App\Form\Type\UpdateHomeType;
 use App\Handler\UpdateHomeHandler;
 use App\Responder\Admin\AdminHomeResponder;
 use App\Services\HomeImg;
