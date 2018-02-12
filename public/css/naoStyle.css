@@ -407,7 +407,7 @@ input[type="email"]:focus{
     top: 102%;
     width: 20%;
     z-index: 1;
-    display: none;
+    visibility: hidden;
 }
 
 #dashboard li
@@ -540,6 +540,20 @@ footer .list-group
     padding-bottom: 3%;
 }
 
+.closeMap{
+    position: relative;
+    left: 339.5px;
+    top: -155px;
+    z-index: 2;
+    background-color: #ffffff;
+    visibility: hidden;
+    font-size: 16px;
+    -webkit-box-shadow: 0 0 1px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 1px 0 rgba(0,0,0,0.75);
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.75);
+    padding: 5.9px;
+}
+
 .stared,
 .stared:hover{
   color: #ffa500;
@@ -591,7 +605,6 @@ footer .list-group
 
 .birdImg{
     height: 200px;
-    margin-bottom: 2%;
 }
 
 .birdImg img {
@@ -625,7 +638,7 @@ footer .list-group
     box-shadow: 0 0 8px #9b9b9b;
     width:98%;
     margin-left: 1%;
-    display: none;
+    visibility: hidden;
 }
 
 .cardCmt i{
@@ -677,7 +690,7 @@ footer .list-group
 }
 
 #pswdModal{
-    display: none;
+    visibility: hidden;
 }
 
 #pswdModal i
@@ -740,6 +753,10 @@ footer .list-group
 {
     margin-top: 3%;
     margin-bottom: 3%;
+}
+
+#userReport{
+    visibility: hidden;
 }
 
 #loadBtn{

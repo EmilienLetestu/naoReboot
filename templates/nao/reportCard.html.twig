@@ -1,6 +1,7 @@
 <div class="card" style="width: 25%; height: 450px">
     {% set mapId = 'reportMap'~loop.index%}
     {% set cmtId = 'cmt'~loop.index %}
+    {% set closeBtnId = 'closeBtn'~loop.index %}
     <div class="cardHeader">
         <ul class="list-inline">
             <li class="list-inline-item">
@@ -19,6 +20,7 @@
     </div>
 
     <div>
+        <i onclick="hideMap('{{ mapId }}','{{ closeBtnId }}')" class="material-icons closeMap" id="closeBtn{{ loop.index }}">close</i>
         <div id="reportMap{{ loop.index }}" class="gMap">
         </div>
         <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav }}">
@@ -40,7 +42,7 @@
             {% endif %}
         </li>
         <li class="list-inline-item pull-right">
-                <i class="fa fa-compass" onmouseover="initMap({{ loop.index }});show('{{ mapId }}')" aria-hidden="true"></i>
+                <i class="fa fa-compass" onmouseover="initMap({{ loop.index }});showMap('{{ mapId }}','{{ closeBtnId }}')" aria-hidden="true"></i>
                 {{ report.satNav }}
         </li>
     </ul>
