@@ -28,7 +28,12 @@ class ProfileBuilder
     }
 
     /**
-     * @param Request $request
+     * @param $request
+     * @param $id
+     * @param $userId
+     * @param $user
+     * @param $activitiesTracker
+     * @param $updatePswd
      * @return array
      */
     public function getProfileVersion($request, $id, $userId, $user, $activitiesTracker, $updatePswd)
@@ -41,10 +46,13 @@ class ProfileBuilder
     }
 
     /**
-     * @param Request $request
+     * @param $request
+     * @param User $user
+     * @param ActivitiesTracker $activitiesTracker
+     * @param UpdatePswd $updatePswd
      * @return array
      */
-    public function buildPrivateProfile($request, $user, $activitiesTracker, $updatePswd)
+    public function buildPrivateProfile($request, User $user, ActivitiesTracker $activitiesTracker, UpdatePswd $updatePswd)
     {
         $id          = $user->getId();
         //create array with account creation date, chg pswd process and account type
@@ -71,7 +79,12 @@ class ProfileBuilder
         ];
     }
 
-    public function buildPublicProfile($id,$activitiesTracker)
+    /**
+     * @param $id
+     * @param ActivitiesTracker $activitiesTracker
+     * @return array
+     */
+    public function buildPublicProfile($id, ActivitiesTracker $activitiesTracker)
     {
         $user = $this->doctrine->getRepository(User::class)
             ->findOneBy(['id'=>$id]);
