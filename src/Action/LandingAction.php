@@ -32,11 +32,6 @@ class LandingAction
     private $doctrine;
 
     /**
-     * @var \Swift_Mailer
-     */
-    private $swift;
-
-    /**
      * @var RegisterHandler
      */
     private $registerHandler;
@@ -50,21 +45,18 @@ class LandingAction
      * LandingAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
-     * @param \Swift_Mailer $swift
      * @param RegisterHandler $registerHandler
      * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         EntityManagerInterface $doctrine,
-        \Swift_Mailer          $swift,
         RegisterHandler        $registerHandler,
         UrlGeneratorInterface  $urlGenerator
     )
     {
         $this->formFactory     = $formFactory;
         $this->doctrine        = $doctrine;
-        $this->swift           = $swift;
         $this->registerHandler = $registerHandler;
         $this->urlGenerator    = $urlGenerator;
     }

@@ -54,11 +54,6 @@ class ResetPswdFormAction
     private $session;
 
     /**
-     * @var TokenStorageInterface
-     */
-    private $token;
-
-    /**
      * @var ResetPswdHandler
      */
     private $resetPswdHandler;
@@ -74,8 +69,8 @@ class ResetPswdFormAction
      * @param Tools $tools
      * @param \Swift_Mailer $swift
      * @param SessionInterface $session
-     * @param TokenStorageInterface $token
      * @param ResetPswdHandler $resetPswdHandler
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
@@ -84,7 +79,6 @@ class ResetPswdFormAction
         Tools                  $tools,
         \Swift_Mailer          $swift,
         SessionInterface       $session,
-        TokenStorageInterface  $token,
         ResetPswdHandler       $resetPswdHandler,
         UrlGeneratorInterface  $urlGenerator
     )
@@ -95,7 +89,6 @@ class ResetPswdFormAction
         $this->tools            = $tools;
         $this->swift            = $swift;
         $this->session          = $session;
-        $this->token            = $token;
         $this->resetPswdHandler = $resetPswdHandler;
         $this->urlGenerator     = $urlGenerator;
     }

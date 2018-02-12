@@ -28,12 +28,6 @@ class ResetPswdMailAction
     private $formFactory;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $doctrine;
-
-
-    /**
      * @var SessionInterface
      */
     private $session;
@@ -52,14 +46,12 @@ class ResetPswdMailAction
     /**
      * ResetPswdMailAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param EntityManagerInterface $doctrine
      * @param SessionInterface $session
      * @param AskResetHandler $askResetHandler
      * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
-        EntityManagerInterface $doctrine,
         SessionInterface       $session,
         AskResetHandler        $askResetHandler,
         UrlGeneratorInterface  $urlGenerator
@@ -67,7 +59,6 @@ class ResetPswdMailAction
     )
     {
         $this->formFactory     = $formFactory;
-        $this->doctrine        = $doctrine;
         $this->session         = $session;
         $this->askResetHandler = $askResetHandler;
         $this->urlGenerator    = $urlGenerator;
