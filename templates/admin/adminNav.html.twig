@@ -1,9 +1,9 @@
-<span id="adminNavTrigger" v-on:click=offcanvas>
-    <i class="fa fa-caret-right fa-2x" aria-hidden="true" id="adminNavBtn"></i>
+<span id="adminNavTrigger" onclick=offCanvas()>
+    <i class="fa fa-caret-right fa-2x" aria-hidden="true" id="adminNavIcon"></i>
 </span>
 
 
-<div id="adminNav" v-show="nav">
+<div id="adminNav">
     <h3>Administration</h3>
     <ul>
         <li>
@@ -23,5 +23,8 @@
         </li>
     </ul>
 </div>
+{% block javascripts %}
+    <script src="{{ asset('js/adminNav.js') }}"></script>
+{% endblock %}
 
 
