@@ -133,7 +133,13 @@ input[type="email"]:focus{
     border-bottom: solid 2px #ffa500;
 }
 
+.noError{
+    visibility: hidden;
+}
 
+.has-error{
+    color: #ff5240;
+}
 
 
 /*---------------------landing page---------------------*/
