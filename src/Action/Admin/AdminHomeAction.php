@@ -137,5 +137,5 @@ class AdminHomeAction
             'Espace d\'administration'
         );
     }
-
 }
+
