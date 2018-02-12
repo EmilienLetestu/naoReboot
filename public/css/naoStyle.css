@@ -797,8 +797,9 @@ footer .list-group
     font-size: 1.5em;
 }
 
-
-
+#modalPicture{
+    visibility: hidden;
+}
 
 /*---------------------------admin menu------------------------------*/
 #adminNavTrigger{
