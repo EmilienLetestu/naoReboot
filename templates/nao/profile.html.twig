@@ -37,25 +37,25 @@
     </div>
 
     {% if app.user.id == app.request.get('id') %}
-    <div class="modalForm" id="pswdModal">
+    <div class="modalForm" id="pswdModal" onkeyup="disable('chgPswdBtn','changePswd')">
         <i onclick="hide('pswdModal')" class="material-icons">close</i>
-            {{ form_start(accountInfo.updatePswd, {'attr':{'id':'changePswd', 'v-on:submit':'validateChangePswd'}}) }}
+            {{ form_start(accountInfo.updatePswd, {'attr':{'id':'changePswd'}}) }}
             <div class="form-group col-sm-6">
                 {{ form_label(accountInfo.updatePswd.currentPswd) }}
                 {{ form_widget(accountInfo.updatePswd.currentPswd) }}
             </div>
-            <div class="form-group col-sm-6"  v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
+            <div class="form-group col-sm-6">
                 {{ form_label(accountInfo.updatePswd.pswd) }}
-                {{ form_widget(accountInfo.updatePswd.pswd, {'attr':{'v-model':'pswd'}}) }}
-                <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+                {{ form_widget(accountInfo.updatePswd.pswd, {'attr':{'onkeyup':'validatePswd("change_pswd_pswd",6,30,"chgPswdError")'}}) }}
+                <div id="chgPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
-            <div class="form-group  col-sm-6" v-bind:class="{ 'has-feedback has-warning': 'submit && matchLess' }">
+            <div class="form-group  col-sm-6">
                 {{ form_label(accountInfo.updatePswd.confirmPswd ) }}
-                {{ form_widget(accountInfo.updatePswd.confirmPswd, {'attr':{'v-model':'confirmPswd'}}) }}
-                <div class="form-control-feedback" v-if="submit && matchLess">Les mots de passes ne correspondent pas</div>
+                {{ form_widget(accountInfo.updatePswd.confirmPswd, {'attr':{'onkeyup':'matching("change_pswd_confirmPswd","change_pswd_pswd","chgConfirmError")'}}) }}
+                <div id="chgConfirmError" class="form-control-feedback noError">Les mots de passes ne correspondent pas</div>
             </div>
             <div class="form-group col-sm-6">
-                <button class="btn btn-success" type="submit">Valider</button>
+                <button id="chgPswdBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
             </div>
             {{ form_end(accountInfo.updatePswd) }}
     </div>
@@ -107,6 +107,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/reportMap.js') }}"></script>
+    <script src="{{ asset('js/validateForm.js') }}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg"
             type="text/javascript"></script>
 {% endblock %}
