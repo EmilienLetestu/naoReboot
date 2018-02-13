@@ -25,13 +25,26 @@ function message(id,min,max) {
     return validate;
 }
 
+function required(){
+
+    var validate = true;
+    var req = $id('contatcForm').querySelectorAll('[required]');
+    var userInput = [];
+    for(var i=0; i < req.length; i++) {
+        var val = req[i].value.length;
+        if(!req[i].value.length){
+            return validate = false;
+        }
+    }
+    return validate;
+}
 
 function disable() {
-    if(!$id('contact').querySelectorAll('.has-error').length){
+
+    if(!$id('contact').querySelectorAll('.has-error').length && required()){
         $id('contactBtn').removeAttribute('disabled');
     }else{
         $id('contactBtn').setAttribute('disabled','true')
     }
 }
-
 
