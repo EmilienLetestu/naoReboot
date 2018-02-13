@@ -39,27 +39,27 @@
     {% endif %}
 
     {% if app.request.get('_route') == 'register' %}
-        <div class="connectionForms">
+        <div class="connectionForms" onkeyup="disable()">
             {{ form_start(form, {'attr':{'id':'registerForm', 'v-on:submit':'validateRegister' }}) }}
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingName' }">
+            <div class="form-group">
                 {{ form_label(form.name) }}
-                {{ form_widget(form.name, { 'attr': { 'v-model': 'name' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingName">Le prénom doit contenir 3 lettres minimum</div>
+                {{ form_widget(form.name, { 'attr': { 'onkeyup' : 'validateText("register_name",3,30,"nameError")' } }) }}
+                <div id="nameError" class="form-control-feedback noError">Le prénom doit contenir 3 lettres minimum</div>
             </div>
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingSurname' }">
+            <div class="form-group">
                 {{ form_label(form.surname) }}
-                {{ form_widget(form.surname, { 'attr': { 'v-model': 'surname' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingSurname">Le nom doit contenir 3 lettres minimum</div>
+                {{ form_widget(form.surname, { 'attr': { 'onkeyup' : 'validateText("register_surname",3,30,"surnameError")' } }) }}
+                <div id="surnameError" class="form-control-feedback noError">Le nom doit contenir 3 lettres minimum</div>
             </div>
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingEmail' }">
+            <div class="form-group">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email,  { 'attr': { 'v-model': 'email' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingEmail">Veuillez fournir un e-mail</div>
+                {{ form_widget(form.email,  { 'attr': { 'onkeyup': 'validateMail("register_email","emailError")' } }) }}
+                <div id="emailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
             </div>
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
+            <div class="form-group">
                 {{ form_label(form.pswd) }}
-                {{ form_widget(form.pswd, { 'attr': { 'v-model': 'pswd' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+                {{ form_widget(form.pswd, { 'attr': { 'onkeyup': 'validatePswd("register_pswd",6,30,"pswdError")' } }) }}
+                <div id="pswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.accessLevel) }}
@@ -70,7 +70,7 @@
                 {{ form_widget(form.termsAgreement) }}
             </div>
             <div class="form-group">
-                <button class="btn btn-success" type="submit">Valider</button>
+                <button id="registerBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
             </div>
             {{ form_end(form) }}
         </div>
@@ -110,5 +110,10 @@
         </div>
     {% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/connectionForm.js') }}"></script>
 {% endblock %}
 
