@@ -26,7 +26,7 @@ class ContactForm extends AbstractType
        $builder
            ->add('fullname',TextType::class,[
                                 'constraints' => [ new NotBlank(),
-                                                  new Length([
+                                                   new Length([
                                                     'min'        => 10,
                                                     'max'        => 45,
                                                     'minMessage' => 'Ce champ doit comporter 10 cararctères au minimun',
@@ -62,8 +62,7 @@ class ContactForm extends AbstractType
            ->add('message', TextareaType::class, [
                                 'constraints'   => [new CommentLength(['limit'=>400])],
                                 'mapped'        => false,
-                                'trim'          => true,
-                                'required'      => false
+                                'trim'          => true
            ])
        ;
     }
