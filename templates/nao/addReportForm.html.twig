@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <div onload="initMap()">
+    <div onload="initMap()" onkeyup="disable('reportBtn','reportForm')">
         {{ form_start(form, {'attr':{'id':'reportForm'}}) }}
         <div class="form-group">
             {{ form_label(form.bird) }}
@@ -24,9 +24,11 @@
             {{ form_widget(form.location) }}
             <a class="btn btn-outline" id="localize" onclick="localizeMe()">Me Géolocaliser</a>
         </div>
-        <div class="form-group">
+        <div class="form-group" onkeyup="liveCharCount('report_comment','charMeter',300)">
             {{ form_label(form.comment) }}
-            {{ form_widget(form.comment) }}
+            {{ form_widget(form.comment, {'attr':{'onkeyup' : 'validateText("report_comment",0,300,"commentError")'}}) }}
+            <span id="charMeter" class="wordCount">0/300</span>
+            <div id="commentError" class="form-control-feedback noError"> signes maximum</div>
         </div>
         <div>
             {{ form_label(form.pictRef) }}
@@ -34,7 +36,7 @@
         </div>
         <div class="form-group">
             {{ form_widget(form.satNav) }}
-            <button class="btn btn-success" type="submit">Valider</button>
+            <button id="reportBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
         </div>
         {{ form_end(form) }}
     </div>
@@ -44,6 +46,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script src={{ asset('js/localisation.js') }}></script>
+    <script src={{ asset('js/validateForm.js') }}></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg&callback=initMap"
             type="text/javascript"></script>
 {% endblock %}
