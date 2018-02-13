@@ -40,7 +40,7 @@
 
     {% if app.request.get('_route') == 'register' %}
         <div class="connectionForms" onkeyup="disable()">
-            {{ form_start(form, {'attr':{'id':'registerForm', 'v-on:submit':'validateRegister' }}) }}
+            {{ form_start(form, {'attr':{'id':'registerForm'}}) }}
             <div class="form-group">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name, { 'attr': { 'onkeyup' : 'validateText("register_name",3,30,"nameError")' } }) }}
