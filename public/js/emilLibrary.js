@@ -63,5 +63,6 @@ function swappClass(element,removeClass,addClass){
  * @param string
  */
 function wordCount(string){
-    return string.split(' ').length;
+    var trimmed = string.trim();
+    return trimmed.split(' ').length;
 }
