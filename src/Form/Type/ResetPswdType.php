@@ -26,7 +26,8 @@ class ResetPswdType extends AbstractType
     {
         $builder
             ->add('pswd', PasswordType::class, [
-                                'constraints' => [ new NotBlank(),
+                                'constraints' => [
+                                    new NotBlank(),
                                     new PswdFormat(),
                                     new Type('string'),
                                     new Length([
@@ -36,6 +37,7 @@ class ResetPswdType extends AbstractType
                                         'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'
                                     ])
                                 ],
+                                'required' => true,
                                 'label' => 'Nouveau mot de passe'
             ])
 
