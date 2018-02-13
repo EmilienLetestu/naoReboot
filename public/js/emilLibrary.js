@@ -34,6 +34,23 @@ function $class(className) {
 
 /**
  * @param element
+ * @param className
+ */
+function removeClass(element,className){
+    return  element.classList.remove(className)
+}
+
+/**
+ *
+ * @param element
+ * @param className
+ */
+function addClass(element,className) {
+    return element.classList.add(className)
+}
+
+/**
+ * @param element
  * @param removeClass
  * @param addClass
  */
