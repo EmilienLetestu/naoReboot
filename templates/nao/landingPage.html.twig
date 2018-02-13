@@ -36,38 +36,38 @@
             </ul>
         </div>
 
-        <div id="landingForm">
-            {{ form_start(form, {'attr':{'id':'registerLanding', 'v-on:submit':'validateRegiter' }}) }}
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingName' }">
+        <div id="landingForm" onkeyup="disable('landingRegisterBtn','landingForm')">
+            {{ form_start(form, {'attr':{'id':'registerLanding'}}) }}
+            <div class="form-group">
                 {{ form_label(form.name) }}
-                {{ form_widget(form.name, { 'attr': { 'class':'form-control','v-model': 'name'} }) }}
-                <div class="form-control-feedback" v-if="submit && missingName">Le prénom doit contenir 3 lettres minimum</div>
+                {{ form_widget(form.name, { 'attr': { 'onkeyup' : 'validateText("register_name",3,30,"landingNameError")'} }) }}
+                <div id="landingNameError" class="form-control-feedback noError">Le prénom doit contenir 3 lettres minimum</div>
             </div>
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingSurname' }">
+            <div class="form-group">
                 {{ form_label(form.surname) }}
-                {{ form_widget(form.surname, { 'attr': { 'class':'form-control', 'v-model': 'surname' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingSurname">Le nom doit contenir 3 lettres minimum</div>
+                {{ form_widget(form.surname, { 'attr': { 'onkeyup' : 'validateText("register_surname",3,30,"landingSurnameError")' } }) }}
+                <div id="landingSurnameError" class="form-control-feedback noError">Le nom doit contenir 3 lettres minimum</div>
             </div>
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingEmail' }">
+            <div class="form-group">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email,  { 'attr': {'class':'form-control', 'v-model': 'email' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingEmail">Veuillez fournir un e-mail</div>
+                {{ form_widget(form.email,  { 'attr': {'onkeyup': 'validateMail("register_email","landingEmailError")'} }) }}
+                <div id="landingEmailError" class="form-control-feedback noError">Veuillez fournir un e-mail</div>
             </div>
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
+            <div class="form-group">
                 {{ form_label(form.pswd) }}
-                {{ form_widget(form.pswd, { 'attr': { 'class':'form-control', 'v-model': 'pswd' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+                {{ form_widget(form.pswd, { 'attr': { 'onkeyup': 'validatePswd("register_pswd",6,30,"landingPswdError")' } }) }}
+                <div id="landingPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.accessLevel) }}
-                {{ form_widget(form.accessLevel, { 'attr': { 'class':'form-control' } }) }}
+                {{ form_widget(form.accessLevel) }}
             </div>
             <div>
                 {{ form_label(form.termsAgreement) }}
                 {{ form_widget(form.termsAgreement) }}
             </div>
             <div class="form-group">
-                <button class="btn btn-success" type="submit">Valider</button>
+                <button id="landingRegisterBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
             </div>
             {{ form_end(form) }}
         </div>
@@ -126,4 +126,10 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/connectionForm.js') }}"></script>
+{% endblock %}
+
 
