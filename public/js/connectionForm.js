@@ -73,11 +73,11 @@ function validateMail(id,errorId){
 /**
  * @returns {boolean}
  */
-function required(){
+function required(formId){
 
     var validate = true;
-    var req = $id('registerForm').querySelectorAll('[required]');
-    var userInput = [];
+    var req = $id(formId).querySelectorAll('[required]');
+
     for(var i=0; i < req.length; i++) {
         var val = req[i].value.length;
         if(!req[i].value.length){
@@ -88,11 +88,11 @@ function required(){
     return validate;
 }
 
-function disable() {
+function disable(btnId,formId) {
 
-    if (!$id('registerForm').querySelectorAll('.has-error').length && required()) {
-        $id('registerBtn').removeAttribute('disabled');
+    if (!$id(formId).querySelectorAll('.has-error').length && required(formId)) {
+        $id(btnId).removeAttribute('disabled');
     } else {
-        $id('registerBtn').setAttribute('disabled', 'true')
+        $id(btnId).setAttribute('disabled', 'true')
     }
 }
