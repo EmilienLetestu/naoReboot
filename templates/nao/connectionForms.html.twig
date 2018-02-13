@@ -11,27 +11,26 @@
     </div>
 
     {% if app.request.get('_route') == 'login' %}
-        <div class="connectionForms">
+        <div class="connectionForms" onkeyup="disable('loginBtn','loginForm')">
             {% if error %}
                 <div class="alert alert-warning">{{ error.message }}</div>
             {% endif %}
-            <form action="{{ path('login_check') }}" method="post" v-on:submit="validateLogin">
-                <div class="form-group"  v-bind:class="{ 'has-warning': 'submit && missingEmail' }">
+            <form action="{{ path('login_check') }}" method="post" id="loginForm">
+                <div class="form-group">
                     <label for="username">Email</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" v-model="email"/>
-                    <div class="form-control-feedback" v-if="submit && missingEmail">Veuillez fournir un e-mail</div>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" onkeyup="validateMail('username','usernameError')"/>
+                    <div id="usernameError" class="form-control-feedback noError">Veuillez fournir un e-mail</div>
                 </div>
-                <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
+                <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="_password" class="form-control"  v-model="pswd"/>
-                    <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+                    <input type="password" id="password" name="_password" required="required" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <input type="checkbox" id="remember_me" name="_remember_me" checked />
                     <label for="remember_me">Se souvenir de moi</label>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-success" type="submit">Valider</button>
+                    <button id="loginBtn" class="btn btn-success" type="submit">Valider</button>
                     <a id="forgottenPswd" href="{{ path('askNewPswd') }}">Mot de passe oublié</a>
                 </div>
             </form>
@@ -77,34 +76,35 @@
     {% endif %}
 
     {% if app.request.attributes.get('_route') == 'askNewPswd' %}
-        <div class="connectionForms pswdForm">
-            {{ form_start(form, {'attr':{'id':'askResetForm'}}) }}
+        <div class="connectionForms pswdForm" onkeyup="disable('askResetBtn','askResetForm')">
+            {{ form_start(form, {'attr': {'id':'askResetForm'} }) }}
             <div class="form-group">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email) }}
+                {{ form_widget(form.email, { 'attr': { 'onkeyup': 'validateMail("ask_reset_email","resetMailError")' } }) }}
+                <div id="resetMailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
             </div>
             <div class="form-group">
-                <button class="btn btn-success" type="submit">Valider</button>
+                <button id="askResetBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
             </div>
             {{ form_end(form) }}
         </div>
     {% endif %}
 
     {%if app.request.attributes.get('_route') == 'resetPswd' %}
-        <div class="connectionForms pswdForm">
-            {{ form_start(form, {'attr':{'id':'resetForm', 'v-on:submit':'validateResetPswd'}}) }}
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && missingPswd' }">
+        <div class="connectionForms pswdForm" onkeyup="disable('resetPswdBtn','resetForm')">
+            {{ form_start(form, {'attr': {'id':'resetForm'} }) }}
+            <div class="form-group">
                 {{ form_label(form.pswd) }}
-                {{ form_widget(form.pswd, { 'attr': { 'v-model': 'pswd' } }) }}
-                <div class="form-control-feedback" v-if="submit && missingPswd">Le mot de passe doit contenir entre 6 et 30 caractères</div>
-            </div>
-            <div class="form-group" v-bind:class="{ 'has-warning': 'submit && matchLess' }">
-                {{ form_label(form.confirmPswd) }}
-                {{ form_widget(form.confirmPswd, { 'attr': { 'v-model': 'confirmPswd' } }) }}
-                <div class="form-control-feedback" v-if="submit && matchLess">Les mots de passes ne correspondent pas</div>
+                {{ form_widget(form.pswd, { 'attr': { 'onkeyup' : 'validatePswd("reset_pswd_pswd",6,30,"resetPswdError")' } }) }}
+                <div id="resetPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
-                <button class="btn btn-success" type="submit">Valider</button>
+                {{ form_label(form.confirmPswd) }}
+                {{ form_widget(form.confirmPswd, { 'attr': { 'onkeyup' : 'matching("reset_pswd_confirmPswd","reset_pswd_pswd","confirmResetError")' } }) }}
+                <div id="confirmResetError" class="form-control-feedback noError">Les mots de passes ne correspondent pas</div>
+            </div>
+            <div class="form-group">
+                <button id="resetPswdBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
             </div>
             {{ form_end(form) }}
         </div>
@@ -114,6 +114,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/connectionForm.js') }}"></script>
+    <script src="{{ asset('js/validateForm.js') }}"></script>
 {% endblock %}
 
