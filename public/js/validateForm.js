@@ -71,6 +71,44 @@ function validateMail(id,errorId){
 }
 
 /**
+ * @param id
+ * @param refId
+ * @param errorId
+ * @returns {boolean}
+ */
+function matching(id,refId,errorId){
+    var validate = true;
+    var confirmPswd     = $id(id).value;
+    var pswd            = $id(refId).value;
+
+    if(confirmPswd !== pswd){
+        swappClass($id(errorId),'noError','has-error');
+        return validate = false
+    }
+
+    swappClass($id(errorId),'has-error','noError');
+
+    return validate;
+}
+
+function validateTextArea(id,min,max,errorId) {
+
+    var validate = true;
+    var userInput = $id(id).value;
+    var total = wordCount(userInput);
+
+    if(total < min || total > max){
+        swappClass($id(errorId),'noError','has-error');
+
+        return validate = false;
+    }
+
+    swappClass($id(errorId),'has-error','noError');
+
+    return validate;
+}
+
+/**
  * @returns {boolean}
  */
 function required(formId){
