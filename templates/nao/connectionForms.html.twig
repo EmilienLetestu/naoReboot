@@ -39,7 +39,7 @@
     {% endif %}
 
     {% if app.request.get('_route') == 'register' %}
-        <div class="connectionForms" onkeyup="disable()">
+        <div class="connectionForms" onkeyup="disable('registerBtn','registerForm')">
             {{ form_start(form, {'attr':{'id':'registerForm'}}) }}
             <div class="form-group">
                 {{ form_label(form.name) }}
