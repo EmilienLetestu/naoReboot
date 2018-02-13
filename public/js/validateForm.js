@@ -91,14 +91,20 @@ function matching(id,refId,errorId){
     return validate;
 }
 
-function validateTextArea(id,min,max,errorId) {
+function validateTextArea(id,min,max,errorId,meterId) {
 
     var validate = true;
     var userInput = $id(id).value;
     var total = wordCount(userInput);
 
+    var totalMeter = userInput === "" ? 0 : total;
+
+    liveWordCount(totalMeter,max,meterId);
+
     if(total < min || total > max){
         swappClass($id(errorId),'noError','has-error');
+
+        total >= max ? alert('Vous avez atteint le nombre maximum de mots'):null;
 
         return validate = false;
     }
@@ -106,6 +112,38 @@ function validateTextArea(id,min,max,errorId) {
     swappClass($id(errorId),'has-error','noError');
 
     return validate;
+}
+
+/**
+ * @param total
+ * @param max
+ * @param meterId
+ * @returns {string}
+ */
+function liveWordCount(total,max,meterId) {
+
+    var evaluate = (total/max)*100;
+
+    evaluate > 90 ? $id(meterId).style.color = '#ff5240' : $id(meterId).style.color = 'inherit';
+
+    return $id(meterId).innerHTML = total + '/' + max;
+}
+
+/**
+ *
+ * @param textId
+ * @param meterId
+ * @param max
+ * @returns {string}
+ */
+function liveCharCount(textId,meterId,max) {
+
+    var total = $id(textId).value.length;
+    var evaluate = (total/max)*100;
+
+    evaluate > 90 ? $id(meterId).style.color = '#ff5240' : $id(meterId).style.color = 'inherit';
+
+    return $id(meterId).innerHTML = total + '/' + max;
 }
 
 /**
@@ -126,6 +164,10 @@ function required(formId){
     return validate;
 }
 
+/**
+ * @param btnId
+ * @param formId
+ */
 function disable(btnId,formId) {
 
     if (!$id(formId).querySelectorAll('.has-error').length && required(formId)) {
