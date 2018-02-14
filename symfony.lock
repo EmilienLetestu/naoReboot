@@ -1,15 +1,24 @@
 {
-    "symfony/options-resolver": {
+    "symfony/form": {
         "version": "v3.3.10"
-    },
-    "symfony/polyfill-intl-icu": {
-        "version": "v1.6.0"
     },
     "symfony/intl": {
         "version": "v3.3.10"
     },
-    "symfony/form": {
+    "symfony/options-resolver": {
         "version": "v3.3.10"
+    },
+    "symfony/polyfill-apcu": {
+        "version": "v1.6.0"
+    },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.6.0"
+    },
+    "symfony/polyfill-php56": {
+        "version": "v1.6.0"
+    },
+    "symfony/polyfill-util": {
+        "version": "v1.6.0"
     },
     "symfony/serializer": {
         "version": "v3.3.13"
