@@ -230,6 +230,21 @@ class UserRepository extends EntityRepository
     }
 
     /**
+     * @return array
+     */
+    public function findAllUnactivated(){
+
+        $queryBuilder = $this->createQueryBuilder('u');
+
+        $this->whereActivated($queryBuilder,0);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
      * Will return all activated account with access lvl 2 request
      * @return array
      */
