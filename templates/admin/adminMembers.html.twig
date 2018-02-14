@@ -13,7 +13,7 @@
 
     <div class="memberList">
             {% for user in userList %}
-                <div class="memberInfo">
+                <div class="memberInfo" id="member{{ loop.index }}">
                     <ul class="list-inline reminder">
                         <li class="list-inline-item">
                             <i class="fa fa-user">

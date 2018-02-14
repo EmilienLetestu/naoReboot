@@ -2,22 +2,22 @@
 <div class="accountActions">
     <ul class="list-inline">
         <li class="list-inline-item">
-            <a class="btn softDelete"
-               href="{{ path('userManagement', {'action' :'deactivate','id' :user.id}) }}">
+            <a class="btn softDelete" id="deleteBtn{{ loop.index }}"
+               href="{{ path('userManagement', {'action' :'deactivate','id' :user.id}) }}" onclick="deleteEntity(event,'deleteBtn{{ loop.index }}','member{{ loop.index }}')">
                 <i class="material-icons">delete</i>
             </a>
         </li>
         <li class="list-inline-item">
-            <a class="btn ban"
-               href="{{ path('userManagement', {'action' :'ban','id' :user.id}) }}">
+            <a class="btn ban" id="banBtn{{ loop.index }}"
+               href="{{ path('userManagement', {'action' :'ban','id' :user.id}) }}" onclick="ban(event,'banBtn{{ loop.index }}')">
                 <i class="material-icons">
                     {{ user.ban == 0 ? 'block' : 'do_not_disturb_off' }}
                 </i>
             </a>
         </li>
         <li class="list-inline-item">
-            <a class="btn privilege"
-               href="{{ path('userManagement', {'action' :'privilege','id' :user.id}) }}">
+            <a class="btn privilege" id="privilegeBtn{{ loop.index }}"
+               href="{{ path('userManagement', {'action' :'privilege','id' :user.id}) }}" onclick="privilege(event,'privilegeBtn{{ loop.index }}')">
                 <i class="material-icons">
                     {{ user.accessLevel < 2 ? 'arrow_upward' : 'arrow_downward' }}
                 </i>
@@ -45,5 +45,9 @@
         </ul>
     </div>
 {% endif %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/adminManagement.js') }}"></script>
+{% endblock %}
 
 
