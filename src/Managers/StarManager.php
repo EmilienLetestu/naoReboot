@@ -19,18 +19,15 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class StarManager
 {
     private $doctrine;
-    private $session;
     private $token;
 
     public function __construct(
         EntityManagerInterface $doctrine,
-        SessionInterface       $session,
         TokenStorageInterface  $token
 
     )
     {
         $this->doctrine  = $doctrine;
-        $this->session   = $session;
         $this->token     = $token;
     }
 
