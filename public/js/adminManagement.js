@@ -12,6 +12,7 @@ function deleteEntity(event,id,containerId){
     event.preventDefault();
     var url = $id(id).getAttribute("href");
     var xmlhttp = new XMLHttpRequest();
+
     xmlhttp.onreadystatechange = function(){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
@@ -28,12 +29,36 @@ function deleteEntity(event,id,containerId){
 /**
  * @param event
  * @param id
+ * @param containerId
+ */
+function roleRequest(event,id,containerId){
+    event.preventDefault();
+    var url = $id(id).getAttribute("href");
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function(){
+        if(this.readyState === 4){
+            if(this.responseText == 'success'){
+                $id(containerId).remove();
+            }else{
+                $id(containerId).remove();
+            }
+        }
+    };
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send();
+}
+
+/**
+ * @param event
+ * @param id
  */
 function ban(event,id){
 
     event.preventDefault();
     var url = $id(id).getAttribute("href");
     var xmlhttp = new XMLHttpRequest();
+
     xmlhttp.onreadystatechange = function(){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
@@ -55,6 +80,7 @@ function privilege(event,id){
 
     event.preventDefault();
     var url = $id(id).getAttribute("href");
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function(){
         if(this.readyState === 4){
