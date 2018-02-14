@@ -19,28 +19,25 @@ class UserManager
 
     private $doctrine;
     private $notificationManager;
-    private $session;
 
     /**
      * UserManager constructor.
      * @param EntityManager $doctrine
      * @param NotificationManager $notificationManager
-     * @param Session $session
      */
     public  function __construct(
         EntityManager       $doctrine,
-        NotificationManager $notificationManager,
-        Session             $session
+        NotificationManager $notificationManager
+
     )
     {
         $this->doctrine            = $doctrine;
         $this->notificationManager = $notificationManager;
-        $this->session             = $session;
     }
 
     /**
      * @param $nDaysAgo
-     * @return mixed
+     * @return string
      */
     public function deleteAllUnactivated($nDaysAgo)
     {
@@ -54,8 +51,7 @@ class UserManager
 
         $this->doctrine->flush();
 
-        return $this->session->getFlashBag()
-            ->add('success','Les comptes ont été supprimés')
+        return 'success'
         ;
     }
 
@@ -71,9 +67,7 @@ class UserManager
         $this->doctrine->remove($user);
         $this->doctrine->flush();
 
-        return $this->session->getFlashBag()
-            ->add('success','Le compte a été supprimé')
-        ;
+        return 'success';
     }
 
     /**
@@ -83,16 +77,19 @@ class UserManager
      */
     public function getDelete($id,$nDaysAgo)
     {
-      return $id === null ?
+       $id === null ?
           $this->deleteAllUnactivated($nDaysAgo)
           :
           $this->deleteUnactivated($nDaysAgo,$id)
       ;
+
+       return 'success';
     }
 
     /**
      * use for soft delete
      * @param $id
+     * @return string
      */
     public function deactivateUser($id)
     {
@@ -100,10 +97,13 @@ class UserManager
         $user = $repository->findOneById($id);
         $user->setDeactivated(true);
         $this->doctrine->flush();
+
+        return 'success';
     }
 
     /**
      * @param $id
+     * @return string
      */
     public function banUser($id)
     {
@@ -113,11 +113,13 @@ class UserManager
         $user->setBan($newStatus);
         $this->doctrine->persist($user);
         $this->doctrine->flush();
+
+        return 'success';
     }
 
     /**
-     * change user access level
      * @param $id
+     * @return string
      */
     public function privilegeUser($id)
     {
@@ -131,12 +133,15 @@ class UserManager
         $this->notificationManager->notifyUser($newLevel, $user);
         $this->doctrine->persist($user);
         $this->doctrine->flush();
+
+        return 'success';
     }
 
     /**
      * dedicated to professional registered user
      * validate a professional account request
      * @param $id
+     *  @return string
      */
     public function validateUser($id)
     {
@@ -146,12 +151,15 @@ class UserManager
         $this->notificationManager->notifyUser(3, $user);
         $this->doctrine->persist($user);
         $this->doctrine->flush();
+
+        return 'success';
     }
 
     /**
      * dedicated to professional registered user
      * deny a professional account request
      * @param $id
+     *  @return string
      */
     public function denyUser($id)
     {
@@ -162,6 +170,8 @@ class UserManager
         $this->notificationManager->notifyUser(4, $user);
         $this->doctrine->persist($user);
         $this->doctrine->flush();
+
+        return 'success';
     }
 }
 
