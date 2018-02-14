@@ -14,7 +14,7 @@
 
 
     <div class="globalDelete">
-        <a class="btn delete" href="{{ path('userManagement', {'action' : 'delete'}) }}">
+        <a class="btn delete" id="allUnactivated" href="{{ path('userManagement', {'action' : 'delete'}) }}" onclick="deleteEntity(event,'allUnactivated','unactivatedUser')">
             Supprimer tous les comptes créés il y a plus de 60 jours
         </a>
     </div>
@@ -31,7 +31,7 @@
             </thead>
             <tbody>
             {% for user in userList %}
-            <tr>
+            <tr id="unactivatedUser{{ loop.index }}">
                 <td>
                     {{ user.surname }} {{ user.name }}
                 </td>
@@ -39,7 +39,8 @@
                     {{ user.createdOn|date('d/m/Y') }}
                 </td>
                 <td>
-                    <a class="btn delete" href="{{ path('userManagement', {'action' : 'delete', 'id' :  user.id}) }}">
+                    <a class="btn delete" id="delete{{ loop.index }}" href="{{ path('userManagement', {'action' : 'delete', 'id' :  user.id}) }}"
+                       onclick="deleteEntity(event,'delete{{ loop.index }}','unactivatedUser{{ loop.index }}')">
                         <i class="material-icons">delete</i>
                     </a>
                 </td>
@@ -49,3 +50,9 @@
         </table>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/adminManagement.js') }}"></script>
+{% endblock %}
+
