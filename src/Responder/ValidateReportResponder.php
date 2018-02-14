@@ -12,12 +12,13 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ValidateReportResponder
 {
+
     /**
-     * @param string $referer
-     * @return RedirectResponse
+     * @param $response
+     * @return mixed
      */
-    public function __invoke(string $referer)
+    public function __invoke($response)
     {
-        return new RedirectResponse($referer);
+        return $response;
     }
 }
