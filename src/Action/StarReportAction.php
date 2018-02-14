@@ -42,6 +42,7 @@ class StarReportAction
         ;
         $response = new Response($result);
         $response->headers->set('Content-Type', 'text/xml');
+
         return $responder(
            $response
         );
