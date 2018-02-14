@@ -37,8 +37,10 @@ class UnactivatedListAction
     {
         $repository = $this->doctrine->getRepository(User::class);
 
+        $repository->findDeletableAccount('- 60 day');
+
         return $responder(
-            $repository->findDeletableAccount('- 60 day'),
+            $repository->findAllUnactivated(),
             'Compte innactifs'
         );
     }
