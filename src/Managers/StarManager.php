@@ -59,17 +59,11 @@ class StarManager
 
         if($check === 'has voted')
         {
-           return $this->session->getFlashBag()
-               ->add('denied',
-                     'Vous avez déjà ajouter une étoile à cette observation')
-            ;
+           return 'Vous avez déjà ajouter une étoile à cette observation';
         }
         if($loggedId === $report->getUser()->getId())
         {
-            return $this->session->getFlashBag()
-                ->add('denied',
-                    'Vous ne pouvez ajouter une étoile à vos observations')
-                ;
+            return 'Vous ne pouvez pas ajouter d\'étoile à vos observations';
         }
         //create a new star object and hydrate it
         $star = new Star();
@@ -89,11 +83,7 @@ class StarManager
         $this->doctrine->persist($report);
         $this->doctrine->flush();
 
-        // !! remenber to update session var 'star' if ever it's used later on !! //
-
-        return $this->session->getFlashBag()
-            ->add('success','Etoile ajouteé')
-        ;
+        return 'success';
     }
 
     /**
