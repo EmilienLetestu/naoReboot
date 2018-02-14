@@ -9,16 +9,14 @@
 namespace App\Responder\Admin;
 
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
-
 class AccountManagementResponder
 {
     /**
-     * @param $referer
-     * @return RedirectResponse
+     * @param $response
+     * @return mixed
      */
-    public function __invoke($referer)
+    public function __invoke($response)
     {
-        return new RedirectResponse($referer);
+        return $response;
     }
 }

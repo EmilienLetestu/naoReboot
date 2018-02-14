@@ -12,6 +12,7 @@ namespace App\Action\Admin;
 use App\Managers\UserManager;
 use App\Responder\Admin\AccountManagementResponder;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AccountManagementAction
 {
@@ -42,13 +43,13 @@ class AccountManagementAction
         $method = $action.'User';
 
         $action !== 'delete' ?
-            $this->userManager->$method($id) :
-            $this->userManager->getDelete($id, '- 60 day')
+           $result = $this->userManager->$method($id) :
+           $result = $this->userManager->getDelete($id, '- 60 day')
         ;
 
+        $response = new Response($result);
+        $response->headers->set('Content-Type', 'text/xml');
 
-        return $responder(
-            $request->headers->get('referer')
-        );
+        return $responder($response);
     }
 }
