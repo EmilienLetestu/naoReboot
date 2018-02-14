@@ -8,16 +8,15 @@
 
 namespace App\Responder;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class StarReportResponder
 {
-   /**
-    * @param string $referer
-    * @return RedirectResponse
-   */
-   public function __invoke(string $referer)
+    /**
+     * @param $response
+     * @return mixed
+     */
+   public function __invoke($response)
    {
-      return new RedirectResponse($referer);
+      return $response;
    }
 }
