@@ -18,23 +18,19 @@ class ValidationManager
 {
 
     private $doctrine;
-    private $session;
     private $token;
 
     /**
      * ValidationManager constructor.
      * @param EntityManager $doctrine
-     * @param Session $session
      * @param TokenStorage $token
      */
     public function __construct(
         EntityManager $doctrine,
-        Session       $session,
         TokenStorage  $token
     )
     {
         $this->doctrine = $doctrine;
-        $this->session  = $session;
         $this->token    = $token;
     }
 
