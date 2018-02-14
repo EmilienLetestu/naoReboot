@@ -2,6 +2,7 @@
     {% set mapId = 'reportMap'~loop.index%}
     {% set cmtId = 'cmt'~loop.index %}
     {% set closeBtnId = 'closeBtn'~loop.index %}
+    {% set starId     = 'star'~loop.index %}
     <div class="cardHeader">
         <ul class="list-inline">
             <li class="list-inline-item">
@@ -29,7 +30,7 @@
     <ul class="list-inline info1">
         <li class="list-inline-item">
             {% if report.validated == 1 %}
-                    <a class="stared" href="{{ path('star', {'reportId': report.id}) }}">
+                    <a id="star{{ loop.index }}" class="stared" href="{{ path('star', {'reportId': report.id}) }}" onclick="event.preventDefault();addStar('{{ starId }}')">
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         {{ report.starNbr }}
                     </a>
@@ -91,6 +92,9 @@
         {% endif %}
     </div>
 </div>
+{% block javascripts %}
+    <script src="{{ asset('js/stars.js') }}"></script>
+{% endblock %}
 
 
 
