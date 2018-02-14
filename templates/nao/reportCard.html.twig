@@ -30,7 +30,7 @@
     <ul class="list-inline info1">
         <li class="list-inline-item">
             {% if report.validated == 1 %}
-                    <a id="star{{ loop.index }}" class="stared" href="{{ path('star', {'reportId': report.id}) }}" onclick="event.preventDefault();addStar('{{ starId }}')">
+                    <a id="star{{ loop.index }}" class="stared" href="{{ path('star', {'reportId': report.id}) }}" onclick="addPoint(event,'{{ starId }}')">
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         {{ report.starNbr }}
                     </a>
@@ -81,19 +81,17 @@
         {% if report.validated == 0 %}
         <ul class="list-inline">
             <li class="list-inline-item">
-                <a href="{{ path('validateReport', {'reportId': report.id}) }}">
-                    <i class="material-icons">check</i>
+                <a id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
+                    <i class="fa fa-check"></i>
+                    {{ report.validationScore }} / 5
                 </a>
-            </li>
-            <li class="list-inline-item">
-                {{ report.validationScore }} / 5
             </li>
         </ul>
         {% endif %}
     </div>
 </div>
 {% block javascripts %}
-    <script src="{{ asset('js/stars.js') }}"></script>
+    <script src="{{ asset('js/starOrValidateReport.js') }}"></script>
 {% endblock %}
 
 
