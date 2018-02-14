@@ -62,10 +62,7 @@ class ValidationManager
 
         if($check === 'has validated')
         {
-            return $this->session->getFlashBag()
-                ->add('denied',
-                    'Vous avez déjà validé cette observation')
-            ;
+            return 'Vous avez déjà validé cette observation';
         }
 
         //create a new validation object and hydrate it
@@ -87,20 +84,12 @@ class ValidationManager
         if($score === 4)
         {
             $report->setValidated(true);
-            $this->doctrine->persist($report);
-            $this->doctrine->flush();
-            // ?--- maybe send a notification ---? //
-            return $this->session->getFlashBag()
-                ->add('success','Validation ajoutée')
-            ;
         }
 
         $this->doctrine->persist($report);
         $this->doctrine->flush();
 
-        return $this->session->getFlashBag()
-            ->add('success','Validation ajoutée')
-        ;
+        return 'success';
     }
 
     /**
