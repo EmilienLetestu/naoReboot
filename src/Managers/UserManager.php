@@ -56,14 +56,13 @@ class UserManager
     }
 
     /**
-     * @param $nDaysAgo
      * @param $id
-     * @return mixed
+     * @return string
      */
-    public function deleteUnactivated($nDaysAgo, $id)
+    public function deleteUnactivated($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
-        $user = $repository->findAccountToDelete($nDaysAgo,$id);
+        $user = $repository->find($id);
         $this->doctrine->remove($user);
         $this->doctrine->flush();
 
@@ -77,13 +76,11 @@ class UserManager
      */
     public function getDelete($id,$nDaysAgo)
     {
-       $id === null ?
-          $this->deleteAllUnactivated($nDaysAgo)
-          :
-          $this->deleteUnactivated($nDaysAgo,$id)
-      ;
-
-       return 'success';
+       return
+           $id === null ?
+               $this->deleteAllUnactivated($nDaysAgo) :
+               $this->deleteUnactivated($id)
+           ;
     }
 
     /**
