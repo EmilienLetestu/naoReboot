@@ -2,6 +2,11 @@
  * Created by Emilien on 14/02/2018.
  */
 
+/**
+ * @param event
+ * @param id
+ * @param containerId
+ */
 function deleteEntity(event,id,containerId){
 
     event.preventDefault();
@@ -20,6 +25,10 @@ function deleteEntity(event,id,containerId){
     xmlhttp.send();
 }
 
+/**
+ * @param event
+ * @param id
+ */
 function ban(event,id){
 
     event.preventDefault();
@@ -38,6 +47,10 @@ function ban(event,id){
     xmlhttp.send();
 }
 
+/**
+ * @param event
+ * @param id
+ */
 function privilege(event,id){
 
     event.preventDefault();
@@ -57,7 +70,14 @@ function privilege(event,id){
 
 }
 
+/**
+ * @param id
+ * @param state1
+ * @param state2
+ * @returns {*}
+ */
 function updateIcon(id,state1,state2){
+
     var icon = $id(id).getElementsByTagName('i');
     var state = icon[0].innerText.trim() == state1 ? state2 : state1;
 
