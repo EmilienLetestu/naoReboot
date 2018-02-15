@@ -93,9 +93,9 @@ function wordCount(string){
  */
 function loadElement(limit,targetClass,id) {
     var total  = $class(targetClass).length;
-    for(var i=0; i < total ; i++){
-        if(i < limit){
-            $id(id+''+[i+1]+'').style.display = 'block';
+    for(var i=1; i <= total ; i++){
+        if(i <= limit){
+            $id(id+''+[i]+'').style.display = 'block';
         }
     }
 }
