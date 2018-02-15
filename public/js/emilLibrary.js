@@ -66,3 +66,30 @@ function wordCount(string){
     var trimmed = string.trim();
     return trimmed.split(' ').length;
 }
+
+/**
+ * @param limit
+ * @param targetClass
+ * @param id
+ */
+function loadElement(limit,targetClass,id) {
+    var total  = $class(targetClass).length;
+    for(var i=0; i < total ; i++){
+        if(i < limit){
+            $id(id+''+[i+1]+'').style.display = 'block';
+        }
+    }
+}
+
+/**
+ * @param btn
+ * @param targetClass
+ * @param id
+ */
+function loadMore(btn,targetClass,id){
+    var total  = $class(targetClass).length;
+    var newLimit = parseInt(btn.value) + 6;
+    loadElement(newLimit,targetClass,id);
+    btn.value = newLimit;
+    total <= newLimit ? btn.remove() : null;
+}
