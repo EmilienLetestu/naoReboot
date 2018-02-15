@@ -91,6 +91,15 @@ function matching(id,refId,errorId){
     return validate;
 }
 
+/**
+ *
+ * @param id
+ * @param min
+ * @param max
+ * @param errorId
+ * @param meterId
+ * @returns {boolean}
+ */
 function validateTextArea(id,min,max,errorId,meterId) {
 
     var validate = true;

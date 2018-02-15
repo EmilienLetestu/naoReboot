@@ -1,6 +1,7 @@
 /**
  * Created by Emilien on 12/02/2018.
  */
+
 function offCanvas() {
    var menu = $id('adminNav');
    var trigger = $id('adminNavTrigger');

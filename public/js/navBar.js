@@ -16,6 +16,9 @@ function searchWidth() {
     }
 }
 
+/**
+ * @param id
+ */
 function show(id) {
     getStyle($id(id),'visibility') === 'hidden' ?
         $id(id).style.visibility = "visible":
@@ -23,6 +26,9 @@ function show(id) {
     ;
 }
 
+/**
+ * @param id
+ */
 function hide(id){
 
     $id(id).style.visibility = "hidden";

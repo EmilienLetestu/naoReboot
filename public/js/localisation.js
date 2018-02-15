@@ -9,7 +9,9 @@ function initMap() {
     geocoder = new google.maps.Geocoder();
 }
 
-//auto find lat, lng and address
+/**
+ * auto find lat, lng and address
+ */
 function getAll() {
     navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -34,7 +36,11 @@ function getAll() {
     });
 }
 
-//find lat and lng from submitted location
+
+/**
+ * find lat and lng from submitted location
+ * @param geocoder
+ */
 function codeLocation(geocoder) {
     var address = $id("report_location").value;
     geocoder.geocode({'address': address}, function (results, status) {
@@ -52,6 +58,7 @@ function codeLocation(geocoder) {
         }
     });
 }
+
 
 function localizeMe() {
     var address = $id("report_location").value;
