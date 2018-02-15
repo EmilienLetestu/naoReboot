@@ -15,21 +15,3 @@ function searchWidth() {
        $id('nav_search_submit').style.left="20%";
     }
 }
-
-/**
- * @param id
- */
-function show(id) {
-    getStyle($id(id),'visibility') === 'hidden' ?
-        $id(id).style.visibility = "visible":
-        $id(id).style.display    = "flex"
-    ;
-}
-
-/**
- * @param id
- */
-function hide(id){
-
-    $id(id).style.visibility = "hidden";
-}

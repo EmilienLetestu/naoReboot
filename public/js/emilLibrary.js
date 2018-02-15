@@ -59,6 +59,25 @@ function swappClass(element,removeClass,addClass){
     element.classList.add(addClass);
 }
 
+
+/**
+ * @param id
+ */
+function show(id) {
+    getStyle($id(id),'visibility') === 'hidden' ?
+        $id(id).style.visibility = "visible":
+        $id(id).style.display    = "flex"
+    ;
+}
+
+/**
+ * @param id
+ */
+function hide(id){
+
+    $id(id).style.visibility = "hidden";
+}
+
 /**
  * @param string
  */
