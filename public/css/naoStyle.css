@@ -576,7 +576,15 @@ footer .list-group
     -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+}
 
+.card:nth-child(n+7){
+    display: none;
+}
+
+#homeCards .card,
+#userReport .card{
+    display: block;
 }
 
 .cardHeader{
@@ -762,7 +770,7 @@ footer .list-group
 }
 
 #userReport{
-    visibility: hidden;
+   display: none;
 }
 
 #loadBtn{
