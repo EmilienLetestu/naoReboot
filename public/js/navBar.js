@@ -17,8 +17,10 @@ function searchWidth() {
 }
 
 function show(id) {
-
-    $id(id).style.visibility = "visible";
+    getStyle($id(id),'visibility') === 'hidden' ?
+        $id(id).style.visibility = "visible":
+        $id(id).style.display    = "flex"
+    ;
 }
 
 function hide(id){
