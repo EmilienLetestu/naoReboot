@@ -74,7 +74,16 @@
                 </div>
             {% endfor %}
     </div>
+
+    <div>
+        <button class="btn btn-success" id="memberLoadBtn" value="4" onclick="loadMore(this,'memberInfo','member')">Plus d'observations</button>
+    </div>
 {% endblock %}
+
+{% block javascrips %}
+    {{ parent() }}
+    <script src="{{ asset('js/loadMember') }}"></script>
+{% endblock%}
 
 
 
