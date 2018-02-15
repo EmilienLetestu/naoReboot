@@ -110,7 +110,9 @@ h1
 #nav_search_submit{
     position: fixed;
     left: 20%;
-    top: 2.5%;
+    top: 2.45%;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
 }
 
 .search-bar label{

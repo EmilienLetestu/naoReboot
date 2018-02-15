@@ -7,7 +7,7 @@
                 NAO
             {% endblock %}
         </title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="https://fonts.googleapis.com/css?family=Oswald|Rubik" rel="stylesheet">
         <link rel="shortcut icon" type="image/png"  href={{ asset("favicon.ico") }}>
@@ -16,14 +16,14 @@
             <link href="{{ asset("css/naoStyle.css") }}" rel="stylesheet">
         {% endblock %}
     </head>
-    <body onclick="searchWidth()">
+    <body>
     <div class="d-flex flex-column" id="wrapper" onclick="">
         <nav class="navbar fixed-top navbar-toggleable-md">
             <a class="navbar-brand" href="{{ path('home') }}">
                 <i class="material-icons">home</i>
                 NAO
             </a>
-            <div class="search-bar" id="search">
+            <div class="search-bar" id="search" onclick="searchWidth()">
                {{ form_start(search.createSearch,{'action': path('search')}) }}
                 {{ form_end(search.createSearch) }}
             </div>
