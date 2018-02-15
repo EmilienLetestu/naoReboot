@@ -76,7 +76,7 @@ function ban(event,id){
  * @param event
  * @param id
  */
-function privilege(event,id){
+function privilege(event,id,reminderId){
 
     event.preventDefault();
     var url = $id(id).getAttribute("href");
@@ -86,6 +86,7 @@ function privilege(event,id){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
                 updateIcon(id,'arrow_upward','arrow_downward');
+                updateLevel(reminderId);
             }else{
                 alert(this.responseText);
             }
@@ -108,5 +109,15 @@ function updateIcon(id,state1,state2){
     var state = icon[0].innerText.trim() == state1 ? state2 : state1;
 
     return icon[0].innerText = state;
+}
 
+/**
+ * @param id
+ * @returns {string}
+ */
+function updateLevel(id){
+    var account = $id(id);
+    var level = account.innerHTML.trim() === 'Amateur' ? 'Naturaliste':'Amateur';
+
+    return account.innerHTML = level;
 }

@@ -35,7 +35,7 @@
                                 {{ user.reports|activities['starsGathered'] }}
                             </i>
                         </li>
-                        <li class="list-inline-item">
+                        <li class="list-inline-item" id="memberLevel{{ loop.index }}">
                             {{ user.accessLevel|account }}
                         </li>
                     </ul>
