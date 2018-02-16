@@ -10,16 +10,29 @@
 namespace App\Responder\Admin;
 
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
+
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class ExportCsvResponder
 {
     /**
-     * @param $response
-     * @return RedirectResponse
+     * @param $fileContent
+     * @return Response
      */
-    public function __invoke($response)
+    public function __invoke($fileContent)
     {
-      return $response;
+        $response = new Response( str_replace(',', ';', $fileContent));
+
+        $filename = 'data.csv';
+
+        $disposition = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $filename
+        );
+        $response->headers->set('Content-Disposition', $disposition);
+
+        return $response;
     }
 }

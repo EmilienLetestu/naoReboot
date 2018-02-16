@@ -33,8 +33,10 @@ class ExportCsvAction
 
     public function __invoke(ExportCsvResponder $responder)
     {
-        $repository = $this->doctrine->getRepository(Report::class);
-        $data = $repository->findAll();
+        $data = $this->doctrine
+            ->getRepository(Report::class)
+            ->findAll()
+        ;
 
         foreach ( $data as $report){
             $reportList[]=[
@@ -47,20 +49,9 @@ class ExportCsvAction
             ];
         }
 
-        $filename = 'data.csv';
-
         $fileContent = $this->serializer->encode($reportList,'csv');
 
-        $response = new Response( str_replace(',', ';', $fileContent));
-
-        $disposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            $filename
-        );
-
-        $response->headers->set('Content-Disposition', $disposition);
-
-        return $responder($response);
+        return $responder($fileContent);
     }
 
 }
