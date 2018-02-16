@@ -9,14 +9,19 @@
 namespace App\Responder;
 
 
+use Symfony\Component\HttpFoundation\Response;
+
 class StarReportResponder
 {
     /**
-     * @param $response
-     * @return mixed
+     * @param $result
+     * @return Response
      */
-   public function __invoke($response)
+   public function __invoke($result)
    {
-      return $response;
+       $response = new Response($result);
+       $response->headers->set('Content-Type', 'text/xml');
+
+       return $response;
    }
 }

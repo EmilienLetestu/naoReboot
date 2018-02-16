@@ -12,7 +12,6 @@ namespace App\Action;
 use App\Managers\StarManager;
 use App\Responder\StarReportResponder;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class StarReportAction
 {
@@ -37,14 +36,9 @@ class StarReportAction
      */
     public function __invoke(Request $request, StarReportResponder $responder)
     {
-        $result = $this->starManager
-             ->starProcess($request->get('reportId'))
-        ;
-        $response = new Response($result);
-        $response->headers->set('Content-Type', 'text/xml');
-
         return $responder(
-           $response
+            $this->starManager
+                 ->starProcess($request->get('reportId'))
         );
     }
 }
