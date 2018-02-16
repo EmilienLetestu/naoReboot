@@ -33,7 +33,7 @@ class AccountManagementAction
     /**
      * @param Request $request
      * @param AccountManagementResponder $responder
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return Response
      */
     public function __invoke(Request $request, AccountManagementResponder $responder)
     {
@@ -42,14 +42,10 @@ class AccountManagementAction
 
         $method = $action.'User';
 
-        $action !== 'delete' ?
-           $result = $this->userManager->$method($id) :
-           $result = $this->userManager->getDelete($id, '- 60 day')
-        ;
-
-        $response = new Response($result);
-        $response->headers->set('Content-Type', 'text/xml');
-
-        return $responder($response);
+        return $responder(
+            $action !== 'delete' ?
+                $this->userManager->$method($id) :
+                $this->userManager->getDelete($id, '- 60 day')
+        );
     }
 }
