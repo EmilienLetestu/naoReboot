@@ -7,9 +7,6 @@ body, #wrapper
     min-height: 100vh;
 }
 
-.container-fluid{
-    padding: 0 !important;
-}
 
 main
 {

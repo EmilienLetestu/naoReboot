@@ -2,10 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>
-            {% block title %}
-                NAO
-            {% endblock %}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}NAO{% endblock %}
         </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -17,86 +16,89 @@
         {% endblock %}
     </head>
     <body>
-    <div class="d-flex flex-column" id="wrapper" onclick="">
-        <nav class="navbar fixed-top navbar-toggleable-md">
-            <a class="navbar-brand" href="{{ path('home') }}">
-                <i class="material-icons">home</i>
-                NAO
-            </a>
-            <div class="search-bar" id="search" onclick="searchWidth()">
-               {{ form_start(search.createSearch,{'action': path('search')}) }}
-                {{ form_end(search.createSearch) }}
-            </div>
-            {% if  not is_granted('ROLE_USER') %}
-            <div class="nav navbar-nav ml-auto" id="connection">
-                <a class="btn btn-default" href="{{ path('register') }}">Inscription</a>
-                <a class="btn btn-outline" href="{{ path('login') }}">Connexion</a>
-            </div>
-            {% endif %}
-            {% if is_granted('ROLE_USER') %}
-            <div class="nav navbar-nav ml-auto">
-                <i class="fa fa-user-circle-o" aria-hidden="true"  id="accountBadge" onmouseover="show('dashboard')"></i>
-            </div>
-                <div id="dashboard">
-                    <ul onmouseleave="hide('dashboard')">
-                       <li>
-                           <a href="{{ path('logout') }}">
-                               <i class="fa fa-sign-out" aria-hidden="true"></i>
-                               Se déconnecter
-                           </a>
-                       </li>
-                        <li>
-                            <a href="{{ path('home') }}">
-                                <i class="fa fa-home" aria-hidden="true"></i>
-                                Accueil
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('report',{'state' : 'valide'}) }}">
-                                <i class="fa fa-binoculars" aria-hidden="true"></i>
-                                Observations
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('addReport') }}">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                Nouvelle Observation
-                            </a>
-                        </li>
-                        {% if is_granted('ROLE_VALIDATOR') and app.user.onHold == 0 %}
-                        <li>
-                            <a href="{{ path('report',{'state' : 'en-attente-de-validation'}) }}">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                En attente de validation
-                            </a>
-                        </li>
-                        {% endif %}
-                        <li>
-                            <a href="{{ path('profile', {'name' :app.user.name|specChars,'surname' :app.user.surname|specChars, 'id' :app.user.id}) }}">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                Mon profil
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('notification') }}">
-                                <i class="fa fa-bell" aria-hidden="true">
-                                    <span id="totalNotif">{{ ' '|countNotif|join('|') }}</span>
-                                </i>
-                                Notification
-                            </a>
-                        </li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <li>
-                            <a href="{{ path('admin') }}">
-                                <i class="fa fa-unlock" aria-hidden="true"></i>
-                                Espace d'administration
-                            </a>
-                        </li>
-                        {% endif %}
-                    </ul>
+    <div class="d-flex flex-column" id="wrapper">
+        <div class="container-fluid">
+            <nav class="navbar fixed-top">
+                <a class="navbar-brand" href="{{ path('home') }}">
+                    <i class="material-icons">home</i>
+                    NAO
+                </a>
+                <div class="search-bar" id="search" onclick="searchWidth()">
+                    {{ form_start(search.createSearch,{'action': path('search')}) }}
+                    {{ form_end(search.createSearch) }}
                 </div>
-            {% endif %}
-        </nav>
+                {% if  not is_granted('ROLE_USER') %}
+                    <div class="navbar-nav ml-auto" id="connection">
+                        <a class="btn btn-default" href="{{ path('register') }}">Inscription</a>
+                        <a class="btn btn-outline" href="{{ path('login') }}">Connexion</a>
+                    </div>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <div class="navbar-nav ml-auto">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"  id="accountBadge" onmouseover="show('dashboard')"></i>
+                    </div>
+                    <div id="dashboard">
+                        <ul onmouseleave="hide('dashboard')">
+                            <li>
+                                <a href="{{ path('logout') }}">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    Se déconnecter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('home') }}">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Accueil
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('report',{'state' : 'valide'}) }}">
+                                    <i class="fa fa-binoculars" aria-hidden="true"></i>
+                                    Observations
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('addReport') }}">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    Nouvelle Observation
+                                </a>
+                            </li>
+                            {% if is_granted('ROLE_VALIDATOR') and app.user.onHold == 0 %}
+                                <li>
+                                    <a href="{{ path('report',{'state' : 'en-attente-de-validation'}) }}">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        En attente de validation
+                                    </a>
+                                </li>
+                            {% endif %}
+                            <li>
+                                <a href="{{ path('profile', {'name' :app.user.name|specChars,'surname' :app.user.surname|specChars, 'id' :app.user.id}) }}">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    Mon profil
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('notification') }}">
+                                    <i class="fa fa-bell" aria-hidden="true">
+                                        <span id="totalNotif">{{ ' '|countNotif|join('|') }}</span>
+                                    </i>
+                                    Notification
+                                </a>
+                            </li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li>
+                                    <a href="{{ path('admin') }}">
+                                        <i class="fa fa-unlock" aria-hidden="true"></i>
+                                        Espace d'administration
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </nav>
+        </div>
+
         <main class="container-fluid py-3 w-100" id="app">
 
             {% for label, messages in app.flashes(['denied','error','success','warning','welcome']) %}
