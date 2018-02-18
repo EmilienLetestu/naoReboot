@@ -10,6 +10,7 @@ namespace App\Form\Type;
 
 
 use App\Validators\CommentLength;
+use App\Validators\WordLimit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -60,7 +61,7 @@ class ContactForm extends AbstractType
 
            ])
            ->add('message', TextareaType::class, [
-                                'constraints'   => [new CommentLength(['limit'=>400])],
+                                'constraints'   => [new WordLimit(['limit'=>100])],
                                 'mapped'        => false,
                                 'trim'          => true
            ])
