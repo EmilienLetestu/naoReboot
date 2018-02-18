@@ -131,9 +131,7 @@ function validateTextArea(id,min,max,errorId,meterId) {
  */
 function liveWordCount(total,max,meterId) {
 
-    var evaluate = (total/max)*100;
-
-    evaluate > 90 ? $id(meterId).style.color = '#ff5240' : $id(meterId).style.color = 'inherit';
+    (total/max)*100 > 90 ? $id(meterId).style.color = '#ff5240' : $id(meterId).style.color = 'inherit';
 
     return $id(meterId).innerHTML = total + '/' + max;
 }
