@@ -11,51 +11,51 @@
  </div>
 
  <div class="headBanner" id="termsSummary">
-     <ul class="list-unstyled col-lg-6">
+     <ul id="summary1" class="list-unstyled col-lg-6">
          <li>
-             <a href="#article1" v-on:click="article1 = !article1">ARTICLE 1 : Objet</a>
+             <a href="#article1" onclick="showAnchor(this)">ARTICLE 1 : Objet</a>
          </li>
          <li>
-             <a href="#article2" v-on:click="article2 = !article2">ARTICLE 2 : Mentions légales</a>
+             <a href="#article2" onclick="showAnchor(this)">ARTICLE 2 : Mentions légales</a>
          </li>
          <li>
-             <a href="#article3" v-on:click="article3 = !article3">ARTICLE 3 : Définitions</a>
+             <a href="#article3" onclick="showAnchor(this)">ARTICLE 3 : Définitions</a>
          </li>
          <li>
-             <a href="#article4" v-on:click="article4 = !article4">ARTICLE 4 : accès aux services</a>
+             <a href="#article4" onclick="showAnchor(this)">ARTICLE 4 : accès aux services</a>
          </li>
          <li>
-             <a href="#article5" v-on:click="article5 = !article5">ARTICLE 5 : Propriété intellectuelle</a>
+             <a href="#article5" onclick="showAnchor(this)">ARTICLE 5 : Propriété intellectuelle</a>
          </li>
          <li>
-             <a href="#article6" v-on:click="article6 = !article6">ARTICLE 6 : Données personnelles</a>
+             <a href="#article6" onclick="showAnchor(this)">ARTICLE 6 : Données personnelles</a>
          </li>
      </ul>
-     <ul class="list-unstyled col-lg-6">
+     <ul id="summary2" class="list-unstyled col-lg-6">
          <li>
-             <a href="#article7" v-on:click="article7 = !article7">ARTICLE 7 : Responsabilité et force majeure</a>
+             <a href="#article7" onclick="showAnchor(this)">ARTICLE 7 : Responsabilité et force majeure</a>
          </li>
          <li>
-             <a href="#article8" v-on:click="article8 = !article8">ARTICLE 8 : Liens hypertextes</a>
+             <a href="#article8" onclick="showAnchor(this)">ARTICLE 8 : Liens hypertextes</a>
          </li>
          <li>
-             <a href="#article9" v-on:click="article9 = !article9">ARTICLE 9 : Évolution du contrat</a>
+             <a href="#article9" onclick="showAnchor(this)">ARTICLE 9 : Évolution du contrat</a>
          </li>
          <li>
-             <a href="#article10" v-on:click="article10 = !article10">ARTICLE 10 : Durée</a>
+             <a href="#article10" onclick="showAnchor(this)">ARTICLE 10 : Durée</a>
          </li>
          <li>
-             <a href="#article11" v-on:click="article11 = !article11">ARTICLE 11 : Droit applicable et juridiction compétente</a>
+             <a href="#article11" onclick="showAnchor(this)">ARTICLE 11 : Droit applicable et juridiction compétente</a>
          </li>
          <li>
-             <a href="#article12" v-on:click="article12 = !article12">ARTICLE 12 : Publication par l’Utilisateur</a>
+             <a href="#article12" onclick="showAnchor(this)">ARTICLE 12 : Publication par l’Utilisateur</a>
          </li>
      </ul>
  </div>
  <div id="termOfUse">
 
-     <h2 id="article1" v-on:click="article1 = !article1">ARTICLE 1 : Objet</h2>
-     <div class="termArticle" v-if = "article1">
+     <h2 id="article1" onclick="showHideArticle(this)">ARTICLE 1 : Objet</h2>
+     <div class="termArticle">
             <p>
                 Les présentes « conditions générales d'utilisation » ont pour objet l'encadrement juridique des modalités
                 de mise à disposition des services du site [Nom du site] et leur utilisation par « l'Utilisateur ».
@@ -77,8 +77,8 @@
              </ul>
      </div>
 
-     <h2 id="article2" v-on:click="article2 = !article2">ARTICLE 2 : Mentions légales</h2>
-     <div class="termArticle" v-if = "article2">
+     <h2 id="article2" onclick="showHideArticle(this)">ARTICLE 2 : Mentions légales</h2>
+     <div class="termArticle">
             <p>
                 L'édition du site [Nom du site] est assurée par la Société [Nom de la société] [SAS / SA / SARL, etc.] au capital
                 de [montant en euros] € dont le siège social est situé au [adresse du siège social].
@@ -98,8 +98,8 @@
             </ul>
      </div>
 
-     <h2 id="article3" v-on:click="article3 = !article3">ARTICLE 3 : Définitions</h2>
-     <div class="termArticle" v-if = "article3">
+     <h2 id="article3" onclick="showHideArticle(this)">ARTICLE 3 : Définitions</h2>
+     <div class="termArticle">
             <p>
                 La présente clause a pour objet de définir les différents termes essentiels du contrat :
             </p>
@@ -120,8 +120,8 @@
             </ul>
      </div>
 
-     <h2 id="article4" v-on:click="article4 = !article4">ARTICLE 4 : accès aux services</h2>
-     <div class="termArticle" v-if = "article4">
+     <h2 id="article4" onclick="showHideArticle(this)">ARTICLE 4 : accès aux services</h2>
+     <div class="termArticle">
             <p>
                 La présente clause a pour objet de définir les différents termes essentiels du contrat :
             </p>
@@ -158,8 +158,8 @@
             </p>
      </div>
 
-     <h2 id="article5" v-on:click="article5 = !article5">ARTICLE 5 : Propriété intellectuelle</h2>
-     <div class="termArticle" v-if = "article5">
+     <h2 id="article5" onclick="showHideArticle(this)">ARTICLE 5 : Propriété intellectuelle</h2>
+     <div class="termArticle">
             <p>
                 Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété
                 intellectuelle et plus particulièrement par le droit d'auteur.
@@ -182,8 +182,8 @@
             </p>
      </div>
 
-     <h2 id="article6" v-on:click="article6 = !article6">ARTICLE 6 : Données personnelles</h2>
-     <div class="termArticle" v-if = "article6">
+     <h2 id="article6" onclick="showHideArticle(this)">ARTICLE 6 : Données personnelles</h2>
+     <div class="termArticle">
             <p>
                 Les informations demandées à l’inscription au site sont nécessaires et obligatoires pour la création du compte de l'Utilisateur. En particulier, l'adresse électronique pourra être utilisée
                 par le site pour l'administration, la gestion et l'animation du service.
@@ -212,8 +212,8 @@
             </ul>
      </div>
 
-     <h2 id="article7" v-on:click="article7 = !article7">ARTICLE 7 : Responsabilité et force majeure</h2>
-     <div class="termArticle" v-if = "article7">
+     <h2 id="article7" onclick="showHideArticle(this)">ARTICLE 7 : Responsabilité et force majeure</h2>
+     <div class="termArticle">
             <p>
                 Les sources des informations diffusées sur le site sont réputées fiables. Toutefois, le site se réserve la faculté d'une non-garantie de la fiabilité des sources. Les informations données sur le site le sont à titre purement informatif. Ainsi,
                 l'Utilisateur assume seul l'entière responsabilité de l'utilisation des informations et contenus du présent site.
@@ -236,8 +236,8 @@
             </p>
      </div>
 
-     <h2 id="article8" v-on:click="article8 = !article8">ARTICLE 8 : Liens hypertextes</h2>
-     <div class="termArticle" v-if = "article8">
+     <h2 id="article8" onclick="showHideArticle(this)">ARTICLE 8 : Liens hypertextes</h2>
+     <div class="termArticle">
             <p>
                 De nombreux liens hypertextes sortants sont présents sur le site, cependant les pages web où mènent ces liens n'engagent en rien la responsabilité de
                 [Nom du site] qui n'a pas le contrôle de ces liens.
@@ -247,30 +247,30 @@
             </p>
      </div>
 
-     <h2 id="article9" v-on:click="article9 = !article9">ARTICLE 9 : Évolution du contrat</h2>
-     <div class="termArticle" v-if = "article9">
+     <h2 id="article9" onclick="showHideArticle(this)">ARTICLE 9 : Évolution du contrat</h2>
+     <div class="termArticle">
             <p>
                 Le site se réserve à tout moment le droit de modifier les clauses stipulées dans le présent contrat.
             </p>
      </div>
 
-     <h2 id="article10" v-on:click="article10 = !article10">ARTICLE 10 : Durée</h2>
-     <div class="termArticle" v-if = "article10">
+     <h2 id="article10" onclick="showHideArticle(this)">ARTICLE 10 : Durée</h2>
+     <div class="termArticle">
             <p>
                 La durée du présent contrat est indéterminée. Le contrat produit ses effets à l'égard de l'Utilisateur à compter de l'utilisation du service.
             </p>
      </div>
 
-     <h2 id="article11" v-on:click="article11 = !article11">ARTICLE 11 : Droit applicable et juridiction compétente</h2>
-     <div class="termArticle" v-if = "article11">
+     <h2 id="article11" onclick="showHideArticle(this)">ARTICLE 11 : Droit applicable et juridiction compétente</h2>
+     <div class="termArticle">
             <p>
                 La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties,
                 seuls les tribunaux [du ressort de la Cour d'appel de / de la ville de] [Ville] sont compétents.
             </p>
      </div>
 
-     <h2 id="article12" v-on:click="article12 = !article12">ARTICLE 12 : Publication par l’Utilisateur</h2>
-     <div class="termArticle" v-if = "article12">
+     <h2 id="article12" onclick="showHideArticle(this)">ARTICLE 12 : Publication par l’Utilisateur</h2>
+     <div class="termArticle">
             <p>
                 Le site permet aux membres de publier [des commentaires / des œuvres personnelles].
             </p>
@@ -291,4 +291,8 @@
      </div>
  </div>
 {% endblock%}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/terms.js') }}"></script>
+{% endblock %}
 
