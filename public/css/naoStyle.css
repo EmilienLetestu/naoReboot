@@ -7,13 +7,6 @@ body, #wrapper
     min-height: 100vh;
 }
 
-
-main
-{
-    flex: 1;
-    margin-top: 140px;
-}
-
 footer
 {
     background-color: #5e5e5e;
@@ -50,6 +43,8 @@ h1
 #app{
     padding-left: 0;
     padding-right: 0;
+    flex: 1;
+    margin-top: 140px;
 }
 
 .headBanner
