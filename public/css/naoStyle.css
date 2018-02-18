@@ -328,7 +328,8 @@ input[type="email"]:focus{
     color: #FFFFFF;
     border-color: #FFFFFF;
     background-color: orange;
-    margin-right: 5%;
+    position: absolute;
+    right: 8%;
 }
 
 #connection .btn-default:hover
