@@ -207,7 +207,7 @@ input[type="email"]:focus{
 }
 
 #landingEnd ul li:not(:last-child){
-   padding-right: 40%;
+   padding-right: 40% !important;
 }
 
 #landingEnd {

@@ -17,7 +17,7 @@
     </div>
 
     <div class="birdImg">
-        <img src="{{ asset('/userImages/'~report.pictRef) }}" alt="observation de {{ report.bird.speciesFr }}"   style="width: 100%"/>
+        <img src="{{ asset('/userImages/'~report.pictRef) }}" id="img{{ loop.index }}" alt="observation de {{ report.bird.speciesFr }}" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
     </div>
 
     <div>
@@ -92,6 +92,7 @@
 </div>
 {% block javascripts %}
     <script src="{{ asset('js/starOrValidateReport.js') }}"></script>
+    <script src="{{ asset('js/imgSize.js') }}"></script>
     <script src="{{ asset('js/displayMap.js') }}"></script>
 {% endblock %}
 
