@@ -12,15 +12,28 @@ use Symfony\Component\Validator\Constraint;
 
 class CommentLength extends Constraint
 {
-
+    /**
+     * @var string
+     */
     public $message = "Ne peut excéder ";
+
+    /**
+     * @var
+     */
     public $limit;
 
-    public function construct($options)
+    /**
+     * @param $options
+     * @return mixed
+     */
+    public function __construct($options)
     {
         return $this->limit = $options['limit'];
     }
 
+    /**
+     * @return mixed
+     */
     public function getLimit()
     {
         return $this->limit;
