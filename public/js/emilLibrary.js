@@ -112,3 +112,13 @@ function loadMore(btn,targetClass,id){
     btn.value = newLimit;
     total <= newLimit ? btn.remove() : null;
 }
+
+/**
+ * @param btnId
+ * @param targetClass
+ * @param limit
+ */
+function removeLoadBtn(btnId,targetClass,limit){
+    var total  = $class(targetClass).length;
+    total <= limit ? $id(btnId).remove():null;
+}
