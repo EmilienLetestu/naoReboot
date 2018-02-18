@@ -32,7 +32,7 @@ class StarReportAction
     /**
      * @param Request $request
      * @param StarReportResponder $responder
-     * @return array|string
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function __invoke(Request $request, StarReportResponder $responder)
     {

@@ -8,11 +8,9 @@
 
 namespace App\Action\Admin;
 
-
 use App\Managers\UserManager;
 use App\Responder\Admin\AccountManagementResponder;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class AccountManagementAction
 {
@@ -33,7 +31,7 @@ class AccountManagementAction
     /**
      * @param Request $request
      * @param AccountManagementResponder $responder
-     * @return Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function __invoke(Request $request, AccountManagementResponder $responder)
     {
