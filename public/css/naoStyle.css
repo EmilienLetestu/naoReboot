@@ -169,7 +169,7 @@ input[type="email"]:focus{
 
 #landingIntro p{
     font-size: 1.5em;
-    margin-top: 20%;
+    margin-top: 25%;
     text-align: center;
 }
 
@@ -182,7 +182,7 @@ input[type="email"]:focus{
 }
 
 #landingIntro ul{
-    margin-top: 15%;
+    margin-top: 25%;
     justify-content: space-between;
 }
 
@@ -261,7 +261,7 @@ input[type="email"]:focus{
 
 #landingTop{
     display: flex;
-    padding: 2%;
+    padding: 6% 2%;
 }
 
 #landingForm {
@@ -271,6 +271,7 @@ input[type="email"]:focus{
     -webkit-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
     -moz-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
     box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
+    height: 660px;
 }
 
 #registerLanding {
