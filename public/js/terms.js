@@ -1,6 +1,10 @@
 /**
  * Created by Emilien on 18/02/2018.
  */
+/**
+ * @param anchor
+ * @returns {string}
+ */
 function showAnchor(anchor) {
    var termNum = anchor.getAttribute("href").match(/\d+/);
    var article = $class("termArticle");
@@ -8,6 +12,10 @@ function showAnchor(anchor) {
    return  article[termNum - 1].style.display = "block";
 }
 
+/**
+ * @param title
+ * @returns {string}
+ */
 function showHideArticle(title) {
 
    var articleNum = title.innerHTML.match(/\d+/);
