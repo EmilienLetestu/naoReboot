@@ -47,6 +47,11 @@ h1
     margin-bottom: 1%;
 }
 
+#app{
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .headBanner
 {
     width: 100%;
@@ -201,8 +206,8 @@ input[type="email"]:focus{
     margin-right: 20%;
 }
 
-#landingEnd ul li{
-   padding-right: 45%;
+#landingEnd ul li:not(:last-child){
+   padding-right: 40%;
 }
 
 #landingEnd {
