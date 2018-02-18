@@ -76,14 +76,15 @@
     </div>
 
     <div>
-        <button class="btn btn-success" id="memberLoadBtn" value="4" onclick="loadMore(this,'memberInfo','member')">Plus d'observations</button>
+        <button class="btn btn-success" id="memberLoadBtn" value="4" onclick="loadMore(this,'memberInfo','member')">Plus de membres</button>
     </div>
 {% endblock %}
 
-{% block javascrips %}
+{% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/loadMember') }}"></script>
-{% endblock%}
+    <script src="{{ asset('js/adminManagement.js') }}"></script>
+    <script src="{{ asset('js/loadMember.js') }}"></script>
+{% endblock %}
 
 
 
