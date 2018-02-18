@@ -4,4 +4,5 @@
 
 window.addEventListener('load', function () {
     loadElement(6,'card','reportCard');
+    removeLoadBtn('browserLoadBtn','card',6);
 });

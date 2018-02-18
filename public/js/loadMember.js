@@ -4,4 +4,5 @@
 
 window.addEventListener('load', function () {
     loadElement(6,'memberInfo','member');
+    removeLoadBtn('memberLoadBtn','memberInfo',6);
 });
