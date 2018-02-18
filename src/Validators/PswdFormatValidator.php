@@ -12,6 +12,10 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class PswdFormatValidator extends ConstraintValidator
 {
+    /**
+     * @param mixed $value
+     * @param Constraint $constraint
+     */
     public function validate($value, Constraint $constraint)
     {
         //should contains a mix of letters and numbers
