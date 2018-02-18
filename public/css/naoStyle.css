@@ -874,6 +874,11 @@ footer .list-group
     font-size: 1.1em;
 }
 /*---------------------------admin memberList-------------------------*/
+
+.memberInfo:nth-of-type(n+3){
+    display: none;
+}
+
 .memberInfo{
     margin: 5%;
     border: solid 1px #ffa500;
