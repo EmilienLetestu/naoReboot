@@ -1094,6 +1094,10 @@ footer .list-group
     text-align: justify;
 }
 
+.termArticle:nth-child(n+3){
+    display: none;
+}
+
 .termArticle ul li{
     list-style: circle;
 }
