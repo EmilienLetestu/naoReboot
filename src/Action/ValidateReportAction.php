@@ -11,7 +11,6 @@ namespace App\Action;
 use App\Managers\ValidationManager;
 use App\Responder\ValidateReportResponder;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class ValidateReportAction
 {
@@ -32,22 +31,13 @@ class ValidateReportAction
     /**
      * @param Request $request
      * @param ValidateReportResponder $responder
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function __invoke(Request $request, ValidateReportResponder $responder)
     {
-        $this->validationManager
-             ->validationProcess($request->get('reportId')
-        );
-
-        $response = new Response(
+        return $responder(
             $this->validationManager
-            ->validationProcess($request->get('reportId')
-            )
+            ->validationProcess($request->get('reportId'))
         );
-
-        $response->headers->set('Content-Type', 'text/xml');
-
-        return $responder($response);
     }
 }

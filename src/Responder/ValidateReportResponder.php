@@ -8,17 +8,20 @@
 
 namespace App\Responder;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class ValidateReportResponder
 {
 
     /**
-     * @param $response
-     * @return mixed
+     * @param $result
+     * @return Response
      */
-    public function __invoke($response)
+    public function __invoke($result)
     {
+        $response = new Response($result);
+        $response->headers->set('Content-Type', 'text/xml');
+
         return $response;
     }
 }
