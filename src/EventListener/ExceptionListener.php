@@ -3,17 +3,20 @@
 /**
  * Created by PhpStorm.
  * User: Emilien
- * Date: 06/11/2017
- * Time: 16:41
+ * Date: 01/11/2017
+ * Time: 10:41
  */
 namespace App\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 
 class ExceptionListener
 {
+
     private $twig;
 
     /**
@@ -26,33 +29,43 @@ class ExceptionListener
     }
 
     /**
+     * catch errors and display custom template
      * @param GetResponseForExceptionEvent $event
      */
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
-        $response  = new Response();
 
-        if($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 404)
-        {
-            $template = $this->twig->render('error.html.twig',[
-                'message' => 'Désolé, cette page n\'existe pas ! '
-            ]);
+        $response = new Response();
 
-            $response->setContent($template);
+        switch (true){
+            case($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 404):
+                $response->setContent(
+                           $this->twig
+                                ->render('error.html.twig',[
+                                    'message' => 'This page doesn\'t exist yet !'
+                                ]
+                           )
+                );
+                break;
+            case($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 403):
+                $response->setContent(
+                          $this->twig
+                               ->render('error.html.twig',[
+                                    'message' => 'Sorry but you\'re not allowed to access this page'
+                               ]
+                          )
+                );
+                break;
+            default:$response->setContent(
+                               $this->twig
+                                    ->render('error.html.twig',[
+                                         'message' => 'We are experiencing technical issues, please try again later on.'
+                                    ]
+                               )
+            );
         }
-
-        else
-        {
-            $template = $this->twig->render('error.html.twig',[
-                'message' => 'Il semble que nous rencontrions des problèmes techniques pour faire aboutir votre demande. 
-                Rafraichisser la page, si le problème persiste réessayer plus tard.'
-            ]);
-
-            $response->setContent($template);
-        }
-
-        $event->setResponse($response);
+        return $event->setResponse($response);
     }
 }
 
