@@ -39,7 +39,8 @@ class SecurityListener
         $user = $event->getAuthenticationToken()->getUser();
 
         $this->session->getFlashBag()
-            ->add('success',
+            ->add(
+                'success',
                 'Boujour ' .$user->getName().' '.$user->getSurname().' content de vous revoir !'
             )
         ;
