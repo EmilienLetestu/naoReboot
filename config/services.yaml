@@ -42,4 +42,16 @@ services:
         resource: '../src/Twig'
         tags: ['twig.extension']
 
+    App\EventListener\SecurityListener:
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login }
+        public: true
+
+    App\EventListener\ExceptionListener:
+        tags:
+           - { name: kernel.event_listener, event: kernel.exception }
+        public: true
+
+
+
 
