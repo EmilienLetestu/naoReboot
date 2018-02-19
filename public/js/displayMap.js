@@ -2,14 +2,23 @@
  * Created by Emilien on 15/02/2018.
  */
 
+window.addEventListener('scroll',function () {
+    document.getElementById('restrictedAccess').style.display = "none";
+});
+
 /**
  * @param id
  * @param buttonId
  */
 function showMap(id,buttonId) {
-
-    $id(id).style.visibility = "visible";
-    $id(buttonId).style.visibility = "visible";
+    if(loggedUser() === true ){
+        $id(id).style.visibility = "visible";
+        $id(buttonId).style.visibility = "visible";
+    }
+    else{
+        hideMap(id,buttonId);
+        generateMsg('restrictedAccess','restrictedMsg','Fonctionnalité réservé aux membres, se connecter?');
+    }
 }
 
 /**
