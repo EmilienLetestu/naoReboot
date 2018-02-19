@@ -24,7 +24,7 @@
         <i onclick="hideMap('{{ mapId }}','{{ closeBtnId }}')" class="material-icons closeMap" id="closeBtn{{ loop.index }}">close</i>
         <div id="reportMap{{ loop.index }}" class="gMap">
         </div>
-        <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav }}">
+        <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav|gps }}">
     </div>
 
     <ul class="list-inline info1">
@@ -43,8 +43,8 @@
             {% endif %}
         </li>
         <li class="list-inline-item pull-right">
-                <i class="fa fa-compass" onmouseover="initMap({{ loop.index }});showMap('{{ mapId }}','{{ closeBtnId }}')" aria-hidden="true"></i>
-                {{ report.satNav }}
+                <i class="fa fa-compass" onmouseover="showMap('{{ mapId }}','{{ closeBtnId }}',{{ loop.index }})" aria-hidden="true"></i>
+                {{ report.satNav|gps }}
         </li>
     </ul>
     <ul class="list-inline info2">
