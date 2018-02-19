@@ -27,68 +27,71 @@
         <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav|gps }}">
     </div>
 
-    <ul class="list-inline info1">
-        <li class="list-inline-item">
-            {% if report.validated == 1 %}
+    <div class="mobileHidden">
+        <ul class="list-inline info1">
+            <li class="list-inline-item">
+                {% if report.validated == 1 %}
                     <a id="star{{ loop.index }}" class="stared" href="{{ path('star', {'reportId': report.id}) }}" onclick="addPoint(event,'{{ starId }}')">
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                         {{ report.starNbr }}
                     </a>
-            {% endif %}
-            {% if report.validated == 0 %}
-                <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    {{ report.user.name }} {{ report.user.surname }}
-                </a>
-            {% endif %}
-        </li>
-        <li class="list-inline-item pull-right">
+                {% endif %}
+                {% if report.validated == 0 %}
+                    <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        {{ report.user.name }} {{ report.user.surname }}
+                    </a>
+                {% endif %}
+            </li>
+            <li class="list-inline-item pull-right">
                 <i class="fa fa-compass" onmouseover="showMap('{{ mapId }}','{{ closeBtnId }}',{{ loop.index }})" aria-hidden="true"></i>
                 {{ report.satNav|gps }}
-        </li>
-    </ul>
-    <ul class="list-inline info2">
-        <li class="list-inline-item">
-            {% if report.validated == 1 %}
-                <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    {{ report.user.name }} {{ report.user.surname }}
-                </a>
-            {% endif %}
-            {% if report.validated == 0 %}
-              Inscrit depuis le: {{ report.user.createdOn|date('d/m/Y') }}
-            {% endif %}
-        </li>
-        <li class="list-inline-item pull-right">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            {{ report.location }}
-        </li>
-    </ul>
-    <div class="cardFooter">
-        <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
-        {% if report.comment != null %}
-            <button class="btn btn-outline" onclick="show('{{ cmtId }}')">Lire le commentaire</button>
-            <div class="cardCmt" id="{{ cmtId }}">
-                <i onclick="hide('{{ cmtId }}')" class="material-icons">close</i>
-                <p class="reportCmt">
-                    {{ report.comment }}
-                </p>
-            </div>
-        {% endif %}
-        {% if report.comment == null %}
-            <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>
-        {% endif %}
-        {% if report.validated == 0 %}
-        <ul class="list-inline">
-            <li class="list-inline-item">
-                <a id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
-                    <i class="fa fa-check"></i>
-                    {{ report.validationScore }} / 5
-                </a>
             </li>
         </ul>
-        {% endif %}
+        <ul class="list-inline info2">
+            <li class="list-inline-item">
+                {% if report.validated == 1 %}
+                    <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        {{ report.user.name }} {{ report.user.surname }}
+                    </a>
+                {% endif %}
+                {% if report.validated == 0 %}
+                    Inscrit depuis le: {{ report.user.createdOn|date('d/m/Y') }}
+                {% endif %}
+            </li>
+            <li class="list-inline-item pull-right">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                {{ report.location }}
+            </li>
+        </ul>
+        <div class="cardFooter">
+            <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
+            {% if report.comment != null %}
+                <button class="btn btn-outline" onclick="show('{{ cmtId }}')">Lire le commentaire</button>
+                <div class="cardCmt" id="{{ cmtId }}">
+                    <i onclick="hide('{{ cmtId }}')" class="material-icons">close</i>
+                    <p class="reportCmt">
+                        {{ report.comment }}
+                    </p>
+                </div>
+            {% endif %}
+            {% if report.comment == null %}
+                <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>
+            {% endif %}
+            {% if report.validated == 0 %}
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
+                            <i class="fa fa-check"></i>
+                            {{ report.validationScore }} / 5
+                        </a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
     </div>
+
 </div>
 {% block javascripts %}
     <script src="{{ asset('js/starOrValidateReport.js') }}"></script>
