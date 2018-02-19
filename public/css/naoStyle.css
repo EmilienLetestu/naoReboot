@@ -142,12 +142,11 @@ input[type="email"]:focus{
     color: #ff5240;
 }
 
-#restrictedAccess{
+#jsGenerated{
     display: none;
     position: fixed;
     top: 72px;
     z-index: 1;
-    background: #ff5240;
     color: white;
     width: 100%;
     text-align: center;

@@ -2,6 +2,10 @@
  * Created by Emilien on 09/02/2018.
  */
 
+window.addEventListener('scroll',function () {
+    document.getElementById('jsGenerated').style.display = "none";
+});
+
 function searchWidth() {
 
     var isfocus = document.activeElement;

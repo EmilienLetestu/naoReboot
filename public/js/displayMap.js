@@ -3,12 +3,13 @@
  */
 
 window.addEventListener('scroll',function () {
-    document.getElementById('restrictedAccess').style.display = "none";
+    document.getElementById('jsGenerated').style.display = "none";
 });
 
 /**
  * @param id
  * @param buttonId
+ * @param loopIndex
  */
 function showMap(id,buttonId,loopIndex) {
     if(loggedUser() === true ){
@@ -18,7 +19,7 @@ function showMap(id,buttonId,loopIndex) {
     }
     else{
         hideMap(id,buttonId);
-        generateMsg('restrictedAccess','restrictedMsg','Fonctionnalité réservé aux membres, se connecter?');
+        generateMsg('jsGenerated','jsGeneratedMsg','Fonctionnalité réservé aux membres, se connecter?','#ff5240');
     }
 }
 

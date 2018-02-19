@@ -134,8 +134,10 @@ function loggedUser(){
  * @param divId
  * @param msgId
  * @param msg
+ * @param color
  */
-function generateMsg(divId,msgId,msg){
+function generateMsg(divId,msgId,msg,color){
     $id(divId).style.display = "block";
+    $id(divId).style.backgroundColor = color;
     $id(msgId).innerHTML = msg;
 }
