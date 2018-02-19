@@ -100,7 +100,9 @@
         </div>
 
         <div class="container-fluid py-3 w-100" id="app">
-
+            <div id="restrictedAccess">
+                <p id="restrictedMsg"> </p>
+            </div>
             {% for label, messages in app.flashes(['denied','error','success','warning','welcome']) %}
                 {% for message in messages %}
                     <div class="alert alert-{{ label }}" style="font-size: 5em">
