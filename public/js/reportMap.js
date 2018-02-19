@@ -1,7 +1,8 @@
 /**
  * Created by Emilien on 21/11/2017.
  */
-function initMap(loopIndex) {
+
+function initReportMap(loopIndex) {
 
     // report maps
     var getid = 'reportMapSatNav' + loopIndex;

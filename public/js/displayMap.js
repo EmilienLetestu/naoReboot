@@ -10,8 +10,9 @@ window.addEventListener('scroll',function () {
  * @param id
  * @param buttonId
  */
-function showMap(id,buttonId) {
+function showMap(id,buttonId,loopIndex) {
     if(loggedUser() === true ){
+        initReportMap(loopIndex);
         $id(id).style.visibility = "visible";
         $id(buttonId).style.visibility = "visible";
     }
