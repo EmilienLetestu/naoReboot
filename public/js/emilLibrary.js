@@ -122,3 +122,20 @@ function removeLoadBtn(btnId,targetClass,limit){
     var total  = $class(targetClass).length;
     total <= limit ? $id(btnId).remove():null;
 }
+
+/**
+ * @returns {boolean}
+ */
+function loggedUser(){
+    return $id('connection') === null;
+}
+
+/**
+ * @param divId
+ * @param msgId
+ * @param msg
+ */
+function generateMsg(divId,msgId,msg){
+    $id(divId).style.display = "block";
+    $id(msgId).innerHTML = msg;
+}
