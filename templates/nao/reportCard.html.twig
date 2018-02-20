@@ -1,8 +1,10 @@
 <div class="card"  id="reportCard{{ loop.index }}">
+
     {% set mapId = 'reportMap'~loop.index%}
     {% set cmtId = 'cmt'~loop.index %}
     {% set closeBtnId = 'closeBtn'~loop.index %}
     {% set starId     = 'star'~loop.index %}
+
     <div class="cardHeader">
         <ul class="list-inline">
             <li class="list-inline-item">
@@ -12,22 +14,23 @@
             </li>
             <li class="list-inline-item pull-right">
                 {{  report.addedOn|date('d-m-Y') }}
+                <i class="mobileInline fa fa-caret-square-o-right" aria-hidden="true" id="mobileCardTrigger{{ loop.index }}" onclick="mobileCard('reportCard{{ loop.index }}',this)"></i>
             </li>
         </ul>
     </div>
 
-    <div class="birdImg">
-        <img src="{{ asset('/userImages/'~report.pictRef) }}" id="img{{ loop.index }}" alt="observation de {{ report.bird.speciesFr }}" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
-    </div>
+    <div class="mobileHidden" id="test{{ loop.index }}">
 
-    <div>
-        <i onclick="hideMap('{{ mapId }}','{{ closeBtnId }}')" class="material-icons closeMap" id="closeBtn{{ loop.index }}">close</i>
-        <div id="reportMap{{ loop.index }}" class="gMap">
+        <div class="birdImg">
+            <img src="{{ asset('/userImages/'~report.pictRef) }}" id="img{{ loop.index }}" alt="observation de {{ report.bird.speciesFr }}" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
         </div>
-        <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav|gps }}">
-    </div>
 
-    <div class="mobileHidden">
+        <div>
+            <i onclick="hideMap('{{ mapId }}','{{ closeBtnId }}')" class="material-icons closeMap" id="closeBtn{{ loop.index }}">close</i>
+            <div id="reportMap{{ loop.index }}" class="gMap"></div>
+            <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav|gps }}">
+        </div>
+
         <ul class="list-inline info1">
             <li class="list-inline-item">
                 {% if report.validated == 1 %}
@@ -48,6 +51,7 @@
                 {{ report.satNav|gps }}
             </li>
         </ul>
+
         <ul class="list-inline info2">
             <li class="list-inline-item">
                 {% if report.validated == 1 %}
@@ -65,6 +69,7 @@
                 {{ report.location }}
             </li>
         </ul>
+
         <div class="cardFooter">
             <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
             {% if report.comment != null %}
@@ -90,8 +95,8 @@
                 </ul>
             {% endif %}
         </div>
-    </div>
 
+    </div>
 </div>
 {% block javascripts %}
     <script src="{{ asset('js/starOrValidateReport.js') }}"></script>
