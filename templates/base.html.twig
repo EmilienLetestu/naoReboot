@@ -121,11 +121,12 @@
                 <ul class="list-group col-lg-4" id="naoList">
                     <li class="list-title mb-3">
                         Nos amis les oiseaux
+                        <i class="mobileOnly fa fa-caret-square-o-right" aria-hidden="true" onclick="footerList('naoList',this)"></i>
                     </li>
-                    <li>
+                    <li class="mobileHidden">
                         <a href="{{ path('aboutUs') }}#about">Qui sommes nous?</a>
                     </li>
-                    <li>
+                    <li class="mobileHidden">
                         <a href="{{ path('aboutUs') }}#contactUs">Nous contacter</a>
                     </li>
                 </ul>
@@ -149,11 +150,12 @@
                 <ul class="list-group col-lg-4" id="moreInfo">
                     <li class="list-title mb-3">
                         Plus d'infos
+                        <i class="mobileOnly fa fa-caret-square-o-right" aria-hidden="true" id="moreInfoTrigger" onclick="footerList('moreInfo',this)"></i>
                     </li>
-                    <li>
+                    <li class="mobileHidden">
                         <a href="{{ path('aboutUs') }}#partnerShip">Nos partenaires</a>
                     </li>
-                    <li>
+                    <li class="mobileHidden">
                         <a href="{{ path('terms') }}">Conditions générales d'utilisation</a>
                     </li>
                 </ul>
@@ -163,6 +165,7 @@
         {% block javascripts %}
             <script src="{{ asset('js/emilLibrary.js') }}"></script>
             <script src="{{ asset('js/navBar.js') }}"></script>
+            <script src="{{ asset('js/mobileOnly.js') }}"></script>
         {% endblock %}
     </body>
 </html>
