@@ -11,12 +11,14 @@ namespace App\EventListener;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 class ExceptionListener
 {
 
+    /**
+     * @var \Twig_Environment
+     */
     private $twig;
 
     /**
@@ -43,7 +45,7 @@ class ExceptionListener
                 $response->setContent(
                            $this->twig
                                 ->render('error.html.twig',[
-                                    'message' => 'This page doesn\'t exist yet !'
+                                    'message' => 'Cette page n\'existe pas.'
                                 ]
                            )
                 );
@@ -52,7 +54,7 @@ class ExceptionListener
                 $response->setContent(
                           $this->twig
                                ->render('error.html.twig',[
-                                    'message' => 'Sorry but you\'re not allowed to access this page'
+                                    'message' => 'Vous n\'êtes pas autorisé à accéder à ce contenu !'
                                ]
                           )
                 );
@@ -60,7 +62,7 @@ class ExceptionListener
             default:$response->setContent(
                                $this->twig
                                     ->render('error.html.twig',[
-                                         'message' => 'We are experiencing technical issues, please try again later on.'
+                                         'message' => 'Nous rencontrons actuellement des problèmes techniques. Réessayez plus tard :)'
                                     ]
                                )
             );
