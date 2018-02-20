@@ -31,3 +31,31 @@ function hideMap(id,buttonId) {
     $id(id).style.visibility = "hidden";
     $id(buttonId).style.visibility = "hidden";
 }
+
+if(screen.width < 768){
+
+
+    /**
+     * @param id
+     * @param trigger
+     */
+    function mobileCard(id,trigger){
+
+        var num = $id(id).id.match(/\d+/);
+        var map = 'reportMap' + num;
+        var hidden = $id(id).getElementsByClassName('mobileHidden');
+        var style = getStyle(hidden[0],"display");
+
+        if(style === "block"){
+            hidden[0].style.display = "none";
+            $id(map).style.visibility = "hidden";
+        }else{
+            hidden[0].style.display = "block";
+        }
+
+        style === "block" ?
+            swappClass(trigger,'fa-caret-square-o-down','fa-caret-square-o-right'):
+            swappClass(trigger,'fa-caret-square-o-right','fa-caret-square-o-down')
+        ;
+    }
+}
