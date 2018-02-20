@@ -37,8 +37,9 @@ function showHideArticle(title) {
 function updateArticleIcon(style, articleNum) {
 
    var icon = $class("articleIcon")[articleNum - 1];
+
    return style === "none" ?
         swappClass(icon,"fa-caret-right","fa-caret-down"):
         swappClass(icon,"fa-caret-down","fa-caret-right")
-    ;
+   ;
 }
