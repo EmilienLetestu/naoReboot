@@ -132,7 +132,8 @@ input[type="email"]:focus{
     border-bottom: solid 2px #ffa500;
 }
 
-.mobileOnly{
+.mobileOnly,
+.mobileInline{
     display: none;
 }
 
@@ -1188,6 +1189,7 @@ footer .list-group
     margin-right: 25%;
 }
 
+
 /**-----media queries-----*/
 
 @media only screen and (max-width: 768px){
@@ -1198,6 +1200,10 @@ footer .list-group
 
     .mobileOnly{
         display: block;
+    }
+
+    .mobileInline{
+        display: inline-block;
     }
 
     .cardHolder{
