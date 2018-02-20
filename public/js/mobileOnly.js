@@ -18,7 +18,7 @@ if(screen.width < 768){
             ;
         }
 
-        style === "none" ?
+        style === "block" ?
             swappClass(trigger,'fa-caret-square-o-down','fa-caret-square-o-right'):
             swappClass(trigger,'fa-caret-square-o-right','fa-caret-square-o-down')
         ;
