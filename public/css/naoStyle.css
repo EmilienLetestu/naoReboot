@@ -594,7 +594,7 @@ footer .list-group
     -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     width: 25%;
-    height: 450px;
+    max-height: 450px;
 }
 
 #browseCard .card:nth-of-type(n+7){
@@ -1198,6 +1198,14 @@ footer .list-group
 
     .mobileOnly{
         display: block;
+    }
+
+    .cardHolder{
+        display: block;
+    }
+
+    .card{
+        width: 100%;
     }
 }
 
