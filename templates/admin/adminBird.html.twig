@@ -34,6 +34,7 @@
                 <th>Spécimen par observation</th>
                 <th>Dernière observation</th>
                 <th>Coordonnées</th>
+                <th> <i class="fa fa-globe" aria-hidden="true"></i></th>
             </tr>
             </thead>
             <tbody>
@@ -49,6 +50,9 @@
                 <td>
                     {{ key|lastReported['satNav'] }}
                 </td>
+                <td>
+                    <i class="fa fa-plus" aria-hidden="true" onclick="showHideBirdMap('birdStatMap{{ loop.index }}',this)"></i>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -62,7 +66,7 @@
     {% endfor %}
 
     <div>
-        <button class="btn btn-success" id="birdLoadBtn" value="4" onclick="loadMore(this,'birdInfo','bird')">Plus de membres</button>
+        <button class="btn btn-success" id="birdLoadBtn" value="4" onclick="loadMore(this,'birdInfo','bird')">Plus d'espèces</button>
     </div>
 
 </div>
