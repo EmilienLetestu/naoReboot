@@ -18,4 +18,31 @@ function offCanvas() {
        trigger.style.left = small;
        swappClass(icon,'fa-caret-left','fa-caret-right');
    }
+
 }
+
+function activeLink(){
+    var path = window.location.pathname.split('/');
+    var link = path[path.length-1].split('-');
+
+    switch(link[link.length-1]) {
+        case 'admin':
+            document.getElementById('adminLink').style.backgroundColor = "#d87e07";
+            break;
+        case 'membres':
+            document.getElementById('userLink').style.backgroundColor = "#d87e07";
+            break;
+        case 'innactifs':
+            document.getElementById('unactivatedLink').style.backgroundColor = "#d87e07";
+            break;
+        case 'naturaliste':
+            document.getElementById('validationLink').style.backgroundColor = "#d87e07";
+            break;
+        default:
+            document.getElementById('birdLink').style.backgroundColor = "#d87e07";
+    }
+}
+
+activeLink();
+
+

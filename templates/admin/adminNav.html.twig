@@ -6,31 +6,31 @@
 <div id="adminNav">
     <h3>Administration</h3>
     <ul>
-        <li>
+        <li id="adminLink">
             <a href="{{ path('admin') }}">
                 <i class="fa fa-tachometer"></i>
                 Tableau de bord
             </a>
         </li>
-        <li>
+        <li id="userLink">
             <a href="{{ path('userList') }}">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 Liste des membres
             </a>
         </li>
-        <li>
+        <li id="unactivatedLink">
             <a href="{{ path('unactivated') }}">
                 <i class="fa fa-power-off" aria-hidden="true"></i>
                 Comptes innactifs
             </a>
         </li>
-        <li>
+        <li id="validationLink">
             <a href="{{ path('accountValidation') }}">
                 <i class="fa fa-bell" aria-hidden="true"></i>
                 Demandes d'accès
             </a>
         </li>
-        <li>
+        <li id="birdLink">
             <a href="{{ path('bird') }}">
                 <i class="fa fa-binoculars" aria-hidden="true"></i>
                 Liste des espèces
