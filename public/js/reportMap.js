@@ -10,14 +10,20 @@ function initReportMap(loopIndex) {
     var data     = location.value.split(',');
     var latLng = new google.maps.LatLng(data[0], data[1]);
     var mapId = 'reportMap'+loopIndex;
+    var quantity = 'reportQuantity' + loopIndex;
+
+    var num  = $id(quantity).value;
+
     var map = new google.maps.Map($id(mapId), {
         zoom: 6,
         center: latLng
     });
 
+
     var marker = new google.maps.Marker({
         position: latLng,
-        map: map
+        map: map,
+        label: num
     });
 
 
@@ -25,6 +31,7 @@ function initReportMap(loopIndex) {
         google.maps.event.trigger(map, 'resize');
         map.setCenter(latLng);
     });
+
 }
 
 
