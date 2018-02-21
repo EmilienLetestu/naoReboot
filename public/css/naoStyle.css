@@ -892,7 +892,7 @@ footer .list-group
     position: fixed;
     top: 70px;
     left:0;
-    padding: 5px 15px;
+    padding: 12px 15px;
 }
 
 
@@ -911,7 +911,7 @@ footer .list-group
 
 #adminNav li
 {
-    color:  #FFFFFF;
+    color:  #FFFFFF !important;
     margin-bottom: 10%;
     padding-left: 5%;
 }
@@ -924,25 +924,34 @@ footer .list-group
 
 #adminNav h3{
     padding: 5%;
+    color: #ffa500;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
-#adminNav li i
-{
-    color: #2C2C2C
+#adminNav li i {
+    width: 40px;
 }
 
-#adminNav li a:hover
-{
-    background-color:  #5e5e5e;
-    color: #FFFFFF;
+#adminNav a:hover{
+    color: #ffa500!important;
 }
+
+#adminNav li:hover{
+    background-color:  #FFFFFF!important;
+}
+
+
 #adminNav ul
 {
     list-style: none;
     margin: 0;
-    padding:0;
+    padding-left: 0;
     border:1px solid #ffa500;
     font-size: 1.1em;
+    padding-top: 15%;
 }
 /*---------------------------admin memberList-------------------------*/
 

@@ -7,19 +7,34 @@
     <h3>Administration</h3>
     <ul>
         <li>
-            <a href="{{ path('admin') }}">Accueil</a>
+            <a href="{{ path('admin') }}">
+                <i class="fa fa-tachometer"></i>
+                Tableau de bord
+            </a>
         </li>
         <li>
-            <a href="{{ path('userList') }}">Liste des membres</a>
+            <a href="{{ path('userList') }}">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                Liste des membres
+            </a>
         </li>
         <li>
-            <a href="{{ path('unactivated') }}">Comptes innactifs</a>
+            <a href="{{ path('unactivated') }}">
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                Comptes innactifs
+            </a>
         </li>
         <li>
-            <a href="{{ path('accountValidation') }}">Demandes d'accès</a>
+            <a href="{{ path('accountValidation') }}">
+                <i class="fa fa-bell" aria-hidden="true"></i>
+                Demandes d'accès
+            </a>
         </li>
         <li>
-            <a href="{{ path('bird') }}">Liste des espèces</a>
+            <a href="{{ path('bird') }}">
+                <i class="fa fa-binoculars" aria-hidden="true"></i>
+                Liste des espèces
+            </a>
         </li>
     </ul>
 </div>
