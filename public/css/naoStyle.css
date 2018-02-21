@@ -627,7 +627,6 @@ footer .list-group
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     width: 25%;
     max-height: 490px;
-    padding: 10px 0;
 }
 
 #browseCard .card:nth-of-type(n+7){
@@ -663,6 +662,7 @@ footer .list-group
 
 .birdImg{
     height: 200px;
+    margin-top: -2.3%;
 }
 
 .birdImg img {
