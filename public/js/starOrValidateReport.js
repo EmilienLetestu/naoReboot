@@ -20,8 +20,7 @@ function addPoint(event,id) {
 
                 $id(id).innerHTML = updateScore(url,id);
             } else {
-
-                alert(this.responseText);
+                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
             }
         }
     };

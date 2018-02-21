@@ -17,8 +17,9 @@ function deleteEntity(event,id,containerId){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
                 $id(containerId).remove();
+                generateMsg('jsGenerated','jsGeneratedMsg','Compte supprimé','#5fdda1');
             }else{
-                alert(this.responseText);
+                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
             }
         }
     };
@@ -40,8 +41,9 @@ function roleRequest(event,id,containerId){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
                 $id(containerId).remove();
+                generateMsg('jsGenerated','jsGeneratedMsg','Demande de compte naturaliste accepté','#5fdda1');
             }else{
-                $id(containerId).remove();
+                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
             }
         }
     };
@@ -62,9 +64,11 @@ function ban(event,id){
     xmlhttp.onreadystatechange = function(){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
-                updateIcon(id,'block','do_not_disturb_off');
+               var icon = updateIcon(id,'block','do_not_disturb_off');
+               var message = icon === 'do_not_disturb_off' ? 'Utilisateur banni' : 'Bannissement levé';
+               generateMsg('jsGenerated','jsGeneratedMsg',message,'#5fdda1');
             }else{
-                alert(this.responseText);
+                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
             }
         }
     };
@@ -75,6 +79,7 @@ function ban(event,id){
 /**
  * @param event
  * @param id
+ * @param reminderId
  */
 function privilege(event,id,reminderId){
 
@@ -87,8 +92,9 @@ function privilege(event,id,reminderId){
             if(this.responseText == 'success'){
                 updateIcon(id,'arrow_upward','arrow_downward');
                 updateLevel(reminderId);
+                generateMsg('jsGenerated','jsGeneratedMsg','Role modifié avec succès','#5fdda1');
             }else{
-                alert(this.responseText);
+                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
             }
         }
     };
