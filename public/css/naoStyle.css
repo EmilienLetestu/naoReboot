@@ -896,7 +896,8 @@ footer .list-group
     display: none;
 }
 
-.memberInfo{
+.memberInfo,
+.birdInfo{
     margin: 5%;
     border: solid 1px #ffa500;
     border-radius: 10px;

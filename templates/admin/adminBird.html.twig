@@ -10,70 +10,59 @@
 </div>
 
 {{ include('admin/adminNav.html.twig') }}
-    <table class="table">
-        <thead>
-            <tr>
-                <th><i class="fa fa-binoculars" aria-hidden="true"></i></th>
-                <th><i class="material-icons">trending_up</i></th>
-                <th><i class="material-icons">info_outline</i></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for key, seenNtimes in reportedBird %}
-            <tr>
-                <td>
+
+<div class="birdList">
+    {% for key, seenNtimes in reportedBird %}
+    <div class="birdInfo">
+        <ul class="list-inline reminder">
+            <li class="list-inline-item">
+                <i class="fa fa-binoculars" aria-hidden="true">
                     {{ key|statistics['bird']|species }}
-                </td>
-                <td>
+                </i>
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-chart">
                     {{ seenNtimes }}
+                </i>
+            </li>
+        </ul>
+
+        <table class="resume">
+            <thead>
+            <tr>
+                <th>Nombre de spécimens</th>
+                <th>Spécimen par observation</th>
+                <th>Dernière observation</th>
+                <th>Coordonnées</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    {{ key|statistics['population'] }}
+                <td>
+                    {{ key|statistics['avgByReport'] }}
                 </td>
                 <td>
-                    <button class="btn btn-success" v-on:click="showInfo({{ loop.index }})" value="{{ loop.index }}">
-                        <i class="material-icons">add</i>
-                    </button>
+                    {{ key|lastReported['date'] }}
+                </td>
+                <td>
+                    {{ key|lastReported['satNav'] }}
                 </td>
             </tr>
-            <tr v-show="info == {{ loop.index }}">
-                <td colspan="3">
-                    <table class="resume">
-                        <thead>
-                            <tr>
-                                <th>Nombre de spécimens</th>
-                                <th>Spécimen par observation</th>
-                                <th>Dernière observation</th>
-                                <th>Coordonnées</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    {{ key|statistics['population'] }}
-                                <td>
-                                    {{ key|statistics['avgByReport'] }}
-                                </td>
-                                <td>
-                                    {{ key|lastReported['date'] }}
-                                </td>
-                                <td>
-                                    {{ key|lastReported['satNav'] }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div id="birdStatMap{{ loop.index }}" class="gBird">
-                    {% for report in key|birdLocation if report.validated == 1 %}
-                    <input type="hidden" id="reportMapSatNav{{ loop.index }}" class="birdLocation_{{ report.bird.id }}" value="{{ report.satNav }}">
-                    {% endfor %}
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+
+        <div id="birdStatMap{{ loop.index }}" class="gBird">
+            {% for report in key|birdLocation if report.validated == 1 %}
+                <input type="hidden" id="reportMapSatNav{{ loop.index }}" class="birdLocation_{{ report.bird.id }}" value="{{ report.satNav }}">
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
