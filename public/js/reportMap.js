@@ -16,7 +16,9 @@ function initReportMap(loopIndex) {
 
     var map = new google.maps.Map($id(mapId), {
         zoom: 6,
-        center: latLng
+        center: latLng,
+        mapTypeControl: false,
+        streetViewControl: false
     });
 
 
