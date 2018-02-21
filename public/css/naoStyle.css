@@ -166,6 +166,7 @@ input[type="email"]:focus{
 
 .shrink{
     font-size: 0.9rem;
+    line-height: 25px;
 }
 /*---------------------error and flash---------------------*/
 .noError{
@@ -1309,6 +1310,11 @@ footer .list-group
 
     .card{
         margin-left: 0;
+    }
+
+    .shrink{
+        font-size: 0.8rem;
+
     }
 
     #dashboard{
