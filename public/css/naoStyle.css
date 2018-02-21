@@ -892,7 +892,8 @@ footer .list-group
 }
 /*---------------------------admin memberList-------------------------*/
 
-.memberInfo:nth-of-type(n+3){
+.memberInfo:nth-of-type(n+3),
+.birdInfo:nth-of-type(n+3){
     display: none;
 }
 
