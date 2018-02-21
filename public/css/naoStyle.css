@@ -1024,6 +1024,15 @@ footer .list-group
     background-color: #5fdda1;
     color: #FFFFFF;
 }
+/*---------------admin bird--------------------*/
+.gBird{
+    display: none;
+}
+
+.fa-plus,
+.fa-minus{
+    color:  #FFA500;
+}
 /*---------------admin stats--------------------*/
 #statsWrap{
     padding-top: 2%;
