@@ -13,6 +13,8 @@ function addPoint(event,id) {
     var url = $id(id).getAttribute("href");
     var  xmlhttp  = new XMLHttpRequest();
 
+    alert($id(id).text.trim());
+
     xmlhttp.onreadystatechange = function () {
         if(this.readyState === 4){
 
@@ -38,8 +40,9 @@ function updateScore(url,id){
     var getScore = $id(id).text.trim();
     var route = url.split('/');
 
+
     return route[1] === 'star' ?
         '<i class="fa fa-star-o" aria-hidden="true"></i>' + (parseInt(getScore) + 1) :
-        '<i class="fa fa-check" aria-hidden="true"></i>' + (parseInt(getScore) + 1) + '/5'
+         $id(id).innerHTML = parseInt(getScore) + 1 + '/5'
     ;
 }

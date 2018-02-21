@@ -62,7 +62,8 @@
                     </a>
                 {% endif %}
                 {% if report.validated == 0 %}
-                    Inscrit depuis le: {{ report.user.createdOn|date('d/m/Y') }}
+                   <i class="fa fa-calendar"></i>
+                    {{ report.user.createdOn|date('d-m-Y') }}
                 {% endif %}
             </li>
             <li class="list-inline-item pull-right">
@@ -71,29 +72,44 @@
             </li>
         </ul>
 
-        <div class="cardFooter">
-            <p class="quantity">Nombre <strong>{{ report.bird.speciesFr|speciesFr|apostrophe }}</strong> lors de l'observervation: {{ report.nbrOfBirds }}</p>
-            {% if report.comment != null %}
-                <button class="btn btn-outline" onclick="show('{{ cmtId }}')">Lire le commentaire</button>
+        <div class="cardFooter col-sm-12">
+
+            {% if report.comment != null and report.validated == 1 %}
+            <button class="btn btn-outline validated" onclick="show('{{ cmtId }}')">Lire le commentaire</button>
+            <div class="cardCmt" id="{{ cmtId }}">
+                <i onclick="hide('{{ cmtId }}')" class="material-icons">close</i>
+                <p class="reportCmt">
+                    {{ report.comment }}
+                </p>
+            </div>
+            {% endif %}
+
+            {% if report.comment == null and  report.validated == 1 %}
+                <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>
+            {% endif %}
+
+            {% if report.comment == null and report.validated == 0 %}
+                <div class="reportValidation">
+                    <a class="btn btn-outline" id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
+                        {{ report.validationScore }} / 5
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if report.comment != null and report.validated == 0 %}
+                <div class="reportValidation">
+                    <a class="btn btn-outline" id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
+                        {{ report.validationScore }} / 5
+                    </a>
+                    <button class="btn btn-outline" onclick="show('{{ cmtId }}')">Lire le commentaire</button>
+                </div>
+
                 <div class="cardCmt" id="{{ cmtId }}">
                     <i onclick="hide('{{ cmtId }}')" class="material-icons">close</i>
                     <p class="reportCmt">
                         {{ report.comment }}
                     </p>
                 </div>
-            {% endif %}
-            {% if report.comment == null %}
-                <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>
-            {% endif %}
-            {% if report.validated == 0 %}
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
-                            <i class="fa fa-check"></i>
-                            {{ report.validationScore }} / 5
-                        </a>
-                    </li>
-                </ul>
             {% endif %}
         </div>
 

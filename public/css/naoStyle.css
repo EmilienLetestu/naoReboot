@@ -615,14 +615,15 @@ footer .list-group
 }
 
 .card {
-    background-color: #EEEDEC ;
+    background-color: #dedede;
     margin: 2%;
     margin-block-end: 15px;
     -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     width: 25%;
-    max-height: 450px;
+    max-height: 490px;
+    padding: 10px 0;
 }
 
 #browseCard .card:nth-of-type(n+7){
@@ -632,6 +633,7 @@ footer .list-group
 .cardHeader{
    color:  #ffa500;
    font-size: 1em;
+    font-weight: bold;
    padding-left: 2%;
    padding-right: 2%;
    padding-top:  2%;
@@ -655,10 +657,6 @@ footer .list-group
     padding-right: 2%;
 }
 
-.quantity{
-    font-size: 0.8em;
-}
-
 .birdImg{
     height: 200px;
 }
@@ -679,18 +677,43 @@ footer .list-group
     text-align: center;
 }
 
-.cardFooter button{
-    margin-left: 25%;
+.cardFooter a{
+   margin: 3% 0 !important;
 }
+
+.validated{
+    margin-left: 25% !important;
+}
+
+.cardFooter .btn-outline{
+    background-color: transparent!important;
+}
+
+.cardFooter .btn-outline:hover,
+.cardFooter .btn-outline:focus{
+    background-color: #ffa500 !important;
+    border-color: transparent!important;
+}
+
+.reportValidation{
+    text-align: center;
+}
+
+.reportValidation a{
+    margin: 0;
+    border: solid 1px;
+}
+
 
 .cardCmt{
     position:absolute;
     bottom: 5px;
+    left: 0;
     z-index: 1;
     background-color: #FFFFFF;
     text-align: justify;
     padding: 1%;
-    height:190px;
+    height:180px;
     box-shadow: 0 0 8px #9b9b9b;
     width:98%;
     margin-left: 1%;
