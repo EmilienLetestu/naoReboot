@@ -137,15 +137,20 @@ input[type="email"]:focus{
     display: none;
 }
 
-.moreBtn{
+.moreBtn:not(.short){
     text-align: center;
     padding: 2% 5%;
+}
+
+.short{
+    padding: 2% 8%;
 }
 
 .moreBtn .btn{
     width: 100%;
     background-color: transparent;
     border-color: #ffa500;
+    padding: 1%;
 }
 
 .moreBtn .btn:hover,
