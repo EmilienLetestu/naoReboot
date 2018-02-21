@@ -1274,5 +1274,42 @@ footer .list-group
     .card{
         width: 100%;
     }
+
+    .cardHeader{
+        font-size: 0.9rem;
+    }
+
+    .mostWanted{
+        flex-direction: column;
+    }
+
+    .img img{
+        width: 100%;
+        height: auto;
+    }
+
+    .img{
+        width: 100%;
+    }
+
+    .imgTitle{
+        top: -50%;
+        width: 100%;
+    }
+
+    footer{
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card{
+        margin-left: 0;
+    }
+
+    #dashboard{
+        width: 100%;
+    }
 }
 
