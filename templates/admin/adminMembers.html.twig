@@ -75,8 +75,10 @@
             {% endfor %}
     </div>
 
-    <div>
-        <button class="btn btn-success" id="memberLoadBtn" value="4" onclick="loadMore(this,'memberInfo','member')">Plus de membres</button>
+    <div class="moreBtn">
+        <button class="btn btn-success" id="memberLoadBtn" value="4" onclick="loadMore(this,'memberInfo','member')">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
     </div>
 {% endblock %}
 

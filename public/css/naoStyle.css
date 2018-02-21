@@ -137,6 +137,28 @@ input[type="email"]:focus{
     display: none;
 }
 
+.moreBtn{
+    text-align: center;
+    padding: 2% 5%;
+}
+
+.moreBtn .btn{
+    width: 100%;
+    background-color: transparent;
+    border-color: #ffa500;
+}
+
+.moreBtn .btn:hover,
+.moreBtn .btn:focus{
+    border-color: transparent !important;
+    background-color: #ffa500 !important;
+}
+
+.moreBtn .btn:hover i,
+.moreBtn .btn:focus i{
+    color: #ffffff;
+}
+
 /*---------------------error and flash---------------------*/
 .noError{
     visibility: hidden;
