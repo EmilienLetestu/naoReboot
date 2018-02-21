@@ -164,6 +164,9 @@ input[type="email"]:focus{
     color: #ffffff;
 }
 
+.shrink{
+    font-size: 0.9rem;
+}
 /*---------------------error and flash---------------------*/
 .noError{
     visibility: hidden;

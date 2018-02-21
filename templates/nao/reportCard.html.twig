@@ -19,7 +19,7 @@
         </ul>
     </div>
 
-    <div class="mobileHidden" id="test{{ loop.index }}">
+    <div class="mobileHidden">
 
         <div class="birdImg">
             <img src="{{ asset('/userImages/'~report.pictRef) }}" id="img{{ loop.index }}" alt="observation de {{ report.bird.speciesFr }}" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
@@ -47,7 +47,7 @@
                     </a>
                 {% endif %}
             </li>
-            <li class="list-inline-item pull-right">
+            <li class="list-inline-item pull-right {{ report.satNav|length > 35 ? 'shrink' }}">
                 <i class="fa fa-compass" onmouseover="showMap('{{ mapId }}','{{ closeBtnId }}',{{ loop.index }})" aria-hidden="true"></i>
                 {{ report.satNav|gps }}
             </li>
