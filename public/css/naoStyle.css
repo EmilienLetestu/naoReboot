@@ -673,7 +673,7 @@ footer .list-group
 }
 
 .card {
-    background-color: #dedede;
+    background-color: #f4f4f4;
     margin: 2%;
     margin-block-end: 15px;
     -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
@@ -716,7 +716,7 @@ footer .list-group
 
 .birdImg{
     height: 200px;
-    margin-top: -2.3%;
+    margin-top: -2.7%;
 }
 
 .birdImg img {
@@ -797,7 +797,7 @@ footer .list-group
     width: 100%;
     z-index: 1;
     position: absolute;
-    top: 49px;
+    top: 30px;
 }
 /*---------------------------profile-------------------------*/
 
