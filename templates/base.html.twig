@@ -100,12 +100,12 @@
         </div>
 
         <div class="container-fluid py-3 w-100" id="app">
-            <div id="jsGenerated">
+            <div class="alert" id="jsGenerated">
                 <p id="jsGeneratedMsg"> </p>
             </div>
             {% for label, messages in app.flashes(['denied','error','success','warning','welcome']) %}
                 {% for message in messages %}
-                    <div class="alert alert-{{ label }}" style="font-size: 5em">
+                    <div class="alert alert-{{ label }}" id="backGenerated">
                         <p>{{ message }}</p>
                     </div>
                 {% endfor %}
