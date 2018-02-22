@@ -132,6 +132,15 @@ input[type="email"]:focus{
     border-bottom: solid 2px #ffa500;
 }
 
+.form-control:nth-of-type("seacrh") {
+    border: solid 1px #ffa500;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border: solid 2px #ffa500;
+}
+
 .mobileOnly,
 .mobileInline{
     display: none;
@@ -852,6 +861,29 @@ footer .list-group
     text-shadow: 4px 4px 1px rgba(55, 55, 55,1);
 }
 
+/*---------------------------add report-------------------------*/
+
+#reportForm{
+    padding-left: 5% ;
+    padding-right: 5%;
+}
+
+#reportForm .form-group:not(:nth-child(4)){
+    padding-bottom: 3%;
+}
+
+#localize{
+    position: relative;
+    top:-80px;
+    left: 90%;
+    margin-bottom: 0!important;
+}
+
+#report_location{
+    width: 89%;
+}
+
+
 /*---------------------------admin home-------------------------*/
 
 .img img{
@@ -913,7 +945,7 @@ footer .list-group
 {
     color:  #FFFFFF !important;
     margin-bottom: 10%;
-    padding-left: 5%;
+    padding: 2% 0 2% 5%;
 }
 
 #adminNav li a
@@ -929,6 +961,7 @@ footer .list-group
     position: absolute;
     top: 0;
     width: 100%;
+    text-align: center;
 }
 
 #adminNav li i {
@@ -1262,6 +1295,7 @@ footer .list-group
     width:400px;
     margin-right: 25%;
 }
+
 
 
 /**-----media queries-----*/
