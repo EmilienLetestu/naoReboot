@@ -37,7 +37,10 @@ class ReportType extends AbstractType
                             'class'        => 'App:Bird',
                             'choice_label' => function(Bird $bird){
                                 return $bird->getSpeciesForForm();
-                            }
+                            },
+                            'placeholder' => ' ',
+                            'label' => 'Espèce observée'
+
             ])
 
             ->add('nbrOfBirds', IntegerType::class, [
@@ -55,6 +58,7 @@ class ReportType extends AbstractType
             ->add('addedOn', DateType::class, [
                             'label'  => 'Date',
                             'widget' => 'choice',
+                            'years'  => array_combine(\range(2015, date('Y')),\range(2015, date('Y'))),
                             'html5'  =>  false,
                             'format' => 'dd-MM-yyyy'
             ])
@@ -81,8 +85,9 @@ class ReportType extends AbstractType
             ])
 
             ->add('location', TextType::class, [
-                            'label'  => 'lieu'
+                            'label'  => 'Lieu de l\'observation'
             ])
+
             ->add('satNav', HiddenType::class, [
                 'constraints' =>[new NotBlank()]
             ])
