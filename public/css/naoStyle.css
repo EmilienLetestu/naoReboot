@@ -119,8 +119,8 @@ h1
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-    border: none;
-    border-bottom: solid 1px #ffa500;
+    border: none !important;
+    border-bottom: solid 1px #ffa500!important;
     border-radius: 0;
     padding-left: 0;
 }
@@ -129,7 +129,22 @@ input[type="email"] {
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus{
-    border-bottom: solid 2px #ffa500;
+    border-bottom: solid 2px #ffa500 !important;
+}
+
+button[type="submit"]:not(#nav_search_submit){
+    width: 260px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #ffa500;
+    border: transparent;
+    color: #ffffff;
+}
+
+button[type="submit"]:hover:not(#nav_search_submit){
+    background-color: transparent !important;
+    border: solid 1px #ffa500 !important;
+    color: #ffa500;
 }
 
 .form-control:not(#nav_search_search) {
@@ -139,6 +154,11 @@ input[type="email"]:focus{
 .form-control:focus{
     box-shadow: none;
     border: solid 2px #ffa500;
+}
+
+.form-group:last-child{
+    text-align: center;
+    margin-top: 5%;
 }
 
 .mobileOnly,
@@ -190,12 +210,20 @@ input[type="email"]:focus{
     display: none;
     position: fixed;
     top: 72px;
-    z-index: 3;
     color: white;
     width: 100%;
     text-align: center;
+}
+
+.alert{
+    position: fixed;
+    top: 72px;
+    width: 100%;
+    left: 0;
+    text-align: center;
     padding-top: 20px;
     padding-bottom: 8px;
+    z-index: 3;
 }
 
 /*---------------------landing page---------------------*/
@@ -575,6 +603,14 @@ footer .list-group
 #forgottenPswd{
     color: #ffa500;
     margin-left: 5%;
+}
+
+.checked{
+    display: block;
+    position: relative;
+    top: -20px;
+    left: 100%;
+    color: #5fdda1;
 }
 
 
