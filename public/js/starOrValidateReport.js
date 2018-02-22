@@ -13,8 +13,6 @@ function addPoint(event,id) {
     var url = $id(id).getAttribute("href");
     var  xmlhttp  = new XMLHttpRequest();
 
-    alert($id(id).text.trim());
-
     xmlhttp.onreadystatechange = function () {
         if(this.readyState === 4){
 
@@ -22,6 +20,7 @@ function addPoint(event,id) {
 
                 $id(id).innerHTML = updateScore(url,id);
             } else {
+                checkAndHideFlash('backGenerated');
                 generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
             }
         }
@@ -45,4 +44,13 @@ function updateScore(url,id){
         '<i class="fa fa-star-o" aria-hidden="true"></i>' + (parseInt(getScore) + 1) :
          $id(id).innerHTML = parseInt(getScore) + 1 + '/5'
     ;
+}
+
+/**
+ * @param id
+ */
+function checkAndHideFlash(id){
+    if($id(id)){
+       $id.style.display = "none";
+    }
 }
