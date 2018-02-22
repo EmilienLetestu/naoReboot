@@ -50,8 +50,14 @@ function codeLocation(geocoder) {
             var data = results[0].geometry.location.toString();
             var addressToUpper = address.charAt(0).toUpperCase() + address.slice(1);
 
-           $id('report_satNav').value = data.replace(/\(|\)/g,'') ;
-            $id('report_location').value = addressToUpper + ', ' +  results[0].address_components[2].long_name;
+
+            address.match(/^[a-zA-Z]+$/) ?
+                $id('report_location').value =  addressToUpper + ', ' +  results[0].address_components[2].long_name
+                :
+                $id('report_location').value =  results[0].address_components[2].long_name + ', ' +  results[0].address_components[4].long_name
+            ;
+
+            $id('report_satNav').value = data.replace(/\(|\)/g,'') ;
 
         } else {
             alert('Aucune données pour ce lieu !');

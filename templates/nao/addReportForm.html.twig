@@ -5,38 +5,47 @@
 {% endblock %}
 
 {% block body %}
-    <div onload="initMap()" onkeyup="disable('reportBtn','reportForm')">
+    <div onload="initMap()" oninput="disable('reportBtn','reportForm')">
         {{ form_start(form, {'attr':{'id':'reportForm'}}) }}
         <div class="form-group">
             {{ form_label(form.bird) }}
             {{ form_widget(form.bird) }}
+            {{ form_errors(form.bird) }}
         </div>
         <div class="form-group">
             {{ form_label(form.nbrOfBirds) }}
-            {{ form_widget(form.nbrOfBirds, {'attr':{'min':1,'max':30}}) }}
+            {{ form_widget(form.nbrOfBirds, {'attr':{'min':1,'max':30, 'oninput': 'validateInteger("report_nbrOfBirds",1,30,"integerError")'}}) }}
+            {{ form_errors(form.nbrOfBirds) }}
+            <span class="checked"><i class="fa fa-check" aria-hidden="true"></i></span>
+            <div id="integerError" class="form-control-feedback noError">Entrez un nombre entre 1 et 30</div>
         </div>
         <div class="form-group">
             {{ form_label(form.addedOn) }}
             {{ form_widget(form.addedOn) }}
+            {{ form_errors(form.addedOn) }}
         </div>
         <div class="form-group">
             {{ form_label(form.location) }}
             {{ form_widget(form.location) }}
+            {{ form_errors(form.location) }}
             <a class="btn btn-outline" id="localize" onclick="localizeMe()">Me Géolocaliser</a>
         </div>
         <div class="form-group" onkeyup="liveCharCount('report_comment','charMeter',300)">
             {{ form_label(form.comment) }}
-            {{ form_widget(form.comment, {'attr':{'onkeyup' : 'validateText("report_comment",0,300,"commentError")'}}) }}
+            {{ form_widget(form.comment, {'attr':{'onkeyup' : 'validateOptionalText("report_comment",0,300,"commentError")'}}) }}
+            {{ form_errors(form.comment) }}
             <span id="charMeter" class="wordCount">0/300</span>
-            <div id="commentError" class="form-control-feedback noError"> signes maximum</div>
+            <span class="checked"><i class="fa fa-check" aria-hidden="true"></i></span>
+            <div id="commentError" class="form-control-feedback noError"> 300 signes maximum</div>
         </div>
         <div>
             {{ form_label(form.pictRef) }}
             {{ form_widget(form.pictRef) }}
+            {{ form_errors(form.pictRef) }}
         </div>
         <div class="form-group">
             {{ form_widget(form.satNav) }}
-            <button id="reportBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
+            <button id="reportBtn" class="btn btn-success" type="submit"  disabled="disabled" onclick="return fileType('report_pictRef')">Valider</button>
         </div>
         {{ form_end(form) }}
     </div>

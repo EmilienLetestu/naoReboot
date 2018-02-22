@@ -35,7 +35,7 @@ function validateText(id,min,max,errorId){
 function validateOptionalText(id,min,max,errorId){
 
     var userInput = $id(id).value.length;
-    if(userInput !== ""){
+    if(userInput !== " "){
         validateText(id,min,max,errorId);
     }
 }
@@ -207,6 +207,24 @@ function liveCharCount(textId,meterId,max) {
 /**
  * @returns {boolean}
  */
+function fileType(id){
+
+    var file = $id(id).value.split('.');
+
+    if(file[file.length-1] !== 'jpg' || file[file.length-1] !== 'png' ){
+
+     generateMsg('jsGenerated','jsGeneratedMsg','Veuillez fournir un fichier au format .jpg ou .png','#ff5240');
+
+     return false;
+
+    }else{
+        return true;
+    }
+}
+
+/**
+ * @returns {boolean}
+ */
 function required(formId){
 
     var validate = true;
@@ -234,6 +252,7 @@ function disable(btnId,formId) {
         $id(btnId).setAttribute('disabled', 'true')
     }
 }
+
 
 /**
  * @param inputValue
