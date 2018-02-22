@@ -4,7 +4,12 @@
 
 window.addEventListener('scroll',function () {
     document.getElementById('jsGenerated').style.display = "none";
+    if(document.getElementById('backGenerated')){
+        document.getElementById('backGenerated').style.display = "none";
+    }
 });
+
+
 
 function searchWidth() {
 
