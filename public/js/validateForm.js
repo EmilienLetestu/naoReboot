@@ -31,6 +31,44 @@ function validateText(id,min,max,errorId){
  * @param min
  * @param max
  * @param errorId
+ */
+function validateOptionalText(id,min,max,errorId){
+
+    var userInput = $id(id).value.length;
+    if(userInput !== ""){
+        validateText(id,min,max,errorId);
+    }
+}
+
+/**
+ * @param id
+ * @param min
+ * @param max
+ * @param errorId
+ */
+function validateInteger(id,min,max,errorId){
+
+    var validate = true;
+    var userInput = $id(id).value;
+
+    if(userInput < min || userInput > max || !userInput.match(/\d+/)){
+        swappClass($id(errorId),'noError','has-error');
+
+        checked(userInput,errorId);
+        return validate = false;
+    }
+
+    swappClass($id(errorId),'has-error','noError');
+    checked(userInput,errorId);
+
+    return validate;
+}
+
+/**
+ * @param id
+ * @param min
+ * @param max
+ * @param errorId
  * @returns {boolean}
  */
 function validatePswd(id,min,max,errorId){
