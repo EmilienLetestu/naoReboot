@@ -132,7 +132,7 @@ input[type="email"]:focus{
     border-bottom: solid 2px #ffa500;
 }
 
-.form-control:nth-of-type("seacrh") {
+.form-control:not(#nav_search_search) {
     border: solid 1px #ffa500;
 }
 
