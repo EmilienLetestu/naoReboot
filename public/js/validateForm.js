@@ -16,10 +16,12 @@ function validateText(id,min,max,errorId){
     if(userInput < min || userInput > max){
       swappClass($id(errorId),'noError','has-error');
 
+      checked(userInput,errorId);
       return validate = false;
     }
 
     swappClass($id(errorId),'has-error','noError');
+    checked(userInput,errorId);
 
     return validate;
 }
@@ -41,10 +43,12 @@ function validatePswd(id,min,max,errorId){
     if(pswd.length < min || pswd.length > max || !mixLetterAndNumber.test(pswd) || series.test(pswd)){
         swappClass($id(errorId),'noError','has-error');
 
+        checked(pswd,errorId);
         return validate = false;
     }
 
     swappClass($id(errorId),'has-error','noError');
+    checked(pswd,errorId);
 
     return validate;
 }
@@ -62,10 +66,14 @@ function validateMail(id,errorId){
 
     if(!regex.test(email)){
         swappClass($id(errorId),'noError','has-error');
+
+        checked(email,errorId);
         return validate = false;
     }
 
     swappClass($id(errorId),'has-error','noError');
+
+    checked(email,errorId);
 
     return validate;
 }
@@ -83,10 +91,13 @@ function matching(id,refId,errorId){
 
     if(confirmPswd !== pswd){
         swappClass($id(errorId),'noError','has-error');
+        checked(confirmPswd,errorId);
+
         return validate = false
     }
 
     swappClass($id(errorId),'has-error','noError');
+    checked(confirmPswd,errorId);
 
     return validate;
 }
@@ -115,10 +126,12 @@ function validateTextArea(id,min,max,errorId,meterId) {
 
         total >= max ? alert('Vous avez atteint le nombre maximum de mots'):null;
 
+        checked(userInput,errorId);
         return validate = false;
     }
 
     swappClass($id(errorId),'has-error','noError');
+    checked(userInput,errorId);
 
     return validate;
 }
@@ -182,4 +195,16 @@ function disable(btnId,formId) {
     } else {
         $id(btnId).setAttribute('disabled', 'true')
     }
+}
+
+/**
+ * @param inputValue
+ * @param errorId
+ */
+function checked(inputValue,errorId) {
+  if(inputValue !== "" && $id(errorId).className === 'form-control-feedback noError' ){
+      $id(errorId).previousElementSibling.style.display = "block";
+  } else {
+      $id(errorId).previousElementSibling.style.display = "none";
+  }
 }
