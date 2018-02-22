@@ -47,11 +47,13 @@
                 <div class ="form-group-row">
                     {{ form_widget(form.fullname,{'attr':{'onkeyup':'validateText("contact_form_fullname",10,45,"fullnameError")'}}) }}
                     {{ form_errors(form.fullname) }}
+                    <span class="checked inlineIcon"><i class="fa fa-check"></i></span>
                     <div id="fullnameError" class="form-control-feedback noError">10 à 45 signes maximum</div>
                 </div>
                 <div class ="form-group-row">
                     {{ form_widget(form.email,{'attr':{'onkeyup':'validateMail("contact_form_email","contactMailError")'}}) }}
                     {{ form_errors(form.email) }}
+                    <span class="checked inlineIcon"><i class="fa fa-check"></i></span>
                     <div id="contactMailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
                 </div>
                 <div class ="form-group-row">
@@ -63,6 +65,7 @@
                     {{ form_widget(form.message,{'attr':{'cols':'180', 'rows':'10', 'onkeyup':'validateTextArea("contact_form_message",5,100,"contactMsgError","contactWords")'}}) }}
                     {{ form_errors(form.message) }}
                     <span id="contactWords" class="wordCount">0/100</span>
+                    <span class="checked textareaIcon"><i class="fa fa-check"></i></span>
                     <div id="contactMsgError" class="form-control-feedback noError">100 mots maximum</div>
                 </div>
                 <div class="form-group-row">

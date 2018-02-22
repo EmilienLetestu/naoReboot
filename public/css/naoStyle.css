@@ -606,11 +606,20 @@ footer .list-group
 }
 
 .checked{
-    display: block;
     position: relative;
     top: -20px;
     left: 100%;
     color: #5fdda1;
+    display: none;
+}
+
+.inlineIcon{
+    left: 88%;
+}
+
+.textareaIcon{
+    top: -25px;
+    left: 4%;
 }
 
 
@@ -1309,7 +1318,7 @@ footer .list-group
 }
 
 #contact{
-
+    margin-bottom: -16px;
 }
 
 #contact textarea{
@@ -1321,15 +1330,22 @@ footer .list-group
     margin-top: 5%;
 }
 
+#contact .form-group-row:last-child{
+    text-align: center;
+}
+
 
 #senderInfo{
     display: flex;
     margin-top: 5%;
 }
 
+#senderInfo input:not(:last-child){
+   margin-right: 25%;
+}
+
 #senderInfo input{
-    width:400px;
-    margin-right: 25%;
+    width: 400px;
 }
 
 

@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label for="username">Email</label>
                     <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" onkeyup="validateMail('username','usernameError')"/>
-                    <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                    <span class="checked"><i class="fa fa-check"></i></span>
                     <div id="usernameError" class="form-control-feedback noError">Veuillez fournir un e-mail</div>
                 </div>
                 <div class="form-group">
@@ -44,25 +44,25 @@
             <div class="form-group">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name, { 'attr': { 'onkeyup' : 'validateText("register_name",3,30,"nameError")'} }) }}
-                <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="nameError" class="form-control-feedback noError">Le prénom doit contenir 3 lettres minimum</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.surname) }}
                 {{ form_widget(form.surname, { 'attr': { 'onkeyup' : 'validateText("register_surname",3,30,"surnameError")' } }) }}
-                <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="surnameError" class="form-control-feedback noError">Le nom doit contenir 3 lettres minimum</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email,  { 'attr': { 'onkeyup': 'validateMail("register_email","emailError")' } }) }}
-                <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="emailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.pswd) }}
                 {{ form_widget(form.pswd, { 'attr': { 'onkeyup': 'validatePswd("register_pswd",6,30,"pswdError")' } }) }}
-                <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="pswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
@@ -86,7 +86,7 @@
             <div class="form-group">
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email, { 'attr': { 'onkeyup': 'validateMail("ask_reset_email","resetMailError")' } }) }}
-                <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="resetMailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
             </div>
             <div class="form-group">
@@ -102,13 +102,13 @@
             <div class="form-group">
                 {{ form_label(form.pswd) }}
                 {{ form_widget(form.pswd, { 'attr': { 'onkeyup' : 'validatePswd("reset_pswd_pswd",6,30,"resetPswdError")' } }) }}
-                <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="resetPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.confirmPswd) }}
                 {{ form_widget(form.confirmPswd, { 'attr': { 'onkeyup' : 'matching("reset_pswd_confirmPswd","reset_pswd_pswd","confirmResetError")' } }) }}
-                <span class="checked" style="display: none"><i class="fa fa-check"></i></span>
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="confirmResetError" class="form-control-feedback noError">Les mots de passes ne correspondent pas</div>
             </div>
             <div class="form-group">
