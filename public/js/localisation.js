@@ -30,7 +30,7 @@ function getAll() {
                 $id('report_satNav').value   = position.coords.latitude + ', ' + position.coords.longitude;
             }
             if (!results) {
-                alert('Nous ne parvenons pas à géolocaliser !');
+                generateMsg('jsGenerated','jsGeneratedMsg','Nous ne parvenons pas à géolocaliser !','#ff5240');
             }
         });
     });
@@ -45,7 +45,10 @@ function codeLocation(geocoder) {
     var address = $id("report_location").value;
     geocoder.geocode({'address': address}, function (results, status) {
         if (status === "OK") {
-            alert('Coordonnées GPS qui seront enregistrées : ' + results[0].geometry.location);
+
+
+            var message =  'Coordonnées GPS qui seront enregistrées : ' + results[0].geometry.location;
+            generateMsg('jsGenerated','jsGeneratedMsg',message,'#5fdda1');
 
             var data = results[0].geometry.location.toString();
             var addressToUpper = address.charAt(0).toUpperCase() + address.slice(1);
@@ -60,7 +63,7 @@ function codeLocation(geocoder) {
             $id('report_satNav').value = data.replace(/\(|\)/g,'') ;
 
         } else {
-            alert('Aucune données pour ce lieu !');
+            generateMsg('jsGenerated','jsGeneratedMsg','Aucune données pour ce lieu !','#ff5240');
         }
     });
 }
