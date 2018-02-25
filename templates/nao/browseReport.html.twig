@@ -12,7 +12,7 @@
     </div>
 
 
-    <div class="cardHolder" id="browseCard">
+    <div class="cardHolder col-sm-12" id="browseCard">
         {% for report in reports %}
             {{ include('nao/reportCard.html.twig') }}
             <input type="hidden"  class="locations" value="{{ report.satNav }}">

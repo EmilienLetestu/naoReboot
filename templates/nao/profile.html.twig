@@ -93,7 +93,7 @@
         <button class="btn btn-outline" id="loadBtn" onclick="show('userReport')">Toutes mes observations</button>
     </div>
 
-    <div class="cardHolder" id="userReport">
+    <div class="cardHolder col-sm-12" id="userReport">
         {% for report in reportList if app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN')  %}
             {{ include('nao/reportCard.html.twig') }}
         {% endfor %}
