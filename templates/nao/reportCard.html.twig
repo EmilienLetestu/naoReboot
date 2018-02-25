@@ -26,7 +26,7 @@
         </div>
 
         <div>
-            <i onclick="hideMap('{{ mapId }}','{{ closeBtnId }}')" class="material-icons closeMap" id="closeBtn{{ loop.index }}">close</i>
+            <i onclick="hideMap('{{ mapId }}','{{ closeBtnId }}','{{ loop.index }}')" class="material-icons closeMap" id="closeBtn{{ loop.index }}">close</i>
             <div id="reportMap{{ loop.index }}" class="gMap"></div>
             <input type="hidden" id="reportMapSatNav{{ loop.index }}" value="{{ report.satNav|gps }}">
             <input type="hidden" id="reportQuantity{{ loop.index }}" value="{{ report.nbrOfBirds }}">

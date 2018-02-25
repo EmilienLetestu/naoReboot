@@ -688,12 +688,13 @@ footer .list-group
 }
 
 .cardHeader{
-   color:  #ffa500;
-   font-size: 1em;
+    color:  #ffa500;
+    font-size: 1em;
     font-weight: bold;
-   padding-left: 2%;
-   padding-right: 2%;
-   padding-top:  2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top:  2%;
+    height: 50px;
 
 }
 
@@ -729,6 +730,7 @@ footer .list-group
     text-align: center;
     padding-top: 5%;
     color: #ffa500;
+    font-size: 0.9rem;
 }
 
 .quantity{
@@ -797,7 +799,7 @@ footer .list-group
     width: 100%;
     z-index: 1;
     position: absolute;
-    top: 30px;
+    top: 40px;
 }
 /*---------------------------profile-------------------------*/
 
@@ -1387,15 +1389,6 @@ footer .list-group
     .gMap{
         left: 0;
     }
-}
-
-@media only screen and (max-width: 320px){
-    .card{
-        width: 100%;
-    }
-}
-
-@media only screen and (min-width:360px) and (max-width: 768px){
 
     .card{
         width: 100%;
@@ -1425,5 +1418,22 @@ footer .list-group
     #dashboard{
         width: 100%;
     }
+
+    .moreBtn{
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .card{
+        margin-right: 0;
+        margin-left: 0;
+    }
 }
+
+@media only screen and (max-width: 320px){
+    .card{
+        width: 100%;
+    }
+}
+
 

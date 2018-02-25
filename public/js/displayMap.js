@@ -14,7 +14,7 @@ window.addEventListener('scroll',function () {
 function showMap(id,buttonId,loopIndex) {
 
     var imgId = "img" + loopIndex;
-    
+
     if(loggedUser() === true ){
         initReportMap(loopIndex);
         $id(id).style.visibility = "visible";
