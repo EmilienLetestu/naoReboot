@@ -12,13 +12,18 @@ window.addEventListener('scroll',function () {
  * @param loopIndex
  */
 function showMap(id,buttonId,loopIndex) {
+
+    var imgId = "img" + loopIndex;
+    
     if(loggedUser() === true ){
         initReportMap(loopIndex);
         $id(id).style.visibility = "visible";
         $id(buttonId).style.visibility = "visible";
+        $id(imgId).style.visibility = "hidden";
+
     }
     else{
-        hideMap(id,buttonId);
+        hideMap(id,buttonId,imgId);
         generateMsg('jsGenerated','jsGeneratedMsg','Fonctionnalité réservé aux membres, se connecter?','#ff5240');
     }
 }
@@ -26,8 +31,11 @@ function showMap(id,buttonId,loopIndex) {
 /**
  * @param id
  * @param buttonId
+ * @param loopIndex
  */
-function hideMap(id,buttonId) {
+function hideMap(id,buttonId,loopIndex) {
+    var imgId = "img" + loopIndex;
+    $id(imgId).style.visibility = "visible";
     $id(id).style.visibility = "hidden";
     $id(buttonId).style.visibility = "hidden";
 }
