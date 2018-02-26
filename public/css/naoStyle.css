@@ -476,7 +476,7 @@ button[type="submit"]:hover:not(#nav_search_submit){
     padding:0;
     border:1px solid #ffa500;
     background:#FFFFFF;
-    font-size: 1.5em;
+    font-size: 1.3rem;
 }
 
 #dashboard
@@ -484,7 +484,6 @@ button[type="submit"]:hover:not(#nav_search_submit){
     position: absolute;
     right: 0;
     top: 102%;
-    width: 20%;
     z-index: 1;
     visibility: hidden;
 }
