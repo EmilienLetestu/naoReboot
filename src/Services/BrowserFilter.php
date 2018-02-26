@@ -96,7 +96,7 @@ class BrowserFilter
     public function getBirdTitle($state ,$bird)
     {
         return $state === 'valide' ?
-            'Historique des observations: '.$bird :
+            'Observations validées: '.$bird :
             'Observations en attentes de validation: '.$bird
        ;
     }
