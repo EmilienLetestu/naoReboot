@@ -1208,11 +1208,17 @@ footer .list-group
     padding-top: 1%;
 }
 
-.memberInfo table thead th{
+.memberInfo table thead th,
+.birdInfo table thead th{
     text-align: center;
 }
 
-.memberInfo table{
+.birdInfo table tbody{
+    text-align: center;
+}
+
+.memberInfo table,
+.birdInfo   table{
     margin-bottom: 2%;
     margin-top: 2%;
     width: 95%;
@@ -1220,11 +1226,14 @@ footer .list-group
 }
 
 .memberInfo table td,
-.memberInfo table th{
+.memberInfo table th,
+.birdInfo table th,
+.birdInfo table td{
    border : solid 1px #FFFFFF;
 }
 
-.memberInfo table thead{
+.memberInfo table thead,
+.birdInfo table thead{
     background-color: #8c8c8c;
     color: #FFFFFF;
 }
