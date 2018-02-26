@@ -27,12 +27,23 @@ class ReportManager
         $this->doctrine = $doctrine;
     }
 
+    /**
+     *  delete all reports which remain unvalidated after 60 days
+     */
     public function deleteAllExpired()
     {
         $repository = $this->doctrine->getRepository(Report::class);
         $deleteList = $repository->findAllExpired();
 
-        $this->doctrine->remove($deleteList);
+        foreach ($deleteList as $report){
+
+            if($report->getPictRef()!== null){
+                unlink("../public/userImages/{$report->getPictRef()}");
+            }
+
+            $this->doctrine->remove($report);
+        }
+
         $this->doctrine->flush();
     }
 
@@ -62,6 +73,7 @@ class ReportManager
      */
     public function displayAllUnvalidated()
     {
+        $this->deleteAllExpired();
         $repository = $this->doctrine->getRepository(Report::class);
 
         return $repository->findAllReport(0);
