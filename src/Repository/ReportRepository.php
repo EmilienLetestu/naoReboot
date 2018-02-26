@@ -186,7 +186,7 @@ class ReportRepository extends EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('r');
 
-        $this->whereValidated($queryBuilder,1,'ASC','addedOn',9);
+        $this->whereValidated($queryBuilder,1,'ASC','addedOn',6);
 
         return $queryBuilder
             ->getQuery()
