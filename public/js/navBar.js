@@ -10,7 +10,9 @@ window.addEventListener('scroll',function () {
 });
 
 
-
+document.getElementById('nav_search_search').addEventListener('keyup',function (event) {
+    search(event);
+});
 
 
 function searchWidth() {
