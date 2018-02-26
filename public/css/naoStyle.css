@@ -85,10 +85,9 @@ h1
 }
 
 .search-bar .btn{
-    border-left: 1px solid;
-    border-radius: 0 0.25rem 0.25rem 0;
-    background-color: #ffa500;
-    color: #FFFFFF;
+    border : none;
+    background-color: #ffffff;
+    color: #ffa500;
 }
 
 #nav_search_submit{
@@ -962,7 +961,7 @@ footer .list-group
 /*--------------------------search result----------------------*/
 
 #searchResults ul{
-    margin-left: 35%;
+    margin-left: 25%;
     font-size: 1.2rem;
     color: #ffa500;
 }
