@@ -14,7 +14,6 @@ window.addEventListener('scroll',function () {
 function showMap(id,buttonId,loopIndex) {
 
     var imgId = "img" + loopIndex;
-
     if(loggedUser() === true ){
         initReportMap(loopIndex);
         $id(id).style.visibility = "visible";
@@ -23,8 +22,8 @@ function showMap(id,buttonId,loopIndex) {
 
     }
     else{
-        hideMap(id,buttonId,imgId);
         generateMsg('jsGenerated','jsGeneratedMsg','Fonctionnalité réservé aux membres, se connecter?','#ff5240');
+        hideMap(id,buttonId,imgId);
     }
 }
 
