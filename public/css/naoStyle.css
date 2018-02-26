@@ -128,6 +128,7 @@ button[type="submit"]:not(#nav_search_submit,#filterSubmit){
     color: #ffffff;
 }
 
+
 button[type="submit"]:hover:not(#nav_search_submit,#filterSubmit){
     background-color: transparent !important;
     border: solid 1px #ffa500 !important;
@@ -935,6 +936,21 @@ footer .list-group
     padding-right: 5%;
 }
 
+#reportForm .btn-success{
+    width: 260px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #ffa500;
+    border: none;
+    color: #ffffff;
+}
+
+#reportForm .btn-success:hover{
+    background-color: transparent;
+    border: solid 1px #ffa500;
+    color: #ffa500;
+}
+
 #reportForm .form-group:not(:nth-child(4)){
     padding-bottom: 3%;
 }
@@ -942,12 +958,12 @@ footer .list-group
 #localize{
     position: relative;
     top:-80px;
-    left: 90%;
+    left: 97.5%;
     margin-bottom: 0!important;
 }
 
 #report_location{
-    width: 89%;
+    width: 95%;
 }
 
 

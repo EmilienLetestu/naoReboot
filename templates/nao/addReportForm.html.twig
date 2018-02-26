@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block body %}
+
+    <div>
+        <h1 class="pageTitle"> NOUVELLE OBSERVATION</h1>
+    </div>
+
     <div onload="initMap()" oninput="disable('reportBtn','reportForm')">
         {{ form_start(form, {'attr':{'id':'reportForm'}}) }}
         <div class="form-group">
@@ -47,7 +52,7 @@
         </div>
         <div class="form-group">
             {{ form_widget(form.satNav) }}
-            <button id="reportBtn" class="btn btn-success" type="submit"  disabled="disabled" onclick="return fileType('report_pictRef')">Valider</button>
+            <button id="reportBtn" class="btn btn-success" type="submit" disabled="disabled" onclick="return fileType('report_pictRef')">Valider</button>
         </div>
         {{ form_end(form) }}
     </div>
