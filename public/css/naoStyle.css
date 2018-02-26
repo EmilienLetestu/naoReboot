@@ -81,7 +81,7 @@ h1
 }
 
 .search-bar input:focus{
-    border: solid 1px;
+    border: solid 1px #ffffff;
 }
 
 .search-bar .btn{
@@ -93,11 +93,12 @@ h1
 
 #nav_search_submit{
     position: fixed;
-    left: 21.5%;
+    left: 24%;
     top: 2.45%;
-    padding-top: 7.4px;
-    padding-bottom: 7.5px;
+    padding-top: 11.7px;
+    padding-bottom: 11.7px;
 }
+
 
 .search-bar label{
     display: none;
@@ -397,13 +398,18 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     background-color: #FFFFFF;
 }
 
+#connection .btn{
+    border: none;
+}
+
 #connection .btn-default
 {
     color: #FFFFFF;
     border-color: #FFFFFF;
     background-color: orange;
     position: absolute;
-    right: 8%;
+    right: 9%;
+
 }
 
 #connection .btn-default:hover

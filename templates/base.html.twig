@@ -23,7 +23,7 @@
                     <i class="material-icons">home</i>
                     NAO
                 </a>
-                <div class="search-bar" id="search" onclick="searchWidth()">
+                <div class="search-bar" id="search" onmouseenter="searchWidth()" onmouseleave="searchBlur()">
                     {{ form_start(search.createSearch,{'action': path('search')}) }}
                     {{ form_end(search.createSearch) }}
                 </div>

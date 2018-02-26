@@ -24,7 +24,11 @@ class NavSearchType extends AbstractType
                ],
                'mapped'      => false
            ])
-           ->add('submit', SubmitType::class)
+           ->add('submit', SubmitType::class,[
+                 'label' => ' ',
+                 'attr'  =>['class' => "fa fa-search"]
+
+           ])
        ;
     }
 }
