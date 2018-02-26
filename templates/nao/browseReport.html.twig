@@ -11,6 +11,19 @@
         <h1 class="pageTitle">{{ title }}</h1>
     </div>
 
+    <div id="browseFilter">
+        {{ form_start(filter,{'attr':{'id':'filterForm'}}) }}
+        <div class="form-group">
+            {{ form_widget(filter.order) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(filter.bird) }}
+        </div>
+        <div class="form-group">
+            <button  class="btn btn-success" id="filterSubmit" type="submit" ><i class="fa fa-search"></i></button>
+        </div>
+        {{ form_end(filter) }}
+    </div>
 
     <div class="cardHolder col-sm-12" id="browseCard">
         {% for report in reports %}
