@@ -931,6 +931,23 @@ footer .list-group
 }
 
 
+/*--------------------------search result----------------------*/
+
+#searchResults ul{
+    margin-left: 35%;
+    font-size: 1.2rem;
+    color: #ffa500;
+}
+
+#searchResults ul li{
+    padding-top: 5%;
+}
+
+.pageTitle span{
+    color: #ffa500;
+}
+
+
 /*---------------------------admin home-------------------------*/
 
 .img img{
@@ -953,7 +970,7 @@ footer .list-group
     position: relative;
     top: -418px;
     left: 81.5%;
-    color: orange;
+    color: #ffa500;
     background-color: transparent!important;
     border: none;
     font-size: 1.5em;

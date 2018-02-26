@@ -7,18 +7,15 @@
 {% block body %}
 
     <div>
-        <h1 class="pageTitle">RESULTAT DE VOTRE RECHERCHE POUR : "{{ userSearch|lower }}"</h1>
+        <h1 class="pageTitle">RESULTAT DE VOTRE RECHERCHE POUR : "<span>{{ userSearch|upper }}</span>"</h1>
     </div>
 
     <div id="searchResults">
-        <div>
-            <h2>Voir l'historique des observations de :</h2>
-        </div>
-        <ul>
+        <ul class="col-lg-6">
             {% for bird in results %}
                 <li>
                     <a href="{{ path('historic',{'species':bird.speciesLatin|species|replaceSpace,'birdId': bird.id}) }}" class="historicLink">
-                        {{ bird.speciesLatin|species }} {{ bird.speciesFr|speciesFr }}
+                        {{ bird.speciesLatin|species }} - {{ bird.speciesFr|speciesFr }}
                     </a>
                 </li>
             {% endfor %}
