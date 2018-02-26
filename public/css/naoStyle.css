@@ -676,7 +676,6 @@ footer .list-group
 .cardHeader{
     color:  #ffa500;
     font-size: 1em;
-    font-weight: bold;
     padding-left: 2%;
     padding-right: 2%;
     padding-top:  2%;
@@ -699,6 +698,7 @@ footer .list-group
 .info2{
     padding-left: 2%;
     padding-right: 2%;
+    font-size: 0.9rem;
 }
 
 .birdImg{
@@ -716,19 +716,20 @@ footer .list-group
     text-align: center;
     padding-top: 5%;
     color: #ffa500;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .quantity{
     text-align: center;
 }
 
-.cardFooter a{
-   margin: 3% 0 !important;
+.cardFooter {
+    text-align: center;
 }
 
-.validated{
-    margin-left: 25% !important;
+
+.cardFooter a{
+   margin: 3% 0 !important;
 }
 
 .cardFooter .btn-outline{
