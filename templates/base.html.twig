@@ -24,7 +24,7 @@
                     NAO
                 </a>
                 <div class="search-bar" id="search" onmouseenter="searchWidth()" onmouseleave="searchBlur()">
-                    {{ form_start(search.createSearch,{'action': path('search')}) }}
+                    {{ form_start(search.createSearch,{'action': path('search'), 'attr':{'id':'searchForm'}}) }}
                     {{ form_end(search.createSearch) }}
                 </div>
                 {% if  not is_granted('ROLE_USER') %}

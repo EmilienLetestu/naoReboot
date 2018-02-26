@@ -26,7 +26,7 @@ class NavSearchType extends AbstractType
            ])
            ->add('submit', SubmitType::class,[
                  'label' => ' ',
-                 'attr'  =>['class' => "fa fa-search"]
+                 'attr'  =>['class' => "fa fa-search", "disabled" => "true"]
 
            ])
        ;

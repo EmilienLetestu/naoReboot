@@ -46,6 +46,7 @@ class StarManager
 
         //get logged user and his id
         $user     = $this->token->getToken()->getUser();
+
         $loggedId = $user->getId();
         //get all stars added for this report
         $starList = $report->getStars();
