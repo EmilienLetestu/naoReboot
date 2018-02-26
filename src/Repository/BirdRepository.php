@@ -14,6 +14,10 @@ use Doctrine\ORM\QueryBuilder;
 
 class BirdRepository extends EntityRepository
 {
+    /***
+     * @param $search
+     * @return array
+     */
     public function findBirdLike($search)
     {
         $queryBuilder = $this->createQueryBuilder('b');
