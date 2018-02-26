@@ -88,7 +88,7 @@ h1
 }
 
 .search-bar input{
-    padding-top: 9.5px;
+    padding-top: 9.6px;
 }
 
 .search-bar input:focus{
@@ -104,9 +104,9 @@ h1
 
 #nav_search_submit{
     position: fixed;
-    left: 20%;
+    left: 21.5%;
     top: 2.45%;
-    padding-top: 7.5px;
+    padding-top: 7.4px;
     padding-bottom: 7.5px;
 }
 
