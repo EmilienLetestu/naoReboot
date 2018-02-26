@@ -10,23 +10,29 @@ function addPoint(event,id) {
 
     event.preventDefault();
 
-    var url = $id(id).getAttribute("href");
-    var  xmlhttp  = new XMLHttpRequest();
+    if(loggedUser() === true){
 
-    xmlhttp.onreadystatechange = function () {
-        if(this.readyState === 4){
+        var url = $id(id).getAttribute("href");
+        var  xmlhttp  = new XMLHttpRequest();
 
-            if(this.responseText === 'success'){
+        xmlhttp.onreadystatechange = function () {
+            if(this.readyState === 4){
 
-                $id(id).innerHTML = updateScore(url,id);
-            } else {
-                checkAndHideFlash('backGenerated');
-                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+                if(this.responseText === 'success'){
+
+                    $id(id).innerHTML = updateScore(url,id);
+                } else {
+
+                    generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+                }
             }
-        }
-    };
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send();
+        };
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+    }
+    else{
+        generateMsg('jsGenerated','jsGeneratedMsg','Fonctionnalité réservé aux membres, se connecter?','#ff5240');
+    }
 }
 
 /**
