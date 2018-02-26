@@ -50,7 +50,7 @@ function updateScore(url,id){
  * @param id
  */
 function checkAndHideFlash(id){
-    if($id(id)){
+    if($id(id) !== null){
        $id.style.display = "none";
     }
 }
