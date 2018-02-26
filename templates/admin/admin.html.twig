@@ -7,80 +7,55 @@
 {% block body %}
 
     <div>
-    <h1 class="pageTitle">Espace d'administration</h1>
+    <h1 class="pageTitle">Tableau de bord</h1>
     </div>
 
     {{ include('admin/adminNav.html.twig') }}
 
     <div id="statsWrap">
-        <div id="statIcon">
-            <i class="fa fa-pie-chart"  aria-hidden="true"></i>
-        </div>
+
         <div id="stats">
-            <ul>
-                <li>
-                    Nombre d'observations
-                </li>
-                <li>
-                    {{ totalReport }}
-                </li>
-                <li>
-                    Ce mois-ci
-                </li>
-                <li>
-                    {{ monthlyTotal }}
-                </li>
-                <li>
-                    Cette Année
-                </li>
-                <li>
-                    {{ yearlyTotal }}
-                </li>
-                <li>
-                    Moyenne quotidienne
-                </li>
-                <li>
-                    {{ dailyAverage }}
-                </li>
-                <li>
-                    Moyenne mensuelle
-                </li>
-                <li>
-                    {{ monthlyAverage }}
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Moyenne par utilisateur
-                </li>
-                <li>
-                    {{ averageByUser }}
-                </li>
-                <li>
-                    Nombre d'observcations par amateurs
-                </li>
-                <li>
-                    {{ totalByLevel1 }}
-                </li>
-                <li>
-                    Nombre d'observations par naturalistes
-                </li>
-                <li>
-                    {{ totalByLevel2 }}
-                </li>
-                <li>
-                    Moyenne amateurs
-                </li>
-                <li>
-                    {{ averageByLevel1 }}
-                </li>
-                <li>
-                    Moyenne naturalistes
-                </li>
-                <li>
-                    {{ averageByLevel2 }}
-                </li>
-            </ul>
+            <div class="dashboard col-sm-12">
+                <div>
+                    <p class="dashboardDataTitle"> Nombre d'observations</p>
+                    <p class="dashboardDataStats">{{ totalReport }}</p>
+                </div>
+
+                <div>
+                    <p class="dashboardDataTitle"> Ce mois-ci</p>
+                    <p class="dashboardDataStats">{{ monthlyTotal }}</p>
+                </div>
+
+                <div>
+                    <p class="dashboardDataTitle">Cette Année</p>
+                    <p class="dashboardDataStats"> {{ yearlyTotal }}</p>
+                </div>
+
+                <div>
+                    <p class="dashboardDataTitle">Moyenne quotidienne</p>
+                    <p class="dashboardDataStats">{{ dailyAverage }}</p>
+                </div>
+
+                <div>
+                    <p class="dashboardDataTitle">Moyenne mensuel</p>
+                    <p class="dashboardDataStats">{{ monthlyAverage }}</p>
+                </div>
+
+                <div>
+                    <p class="dashboardDataTitle">Moyenne par utilisateur</p>
+                    <p class="dashboardDataStats">{{ averageByUser }}</p>
+                </div>
+
+                <div>
+                    <p class="dashboardDataTitle">Observations par amateurs</p>
+                    <p class="dashboardDataStats">{{ totalByLevel1 }}</p>
+                </div>
+
+                <div>
+                    <p class="dashboardDataTitle">Observations par naturalistes</p>
+                    <p class="dashboardDataStats">{{ totalByLevel2 }}</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -91,7 +66,8 @@
         <a href="{{ path('exportCsv') }}"> Télécharger le contenu de la table des observations </a>
     </div>
 
-    <h2>Modifier la page d'accueil</h2>
+    <h2 id="homeManagement">Modifier la page d'accueil</h2>
+
     <div class="mostWanted">
         {% for img in homeImg %}
 

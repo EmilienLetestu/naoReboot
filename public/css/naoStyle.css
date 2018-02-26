@@ -954,7 +954,8 @@ footer .list-group
     box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
 }
 
-.speciesData div{
+.speciesData div,
+.dashboard div{
     width: 20%;
     text-align: center;
     height: 150px;
@@ -966,22 +967,30 @@ footer .list-group
     font-size: 1.2rem;
 }
 
-.speciesDataStats{
+
+
+.speciesDataStats,
+.dashboardDataStats{
     padding-top: 5%;
 
 }
 
-.speciesDataTitle{
+.speciesDataTitle,
+.dashboardDataTitle{
     margin-top: 10%;
     color: #ffa500;
 }
 
-.speciesData{
+.speciesData,
+.dashboard{
     display: flex;
     flex-wrap: wrap;
-    padding-top: 5%;
     justify-content: center;
+}
+
+.speciesData{
     padding-bottom: 3%;
+    padding-top: 5%;
 }
 
 /*---------------------------admin home-------------------------*/
@@ -1014,6 +1023,50 @@ footer .list-group
 
 #modalPicture{
     visibility: hidden;
+}
+
+.dashboard{
+    padding-bottom: 1%;
+}
+
+.dashboard div{
+    margin-block-end: 50px;
+}
+
+#homeManagement{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#statsWrap{
+    padding-top: 2%;
+    margin-top: 3%;
+}
+
+#statIcon,
+#exportIcon{
+    text-align: center;
+    padding-bottom: 2%;
+    color: #FFA500;
+}
+
+#exportIcon{
+    font-size: 2em;
+    padding-bottom: 1%;
+}
+
+#statIcon{
+    font-size: 3em;
+    padding-bottom: 2%;
+}
+
+#exportCsv {
+    text-align: center;
+    color: #FFA500;
+    font-size: 1.5em;
+    margin-bottom: 1%;
+
 }
 
 /*---------------------------admin menu------------------------------*/
@@ -1221,6 +1274,7 @@ footer .list-group
     color: #FFFFFF;
 }
 /*---------------admin bird--------------------*/
+
 .gBird{
     display: none;
 }
@@ -1229,75 +1283,7 @@ footer .list-group
 .fa-minus{
     color:  #FFA500;
 }
-/*---------------admin stats--------------------*/
-#statsWrap{
-    padding-top: 2%;
-    margin-top: 3%;
-    margin-bottom: 2%;
 
-}
-
-#statIcon,
-#exportIcon{
-    text-align: center;
-    padding-bottom: 2%;
-    color: #FFA500;
-}
-
-#exportIcon{
-    font-size: 2em;
-    padding-bottom: 1%;
-}
-
-#statIcon{
-    font-size: 3em;
-    padding-bottom: 2%;
-}
-
-#stats{
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.4em;
-}
-
-#stats ul{
-    border: solid 1px #FFFFFF;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    width: 40%;
-    background-color: #c3c3c3;
-    -webkit-box-shadow: -2px -1px 5px 0 rgba(0,0,0,0.75);
-    -moz-box-shadow: -2px -1px 5px 0 rgba(0,0,0,0.75);
-    box-shadow: -2px -1px 5px 0 rgba(0,0,0,0.75);
-}
-
-#stats ul:nth-child(even){
-    -webkit-box-shadow: 2px -1px 5px 0 rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px -1px 5px 0 rgba(0,0,0,0.75);
-    box-shadow: 2px -1px 5px 0 rgba(0,0,0,0.75);
-}
-
-
-#stats li{
-    padding: 2%;
-}
-
-#stats li:not(:last-child){
-    border-bottom: solid 1px #FFFFFF;
-}
-
-#stats li:nth-child(even){
-    color: #FFFFFF;
-}
-
-
-#exportCsv{
-    text-align: center;
-    color: #FFA500;
-    font-size: 1.5em;
-    margin-bottom: 1%;
-}
 /*-------------terms and conditions------------------*/
 
 #termsSummary{
