@@ -10,27 +10,32 @@
         <h1 class="pageTitle">HISTORIQUE DES OBSERVATIONS {{ species|apostrophe|upper }} </h1>
     </div>
 
-    <div id ="map"></div>
-    <div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Nombre de spécimens</th>
-                <th>Spécimens par observation</th>
-                <th>Dernière observation</th>
-                <th>Coordonnées</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th>{{ birdId|statistics['population'] }}</th>
-                <th>{{ birdId|statistics['avgByReport'] }}</th>
-                <th>{{ birdId|lastReported['date'] }}</th>
-                <th>{{ birdId|lastReported['satNav'] }}</th>
-            </tr>
-            </tbody>
-        </table>
+    <div id ="map" class="speciesMap"></div>
+
+
+    <div class="speciesData col-sm-12">
+        <div>
+            <p class="speciesDataTitle">Nombre de spécimens</p>
+            <p class="speciesDataStats">{{ birdId|statistics['population'] }}</p>
+        </div>
+
+        <div>
+            <p class="speciesDataTitle">Spécimens par observation</p>
+            <p class="speciesDataStats">{{ birdId|statistics['avgByReport'] }}</p>
+        </div>
+
+        <div>
+            <p class="speciesDataTitle">Dernière observation</p>
+            <p class="speciesDataStats">{{ birdId|lastReported['date'] }}</p>
+        </div>
+
+        <div>
+            <p class="speciesDataTitle">Coordonnées</p>
+            <p class="speciesDataStats">{{ birdId|lastReported['satNav'] }}</p>
+        </div>
     </div>
+
+
 
     {% for report in reports %}
         <input type="hidden"  class="locations" value="{{ report.satNav }}">
