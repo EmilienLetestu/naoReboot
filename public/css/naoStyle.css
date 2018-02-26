@@ -61,17 +61,6 @@ h1
     margin-bottom: 3%;
 }
 
-.modalForm
-{
-    position: fixed;
-    top: 20%;
-    left: 30%;
-    background: white;
-    -webkit-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
-    -moz-box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
-    box-shadow: 0px 0px 5px 22px rgba(71,71,71,0.11);
-    padding: 3%;
-}
 
 .resume{
     width: 100%;
@@ -798,6 +787,35 @@ footer .list-group
     position: absolute;
     top: 40px;
 }
+
+/*--------------------------- modal -------------------------*/
+
+.modalForm{
+    position: fixed;
+    top: 20%;
+    background: white;
+    padding: 2%;
+    -webkit-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
+    box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
+    z-index: 30;
+}
+
+
+.modalForm i
+{
+    position:absolute;
+    top:5px;
+    right:5px;
+    color: #ffa500;
+}
+
+.modalForm i:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
 /*---------------------------profile-------------------------*/
 
 .accountScore
@@ -827,30 +845,9 @@ footer .list-group
 
 #pswdModal{
     visibility: hidden;
+    left: 33.5%;
 }
 
-#pswdModal i
-{
-    margin-top: 1px;
-    margin-right: 2px;
-    position:absolute;
-    top:0;
-    right:0;
-    color: orange;
-}
-
-#pswdModal i:hover
-{
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
-#changePswd
-{
-    position: relative;
-    left: 25%;
-}
 
 #profileTable{
     box-shadow: 0 0 8px #9b9b9b;
@@ -1023,23 +1020,9 @@ footer .list-group
 
 #modalPicture{
     visibility: hidden;
-    padding: 2%;
-    -webkit-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
-    box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
+    left: 32%;
 }
 
-
-#modalPicture i{
-    position: absolute;
-    top:5px;
-    right: 5px;
-    color: #ffa500;
-}
-
-#modalPicture i:hover{
-    color: #000000;
-}
 
 #modalPicture .btn {
     margin-top: 3%;

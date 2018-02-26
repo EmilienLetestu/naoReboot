@@ -38,23 +38,23 @@
 
     {% if app.user.id == app.request.get('id') %}
     <div class="modalForm" id="pswdModal" onkeyup="disable('chgPswdBtn','changePswd')">
-        <i onclick="hide('pswdModal')" class="material-icons">close</i>
+        <i onclick="hide('pswdModal')" class="fa fa-times"></i>
             {{ form_start(accountInfo.updatePswd, {'attr':{'id':'changePswd'}}) }}
-            <div class="form-group col-sm-6">
+            <div class="form-group">
                 {{ form_label(accountInfo.updatePswd.currentPswd) }}
                 {{ form_widget(accountInfo.updatePswd.currentPswd) }}
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group">
                 {{ form_label(accountInfo.updatePswd.pswd) }}
                 {{ form_widget(accountInfo.updatePswd.pswd, {'attr':{'onkeyup':'validatePswd("change_pswd_pswd",6,30,"chgPswdError")'}}) }}
                 <div id="chgPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
             </div>
-            <div class="form-group  col-sm-6">
+            <div class="form-group">
                 {{ form_label(accountInfo.updatePswd.confirmPswd ) }}
                 {{ form_widget(accountInfo.updatePswd.confirmPswd, {'attr':{'onkeyup':'matching("change_pswd_confirmPswd","change_pswd_pswd","chgConfirmError")'}}) }}
                 <div id="chgConfirmError" class="form-control-feedback noError">Les mots de passes ne correspondent pas</div>
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group">
                 <button id="chgPswdBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
             </div>
             {{ form_end(accountInfo.updatePswd) }}
