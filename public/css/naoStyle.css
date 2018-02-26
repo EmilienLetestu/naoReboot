@@ -1023,6 +1023,30 @@ footer .list-group
 
 #modalPicture{
     visibility: hidden;
+    padding: 2%;
+    -webkit-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
+    box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
+}
+
+
+#modalPicture i{
+    position: absolute;
+    top:5px;
+    right: 5px;
+    color: #ffa500;
+}
+
+#modalPicture i:hover{
+    color: #000000;
+}
+
+#modalPicture .btn {
+    margin-top: 3%;
+}
+
+#update_home_species{
+    margin-bottom: 10%;
 }
 
 .dashboard{
@@ -1032,6 +1056,7 @@ footer .list-group
 .dashboard div{
     margin-block-end: 50px;
 }
+
 
 #homeManagement{
     text-align: center;
