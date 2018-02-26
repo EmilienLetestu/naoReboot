@@ -24,22 +24,23 @@ function offCanvas() {
 function activeLink(){
     var path = window.location.pathname.split('/');
     var link = path[path.length-1].split('-');
+    var activeColor = "#FF9100";
 
     switch(link[link.length-1]) {
         case 'admin':
-            document.getElementById('adminLink').style.backgroundColor = "#d87e07";
+            document.getElementById('adminLink').style.backgroundColor = activeColor;
             break;
         case 'membres':
-            document.getElementById('userLink').style.backgroundColor = "#d87e07";
+            document.getElementById('userLink').style.backgroundColor = activeColor;
             break;
         case 'innactifs':
-            document.getElementById('unactivatedLink').style.backgroundColor = "#d87e07";
+            document.getElementById('unactivatedLink').style.backgroundColor = activeColor;
             break;
         case 'naturaliste':
-            document.getElementById('validationLink').style.backgroundColor = "#d87e07";
+            document.getElementById('validationLink').style.backgroundColor = activeColor;
             break;
         default:
-            document.getElementById('birdLink').style.backgroundColor = "#d87e07";
+            document.getElementById('birdLink').style.backgroundColor = activeColor;
     }
 }
 

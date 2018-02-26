@@ -1106,22 +1106,23 @@ footer .list-group
     color:  #FFFFFF !important;
     margin-bottom: 10%;
     padding: 2% 0 2% 5%;
+
 }
 
 #adminNav li a
 {
     display: block;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 #adminNav h3{
     padding: 5%;
-    color: #ffa500;
-    background-color: white;
+    background-color: #FF9100;
     position: absolute;
     top: 0;
     width: 100%;
     text-align: center;
+    color: #ffffff;
 }
 
 #adminNav li i {
@@ -1143,7 +1144,6 @@ footer .list-group
     margin: 0;
     padding-left: 0;
     border:1px solid #ffa500;
-    font-size: 1.1em;
     padding-top: 15%;
 }
 /*---------------------------admin memberList-------------------------*/
