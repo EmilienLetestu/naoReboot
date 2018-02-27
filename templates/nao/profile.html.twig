@@ -13,7 +13,7 @@
 
     <div class="headBanner">
         <h2>{{ accountInfo.name }} {{ accountInfo.surname }}</h2>
-        <span class="accountScore"><i class="material-icons">grade</i>{{ reportInfo.2 }}</span>
+        <span class="accountScore"><i class="fa fa-star"> {{ reportInfo.2 }}</i></span>
         <div id="profileInfo">
             <ul class="list-unstyled">
                 {% if app.user.id == app.request.get('id') %}
@@ -65,28 +65,33 @@
        <div id="chartIcon">
            <i class="fa fa-line-chart" aria-hidden="true"></i>
        </div>
-       <div>
-           <table class="table table-bordered table-dark" id="profileTable">
-               <thead>
-               <tr>
-                   <th>Total d'observations</th>
-                   <th>En attente de validation</th>
-                   <th>Dernière observation</th>
-                   <th>Dernière espèce observée</th>
-                   <th>Coordonées</th>
-               </tr>
-               </thead>
-               <tbody>
-               <tr>
-                   <td>{{ reportInfo.1 }}</td>
-                   <td>{{ reportInfo.0 }}</td>
-                   <td>{{ lastInfo.0 }}</td>
-                   <td>{{ lastInfo.1 }}</td>
-                   <td>{{ lastInfo.2 }}</td>
-               </tr>
-               </tbody>
-           </table>
-       </div>
+
+        <div class="profileData col-sm-12">
+            <div>
+                <p class="profileDataTitle">Total d'observations</p>
+                <p class="profileDataStats">{{ reportInfo.1 }}</p>
+            </div>
+
+            <div>
+                <p class="profileDataTitle">En attente</p>
+                <p class="profileDataStats">{{ reportInfo.0 }}</p>
+            </div>
+
+            <div>
+                <p class="profileDataTitle">Dernière observation</p>
+                <p class="profileDataStats">{{ lastInfo.0 }}</p>
+            </div>
+
+            <div>
+                <p class="profileDataTitle">Dernière espèce observée</p>
+                <p class="profileDataStats">{{ lastInfo.1 }}</p>
+            </div>
+
+            <div>
+                <p class="profileDataTitle">Coordonnées</p>
+                <p class="profileDataStats">{{ lastInfo.2 }}</p>
+            </div>
+        </div>
     </div>
 
     <div id="loadReports">

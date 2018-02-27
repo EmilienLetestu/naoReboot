@@ -855,6 +855,7 @@ footer .list-group
     display: inline-flex;
     color: orange;
     margin-top: 3%;
+    font-size: 1.5rem;
 }
 
 .accountScore i
@@ -922,6 +923,7 @@ footer .list-group
 
 #userReport{
    display: none;
+    padding-top: 0;
 }
 
 #loadBtn{
@@ -985,34 +987,49 @@ footer .list-group
 }
 
 .speciesData div,
-.dashboard div{
-    width: 20%;
+.dashboard div,
+.profileData div{
     text-align: center;
     height: 150px;
     border-radius: 10px;
     -webkit-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
     box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
-    margin: 2%;
+}
+
+.speciesData div,
+.dashboard div{
+    width: 20%;
     font-size: 1.2rem;
+    margin: 2%;
+}
+
+.profileData div{
+    font-size: 1rem;
+    width: 19%;
+    padding-bottom: 2%;
+    margin: 0.5%;
 }
 
 
 
 .speciesDataStats,
-.dashboardDataStats{
+.dashboardDataStats,
+.profileDataStats{
     padding-top: 5%;
 
 }
 
 .speciesDataTitle,
-.dashboardDataTitle{
+.dashboardDataTitle,
+.profileDataTitle{
     margin-top: 10%;
     color: #ffa500;
 }
 
 .speciesData,
-.dashboard{
+.dashboard,
+.profileData{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
