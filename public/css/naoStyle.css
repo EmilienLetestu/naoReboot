@@ -680,7 +680,7 @@ footer .list-group
     -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
-    width: 25%;
+    width: 370px;
     max-height: 490px;
 }
 
@@ -1451,29 +1451,40 @@ footer .list-group
     text-align: left;
     padding-left: 15%;
     margin-bottom: 4%;
+    margin-top: 5%;
 }
 
 #termOfUse h2{
-    text-align: center;
     margin-bottom: 4%;
     color: #FFA500;
+    padding-left: 4%;
+}
+
+#termOfUse i{
+    padding: 2% 2% 0 2%;
 }
 
 .termArticle{
-    margin-bottom: 4%;
     text-align: justify;
+    padding: 0 4%;
 }
 
 .termArticle:nth-child(n+3){
     display: none;
 }
 
-.termArticle ul li{
-    list-style: circle;
+
+.termArticle ul li::before{
+    content: "°";
+    color: #FFA500;
+    font-weight: 900;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 4%;
 }
 
 .termArticle ul{
-
+    padding-left: 2%;
 }
 
 /*-------------About us------------------*/
@@ -1552,6 +1563,12 @@ footer .list-group
 
 
 /**-----media queries-----*/
+
+@media only screen and (min-width: 1600px){
+    .card{
+       margin-left: 5%;
+    }
+}
 
 @media only screen and (min-width: 320px)and (max-width: 768px){
 
