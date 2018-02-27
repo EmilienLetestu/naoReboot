@@ -1344,6 +1344,18 @@ footer .list-group
     background-color: #5fdda1;
     color: #FFFFFF;
 }
+
+.filterList{
+    text-align: center;
+    margin-top: 5%;
+}
+
+#memberFilter{
+    font-size: 1.2rem;
+    width: 35%;
+    border-radius: 5px;
+    border: solid 1px #FFA500;
+}
 /*---------------admin bird--------------------*/
 
 .gBird{

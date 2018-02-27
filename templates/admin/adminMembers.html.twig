@@ -11,9 +11,20 @@
 
     {{ include('admin/adminNav.html.twig') }}
 
+    {% if app.request.attributes.get('_route') == 'userList' %}
+    <div class="filterList">
+        <select id="memberFilter" onchange="memberFilter()">
+            <option value=" " selected="selected">choose a filter</option>
+            <option value="level1">amateur</option>
+            <option value="level2">naturaliste</option>
+            <option value="banStatus1">banni</option>
+        </select>
+    </div>
+    {% endif %}
+
     <div class="memberList">
             {% for user in userList %}
-                <div class="memberInfo" id="member{{ loop.index }}">
+                <div class="memberInfo level{{ user.accessLevel }} banStatus{{ user.ban }}" id="member{{ loop.index }}">
                     <ul class="list-inline reminder">
                         <li class="list-inline-item">
                             <i class="fa fa-user">
