@@ -397,6 +397,11 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     background-color: #FFFFFF;
 }
 
+#loadReports{
+    padding-top: 2%;
+    padding-bottom: 0.5%;
+}
+
 #connection .btn{
     border: none;
 }
@@ -1007,7 +1012,6 @@ footer .list-group
 .profileData div{
     font-size: 1rem;
     width: 19%;
-    padding-bottom: 2%;
     margin: 0.5%;
 }
 
