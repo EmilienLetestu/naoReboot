@@ -40,6 +40,10 @@ h1
     margin-bottom: 1%;
 }
 
+.btn:focus{
+    box-shadow: none;
+}
+
 #app{
     padding-left: 0;
     padding-right: 0;
@@ -641,16 +645,14 @@ footer .list-group
 
 .closeMap{
     position: relative;
-    left: 339.5px;
-    top: -155px;
+    top: -105px;
+    left: 332px;
     z-index: 2;
     background-color: #ffffff;
     visibility: hidden;
     font-size: 16px;
-    -webkit-box-shadow: 0 0 1px 0 rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 0 1px 0 rgba(0,0,0,0.75);
-    box-shadow: 0 0 1px 0 rgba(0,0,0,0.75);
-    padding: 5.9px;
+    padding: 8px;
+    color: #585858 !important;
 }
 
 .stared,
@@ -879,6 +881,7 @@ footer .list-group
 
 #modifyPswd button{
     margin-bottom: 0 !important;
+    border: none !important;
 }
 
 #pswdModal{
@@ -994,10 +997,11 @@ footer .list-group
 .speciesData div,
 .dashboard div,
 .profileData div,
-.memberData div{
+.memberData div,
+.birdData div{
     text-align: center;
     height: 150px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .speciesData div,
@@ -1009,10 +1013,21 @@ footer .list-group
 }
 
 .speciesData div,
-.dashboard div{
+.dashboard div,
+.birdData div{
     width: 20%;
     font-size: 1.2rem;
     margin: 2%;
+}
+
+.birdData div{
+    width: 20%;
+    font-size: 1rem;
+    margin: 2%;
+}
+
+.birdData{
+    border-bottom: solid 1px #ffa500;
 }
 
 .profileData div,
@@ -1023,6 +1038,10 @@ footer .list-group
 
 .profileData div{
     font-size: 1rem;
+}
+
+.birdData div{
+    border: solid 1px #ffa500;
 }
 
 
@@ -1040,7 +1059,8 @@ footer .list-group
 .speciesDataStats,
 .dashboardDataStats,
 .profileDataStats,
-.memberDataStats{
+.memberDataStats,
+.birdDataStats{
     padding-top: 5%;
 
 }
@@ -1048,7 +1068,8 @@ footer .list-group
 .speciesDataTitle,
 .dashboardDataTitle,
 .profileDataTitle,
-.memberDataTitle{
+.memberDataTitle,
+.birdDataTitle{
     margin-top: 10%;
     color: #ffa500;
 }
@@ -1056,7 +1077,8 @@ footer .list-group
 .speciesData,
 .dashboard,
 .profileData,
-.memberData{
+.memberData,
+.birdData{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1065,6 +1087,11 @@ footer .list-group
 .speciesData{
     padding-bottom: 3%;
     padding-top: 5%;
+}
+
+.birdData{
+    padding-bottom: 3%;
+    padding-top: 2%;
 }
 
 /*---------------------------admin home-------------------------*/
@@ -1388,6 +1415,24 @@ footer .list-group
 .fa-plus,
 .fa-minus{
     color:  #FFA500;
+}
+
+.mapTrigger{
+    padding: 1.5%;
+    text-align: center;
+}
+
+.mapTrigger i{
+    font-size: 1.5rem;
+}
+
+.birdInfo .reminder li{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.birdInfo .reminder{
+    justify-content: space-between;
 }
 
 /*-------------terms and conditions------------------*/

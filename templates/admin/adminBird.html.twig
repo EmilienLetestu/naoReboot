@@ -16,46 +16,41 @@
     <div class="birdInfo" id="bird{{ loop.index }}">
         <ul class="list-inline reminder">
             <li class="list-inline-item">
-                <i class="fa fa-binoculars" aria-hidden="true">
-                    {{ key|statistics['bird']|species }}
-                </i>
+                {{ key|statistics['bird']|species }}
             </li>
             <li class="list-inline-item">
-                <i class="fa fa-chart">
+                <i class="fa fa-binoculars" aria-hidden="true">
                     {{ seenNtimes }}
                 </i>
             </li>
         </ul>
 
-        <table class="resume">
-            <thead>
-            <tr>
-                <th>Nombre de spécimens</th>
-                <th>Spécimen par observation</th>
-                <th>Dernière observation</th>
-                <th>Coordonnées</th>
-                <th> <i class="fa fa-globe" aria-hidden="true"></i></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    {{ key|statistics['population'] }}
-                <td>
-                    {{ key|statistics['avgByReport'] }}
-                </td>
-                <td>
-                    {{ key|lastReported['date'] }}
-                </td>
-                <td>
-                    {{ key|lastReported['satNav'] }}
-                </td>
-                <td>
-                    <i class="fa fa-plus" aria-hidden="true" onclick="showHideBirdMap('birdStatMap{{ loop.index }}',this)"></i>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="birdData col-sm-12">
+            <div>
+                <p class="birdDataTitle">Nombre de spécimens</p>
+                <p class="birdDataStats">{{ key|statistics['population'] }}</p>
+            </div>
+
+            <div>
+                <p class="birdDataTitle">Spécimens par observation</p>
+                <p class="birdDataStats">{{ key|statistics['avgByReport'] }}</p>
+            </div>
+
+            <div>
+                <p class="birdDataTitle">Dernière observation</p>
+                <p class="birdDataStats">{{ key|lastReported['date'] }}</p>
+            </div>
+
+            <div>
+                <p class="birdDataTitle">Coordonnées</p>
+                <p class="birdDataStats">{{ key|lastReported['satNav'] }}</p>
+            </div>
+        </div>
+
+        <div class="mapTrigger">
+            <i class="fa fa-plus" aria-hidden="true" onclick="showHideBirdMap('birdStatMap{{ loop.index }}',this)"></i>
+        </div>
+
 
         <div id="birdStatMap{{ loop.index }}" class="gBird">
             {% for report in key|birdLocation if report.validated == 1 %}

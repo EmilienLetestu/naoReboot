@@ -27,24 +27,20 @@
                 <div class="memberInfo level{{ user.accessLevel }} banStatus{{ user.ban }}" id="member{{ loop.index }}">
                     <ul class="list-inline reminder">
                         <li class="list-inline-item">
-                            <i class="fa fa-user">
-                                {{ user.surname }} {{ user.name }}
-                            </i>
+                            <i class="fa fa-user"></i>
+                            {{ user.surname }} {{ user.name }}
                         </li>
                         <li class="list-inline-item">
-                            <i class="fa fa-calendar">
-                                {{ user.createdOn|date('d/m/Y') }}
-                            </i>
+                            <i class="fa fa-calendar"></i>
+                            {{ user.createdOn|date('d/m/Y') }}
                         </li>
                         <li class="list-inline-item">
-                            <i class="fa fa-envelope">
-                                {{ user.email }}
-                            </i>
+                            <i class="fa fa-envelope"></i>
+                            {{ user.email }}
                         </li>
                         <li>
-                            <i class="fa fa-star">
-                                {{ user.reports|activities['starsGathered'] }}
-                            </i>
+                            <i class="fa fa-star"></i>
+                             {{ user.reports|activities['starsGathered'] }}
                         </li>
                         <li class="list-inline-item" id="memberLevel{{ loop.index }}">
                             {{ user.accessLevel|account }}
