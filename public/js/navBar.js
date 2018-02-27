@@ -15,18 +15,49 @@ document.getElementById('nav_search_search').addEventListener('keyup',function (
 });
 
 
+
+if(screen.width > 768){
+    document.getElementById('search').addEventListener('mouseenter',function () {
+        searchWidth();
+    });
+
+    document.getElementById('search').addEventListener('mouseleave',function () {
+       searchBlur();
+    });
+}
+
+if(screen.width < 768){
+
+    window.addEventListener('scroll',function (){
+        mobileSearch("none");
+    });
+
+    document.getElementById('search').addEventListener('touchstart',function () {
+        mobileSearch("inline-block");
+    });
+
+}
+
+
 function searchWidth() {
     $id('search').style.width = "600px";
+}
+
+function mobileSearch(style) {
+    $id('nav_search_search').style.display = style;
 }
 
 function searchBlur() {
     $id('search').style.width = "inherit";
 }
 
+
+
 /**
  * @param event
  */
 function search(event){
+
     event.preventDefault();
 
     if($id("nav_search_search").value !== ""){

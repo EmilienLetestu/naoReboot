@@ -1584,6 +1584,53 @@ footer .list-group
         display: inline-block;
     }
 
+    .navbar-brand{
+        font-size: 1.5rem;
+    }
+
+    #accountBadge{
+        font-size: 2rem;
+    }
+
+    #nav_search_search{
+        width: 100%;
+        position: absolute;
+        top:40px;
+        left:-10%;
+        display: none;
+        border: none;
+        border-bottom: solid 2px #FFA500;
+        border-radius: 0;
+        box-shadow:none
+    }
+    
+
+    #nav_search_submit{
+        background-color: transparent;
+        left: 110px;
+    }
+
+    #dashboard ul{
+        width: 100%;
+    }
+
+    #search{
+        width: 100%;
+    }
+
+
+
+    .navbar{
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+
+    #nav_search_submit{
+        top: -5%;
+        left: 35%;
+    }
+
+
     .mostWanted{
         flex-direction: column;
     }
@@ -1650,6 +1697,12 @@ footer .list-group
     .card{
         width: 100%;
     }
+
+    #nav_search_submit{
+        right: 0;
+        top: 0;
+    }
+
 }
 
 
