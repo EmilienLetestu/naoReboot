@@ -50,35 +50,33 @@
                             {{ user.accessLevel|account }}
                         </li>
                     </ul>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Total d'observations</th>
-                            <th>En attente de validation</th>
-                            <th>Dernière observation</th>
-                            <th>Dernière espèce observée</th>
-                            <th>Coordonnées</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                {{ user.reports|activities['validated'] }}
-                            <td>
-                                {{ user.reports|activities['unvalidated'] }}
-                            </td>
-                            <td>
-                                {{ user.id|lastPublication['date'] }}
-                            </td>
-                            <td>
-                                {{ user.id|lastPublication['bird'] }}
-                            </td>
-                            <td>
-                                {{ user.id|lastPublication['satNav'] }}
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+                    <div class="memberData col-sm-12">
+                        <div>
+                            <p class="memberDataTitle">Total d'observations</p>
+                            <p class="memberDataStats"> {{ user.reports|activities['validated'] }}</p>
+                        </div>
+
+                        <div>
+                            <p class="memberDataTitle">En attente</p>
+                            <p class="memberDataStats">{{ user.reports|activities['unvalidated'] }}</p>
+                        </div>
+
+                        <div>
+                            <p class="memberDataTitle">Dernière observation</p>
+                            <p class="memberDataStats">{{ user.id|lastPublication['date'] }}</p>
+                        </div>
+
+                        <div>
+                            <p class="memberDataTitle">Dernière espèce observée</p>
+                            <p class="memberDataStats">{{ user.id|lastPublication['bird'] }}</p>
+                        </div>
+
+                        <div>
+                            <p class="memberDataTitle">Coordonnées</p>
+                            <p class="memberDataStats">{{ user.id|lastPublication['satNav'] }}</p>
+                        </div>
+                    </div>
                     <div>
                         {{ include('admin/actions.html.twig') }}
                     </div>

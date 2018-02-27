@@ -993,10 +993,16 @@ footer .list-group
 
 .speciesData div,
 .dashboard div,
-.profileData div{
+.profileData div,
+.memberData div{
     text-align: center;
     height: 150px;
     border-radius: 10px;
+}
+
+.speciesData div,
+.dashboard div,
+.profileData div{
     -webkit-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
     box-shadow: 0 0 14px 3px rgba(0,0,0,0.75);
@@ -1009,31 +1015,48 @@ footer .list-group
     margin: 2%;
 }
 
-.profileData div{
-    font-size: 1rem;
+.profileData div,
+.memberData div{
     width: 19%;
     margin: 0.5%;
+}
+
+.profileData div{
+    font-size: 1rem;
+}
+
+
+.memberData div{
+    border: solid 1px #ffa500;
+    font-size: 0.9rem;
+}
+
+.memberData{
+    margin-bottom: 2%;
 }
 
 
 
 .speciesDataStats,
 .dashboardDataStats,
-.profileDataStats{
+.profileDataStats,
+.memberDataStats{
     padding-top: 5%;
 
 }
 
 .speciesDataTitle,
 .dashboardDataTitle,
-.profileDataTitle{
+.profileDataTitle,
+.memberDataTitle{
     margin-top: 10%;
     color: #ffa500;
 }
 
 .speciesData,
 .dashboard,
-.profileData{
+.profileData,
+.memberData{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
