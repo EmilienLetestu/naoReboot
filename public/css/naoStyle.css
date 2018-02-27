@@ -246,8 +246,12 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 #landingIntro p{
     font-size: 1.5em;
-    margin-top: 25%;
+    margin-top: 21%;
     text-align: center;
+}
+
+#landingIntro h1{
+    margin-top: 0;
 }
 
 
@@ -259,7 +263,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 }
 
 #landingIntro ul{
-    margin-top: 25%;
+    margin-top: 21%;
     justify-content: space-between;
 }
 
@@ -338,17 +342,22 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 #landingTop{
     display: flex;
-    padding: 6% 2%;
+    padding: 2% 2%;
 }
 
 #landingForm {
     width: 30%;
-    background-color: #c3c3c3;
+    background-color: #efefef;
     margin-left: 10%;
     -webkit-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
     -moz-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
     box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
-    height: 660px;
+    height: 680px;
+}
+
+#landingTerms{
+    margin-top: 10%;
+    margin-left: 1%;
 }
 
 #registerLanding {

@@ -56,13 +56,13 @@
             <div class="form-group">
                 {{ form_label(form.pswd) }}
                 {{ form_widget(form.pswd, { 'attr': { 'onkeyup': 'validatePswd("register_pswd",6,30,"landingPswdError")' } }) }}
-                <div id="landingPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+                <div id="landingPswdError" class="form-control-feedback noError">Entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.accessLevel) }}
                 {{ form_widget(form.accessLevel) }}
             </div>
-            <div>
+            <div class="form-group" id="landingTerms">
                 {{ form_label(form.termsAgreement) }}
                 {{ form_widget(form.termsAgreement) }}
             </div>
