@@ -630,10 +630,9 @@ footer .list-group
 .mostWanted{
     display: flex;
     background-color: #dfdfdf;
-    padding-bottom: 3%;
     padding-top: 3%;
     padding-left: 3%;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .img{
     width: 30%;
@@ -1107,6 +1106,7 @@ footer .list-group
 .img img{
     height: 370px;
     width: 400px;
+    object-fit: fill;
 }
 
 .imgTitle{
@@ -1725,19 +1725,33 @@ footer .list-group
         flex-direction: column;
     }
 
-    .img img {
+    .img img:not(.adminPreview) {
         width: 100%;
         height: auto;
+    }
+
+    .adminPreview{
+        width: 100% !important;
+        height: 370px !important;
     }
 
     .img {
         width: 100%;
     }
 
-    .imgTitle {
+    .admin{
+        margin-bottom: -80px;
+    }
+
+    .imgTitle:not(.preview) {
         top: -50%;
         width: 100%;
     }
+
+    .preview{
+        width: 100%;
+    }
+
 
     .gMap {
         left: 0;
@@ -1866,6 +1880,18 @@ footer .list-group
     .birdData {
         display: flex;
         flex-wrap: wrap;
+    }
+
+    .speciesData,
+    .dashboard,
+    .birdData{
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: space-around;
+    }
+
+    .profileData,
+    .memberData{
         justify-content: space-between;
     }
 
@@ -1873,6 +1899,15 @@ footer .list-group
     .memberData div {
         width: 150px;
         margin-bottom: 15px;
+    }
+
+    .speciesData div,
+    .dashboard div,
+    .birdData div {
+        width: 160px;
+        margin: 1%;
+        margin-block-end: 15px;
+
     }
 
     .speciesData div,
@@ -1900,6 +1935,34 @@ footer .list-group
     #chartIcon{
         font-size: 3rem;
     }
+
+    #statsWrap{
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    #exportCsv{
+        font-size: 1rem;
+    }
+
+    #homeManagement{
+        font-size: 1.5rem;
+    }
+
+    .mostWanted{
+       padding-top: 0;
+       padding-left: 0;
+    }
+
+    #modalPicture{
+        left: 0;
+    }
+
+    #adminNavTrigger,
+    #adminNav{
+        top:60px;
+    }
+
 
 
 
@@ -1942,6 +2005,12 @@ footer .list-group
 
     #loadBtn{
         width: 99%;
+    }
+
+    .speciesData div,
+    .dashboard div,
+    .birdData div {
+        width: 150px;
     }
 
 }

@@ -42,7 +42,7 @@
                 </div>
 
                 <div>
-                    <p class="dashboardDataTitle">Moyenne par utilisateur</p>
+                    <p class="dashboardDataTitle">Moyenne utilisateur</p>
                     <p class="dashboardDataStats">{{ averageByUser }}</p>
                 </div>
 
@@ -71,11 +71,11 @@
     <div class="mostWanted">
         {% for img in homeImg %}
 
-            <div class="img" >
-                <img src="{{ asset('/naoPictures/'~img) }}">
-                <span class ="imgTitle">{{ img|speciesFromFile }}</span>
+            <div class="img admin">
+                <img class="adminPreview" src="{{ asset('/naoPictures/'~img) }}">
+                <span class ="imgTitle preview">{{ img|speciesFromFile }}</span>
                 <button onclick="pictNum(this)" class="btn btn-outline updateHome" value="{{ loop.index }}">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" onclick="pictNum(this)" aria-hidden="true"></i>
                 </button>
             </div>
         {% endfor %}
