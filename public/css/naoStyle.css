@@ -1588,6 +1588,14 @@ footer .list-group
         font-size: 1.5rem;
     }
 
+    #connection .btn{
+       font-size: 0.7rem;
+    }
+
+    #connection .btn-default{
+         right: 25%;
+    }
+
     #accountBadge{
         font-size: 2rem;
     }
@@ -1603,12 +1611,7 @@ footer .list-group
         border-radius: 0;
         box-shadow:none
     }
-    
 
-    #nav_search_submit{
-        background-color: transparent;
-        left: 110px;
-    }
 
     #dashboard ul{
         width: 100%;
@@ -1626,8 +1629,10 @@ footer .list-group
     }
 
     #nav_search_submit{
-        top: -5%;
-        left: 35%;
+        background-color: transparent;
+        top: 0;
+        left: 25%;
+        padding-top:2%;
     }
 
 
@@ -1701,6 +1706,10 @@ footer .list-group
     #nav_search_submit{
         right: 0;
         top: 0;
+    }
+
+    #connection .btn{
+        padding:5px;
     }
 
 }
