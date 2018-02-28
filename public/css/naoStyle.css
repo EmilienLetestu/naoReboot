@@ -1576,7 +1576,7 @@ footer .list-group
     }
 
     .pageTitle{
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .alert{
@@ -1633,6 +1633,10 @@ footer .list-group
 
     #dashboard ul{
         width: 100%;
+    }
+
+    #dashboard li{
+        font-size: 0.9rem;
     }
 
     #search{
@@ -1733,13 +1737,19 @@ footer .list-group
 
     .card{
         margin-left: 0;
-        width: 100%;
     }
 
     .cardHeader{
-        font-size: 0.9rem;
         padding-top: 0;
         height: unset;
+    }
+
+    .cardHeader,
+    .info1,
+    .info2,
+    .cardCmt,
+    .validated{
+        font-size: 0.8rem;
     }
 
     .cardHeader ul{
@@ -1789,20 +1799,55 @@ footer .list-group
         font-size: 0.9rem;
     }
 
+    .info1{
+        margin-top: 10px;
+    }
+
+    .closeMap{
+        position: absolute;
+        top: 129px;
+        left: unset;
+        right: 9px;
+    }
+
+    #filterForm{
+        flex-direction: column;
+    }
+
+    #browseFilter .form-group{
+        padding: 15px;
+        margin-bottom: unset;
+    }
+
+    #browseFilter .form-control,
+    #filterSubmit{
+        width: 100%;
+        font-size: 0.8rem;
+    }
+
 }
 
 
 @media only screen and (max-width: 320px){
+    .cardHolder{
+        padding-left: 1%;
+        padding-right: 1%;
+    }
     .card{
         width: 100%;
     }
+
 
     #nav_search_submit{
         right: 0;
         top: 0;
     }
 
-    .cardHeader{
+    .cardHeader,
+    .info1,
+    .info2,
+    .cardCmt,
+    .validated{
         font-size: 0.8rem;
     }
 
