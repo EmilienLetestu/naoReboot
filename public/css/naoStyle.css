@@ -1584,6 +1584,7 @@ footer .list-group
         display: inline-block;
     }
 
+
     .navbar-brand{
         font-size: 1.5rem;
     }
@@ -1658,15 +1659,6 @@ footer .list-group
         left: 0;
     }
 
-    .card{
-        width: 100%;
-    }
-
-    .cardHeader{
-        font-size: 0.9rem;
-    }
-
-
     footer{
         padding-left: 0;
         padding-right: 0;
@@ -1676,7 +1668,24 @@ footer .list-group
 
     .card{
         margin-left: 0;
+        width: 100%;
     }
+
+    .cardHeader{
+        font-size: 0.9rem;
+        padding-top: 0;
+        height: unset;
+    }
+
+    .cardHeader ul{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cardHeader ul li i{
+        padding-left: 10px;
+    }
+
 
     .shrink{
         font-size: 0.8rem;
