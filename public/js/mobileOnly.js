@@ -19,8 +19,8 @@ if(screen.width < 768){
         }
 
         style === "block" ?
-            swappClass(trigger,'fa-caret-square-o-down','fa-caret-square-o-right'):
-            swappClass(trigger,'fa-caret-square-o-right','fa-caret-square-o-down')
+            swappClass(trigger,'fa-caret-down','fa-caret-right'):
+            swappClass(trigger,'fa-caret-right','fa-caret-down')
         ;
     }
 }
