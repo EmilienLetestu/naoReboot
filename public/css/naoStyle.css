@@ -1576,7 +1576,7 @@ footer .list-group
     }
 
     .pageTitle {
-        font-size: 1.5rem;
+        font-size: 1.5rem !important;
     }
 
     .alert {
@@ -1897,8 +1897,15 @@ footer .list-group
 
     .profileData div,
     .memberData div {
-        width: 150px;
         margin-bottom: 15px;
+    }
+
+    .profileData div{
+        width: 150px;
+    }
+
+    .memberData div{
+        width: 140px;
     }
 
     .speciesData div,
@@ -1919,8 +1926,13 @@ footer .list-group
         font-size: 0.8rem;
     }
 
-    .profileData div:last-child{
+    .profileData div:last-child,
+    .memberData div:last-child{
         width:100%
+    }
+
+    .memberInfo .accountActions{
+        padding-top: 1rem;
     }
 
     #loadReports{
@@ -1963,8 +1975,14 @@ footer .list-group
         top:60px;
     }
 
+    .reminder{
+        display: list-item;
+        font-size: 0.9rem;
+    }
 
-
+    #memberFilter{
+        width: 90%;
+    }
 
 }
 @media only screen and (max-width: 320px){
