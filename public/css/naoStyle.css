@@ -1572,6 +1572,18 @@ footer .list-group
 
 @media only screen and (min-width: 320px)and (max-width: 768px){
 
+    #app {
+        margin-top: 80px;
+    }
+
+    input {
+        box-shadow:none;
+    }
+
+    .pageTitle{
+        font-size: 2rem;
+    }
+
     .mobileHidden{
         display: none;
     }
@@ -1582,6 +1594,10 @@ footer .list-group
 
     .mobileInline{
         display: inline-block;
+    }
+
+    .has-error {
+        font-size: 0.8rem;
     }
 
 
@@ -1610,7 +1626,7 @@ footer .list-group
         border: none;
         border-bottom: solid 2px #FFA500;
         border-radius: 0;
-        box-shadow:none
+        box-shadow:none;
     }
 
 
@@ -1705,6 +1721,25 @@ footer .list-group
         margin-right: 0;
         margin-left: 0;
     }
+
+    .connectionForms{
+        margin-top: 15%;
+        margin-left: 0;
+        padding-left: 2%;
+        padding-right: 2%;
+        width:100%;
+    }
+
+    .connectionForms label{
+        margin-bottom: 0;
+    }
+
+    .checkbox{
+        margin-top: 15%;
+        margin-bottom: 15%;
+        font-size: 0.9rem;
+    }
+
 }
 
 @media only screen and (max-width: 320px){
