@@ -988,7 +988,7 @@ footer .list-group
     padding-top: 5%;
 }
 
-.pageTitle span{
+#searchQuery span{
     color: #ffa500;
 }
 
@@ -1569,31 +1569,31 @@ footer .list-group
     }
 }
 
-@media only screen and (min-width: 320px)and (max-width: 768px){
+@media only screen and (min-width: 320px)and (max-width: 768px) {
 
     #app {
         margin-top: 80px;
     }
 
-    .pageTitle{
+    .pageTitle {
         font-size: 1.5rem;
     }
 
-    .alert{
+    .alert {
         font-size: 0.8rem;
         padding-left: 1%;
         padding-right: 1%;
     }
 
-    .mobileHidden{
+    .mobileHidden {
         display: none;
     }
 
-    .mobileOnly{
+    .mobileOnly {
         display: block;
     }
 
-    .mobileInline{
+    .mobileInline {
         display: inline-block;
     }
 
@@ -1601,145 +1601,153 @@ footer .list-group
         font-size: 0.8rem;
     }
 
-
-    .navbar-brand{
+    .navbar-brand {
         font-size: 1.5rem;
     }
 
-    #connection .btn{
-       font-size: 0.7rem;
+    #connection .btn {
+        font-size: 0.7rem;
     }
 
-    #connection .btn-default{
-         right: 25%;
+    #connection .btn-default {
+        right: 25%;
     }
 
-    #accountBadge{
+    #accountBadge {
         font-size: 2rem;
     }
 
-    #nav_search_search{
+    #nav_search_search {
         width: 100%;
         position: absolute;
-        top:40px;
-        left:-10%;
+        top: 40px;
+        left: -10%;
         display: none;
         border: none;
         border-bottom: solid 2px #FFA500;
         border-radius: 0;
-        box-shadow:none;
+        box-shadow: none;
     }
 
-
-    #dashboard ul{
-        width: 100%;
-    }
-
-    #dashboard li{
+    #searchResults ul{
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
         font-size: 0.9rem;
     }
 
-    #search{
+    #searchQuery{
+        font-size: 1.2rem;
+    }
+
+    #dashboard ul {
         width: 100%;
     }
 
+    #dashboard li {
+        font-size: 0.9rem;
+    }
 
-    .navbar{
+    #search {
+        width: 100%;
+    }
+
+    .navbar {
         padding-left: 1%;
         padding-right: 1%;
     }
 
-    #nav_search_submit{
+    #nav_search_submit {
         background-color: transparent;
         top: 0;
         left: 25%;
-        padding-top:2%;
+        padding-top: 2%;
     }
 
-    footer{
+    footer {
         padding-left: 0;
         padding-right: 0;
         margin-left: 0;
         margin-right: 0;
     }
 
-    footer .list-group{
+    footer .list-group {
         margin-left: 4%;
         margin-right: 4%;
         padding-left: 0;
         border-bottom: solid 1px #FFFFFF;
     }
 
-    #footerFlex{
+    #footerFlex {
         display: flex;
     }
 
-    .social{
+    .social {
         order: 3;
         margin-top: 35px;
         margin-bottom: 0 !important;
     }
 
-    .social h4{
+    .social h4 {
         margin-bottom: 3% !important;
     }
 
     #moreInfo li i,
-    #naoList li i{
+    #naoList li i {
         position: absolute;
         right: 0;
     }
 
-    #naoList li i{
+    #naoList li i {
         top: 5px;
     }
 
-    #moreInfo li i{
+    #moreInfo li i {
         top: 35px;
     }
 
-    #moreInfo{
+    #moreInfo {
         padding-top: 30px;
     }
 
     #naoList li,
     #moreInfo li,
     .social li,
-    .social h4{
+    .social h4 {
         font-size: 1rem;
     }
 
-    .list-title{
-        margin-bottom: 0!important;
+    .list-title {
+        margin-bottom: 0 !important;
     }
 
-    .mostWanted{
+    .mostWanted {
         flex-direction: column;
     }
 
-    .img img{
+    .img img {
         width: 100%;
         height: auto;
     }
 
-    .img{
+    .img {
         width: 100%;
     }
 
-    .imgTitle{
+    .imgTitle {
         top: -50%;
         width: 100%;
     }
 
-    .gMap{
+    .gMap {
         left: 0;
     }
 
-    .card{
+    .card {
         margin-left: 0;
     }
 
-    .cardHeader{
+    .cardHeader {
         padding-top: 0;
         height: unset;
     }
@@ -1748,86 +1756,154 @@ footer .list-group
     .info1,
     .info2,
     .cardCmt,
-    .validated{
+    .validated {
         font-size: 0.8rem;
     }
 
-    .cardHeader ul{
+    .cardHeader ul {
         display: flex;
         justify-content: space-between;
     }
 
-    .cardHeader ul li i{
+    .cardHeader ul li i {
         padding-left: 10px;
     }
 
-
-    .shrink{
+    .shrink {
         font-size: 0.8rem;
 
     }
 
-    #dashboard{
+    #dashboard {
         width: 100%;
     }
 
-    .moreBtn{
+    .moreBtn {
         padding-left: 4%;
         padding-right: 4%;
     }
 
-    .card{
+    .card {
         margin-right: 0;
         margin-left: 0;
     }
 
-    .connectionForms{
+    .connectionForms {
         margin-top: 15%;
         margin-left: 0;
         padding-left: 2%;
         padding-right: 2%;
-        width:100%;
+        width: 100%;
     }
 
-    .connectionForms label{
+    .connectionForms label {
         margin-bottom: 0;
     }
 
-    .checkbox{
+    .checkbox {
         margin-top: 15%;
         margin-bottom: 15%;
         font-size: 0.9rem;
     }
 
-    .info1{
+    .info1 {
         margin-top: 10px;
     }
 
-    .closeMap{
+    .closeMap {
         position: absolute;
         top: 129px;
         left: unset;
         right: 9px;
     }
 
-    #filterForm{
+    #filterForm {
         flex-direction: column;
     }
 
-    #browseFilter .form-group{
+    #browseFilter .form-group {
         padding: 15px;
         margin-bottom: unset;
     }
 
     #browseFilter .form-control,
-    #filterSubmit{
+    #filterSubmit {
         width: 100%;
         font-size: 0.8rem;
     }
 
+    .headBanner{
+        margin-top: 10%;
+    }
+
+    .headBanner h2,
+    .accountScore{
+        font-size: 1.3rem;
+    }
+
+    #profileInfo ul{
+        display: block;
+        font-size: 0.9rem;
+    }
+
+    .modalForm{
+        margin: 2%;
+    }
+
+    #pswdModal {
+        left: 0;
+    }
+
+
+    #modifyPswd .btn{
+        font-size: 0.8rem;
+    }
+
+    .speciesData,
+    .dashboard,
+    .profileData,
+    .memberData,
+    .birdData {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .profileData div,
+    .memberData div {
+        width: 150px;
+        margin-bottom: 15px;
+    }
+
+    .speciesData div,
+    .dashboard div,
+    .profileData div,
+    .memberData div,
+    .birdData div {
+        height: unset;
+        font-size: 0.8rem;
+    }
+
+    .profileData div:last-child{
+        width:100%
+    }
+
+    #loadReports{
+        text-align: center;
+    }
+
+    #loadBtn{
+        margin-left: 0;
+        width: 90%;
+    }
+
+    #chartIcon{
+        font-size: 3rem;
+    }
+
+
+
 }
-
-
 @media only screen and (max-width: 320px){
     .cardHolder{
         padding-left: 1%;
@@ -1853,6 +1929,19 @@ footer .list-group
 
     #connection .btn{
         padding:5px;
+    }
+
+    .speciesData,
+    .dashboard,
+    .profileData,
+    .memberData,
+    .birdData {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #loadBtn{
+        width: 99%;
     }
 
 }
