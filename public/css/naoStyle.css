@@ -7,19 +7,16 @@ body, #wrapper
     min-height: 100vh;
 }
 
-footer
-{
+footer {
     background-color: #5e5e5e;
     z-index: 3;
 }
 
-footer li
-{
+footer li {
     font-size: 1.2rem;
 }
 
-li
-{
+li {
     list-style: none;
 }
 
@@ -27,17 +24,19 @@ a,
 a:hover,
 a:active,
 a:visited,
-a:focus
-{
+a:focus {
     text-decoration: none;
     color: inherit;
 }
 
-h1
-{
+h1 {
     text-align: center;
     margin-top: 1%;
     margin-bottom: 1%;
+}
+
+input {
+    box-shadow:none;
 }
 
 .btn:focus{
@@ -1576,12 +1575,14 @@ footer .list-group
         margin-top: 80px;
     }
 
-    input {
-        box-shadow:none;
-    }
-
     .pageTitle{
         font-size: 2rem;
+    }
+
+    .alert{
+        font-size: 0.8rem;
+        padding-left: 1%;
+        padding-right: 1%;
     }
 
     .mobileHidden{
@@ -1639,7 +1640,6 @@ footer .list-group
     }
 
 
-
     .navbar{
         padding-left: 1%;
         padding-right: 1%;
@@ -1652,6 +1652,62 @@ footer .list-group
         padding-top:2%;
     }
 
+    footer{
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    footer .list-group{
+        margin-left: 4%;
+        margin-right: 4%;
+        padding-left: 0;
+        border-bottom: solid 1px #FFFFFF;
+    }
+
+    #footerFlex{
+        display: flex;
+    }
+
+    .social{
+        order: 3;
+        margin-top: 35px;
+        margin-bottom: 0 !important;
+    }
+
+    .social h4{
+        margin-bottom: 3% !important;
+    }
+
+    #moreInfo li i,
+    #naoList li i{
+        position: absolute;
+        right: 0;
+    }
+
+    #naoList li i{
+        top: 5px;
+    }
+
+    #moreInfo li i{
+        top: 35px;
+    }
+
+    #moreInfo{
+        padding-top: 30px;
+    }
+
+    #naoList li,
+    #moreInfo li,
+    .social li,
+    .social h4{
+        font-size: 1rem;
+    }
+
+    .list-title{
+        margin-bottom: 0!important;
+    }
 
     .mostWanted{
         flex-direction: column;
@@ -1673,13 +1729,6 @@ footer .list-group
 
     .gMap{
         left: 0;
-    }
-
-    footer{
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 0;
-        margin-right: 0;
     }
 
     .card{
@@ -1742,6 +1791,7 @@ footer .list-group
 
 }
 
+
 @media only screen and (max-width: 320px){
     .card{
         width: 100%;
@@ -1750,6 +1800,10 @@ footer .list-group
     #nav_search_submit{
         right: 0;
         top: 0;
+    }
+
+    .cardHeader{
+        font-size: 0.8rem;
     }
 
     #connection .btn{
