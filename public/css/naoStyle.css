@@ -1730,6 +1730,11 @@ footer .list-group
         height: auto;
     }
 
+    .img button{
+        top: -422px;
+        left: 90%;
+    }
+
     .adminPreview{
         width: 100% !important;
         height: 370px !important;

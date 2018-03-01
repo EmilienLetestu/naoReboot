@@ -2,6 +2,21 @@
  * Created by Emilien on 12/02/2018.
  */
 
+var isScrolling;
+
+window.addEventListener('scroll', function () {
+
+    // Clear our timeout throughout the scroll
+    window.clearTimeout( isScrolling );
+    document.getElementById('adminNavTrigger').style.display = "none";
+
+    // Set a timeout to run after scrolling ends
+    isScrolling = setTimeout(function() {
+        document.getElementById('adminNavTrigger').style.display = "block";
+    }, 66);
+
+}, false);
+
 function offCanvas() {
    var menu = $id('adminNav');
    var trigger = $id('adminNavTrigger');
