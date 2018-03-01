@@ -414,22 +414,27 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     padding-bottom: 0.5%;
 }
 
-#connection .btn{
+#connection .btn,
+#seeAll .btn-default{
     border: none;
 }
 
-#connection .btn-default
-{
+#connection .btn-default,
+#seeAll .btn-default{
     color: #FFFFFF;
     border-color: #FFFFFF;
     background-color: orange;
-    position: absolute;
-    right: 9%;
 
 }
 
+#connection .btn-default{
+    position: absolute;
+    right: 9%;
+}
+
+
 #connection .btn-default:hover
-{
+#seeAll .btn-default:hover{
     color: orange;
     border-color: orange;
     background-color: #FFFFFF;
@@ -626,6 +631,15 @@ footer .list-group
 
 
 /*---------------------------home page---------------------------*/
+#event{
+    text-align: center;
+    background-color: #dfdfdf;
+}
+
+#event h2{
+    margin: 0;
+    padding-top: 3%;
+}
 
 .mostWanted{
     display: flex;
@@ -638,6 +652,16 @@ footer .list-group
     width: 30%;
 }
 
+#lastPublished{
+    text-align: center;
+    margin-top: 3rem;
+}
+
+#seeAll{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 /*---------------------------report card-------------------------*/
 .cardHolder
 {
@@ -646,7 +670,7 @@ footer .list-group
     align-items: center;
     align-content: space-between;
     justify-content: center;
-    padding-top: 3%;
+    padding-top: 2%;
     padding-bottom: 3%;
 }
 
@@ -1743,6 +1767,11 @@ footer .list-group
         margin-bottom: 0 !important;
     }
 
+    #homeCards{
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
     .mostWanted {
         flex-direction: column;
     }
@@ -2205,6 +2234,15 @@ footer .list-group
 
     .termArticle ul{
         padding-left: 1.2rem;
+    }
+
+    #lastPublished h2,
+    #event h2{
+        font-size: 1rem;
+    }
+
+    #event h2{
+        padding-bottom: 2%;
     }
 
 }

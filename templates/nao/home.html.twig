@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block body %}
+    <div id="event">
+        <h2>NAO "MOST WANTED"</h2>
+    </div>
+
     <div class="mostWanted">
         {% for img in homeImg %}
             <div class="img">
@@ -13,10 +17,19 @@
             </div>
         {% endfor %}
     </div>
+
+    <div id="lastPublished">
+        <h2>DERNIERES OBSERVATION PUBLIEES</h2>
+    </div>
+
     <div class="cardHolder col-sm-12" id="homeCards">
         {% for report in reports %}
             {{ include('nao/reportCard.html.twig') }}
         {% endfor %}
+    </div>
+
+    <div id="seeAll">
+        <a class="btn btn-default" href="{{ path('report',{'state' : 'valide'}) }}">Voir toutes les observations</a>
     </div>
 
 {% endblock %}
