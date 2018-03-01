@@ -342,6 +342,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 #landingTop{
     display: flex;
     padding: 2% 2%;
+    flex-wrap: wrap;
 }
 
 #landingForm {
@@ -2003,9 +2004,117 @@ footer .list-group
     }
 
     #reportForm .form-group:last-child {
-        
+
         margin-top: 10%;
     }
+
+    #landingIntro{
+        width: 100%;
+    }
+
+    #landingIntro p{
+        font-size: 1rem;
+        text-align: justify;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    #landingForm{
+        width: 100%;
+        margin-left: 0;
+        height: unset;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    #landingIntro ul {
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .circleIcon {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 1.5rem;
+    }
+
+    #landingIntro li{
+        margin-block-end: 25px;
+    }
+
+    #landingMid p {
+        font-size: 1.2rem;
+        padding-top: 5%;
+        padding-bottom: 0;
+    }
+
+    #landingMid ul{
+        flex-wrap: wrap;
+        position: relative;
+        left: -5%;
+    }
+
+    .circleData{
+        font-size: 1rem;
+    }
+
+    .dataText {
+        font-size: 1rem;
+        margin-top: 0;
+    }
+
+    #totalSpecies,
+    #speciesThreat{
+        padding: 2rem;
+    }
+
+    #speciesUe{
+        padding: 1.9rem;
+    }
+
+    #withOutNao h2,
+    #withNao h2{
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    #withNao,
+    #withOutNao{
+        flex-direction: column;
+    }
+
+    #withOutNao{
+        margin-bottom: 2%;
+    }
+
+    #landingEnd ul{
+        font-size: 1.5rem;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
+    }
+
+    #landingEnd ul li:not(:last-child) {
+        padding-right: 10% !important;
+    }
+
+    #withNao span{
+        font-size: 2rem;
+        margin-right: 0;
+    }
+
+
+
+
+
+
+
 
 }
 @media only screen and (max-width: 320px){
