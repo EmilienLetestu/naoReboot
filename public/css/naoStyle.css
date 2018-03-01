@@ -633,12 +633,11 @@ footer .list-group
 /*---------------------------home page---------------------------*/
 #event{
     text-align: center;
-    background-color: #dfdfdf;
 }
 
 #event h2{
-    margin: 0;
     padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 .mostWanted{
