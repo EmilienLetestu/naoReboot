@@ -1989,6 +1989,24 @@ footer .list-group
         width: 90%;
     }
 
+    #reportForm{
+        padding-top: 5%;
+    }
+
+    #report_location {
+        width: 90%;
+    }
+
+    #localize{
+        top: -50px;
+        left: 91%;
+    }
+
+    #reportForm .form-group:last-child {
+        
+        margin-top: 10%;
+    }
+
 }
 @media only screen and (max-width: 320px){
     .cardHolder{
