@@ -75,7 +75,7 @@ input {
 
 .search-bar{
     position: fixed;
-    top: 2.4%;
+    top: 1rem;
     left: 10rem;
 }
 
@@ -352,7 +352,6 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     -webkit-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
     -moz-box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
     box-shadow: 0 0 5px 5px rgba(55, 55, 55, 0.75);
-    height: 680px;
 }
 
 #landingTerms{
@@ -632,8 +631,8 @@ footer .list-group
     display: flex;
     background-color: #dfdfdf;
     padding-top: 3%;
-    padding-left: 3%;
     justify-content: space-evenly;
+    text-align: center;
 }
 .img{
     width: 30%;
@@ -653,8 +652,8 @@ footer .list-group
 
 .closeMap{
     position: relative;
-    top: -105px;
-    left: 332px;
+    top: -6.9rem;
+    left: 20.68rem;
     z-index: 2;
     background-color: #ffffff;
     visibility: hidden;
@@ -1123,8 +1122,8 @@ footer .list-group
 }
 .img button{
     position: relative;
-    top: -418px;
-    left: 81.5%;
+    top: -24.5rem;
+    left: -1rem;
     color: #ffa500;
     background-color: transparent!important;
     border: none;
@@ -1188,6 +1187,10 @@ footer .list-group
     font-size: 1.5em;
     margin-bottom: 1%;
 
+}
+
+#updateZone {
+    margin-bottom: -2rem;
 }
 
 /*---------------------------admin menu------------------------------*/
@@ -1750,8 +1753,8 @@ footer .list-group
     }
 
     .img button{
-        top: -422px;
-        left: 90%;
+        left: 10.5rem;
+        top: -27rem;
     }
 
     .adminPreview{
@@ -2040,7 +2043,6 @@ footer .list-group
     #landingForm{
         width: 100%;
         margin-left: 0;
-        height: unset;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
@@ -2215,6 +2217,10 @@ footer .list-group
         width: 100%;
     }
 
+    img button {
+        left: 9rem;
+    }
+
 
     #nav_search_submit{
         right: 0;
@@ -2285,7 +2291,6 @@ footer .list-group
 
     #landingForm{
         width: 40%;
-        height: unset;
     }
 
     #landingIntro h1{
