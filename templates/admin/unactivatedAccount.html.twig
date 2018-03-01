@@ -24,9 +24,9 @@
         <table class="table">
             <thead>
             <tr>
-                <th><i class="material-icons">person</i></th>
-                <th><i class="material-icons">date_range</i></th>
-                <th><i class="material-icons">delete</i></th>
+                <th><i class="fa fa-user"></i></th>
+                <th><i class="fa fa-calendar"></i></th>
+                <th><i class="fa fa-trash"></i></th>
             </tr>
             </thead>
             <tbody>
@@ -39,9 +39,9 @@
                     {{ user.createdOn|date('d/m/Y') }}
                 </td>
                 <td>
-                    <a class="btn delete" id="delete{{ loop.index }}" href="{{ path('userManagement', {'action' : 'delete', 'id' :  user.id}) }}"
+                    <a class="delete" id="delete{{ loop.index }}" href="{{ path('userManagement', {'action' : 'delete', 'id' :  user.id}) }}"
                        onclick="deleteEntity(event,'delete{{ loop.index }}','unactivatedUser{{ loop.index }}')">
-                        <i class="material-icons">delete</i>
+                        <i class="fa fa-trash"></i>
                     </a>
                 </td>
             </tr>

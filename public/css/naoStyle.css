@@ -76,7 +76,7 @@ input {
 .search-bar{
     position: fixed;
     top: 2.4%;
-    left: 10%;
+    left: 10rem;
 }
 
 .search-bar input{
@@ -1560,6 +1560,16 @@ footer .list-group
     width: 400px;
 }
 
+#contact_form_message{
+    height: 350px;
+    box-shadow: none;
+}
+
+.globalDelete{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 
 
 /**-----media queries-----*/
@@ -1576,6 +1586,10 @@ footer .list-group
         margin-top: 80px;
     }
 
+    form{
+        font-size: 0.9rem;
+    }
+
     .pageTitle {
         font-size: 1.5rem !important;
     }
@@ -1588,6 +1602,10 @@ footer .list-group
 
     .mobileHidden {
         display: none;
+    }
+
+    .alert{
+        top:60px;
     }
 
     .mobileOnly {
@@ -1621,8 +1639,8 @@ footer .list-group
     #nav_search_search {
         width: 100%;
         position: absolute;
-        top: 40px;
-        left: -10%;
+        top: 2.5rem;
+        left: -10rem;
         display: none;
         border: none;
         border-bottom: solid 2px #FFA500;
@@ -1661,7 +1679,7 @@ footer .list-group
     #nav_search_submit {
         background-color: transparent;
         top: 0;
-        left: 25%;
+        left: 3rem;
         padding-top: 2%;
     }
 
@@ -2109,12 +2127,83 @@ footer .list-group
         margin-right: 0;
     }
 
+    .checked{
+        left: 95%;
+    }
 
+    .table{
+        font-size: 0.8rem;
+    }
 
+    #allUnactivated{
+        font-size: 0.7rem;
+        border: none;
+        text-decoration: underline;
+        padding: 0;
+    }
 
+    .aboutNao {
+        flex-direction: column;
+    }
 
+    #about{
+        margin-bottom: 2rem;
+    }
+    .aboutNao p,
+    .aboutNao h2{
+        width: 100%;
+    }
 
+    .aboutNao h2,
+    #partnership h2,
+    #contact h2{
+        font-size: 1.8rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
 
+    #contactBtn{
+        margin-bottom: 2rem;
+    }
+
+    .aboutNao p{
+        font-size: 0.9rem;
+    }
+
+    .aboutNao:nth-child(2) {
+        flex-flow: column;
+    }
+
+    #senderInfo{
+        flex-wrap: wrap;
+    }
+
+    #senderInfo .form-group-row{
+        width: 100%;
+    }
+
+    #senderInfo input {
+        width: 100%;
+    }
+
+    #termsSummary{
+        padding-top: 1.5rem;
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        padding-left: 0;
+    }
+
+    #termOfUse h2{
+        font-size: 1.2rem;
+    }
+
+    .termArticle{
+        font-size: 0.9rem;
+    }
+
+    .termArticle ul{
+        padding-left: 1.2rem;
+    }
 
 }
 @media only screen and (max-width: 320px){
@@ -2162,6 +2251,9 @@ footer .list-group
     .birdData div {
         width: 150px;
     }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1280px){
 
 }
 
