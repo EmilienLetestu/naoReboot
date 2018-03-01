@@ -265,3 +265,24 @@ function checked(inputValue,errorId) {
       $id(errorId).previousElementSibling.style.display = "none";
   }
 }
+
+
+function selectCurrentDate(){
+    var date = new Date();
+
+    //prevent date to be reset to current day on page reload after server side validation failure
+    if($id("report_nbrOfBirds").value === ""){
+
+        $id("report_addedOn_day").value = date.getDate();
+        $id("report_addedOn_month").value = date.getMonth()+1;
+        $id("report_addedOn_year").value = date.getFullYear();
+    }
+}
+
+if(window.location.pathname === "/observations/nouvelle-observation"){
+    window.addEventListener('load',function () {
+        selectCurrentDate();
+    });
+}
+
+
