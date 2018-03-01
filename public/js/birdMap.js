@@ -7,6 +7,7 @@ function initMap(){
 
     //get all maps id
     var maps =  document.querySelectorAll('*[id^="birdStatMap"]');
+    var zoom = screen.width <  768 ? 5 : 6;
 
    //loop through all id and create map
    for( var i = 0; i < maps.length; i++)
@@ -15,7 +16,7 @@ function initMap(){
        var index = i + parseInt(1);
        var mapId = 'birdStatMap'+index;
        var map = new google.maps.Map($id(mapId), {
-           zoom: 6,
+           zoom: zoom,
            center: center
        });
 
