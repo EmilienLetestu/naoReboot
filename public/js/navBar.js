@@ -60,6 +60,10 @@ function search(event){
 
     event.preventDefault();
 
+    if($id("nav_search_search").value === ""){
+        $id('jsGenerated').style.display = "none";
+    }
+    
     if($id("nav_search_search").value !== ""){
 
         var form = $id("searchForm");
@@ -68,7 +72,6 @@ function search(event){
 
         xmlhttp.onreadystatechange = function () {
             if(this.readyState === 4){
-
                 generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#5a5a5a');
             }
         };
