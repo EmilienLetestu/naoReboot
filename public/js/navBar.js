@@ -63,7 +63,7 @@ function search(event){
     if($id("nav_search_search").value === ""){
         $id('jsGenerated').style.display = "none";
     }
-    
+
     if($id("nav_search_search").value !== ""){
 
         var form = $id("searchForm");
