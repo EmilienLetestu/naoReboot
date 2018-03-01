@@ -1,7 +1,7 @@
 /**
  * Created by Emilien on 20/02/2018.
  */
-if(screen.width < 768){
+if(screen.width <= 768){
 
     /**
      * @param id
