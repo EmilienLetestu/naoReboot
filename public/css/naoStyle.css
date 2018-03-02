@@ -282,7 +282,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 }
 
 #landingEnd ul li:not(:last-child){
-   padding-right: 40% !important;
+   padding-right: 3.9rem !important;
 }
 
 #landingEnd {
