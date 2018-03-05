@@ -48,7 +48,7 @@
                 {% endif %}
             </li>
             <li class="list-inline-item pull-right {{ report.satNav|length > 35 ? 'shrink' }}">
-                <i class="fa fa-compass" onmouseover="showMap('{{ mapId }}','{{ closeBtnId }}',{{ loop.index }})" aria-hidden="true"></i>
+                <i class="fa fa-compass" onclick="showMap('{{ mapId }}','{{ closeBtnId }}',{{ loop.index }})" aria-hidden="true"></i>
                 {{ report.satNav|gps }}
             </li>
         </ul>
