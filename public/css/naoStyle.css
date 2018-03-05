@@ -39,6 +39,36 @@ input {
     box-shadow:none;
 }
 
+#intro {
+    background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('../naoHome.jpg'),no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 960px;
+    position: relative;
+    top: -100px;
+    color: #ffffff;
+}
+
+.imgText h1{
+    padding-top: 10%;
+}
+
+#speech{
+    position: relative;
+    top: 5rem;
+    left: 9rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 80%;
+    text-align: center;
+}
+
+#speech p{
+    text-align: justify;
+    padding: 2rem;
+}
+
 .interactive:hover,
 .card ul li i.fa-user:hover{
     transform: scale(1.5) !important;
@@ -411,8 +441,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 #connection .btn-outline,
 #app .btn-outline,
-#loadReports .btn-outline
-{
+#loadReports .btn-outline{
     color: orange;
     border-color: orange;
     background-color: #FFFFFF;
@@ -424,12 +453,14 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 }
 
 #connection .btn,
-#seeAll .btn-default{
+#seeAll .btn-default,
+#speech .btn-default{
     border: none;
 }
 
 #connection .btn-default,
-#seeAll .btn-default{
+#seeAll .btn-default,
+#speech .btn-default{
     color: #FFFFFF;
     border-color: #FFFFFF;
     background-color: orange;
@@ -442,11 +473,18 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 }
 
 
-#connection .btn-default:hover
-#seeAll .btn-default:hover{
+#connection .btn-default:hover,
+#seeAll .btn-default:hover,
+#speech .btn-default:hover{
     color: orange;
-    border-color: orange;
+    border: solid 1px orange;
     background-color: #FFFFFF;
+}
+
+#speech .btn-default:hover{
+    color: orange;
+    border: solid 1px orange;
+    background-color: transparent;
 }
 
 
@@ -645,8 +683,8 @@ footer .list-group
 }
 
 #event h2{
-    padding-top: 3%;
-    padding-bottom: 3%;
+    margin-top: -2rem;
+    padding-bottom: 3rem;
 }
 
 .mostWanted{
@@ -1607,11 +1645,20 @@ footer .list-group
 
 
 
-/**-----media queries-----*/
+/**-----------------------------------------------media queries-----------------------------------------------*/
 
 @media only screen and (min-width: 1600px){
     .card{
        margin-left: 5%;
+    }
+
+    #speech{
+        left: 11.5rem;
+    }
+
+    #speech p{
+        padding-top: 5rem;
+        padding-bottom: 5rem;
     }
 }
 
@@ -2257,8 +2304,38 @@ footer .list-group
         font-size: 1rem;
     }
 
+    #event{
+        margin-top: -5rem;
+    }
+
     #event h2{
         padding-bottom: 2%;
+    }
+
+    .imgText h1 {
+        padding-top: 10rem;
+        font-size: 2rem;
+    }
+
+    .imgText{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #speech{
+        position: initial;
+        width: 100%;
+        padding-top: 2rem;
+    }
+
+    #speech h2{
+        font-size: 1.2rem;
+    }
+
+    #speech p{
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 2rem;
     }
 
 }
@@ -2320,6 +2397,32 @@ footer .list-group
     .termArticle ul li::before{
         font-size: 1rem;
     }
+
+    .imgText h1 {
+        font-size: 1.5rem;
+    }
+
+    #speech{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #speech h2 {
+        font-size: 1.1rem;
+        padding: 0;
+    }
+
+    #speech p{
+        font-size: 0.9rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #intro{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1280px) {
@@ -2389,6 +2492,15 @@ footer .list-group
     .reminder {
         font-size: 1rem;
     }
+
+    .imgText h1 {
+        padding-top: 5rem;
+    }
+
+    #speech{
+        left: 6rem;;
+    }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1280px) and (orientation: portrait){
@@ -2673,7 +2785,6 @@ footer .list-group
         font-size: 1.8rem;
     }
 
-
     #exportIcon{
         font-size: 2.5rem;
     }
@@ -2689,6 +2800,26 @@ footer .list-group
     #termsSummary{
         font-size: 0.8rem;
         padding-left: 0;
+    }
+
+    .imgText h1{
+        padding-top: 15rem;
+    }
+
+    #speech{
+        position: initial;
+        width: 100%;
+        padding-top: 2rem;
+    }
+
+    #speech h2{
+        padding-bottom: 2rem;
+    }
+
+    #speech p{
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 2rem;
     }
 
 }
