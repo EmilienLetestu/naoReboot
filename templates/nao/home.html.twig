@@ -55,6 +55,30 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript">
+        var db = [];
+        var length = {{ reports|length }};
+
+        for(var i = 0; i < length; i++){
+            {% for report in reports %}
+            db.push(
+                {
+                    reportId: "{{ report.id }}",
+                    birdId: "{{ report.bird.id}}",
+                    birdFr: "{{ report.bird.speciesFr }}",
+                    birdLatin: "{{ report.bird.speciesLatin }}",
+                    location: "{{ report.location }}",
+                    sortable: true,
+                    resizeable: true
+                }
+            );
+            {% endfor %}
+        }
+        var x = db[1]['location'].split('');
+        alert(x.length);
+        console.log(x[0]==='C');
+
+    </script>
     <script src="{{ asset('js/reportMap.js') }}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg"
             type="text/javascript"></script>
