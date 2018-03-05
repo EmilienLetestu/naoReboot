@@ -22,7 +22,12 @@
     <div class="mobileHidden">
 
         <div class="birdImg">
-            <img src="{{ asset('/userImages/'~report.pictRef) }}" id="img{{ loop.index }}" alt="observation de {{ report.bird.speciesFr }}" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
+            {% if report.pictRef != null %}
+             <img src="{{ asset('/userImages/'~report.pictRef) }}" id="img{{ loop.index }}" alt="observation de {{ report.bird.speciesFr }}" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
+            {% endif %}
+            {% if report.pictRef == null %}
+                <img src="{{ asset('/default.png') }}" id="img{{ loop.index }}" alt="observation de {{ report.bird.speciesFr }}" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
+            {% endif %}
         </div>
 
         <div>
