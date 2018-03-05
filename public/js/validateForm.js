@@ -209,16 +209,18 @@ function liveCharCount(textId,meterId,max) {
  */
 function fileType(id){
 
-    var file = $id(id).value.split('.');
+    if($id(id).value !== ''){
+        var file = $id(id).value.split('.');
 
-    if(file[file.length-1] !== 'jpg' || file[file.length-1] !== 'png' ){
+        if(file[file.length-1] !== 'jpg' || file[file.length-1] !== 'png' ){
 
-     generateMsg('jsGenerated','jsGeneratedMsg','Veuillez fournir un fichier au format .jpg ou .png','#ff5240');
+            generateMsg('jsGenerated','jsGeneratedMsg','Veuillez fournir un fichier au format .jpg ou .png','#ff5240');
 
-     return false;
+            return false;
 
-    }else{
-        return true;
+        }else{
+            return true;
+        }
     }
 }
 
