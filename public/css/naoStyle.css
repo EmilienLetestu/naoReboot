@@ -488,17 +488,21 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 }
 
 
-#basic-addon1
-{
+#basic-addon1 {
     background-color: orange;
     color: #FFFFFF;
 }
 
 #naoList li:hover,
-#moreInfo li:hover
-{
+#moreInfo li:hover {
     color: #FFFFFF;
 }
+
+#resetFilter{
+    display: none;
+}
+
+
 
 /*---------------------------header-------------------------*/
 
@@ -2338,6 +2342,10 @@ footer .list-group
         padding-bottom: 2rem;
     }
 
+    #resetFilter{
+        margin-top: 2rem;
+    }
+
 }
 @media only screen and (max-width: 320px){
 
@@ -2820,6 +2828,10 @@ footer .list-group
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 2rem;
+    }
+
+    #resetFilter{
+        margin-top: 2rem;
     }
 
 }
