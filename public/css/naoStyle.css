@@ -39,6 +39,15 @@ input {
     box-shadow:none;
 }
 
+.interactive:hover,
+.card ul li i.fa-user:hover{
+    transform: scale(1.5) !important;
+}
+
+a.historicLink:hover{
+    font-size: 1.03rem;
+}
+
 .btn:focus{
     box-shadow: none;
 }
@@ -1833,6 +1842,10 @@ footer .list-group
         font-size: 0.8rem;
     }
 
+    a.historicLink:hover{
+        font-size: 0.83rem;
+    }
+
     .cardHeader ul {
         display: flex;
         justify-content: space-between;
@@ -2266,14 +2279,6 @@ footer .list-group
     #nav_search_submit{
         right: 0;
         top: 0;
-    }
-
-    .cardHeader,
-    .info1,
-    .info2,
-    .cardCmt,
-    .validated{
-        font-size: 0.8rem;
     }
 
     #connection .btn{
