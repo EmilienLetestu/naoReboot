@@ -20,9 +20,7 @@ class ReportManager
      * ReportManager constructor.
      * @param EntityManager $doctrine
      */
-    public function __construct(
-        EntityManager $doctrine
-    )
+    public function __construct(EntityManager $doctrine)
     {
         $this->doctrine = $doctrine;
     }
@@ -53,9 +51,8 @@ class ReportManager
     public function displayHomePageReport()
     {
         $repository = $this->doctrine->getRepository(Report::class);
-        $reportList = $repository->findAllForHomePage();
 
-        return $reportList;
+        return $repository->findAllForHomePage();
     }
 
     /**

@@ -60,6 +60,7 @@ class Validation
     public function setReport(Report $report) :Validation
     {
         $this->report = $report;
+
         return $this;
     }
 

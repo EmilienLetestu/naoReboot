@@ -65,7 +65,8 @@ class NotificationManager
 
         $notificationList = $repository->findNotificationForUser(
             $user->getId(),
-            0);
+            0)
+        ;
 
         $this->updateNotificationStatus($notificationList);
 

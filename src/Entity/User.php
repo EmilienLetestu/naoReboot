@@ -483,7 +483,8 @@ class User implements AdvancedUserInterface, \Serializable
 
         $role = [1 => 'USER',
                  2 => 'VALIDATOR',
-                 3 => 'ADMIN'];
+                 3 => 'ADMIN']
+        ;
 
         return array("ROLE_{$role[$accessLevel]}");
     }
