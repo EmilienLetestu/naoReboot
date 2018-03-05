@@ -1697,16 +1697,20 @@ footer .list-group
         width: 100%;
     }
 
+    #searchTrigger{
+        color: #FFA500;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+    }
+
     .navbar {
         padding-left: 1%;
         padding-right: 1%;
     }
 
     #nav_search_submit {
-        background-color: transparent;
-        top: 0;
-        left: 3rem;
-        padding-top: 2%;
+       display: none;
     }
 
     footer {

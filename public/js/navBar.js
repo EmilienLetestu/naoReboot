@@ -30,14 +30,18 @@ if(screen.width < 768){
 
     window.addEventListener('scroll',function (){
         mobileSearch("none");
+        hide('dashboard');
     });
 
-    document.getElementById('search').addEventListener('touchstart',function () {
+    document.getElementById('searchTrigger').addEventListener('touchstart',function () {
         mobileSearch("inline-block");
     });
 
+    document.getElementById('accountBadge').addEventListener('touchstart',function () {
+        getStyle($id('dashboard'),'display') === 'hidden' ?
+        show('dashboard') : hide('dashboard');
+    });
 }
-
 
 function searchWidth() {
     $id('search').style.width = "600px";
@@ -50,7 +54,6 @@ function mobileSearch(style) {
 function searchBlur() {
     $id('search').style.width = "inherit";
 }
-
 
 
 /**
