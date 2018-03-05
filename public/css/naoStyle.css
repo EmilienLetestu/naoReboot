@@ -1606,7 +1606,7 @@ footer .list-group
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
 
     #app {
         margin-top: 80px;
@@ -2296,7 +2296,7 @@ footer .list-group
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1280px){
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
 
     .img img {
         width: 270px;
@@ -2318,37 +2318,37 @@ footer .list-group
         font-size: 1rem;
     }
 
-    .iconText{
+    .iconText {
         display: none;
     }
 
-    #landingIntro{
+    #landingIntro {
         width: 50%;
     }
 
-    #landingForm{
+    #landingForm {
         width: 40%;
     }
 
-    #landingIntro h1{
+    #landingIntro h1 {
         font-size: 1.5rem;
     }
 
-    #landingIntro p{
+    #landingIntro p {
         font-size: 1.2rem;
         margin-top: 15rem;
     }
 
-    #landingIntro ul{
+    #landingIntro ul {
         margin-top: 15rem;
     }
 
-    #landingMid{
+    #landingMid {
         font-size: 0.8rem;
     }
 
     #withOutNao h2, #withNao h2 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     #landingEnd ul {
@@ -2356,11 +2356,312 @@ footer .list-group
         margin-left: 8%;
     }
 
-    #termsSummary{
+    #termsSummary {
         padding-left: 2rem;
     }
 
+    .reminder {
+        font-size: 1rem;
+    }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1280px) and (orientation: portrait){
+
+    #app{
+        margin-top: 100px;
+    }
+
+    .pageTitle{
+        font-size: 2rem;
+    }
+
+    ul .mobileHidden {
+        display: none;
+    }
+
+    ul .mobileInline {
+        display: inline-block;
+    }
+
+    footer .list-group {
+        margin-left: 4%;
+        margin-right: 4%;
+        padding-left: 0;
+        border-bottom: solid 1px #FFFFFF;
+    }
+
+    #footerFlex {
+        display: flex;
+    }
+
+    .social {
+        order: 3;
+        margin-top: 35px;
+        margin-bottom: 0 !important;
+    }
+
+    #moreInfo {
+        padding-top: 30px;
+    }
+
+    .imgTitle {
+        top: -7rem;
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .img img {
+        width: 200px;
+    }
+
+    #searchQuery{
+        font-size: 1.8rem;
+    }
+
+    #searchResults ul {
+        margin-left: 0;
+    }
+
+    #landingIntro{
+        width: 100%;
+    }
+
+    #landingIntro p{
+        font-size: 1rem;
+        text-align: justify;
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-top: 5rem;
+    }
+
+    #landingForm{
+        width: 100%;
+        margin-left: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    #landingIntro ul {
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 5rem;
+    }
+
+    .circleIcon {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 1.5rem;
+    }
+
+    #landingIntro li{
+        margin-block-end: 25px;
+    }
+
+    #landingMid p {
+        font-size: 1.2rem;
+        padding-top: 5%;
+        padding-bottom: 0;
+    }
+
+    #landingMid ul{
+        flex-wrap: wrap;
+        position: relative;
+        left: 0;
+    }
+
+    .circleData{
+        font-size: 1rem;
+    }
+
+    .dataText {
+        font-size: 1rem;
+        margin-top: 0;
+    }
+
+    #totalSpecies,
+    #speciesThreat{
+        padding: 2rem;
+    }
+
+    #speciesUe{
+        padding: 1.9rem;
+    }
+
+    #withOutNao h2,
+    #withNao h2{
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    #withNao,
+    #withOutNao{
+        flex-direction: column;
+    }
+
+    #withOutNao{
+        margin-bottom: 2%;
+    }
+
+    #landingEnd ul{
+        font-size: 1.5rem;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
+    }
+
+    #landingEnd ul li:not(:last-child) {
+        padding-right: 10% !important;
+    }
+
+    #withNao span{
+        font-size: 2rem;
+        margin-right: 0;
+    }
+
+    .checkbox{
+        text-align: center;
+    }
+
+    #filterForm {
+        flex-direction: column;
+    }
+
+    #browseFilter .form-group {
+        padding: 15px;
+        margin-bottom: unset;
+    }
+
+    #browseFilter .form-control,
+    #filterSubmit {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+
+    #pswdModal{
+        left: 20%;
+    }
+
+    #loadReports{
+        text-align: center;
+    }
+
+    #loadBtn{
+        margin: 0;
+    }
+
+    .speciesData,
+    .dashboard,
+    .profileData,
+    .memberData,
+    .birdData {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #profileInfo ul{
+        display: block;
+        font-size: 1.1rem;
+    }
+
+    .headBanner h2{
+        font-size: 1.5rem;
+    }
+
+    .speciesData,
+    .dashboard,
+    .profileData,
+    .memberData,
+    .birdData{
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: space-around;
+    }
+
+    .profileData div,
+    .memberData div {
+        margin-bottom: 15px;
+    }
+
+    .birdData div{
+        width: 150px;
+    }
+
+    .memberData div,
+    .profileData div{
+        width: 140px;
+    }
+
+    .speciesData div,
+    .dashboard div{
+        width: 160px;
+        margin: 1%;
+        margin-block-end: 15px;
+    }
+
+    .speciesData div,
+    .dashboard div,
+    .profileData div,
+    .memberData div,
+    .birdData div {
+        height: unset;
+        font-size: 0.8rem;
+    }
+
+    .birdData div{
+        margin: 0;
+    }
+
+    #profileInfo ul li:nth-child(2){
+        margin-left: 0;
+    }
+
+    .profileData div:last-child,
+    .memberData div:last-child{
+        height: 130px;
+    }
+
+    .memberInfo .accountActions{
+        padding-top: 1rem;
+    }
+
+    #localize{
+        top: -60px;
+    }
+
+    .img button {
+        top: -15rem;
+        left: 5rem;
+    }
+
+    #modalPicture{
+        left: 20%;
+    }
+
+    #homeManagement{
+        font-size: 1.8rem;
+    }
+
+
+    #exportIcon{
+        font-size: 2.5rem;
+    }
+
+    #exportCsv a{
+        font-size: 1.3rem;
+    }
+
+    .reminder {
+        font-size: 0.9rem;
+    }
+}
+
+
 
 
 
