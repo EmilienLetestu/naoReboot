@@ -179,14 +179,14 @@ class ReportRepository extends EntityRepository
     }
 
     /**
-     * fetch the last 9 published and validated to display on home
+     * fetch the last 6 published and validated to display on home
      * @return array
      */
     public function findAllForHomePage()
     {
         $queryBuilder = $this->createQueryBuilder('r');
 
-        $this->whereValidated($queryBuilder,1,'ASC','addedOn',6);
+        $this->whereValidated($queryBuilder,1,'DESC','addedOn',6);
 
         return $queryBuilder
             ->getQuery()
