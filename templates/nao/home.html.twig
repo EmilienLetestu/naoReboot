@@ -61,7 +61,7 @@
 
         for(var i = 0; i < length; i++){
             {% for report in reports %}
-            db.push(
+            db[i]=(
                 {
                     reportId: "{{ report.id }}",
                     birdId: "{{ report.bird.id}}",
@@ -72,13 +72,13 @@
             );
             {% endfor %}
         }
+
+        alert(length);
         localStorage.setItem("dbContent",JSON.stringify(db));
         //var x = JSON.parse(localStorage.getItem("dbContent"));
-       // var string = x[1]['location'];
+        // var string = x[1]['location'];
 
         //alert(string.charAt(0));
-
-
 
     </script>
     <script src="{{ asset('js/reportMap.js') }}"></script>
