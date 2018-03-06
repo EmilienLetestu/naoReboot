@@ -57,23 +57,17 @@
     {{ parent() }}
     <script type="text/javascript">
         var db = [];
-        var length = {{ reports|length }};
-
-        for(var i = 0; i < length; i++){
-            {% for report in reports %}
-            db[i]=(
-                {
+        {% for report in reports %}
+            db.push({
                     reportId: "{{ report.id }}",
                     birdId: "{{ report.bird.id}}",
                     birdFr: "{{ report.bird.speciesFr }}",
                     birdLatin: "{{ report.bird.speciesLatin }}",
                     location: "{{ report.location }}"
-                }
-            );
-            {% endfor %}
-        }
+                });
+        {% endfor %}
 
-        alert(length);
+        console.log(db);
         localStorage.setItem("dbContent",JSON.stringify(db));
         //var x = JSON.parse(localStorage.getItem("dbContent"));
         // var string = x[1]['location'];
