@@ -67,11 +67,28 @@
                 });
         {% endfor %}
 
-        console.log(db);
         localStorage.setItem("dbContent",JSON.stringify(db));
-        //var x = JSON.parse(localStorage.getItem("dbContent"));
-        // var string = x[1]['location'];
+        var x = JSON.parse(localStorage.getItem("dbContent"));
 
+        // var string = x[1]['location'];
+        document.addEventListener('keyup',function () {
+           var input = $id('nav_search_search');
+           var search = input.value;
+
+            var match = [];
+
+           for(var i = 0; i < x.length; i++){
+               var birdFr    = x[i]['birdFr'].charAt(search.length - 1);
+               var birdLatin = x[i]['birdLatin'].charAt(search.length - 1);
+               var location  = x[i]['location'].charAt(search.length - 1);
+
+               if(birdFr === search.charAt(search.length - 1) || birdLatin === search.charAt(search.length - 1) || location === search.charAt(search.length - 1)){
+                    match.push(x[i]['birdFr']);
+                    console.log(match);
+               }
+           }
+
+        });
         //alert(string.charAt(0));
 
     </script>
