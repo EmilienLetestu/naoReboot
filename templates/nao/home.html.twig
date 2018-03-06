@@ -62,7 +62,7 @@
                     reportId: "{{ report.id }}",
                     birdId: "{{ report.bird.id}}",
                     birdFr: "{{ report.bird.speciesFr }}",
-                    birdLatin: "{{ report.bird.speciesLatin }}",
+                    birdLatin: "{{ report.bird.speciesLatin|species }}",
                     location: "{{ report.location }}"
                 });
         {% endfor %}
@@ -71,25 +71,24 @@
         var x = JSON.parse(localStorage.getItem("dbContent"));
 
         // var string = x[1]['location'];
-        document.addEventListener('keyup',function () {
+        $id('nav_search_search').addEventListener('keyup',function () {
            var input = $id('nav_search_search');
            var search = input.value;
-
-            var match = [];
+           var compare = search.charAt(search.length - 1);
+           var match = [];
 
            for(var i = 0; i < x.length; i++){
                var birdFr    = x[i]['birdFr'].charAt(search.length - 1);
                var birdLatin = x[i]['birdLatin'].charAt(search.length - 1);
                var location  = x[i]['location'].charAt(search.length - 1);
 
-               if(birdFr === search.charAt(search.length - 1) || birdLatin === search.charAt(search.length - 1) || location === search.charAt(search.length - 1)){
-                    match.push(x[i]['birdFr']);
-                    console.log(match);
+               if(birdFr === compare || birdLatin === compare || location === compare){
+
+                    match.push(x[i]['birdLatin'] + x[i]['birdId']);
                }
            }
-
+            console.log(match);
         });
-        //alert(string.charAt(0));
 
     </script>
     <script src="{{ asset('js/reportMap.js') }}"></script>
