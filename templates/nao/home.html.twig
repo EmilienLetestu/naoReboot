@@ -67,16 +67,18 @@
                     birdId: "{{ report.bird.id}}",
                     birdFr: "{{ report.bird.speciesFr }}",
                     birdLatin: "{{ report.bird.speciesLatin }}",
-                    location: "{{ report.location }}",
-                    sortable: true,
-                    resizeable: true
+                    location: "{{ report.location }}"
                 }
             );
             {% endfor %}
         }
-        var x = db[1]['location'].split('');
-        alert(x.length);
-        console.log(x[0]==='C');
+        localStorage.setItem("dbContent",JSON.stringify(db));
+        //var x = JSON.parse(localStorage.getItem("dbContent"));
+       // var string = x[1]['location'];
+
+        //alert(string.charAt(0));
+
+
 
     </script>
     <script src="{{ asset('js/reportMap.js') }}"></script>
