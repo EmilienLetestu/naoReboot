@@ -224,7 +224,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 }
 
 .shrink{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     line-height: 25px;
 }
 /*---------------------error and flash---------------------*/
@@ -835,6 +835,25 @@ footer .list-group
 .reportValidation{
     text-align: center;
 }
+
+.reportValidationCmt{
+    display: inline-flex;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+}
+
+.reportValidationCmt a{
+    position: relative;
+    left: -1rem;
+    width: 150px;
+}
+
+.reportValidationCmt button{
+    position: relative;
+    right: -1rem;
+    font-size: 0.8rem;
+}
+
 
 .reportValidation a{
     margin: 0;

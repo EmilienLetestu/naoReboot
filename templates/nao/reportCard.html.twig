@@ -52,7 +52,7 @@
                     </a>
                 {% endif %}
             </li>
-            <li class="list-inline-item pull-right {{ report.satNav|length > 35 ? 'shrink' }}">
+            <li class="list-inline-item pull-right {{ report.satNav|length > 25 ? 'shrink' }}">
                 <i class="fa fa-compass interactive" onclick="showMap('{{ mapId }}','{{ closeBtnId }}',{{ loop.index }})" aria-hidden="true"></i>
                 {{ report.satNav|gps }}
             </li>
@@ -102,7 +102,7 @@
             {% endif %}
 
             {% if report.comment != null and report.validated == 0 %}
-                <div class="reportValidation">
+                <div class="reportValidationCmt">
                     <a class="btn btn-outline" id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
                         {{ report.validationScore }} / 5
                     </a>
