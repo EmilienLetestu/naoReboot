@@ -8,6 +8,7 @@
 
 namespace App\Managers;
 
+use App\Entity\Report;
 use App\Entity\User;
 
 use Doctrine\ORM\EntityManager;
@@ -127,6 +128,19 @@ class UserManager
         ]);
         $newLevel = $user->getAccessLevel() > 1 ? 1 : 2;
         $user->setAccessLevel($newLevel);
+
+        if($user->getAccessLevel() === 2){
+
+            $reportList = $user->getReports();
+
+            foreach ($reportList as $report){
+
+                $report->setValidationScore(5);
+                $report->setValidated(1);
+                $this->doctrine->persist($report);
+            }
+        }
+
         $this->notificationManager->notifyUser($newLevel, $user);
         $this->doctrine->persist($user);
         $this->doctrine->flush();
@@ -147,6 +161,16 @@ class UserManager
         $user->setOnHold(false);
         $this->notificationManager->notifyUser(3, $user);
         $this->doctrine->persist($user);
+
+        $reportList = $user->getReports();
+
+        foreach ($reportList as $report){
+
+            $report->setValidationScore(5);
+            $report->setValidated(1);
+            $this->doctrine->persist($report);
+        }
+
         $this->doctrine->flush();
 
         return 'success';
