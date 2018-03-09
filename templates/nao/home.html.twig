@@ -71,11 +71,8 @@
             {% endfor %}
             localStorage.setItem("dbContent",JSON.stringify(db));
         }
-
-
         var x = JSON.parse(localStorage.getItem("dbContent"));
 
-        // var string = x[1]['location'];
         $id('nav_search_search').addEventListener('keyup',function () {
            var input = $id('nav_search_search');
            var search = input.value;
