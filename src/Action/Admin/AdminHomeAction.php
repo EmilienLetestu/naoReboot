@@ -108,7 +108,7 @@ class AdminHomeAction
 
         // reference values for user based stats
         $allReportByUserLevel2 = count(
-            $repoReport->countWithUserAccessLevel(1)
+            $repoReport->countWithUserAccessLevel(2)
         );
         $allReportByUserLevel1 = count(
             $repoReport->countWithLowerAccessLevel()
