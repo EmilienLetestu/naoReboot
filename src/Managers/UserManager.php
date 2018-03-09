@@ -164,11 +164,15 @@ class UserManager
 
         $reportList = $user->getReports();
 
-        foreach ($reportList as $report){
+        if($reportList !== null){
 
-            $report->setValidationScore(5);
-            $report->setValidated(1);
-            $this->doctrine->persist($report);
+            foreach ($reportList as $report){
+
+                $report->setValidationScore(5);
+                $report->setValidated(1);
+                $this->doctrine->persist($report);
+            }
+
         }
 
         $this->doctrine->flush();
