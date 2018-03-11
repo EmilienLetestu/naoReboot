@@ -1083,14 +1083,10 @@ footer .list-group
 
 /*--------------------------search result----------------------*/
 
-#searchResults ul{
-    margin-left: 25%;
+.searchResults{
+
     font-size: 1.2rem;
     color: #ffa500;
-}
-
-#searchResults ul li{
-    padding-top: 5%;
 }
 
 #searchQuery span{
