@@ -47,3 +47,31 @@ function mobileSearch(style) {
 function searchBlur() {
     $id('search').style.width = "inherit";
 }
+
+function search(array) {
+
+    $id('nav_search_search').addEventListener('keyup',function () {
+        var input = $id('nav_search_search');
+        var search = input.value;
+        var compare = search.charAt(search.length - 1);
+        var match = [];
+        for(var i = 0; i < array.length; i++){
+            var birdFr    = array[i]['birdFr'].charAt(search.length - 1);
+            var birdLatin = array[i]['birdLatin'].charAt(search.length - 1);
+            var location  = array[i]['location'].charAt(search.length - 1);
+            if(birdFr === compare || birdLatin === compare || location === compare){
+                match.push({
+                    latin: x[i]['birdLatin'].trim().replace(/\s+/g, '-').toLowerCase(),
+                    fr:  x[i]['birdFr'],
+                    id: x[i]['birdId']
+                });
+            }
+        }
+        var results = removeDuplicate(match);
+        var  links = createHistoricLinks(results);
+        if(links !== null){
+            generateMsg('jsGenerated','jsGeneratedMsg',links,'#838383');
+        }
+    });
+
+}
