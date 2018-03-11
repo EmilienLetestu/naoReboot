@@ -11,9 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link rel="shortcut icon" type="image/png"  href={{ asset("favicon.ico") }}>
         <script src="https://use.fontawesome.com/707b54fdb6.js"></script>
-        {% block stylesheets %}
-            <link href="{{ asset("css/naoStyle.css") }}" rel="stylesheet">
-        {% endblock %}
+        {% block stylesheets %}<link href="{{ asset("css/naoStyle.css") }}" rel="stylesheet">{% endblock %}
     </head>
     <body>
     <div class="d-flex flex-column" id="wrapper">
@@ -111,11 +109,9 @@
                 {% endfor %}
             {% endfor %}
 
-            {% block body %}
-
-            {% endblock %}
-
+            {% block body %}{% endblock %}
         </div>
+
         <footer class="container-fluid w-100">
             <div class="row my-4" id="footerFlex">
                 <ul class="list-group col-lg-4" id="naoList">
@@ -177,24 +173,18 @@
                     location: "{{ report.location }}"
                 });
                 {% endfor %}
-
                 localStorage.setItem("dbContent",JSON.stringify(db));
-
                 var x = JSON.parse(localStorage.getItem("dbContent"));
-
                 $id('nav_search_search').addEventListener('keyup',function () {
                     var input = $id('nav_search_search');
                     var search = input.value;
                     var compare = search.charAt(search.length - 1);
                     var match = [];
-
                     for(var i = 0; i < x.length; i++){
                         var birdFr    = x[i]['birdFr'].charAt(search.length - 1);
                         var birdLatin = x[i]['birdLatin'].charAt(search.length - 1);
                         var location  = x[i]['location'].charAt(search.length - 1);
-
                         if(birdFr === compare || birdLatin === compare || location === compare){
-
                             match.push({
                                 latin: x[i]['birdLatin'].trim().replace(/\s+/g, '-').toLowerCase(),
                                 fr:  x[i]['birdFr'],
@@ -204,7 +194,6 @@
                     }
                     var results = removeDuplicate(match);
                     var  links = createHistoricLinks(results);
-
                     if(links !== null){
                         generateMsg('jsGenerated','jsGeneratedMsg',links,'#838383');
                     }
@@ -213,4 +202,3 @@
         {% endblock %}
     </body>
 </html>
-
