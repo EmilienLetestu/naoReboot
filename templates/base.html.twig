@@ -174,9 +174,9 @@
                 });
                 {% endfor %}
                 localStorage.setItem("dbContent",JSON.stringify(db));
-                var x = JSON.parse(localStorage.getItem("dbContent"));
+                var dbReports = JSON.parse(localStorage.getItem("dbContent"));
 
-                search(x);
+                search(dbReports);
 
             </script>
         {% endblock %}

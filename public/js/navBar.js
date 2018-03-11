@@ -48,6 +48,9 @@ function searchBlur() {
     $id('search').style.width = "inherit";
 }
 
+/**
+ * @param array
+ */
 function search(array) {
 
     $id('nav_search_search').addEventListener('keyup',function () {
@@ -61,9 +64,9 @@ function search(array) {
             var location  = array[i]['location'].charAt(search.length - 1);
             if(birdFr === compare || birdLatin === compare || location === compare){
                 match.push({
-                    latin: x[i]['birdLatin'].trim().replace(/\s+/g, '-').toLowerCase(),
-                    fr:  x[i]['birdFr'],
-                    id: x[i]['birdId']
+                    latin: array[i]['birdLatin'].trim().replace(/\s+/g, '-').toLowerCase(),
+                    fr:  array[i]['birdFr'],
+                    id: array[i]['birdId']
                 });
             }
         }
