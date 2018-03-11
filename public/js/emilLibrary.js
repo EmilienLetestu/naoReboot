@@ -149,14 +149,14 @@ function generateMsg(divId,msgId,msg,color){
  */
 function removeDuplicate(array){
 
-   return array.reduce(function (p, c) {
-       var result = [c.latin, c.id, c.fr].join('|');
+   return array.reduce(function (a, b) {
+       var result = [b.latin, b.id, b.fr].join('|');
 
-       if(p.temp.indexOf(result) === -1){
-           p.out.push(c);
-           p.temp.push(result);
+       if(a.temp.indexOf(result) === -1){
+           a.out.push(b);
+           a.temp.push(result);
        }
-       return p;
+       return a;
    },{temp: [], out: []}).out;
 }
 
