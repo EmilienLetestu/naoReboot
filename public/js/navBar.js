@@ -43,6 +43,10 @@ function searchWidth() {
     $id('nav_search_search').setAttribute("placeholder","espèce,région...");
 }
 
+/**
+ *
+ * @param style
+ */
 function mobileSearch(style) {
     $id('nav_search_search').style.display = style;
 }
@@ -60,28 +64,30 @@ function search(array) {
     $id('nav_search_search').addEventListener('keyup',function () {
         var input = $id('nav_search_search');
         var search = input.value.toLowerCase();
-        var match = [];
-        for(var i = 0; i < array.length; i++){
-            var birdFr    = array[i]['birdFr'].slice(0,search.length);
-            var birdLatin = array[i]['birdLatin'].slice(0,search.length);
-            var city  = array[i]['location1'].slice(0,search.length);
-            var shire = array[i]['location2'].slice(0,search.length);
+        if(search.length > 0){
+            var match = [];
+            for(var i = 0; i < array.length; i++){
+                var birdFr    = array[i]['birdFr'].slice(0,search.length);
+                var birdLatin = array[i]['birdLatin'].slice(0,search.length);
+                var city  = array[i]['location1'].slice(0,search.length);
+                var shire = array[i]['location2'].slice(0,search.length);
 
-            if(birdFr === search || birdLatin === search || city === search || shire === search){
-                match.push({
-                    latin: array[i]['birdLatin'].trim().replace(/\s+/g, '-'),
-                    fr:  array[i]['birdFr'],
-                    id: array[i]['birdId']
-                });
+                if(birdFr === search || birdLatin === search || city === search || shire === search){
+                    match.push({
+                        latin: array[i]['birdLatin'].trim().replace(/\s+/g, '-'),
+                        fr:  array[i]['birdFr'],
+                        id: array[i]['birdId']
+                    });
+                }
             }
-        }
-        var results = removeDuplicate(match);
-        var  links = createHistoricLinks(results);
+            var results = removeDuplicate(match);
+            var  links = createHistoricLinks(results);
 
-        results.length > 0 ?
-            generateMsg('searchLinks','searchLinks',links,'#838383'):
-            generateMsg('searchLinks','searchLinks','Aucun résulatat','#838383')
-        ;
+            results.length > 0 ?
+                generateMsg('searchLinks','searchLinks',links,'#838383'):
+                generateMsg('searchLinks','searchLinks','Aucun résultat','#838383')
+            ;
+        }
     });
 
 }

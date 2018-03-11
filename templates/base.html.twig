@@ -24,6 +24,7 @@
                 <i class="fa fa-search mobileOnly" id="searchTrigger"></i>
                 <div class="search-bar" id="search">
                     <input type="search" id="nav_search_search">
+                    <i class="fa fa-search" id="nav_search_submit"></i>
                 </div>
                 {% if  not is_granted('ROLE_USER') %}
                     <div class="navbar-nav ml-auto" id="connection">
@@ -102,9 +103,8 @@
                 <p id="jsGeneratedMsg"> </p>
             </div>
 
-            <div class ="alert" id="searchLinks">
+            <div class ="alert" id="searchLinks"></div>
 
-            </div>
             {% for label, messages in app.flashes(['denied','error','success','warning','welcome']) %}
                 {% for message in messages %}
                     <div class="alert alert-{{ label }}" id="backGenerated">

@@ -120,6 +120,7 @@ a.historicLink:hover{
 
 #nav_search_search{
     width: 100%;
+    border-radius: 5px;
 }
 
 .search-bar input{
@@ -130,18 +131,13 @@ a.historicLink:hover{
     border: solid 1px #ffffff;
 }
 
-.search-bar .btn{
-    border : none;
-    background-color: #ffffff;
-    color: #ffa500;
-}
-
 #nav_search_submit{
     position: absolute;
-    right: 0;
+    right: 3px;
     top: 0;
     padding-top: 11.7px;
     padding-bottom: 11.7px;
+    color: #ffa500!important;
 }
 
 
