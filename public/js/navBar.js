@@ -64,30 +64,32 @@ function search(array) {
     $id('nav_search_search').addEventListener('keyup',function () {
         var input = $id('nav_search_search');
         var search = input.value.toLowerCase();
-        if(search.length > 0){
-            var match = [];
-            for(var i = 0; i < array.length; i++){
-                var birdFr    = array[i]['birdFr'].slice(0,search.length);
-                var birdLatin = array[i]['birdLatin'].slice(0,search.length);
-                var city  = array[i]['location1'].slice(0,search.length);
-                var shire = array[i]['location2'].slice(0,search.length);
 
-                if(birdFr === search || birdLatin === search || city === search || shire === search){
-                    match.push({
-                        latin: array[i]['birdLatin'].trim().replace(/\s+/g, '-'),
-                        fr:  array[i]['birdFr'],
-                        id: array[i]['birdId']
-                    });
-                }
-            }
-            var results = removeDuplicate(match);
-            var  links = createHistoricLinks(results);
+        var match = [];
+        for(var i = 0; i < array.length; i++){
+            var birdFr    = array[i]['birdFr'].slice(0,search.length);
+            var birdLatin = array[i]['birdLatin'].slice(0,search.length);
+            var breed     = array[i]['breed'].slice(0,search.length);
+            var birdGroup = array[i]['birdGroup'].slice(0,search.length);
+            var city      = array[i]['location1'].slice(0,search.length);
+            var shire     = array[i]['location2'].slice(0,search.length);
 
-            results.length > 0 ?
-                generateMsg('searchLinks','searchLinks',links,'#838383'):
-                generateMsg('searchLinks','searchLinks','Aucun résultat','#838383')
-            ;
+            if(birdFr === search || birdLatin === search || city === search || shire === search || breed === search || birdGroup === search ){
+                match.push({
+                    latin: array[i]['birdLatin'].trim().replace(/\s+/g, '-'),
+                    fr:  array[i]['birdFr'],
+                    id: array[i]['birdId']
+                })
+            ;}
         }
-    });
 
+        var results = removeDuplicate(match);
+        var links   = createHistoricLinks(results);
+        var title   = '<h3>RESULTAT DE VOTRE RECHERCHE POUR : '+ search.toUpperCase() +'</h3>';
+
+        results.length === 0 || search.length === 0 ?
+            generateMsg('searchLinks','searchLinks','Aucun résultat','#838383'):
+            generateMsg('searchLinks','searchLinks',title + links,'#838383')
+        ;
+    });
 }

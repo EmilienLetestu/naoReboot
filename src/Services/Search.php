@@ -41,7 +41,6 @@ class Search
     public function getValidatedContent(){
 
         $repository = $this->doctrine->getRepository(Report::class);
-        $this->session->set('dbLoaded',1);
 
         return $repository->findAllReport(1);
     }

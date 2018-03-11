@@ -126,6 +126,14 @@ class ReportRepository extends EntityRepository
        ;
     }
 
+    /**
+     * @param $validated
+     * @param $order
+     * @param $sort
+     * @param null $limit
+     * @param $birdId
+     * @return array
+     */
     public function findSelectionWithBird($validated,$order,$sort,$limit=null,$birdId)
     {
         $queryBuilder = $this->createQueryBuilder('r');
