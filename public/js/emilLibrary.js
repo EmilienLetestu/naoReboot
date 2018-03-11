@@ -153,3 +153,19 @@ function removeDuplicate(array){
     });
     return cleanArray;
 }
+
+/**
+ * @param array
+ * @returns {Array}
+ */
+function createHistoricLinks(array){
+
+    var links   = [];
+
+    for(var i = 0; i < array.length; i++){
+        var latin = array[i]['latin'];
+        links.push('<a href="/historique-des-observations/'+array[i]['latin']+'/'+array[i]['id']+'">'+array[i]['latin']+'</a>');
+    }
+
+    return links;
+}

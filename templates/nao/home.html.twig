@@ -87,12 +87,19 @@
 
                if(birdFr === compare || birdLatin === compare || location === compare){
 
-                   match.push(x[i]['birdLatin'] + x[i]['birdId']);
+                   match.push({
+                       latin: x[i]['birdLatin'].trim().replace(/\s+/g, '-').toLowerCase(),
+                       id: x[i]['birdId']
+                   });
                }
            }
 
+            var results = removeDuplicate(match);
+            var  links = createHistoricLinks(results);
 
-           console.log(removeDuplicate(match));
+            if(links !== null){
+               generateMsg('jsGenerated','jsGeneratedMsg',links,'blue');
+            }
 
         });
 
