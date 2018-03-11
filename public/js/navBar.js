@@ -4,6 +4,8 @@
 
 window.addEventListener('scroll',function () {
     document.getElementById('jsGenerated').style.display = "none";
+    document.getElementById('searchLinks').style.display = "none";
+
     if(document.getElementById('backGenerated')){
         document.getElementById('backGenerated').style.display = "none";
     }
@@ -38,6 +40,7 @@ if(screen.width < 768){
 
 function searchWidth() {
     $id('search').style.width = "600px";
+    $id('nav_search_search').setAttribute("placeholder","espèce,région...");
 }
 
 function mobileSearch(style) {
@@ -46,6 +49,7 @@ function mobileSearch(style) {
 
 function searchBlur() {
     $id('search').style.width = "inherit";
+    $id('nav_search_search').removeAttribute("placeholder");
 }
 
 /**
@@ -55,16 +59,17 @@ function search(array) {
 
     $id('nav_search_search').addEventListener('keyup',function () {
         var input = $id('nav_search_search');
-        var search = input.value;
-        var compare = search.charAt(search.length - 1);
+        var search = input.value.toLowerCase();
         var match = [];
         for(var i = 0; i < array.length; i++){
-            var birdFr    = array[i]['birdFr'].charAt(search.length - 1);
-            var birdLatin = array[i]['birdLatin'].charAt(search.length - 1);
-            var location  = array[i]['location'].charAt(search.length - 1);
-            if(birdFr === compare || birdLatin === compare || location === compare){
+            var birdFr    = array[i]['birdFr'].slice(0,search.length);
+            var birdLatin = array[i]['birdLatin'].slice(0,search.length);
+            var city  = array[i]['location1'].slice(0,search.length);
+            var shire = array[i]['location2'].slice(0,search.length);
+
+            if(birdFr === search || birdLatin === search || city === search || shire === search){
                 match.push({
-                    latin: array[i]['birdLatin'].trim().replace(/\s+/g, '-').toLowerCase(),
+                    latin: array[i]['birdLatin'].trim().replace(/\s+/g, '-'),
                     fr:  array[i]['birdFr'],
                     id: array[i]['birdId']
                 });
@@ -72,9 +77,11 @@ function search(array) {
         }
         var results = removeDuplicate(match);
         var  links = createHistoricLinks(results);
-        if(links !== null){
-            generateMsg('jsGenerated','jsGeneratedMsg',links,'#838383');
-        }
+
+        results.length > 0 ?
+            generateMsg('searchLinks','searchLinks',links,'#838383'):
+            generateMsg('searchLinks','searchLinks','Aucun résulatat','#838383')
+        ;
     });
 
 }

@@ -101,6 +101,10 @@
             <div class="alert" id="jsGenerated">
                 <p id="jsGeneratedMsg"> </p>
             </div>
+
+            <div class ="alert" id="searchLinks">
+
+            </div>
             {% for label, messages in app.flashes(['denied','error','success','warning','welcome']) %}
                 {% for message in messages %}
                     <div class="alert alert-{{ label }}" id="backGenerated">
@@ -163,21 +167,25 @@
             <script src="{{ asset('js/navBar.js') }}"></script>
             <script src="{{ asset('js/mobileOnly.js') }}"></script>
             <script type="text/javascript">
-                var db = [];
-                {% for report in search.getValidatedContent %}
-                db.push({
-                    reportId: "{{ report.id }}",
-                    birdId: "{{ report.bird.id}}",
-                    birdFr: "{{ report.bird.speciesFr }}",
-                    birdLatin: "{{ report.bird.speciesLatin|species }}",
-                    location: "{{ report.location }}"
-                });
-                {% endfor %}
+                {% if  not app.session.get('dbLoaded') %}
+                    var db = [];
+                    {% for report in search.getValidatedContent %}
+                    var geolcation = "{{ report.location}}".split(',');
+
+                    db.push({
+                        reportId: "{{ report.id }}".toLowerCase(),
+                        birdId: "{{ report.bird.id}}",
+                        birdFr: "{{ report.bird.speciesFr }}".toLowerCase(),
+                        birdLatin: "{{ report.bird.speciesLatin|species }}".toLowerCase(),
+                        location1: geolcation[0].toLowerCase(),
+                        location2: geolcation[1].trim().toLowerCase()
+                    });
+                    {% endfor %}
                 localStorage.setItem("dbContent",JSON.stringify(db));
+                {% endif %}
+
                 var dbReports = JSON.parse(localStorage.getItem("dbContent"));
-
                 search(dbReports);
-
             </script>
         {% endblock %}
     </body>
