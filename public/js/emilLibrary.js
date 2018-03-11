@@ -141,3 +141,15 @@ function generateMsg(divId,msgId,msg,color){
     $id(divId).style.backgroundColor = color;
     $id(msgId).innerHTML = msg;
 }
+
+/**
+ *
+ * @param array
+ * @returns {Array.<T>|*|{TAG, CLASS, ATTR, CHILD, PSEUDO}}
+ */
+function removeDuplicate(array){
+    var cleanArray = array.filter(function (elem, index, self) {
+        return index == self.indexOf(elem);
+    });
+    return cleanArray;
+}

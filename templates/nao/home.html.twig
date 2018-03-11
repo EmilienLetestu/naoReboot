@@ -71,6 +71,7 @@
             {% endfor %}
             localStorage.setItem("dbContent",JSON.stringify(db));
         }
+
         var x = JSON.parse(localStorage.getItem("dbContent"));
 
         $id('nav_search_search').addEventListener('keyup',function () {
@@ -89,7 +90,10 @@
                    match.push(x[i]['birdLatin'] + x[i]['birdId']);
                }
            }
-            console.log(match);
+
+
+           console.log(removeDuplicate(match));
+
         });
 
     </script>
