@@ -118,6 +118,10 @@ a.historicLink:hover{
     left: 10rem;
 }
 
+#nav_search_search{
+    width: 100%;
+}
+
 .search-bar input{
     padding-top: 9.6px;
 }

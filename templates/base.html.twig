@@ -25,8 +25,7 @@
                 </a>
                 <i class="fa fa-search mobileOnly" id="searchTrigger"></i>
                 <div class="search-bar" id="search">
-                    {{ form_start(search.createSearch,{'action': path('search'), 'attr':{'id':'searchForm'}}) }}
-                    {{ form_end(search.createSearch) }}
+                    <input type="search" id="nav_search_search">
                 </div>
                 {% if  not is_granted('ROLE_USER') %}
                     <div class="navbar-nav ml-auto" id="connection">

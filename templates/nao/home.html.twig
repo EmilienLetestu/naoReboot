@@ -57,10 +57,8 @@
     {{ parent() }}
     <script type="text/javascript">
 
-        if(!JSON.parse(localStorage.getItem("dbContent"))){
-
-            var db = [];
-            {% for report in reports %}
+        var db = [];
+        {% for report in search.getValidatedContent %}
             db.push({
                 reportId: "{{ report.id }}",
                 birdId: "{{ report.bird.id}}",
@@ -68,9 +66,9 @@
                 birdLatin: "{{ report.bird.speciesLatin|species }}",
                 location: "{{ report.location }}"
             });
-            {% endfor %}
-            localStorage.setItem("dbContent",JSON.stringify(db));
-        }
+        {% endfor %}
+
+        localStorage.setItem("dbContent",JSON.stringify(db));
 
         var x = JSON.parse(localStorage.getItem("dbContent"));
 
@@ -93,14 +91,12 @@
                    });
                }
            }
-
             var results = removeDuplicate(match);
             var  links = createHistoricLinks(results);
 
             if(links !== null){
                generateMsg('jsGenerated','jsGeneratedMsg',links,'blue');
             }
-
         });
 
     </script>
