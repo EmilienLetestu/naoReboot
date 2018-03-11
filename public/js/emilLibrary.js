@@ -145,13 +145,19 @@ function generateMsg(divId,msgId,msg,color){
 /**
  *
  * @param array
- * @returns {Array.<T>|*|{TAG, CLASS, ATTR, CHILD, PSEUDO}}
+ * @returns {Array|_r|*}
  */
 function removeDuplicate(array){
-    var cleanArray = array.filter(function (elem, index, self) {
-        return index == self.indexOf(elem);
-    });
-    return cleanArray;
+
+   return array.reduce(function (p, c) {
+       var result = [c.latin, c.id, c.fr].join('|');
+
+       if(p.temp.indexOf(result) === -1){
+           p.out.push(c);
+           p.temp.push(result);
+       }
+       return p;
+   },{temp: [], out: []}).out;
 }
 
 /**
@@ -164,7 +170,9 @@ function createHistoricLinks(array){
 
     for(var i = 0; i < array.length; i++){
         var latin = array[i]['latin'];
-        links.push('<a href="/historique-des-observations/'+array[i]['latin']+'/'+array[i]['id']+'">'+array[i]['latin']+'</a>');
+        var id    = array[i]['id'];
+        var fr    = array[i]['fr'];
+        links.push('<a class="searchResults" href="/historique-des-observations/'+latin+'/'+id+'">'+ latin.charAt(0).toUpperCase()+latin.slice(1) +' - '+ fr +'</a><br>');
     }
 
     return links;
