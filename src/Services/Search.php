@@ -10,8 +10,6 @@ namespace App\Services;
 
 use App\Entity\Report;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 class Search
 {
 
@@ -19,7 +17,6 @@ class Search
      * @var EntityManager
      */
     private $doctrine;
-    private $session;
 
 
     /**
@@ -27,12 +24,10 @@ class Search
      * @param EntityManager $doctrine
      */
     public function __construct(
-        EntityManager $doctrine,
-        SessionInterface $session
+        EntityManager $doctrine
     )
     {
         $this->doctrine     = $doctrine;
-        $this->session      = $session;
     }
 
     /**
