@@ -55,51 +55,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript">
-
-        var db = [];
-        {% for report in search.getValidatedContent %}
-            db.push({
-                reportId: "{{ report.id }}",
-                birdId: "{{ report.bird.id}}",
-                birdFr: "{{ report.bird.speciesFr }}",
-                birdLatin: "{{ report.bird.speciesLatin|species }}",
-                location: "{{ report.location }}"
-            });
-        {% endfor %}
-
-        localStorage.setItem("dbContent",JSON.stringify(db));
-
-        var x = JSON.parse(localStorage.getItem("dbContent"));
-
-        $id('nav_search_search').addEventListener('keyup',function () {
-           var input = $id('nav_search_search');
-           var search = input.value;
-           var compare = search.charAt(search.length - 1);
-           var match = [];
-
-           for(var i = 0; i < x.length; i++){
-               var birdFr    = x[i]['birdFr'].charAt(search.length - 1);
-               var birdLatin = x[i]['birdLatin'].charAt(search.length - 1);
-               var location  = x[i]['location'].charAt(search.length - 1);
-
-               if(birdFr === compare || birdLatin === compare || location === compare){
-
-                   match.push({
-                       latin: x[i]['birdLatin'].trim().replace(/\s+/g, '-').toLowerCase(),
-                       id: x[i]['birdId']
-                   });
-               }
-           }
-            var results = removeDuplicate(match);
-            var  links = createHistoricLinks(results);
-
-            if(links !== null){
-               generateMsg('jsGenerated','jsGeneratedMsg',links,'blue');
-            }
-        });
-
-    </script>
     <script src="{{ asset('js/reportMap.js') }}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg"
             type="text/javascript"></script>
