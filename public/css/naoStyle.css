@@ -673,9 +673,20 @@ footer .list-group
 .checked{
     position: relative;
     top: -20px;
+    display: none;
+}
+
+.checked:not(.modalChecked){
     left: 100%;
     color: #5fdda1;
-    display: none;
+}
+
+.modalChecked{
+    left: 5%;
+}
+
+.modalChecked i{
+    color: #5fdda1 !important;
 }
 
 .inlineIcon{
