@@ -124,7 +124,7 @@ a.historicLink:hover{
 }
 
 .search-bar input{
-    padding-top: 9.6px;
+    height:2.5rem;
 }
 
 .search-bar input:focus{
@@ -140,6 +140,9 @@ a.historicLink:hover{
     color: #ffa500!important;
 }
 
+p.searchResults{
+    padding-top: 1rem;
+}
 
 .search-bar label{
     display: none;
@@ -225,7 +228,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 .shrink{
     font-size: 0.8rem;
-    line-height: 25px;
+    line-height: 1.3rem;
 }
 /*---------------------error and flash---------------------*/
 .noError{
@@ -1085,7 +1088,7 @@ footer .list-group
     color: #ffa500;
 }
 
-#searchQuery span{
+#searchQuery{
     color: #ffa500;
 }
 
@@ -1758,15 +1761,17 @@ footer .list-group
         box-shadow: none;
     }
 
-    #searchResults ul{
-        margin-left: 0;
-        padding-left: 0;
-        padding-right: 0;
+    .searchResults  {
         font-size: 0.9rem;
     }
 
-    #searchQuery{
-        font-size: 1.2rem;
+    #searchLinks h3{
+        font-size: 1rem;
+    }
+
+
+    #searchLinks {
+        padding-top: 3rem;
     }
 
     #dashboard ul {
@@ -1931,8 +1936,7 @@ footer .list-group
     }
 
     .shrink {
-        font-size: 0.8rem;
-
+        font-size: 0.7rem;
     }
 
     #dashboard {

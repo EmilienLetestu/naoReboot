@@ -54,7 +54,7 @@
             </li>
             <li class="list-inline-item pull-right {{ report.satNav|length > 25 ? 'shrink' }}">
                 <i class="fa fa-compass interactive" onclick="showMap('{{ mapId }}','{{ closeBtnId }}',{{ loop.index }})" aria-hidden="true"></i>
-                {{ report.satNav|gps }}
+                {{ report.satNav|gps|slice(0,30) }}
             </li>
         </ul>
 

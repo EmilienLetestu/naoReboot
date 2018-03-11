@@ -83,12 +83,13 @@ function search(array) {
             ;}
         }
 
-        var results = removeDuplicate(match);
-        var links   = createHistoricLinks(results);
-        var title   = '<h3>RESULTAT DE VOTRE RECHERCHE POUR : '+ search.toUpperCase() +'</h3>';
+        var results   = removeDuplicate(match);
+        var links     = createHistoricLinks(results);
+        var title     = '<h3>RESULTAT DE VOTRE RECHERCHE POUR : <span id="searchQuery">' + search.toUpperCase() +' </span></h3>';
+        var matchless = '<p class="searchResults">Aucun résultat</p>';
 
         results.length === 0 || search.length === 0 ?
-            generateMsg('searchLinks','searchLinks','Aucun résultat','#838383'):
+            generateMsg('searchLinks','searchLinks',matchless,'#838383'):
             generateMsg('searchLinks','searchLinks',title + links,'#838383')
         ;
     });
