@@ -41,7 +41,7 @@ class UnactivatedListAction
 
         return $responder(
             $repository->findAllUnactivated(),
-            'Compte innactifs'
+            'Comptes inactifs'
         );
     }
 }
