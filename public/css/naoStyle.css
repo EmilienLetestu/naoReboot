@@ -40,7 +40,7 @@ input {
 }
 
 #intro {
-    background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('../naoHome.jpg'),no-repeat;
+    background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('../appPictures/naoHome.jpg'),no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
