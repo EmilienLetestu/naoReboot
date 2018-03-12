@@ -681,16 +681,17 @@ footer .list-group
     position: relative;
     top: -20px;
     display: none;
-}
-
-.checked:not(.modalChecked){
-    left: 100%;
+    left: 5%;
     color: #5fdda1;
 }
 
 .modalChecked{
-    left: 5%;
+    position: relative;
+    top: -20px;
+    display: none;
+    left: 100%;
 }
+
 
 .modalChecked i{
     color: #5fdda1 !important;
@@ -1718,6 +1719,12 @@ footer .list-group
 
     form{
         font-size: 0.9rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #loginBtn{
+        margin-top: 2rem;
     }
 
     .pageTitle {
@@ -1734,7 +1741,8 @@ footer .list-group
         display: none;
     }
 
-    .alert{
+    .alert,
+    #jsGenerated{
         top:60px;
     }
 
@@ -1994,7 +2002,7 @@ footer .list-group
 
     .closeMap {
         position: absolute;
-        top: 129px;
+        top: 115px;
         left: unset;
         right: 9px;
     }
@@ -2391,6 +2399,10 @@ footer .list-group
         margin-top: 2rem;
     }
 
+    .gMap{
+        top:25px;
+    }
+
 }
 @media only screen and (max-width: 320px){
 
@@ -2404,6 +2416,10 @@ footer .list-group
     }
     .card{
         width: 100%;
+    }
+
+    #forgottenPswd{
+        font-size: 0.7rem !important;
     }
 
     img button {
