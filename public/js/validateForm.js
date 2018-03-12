@@ -299,6 +299,19 @@ function loginError(){
               $id('loginFailed').innerHTML = 'L\'email et le mot de passe ne correspondent pas';
         }
     }
+}
+
+function serverValidationFailed(){
+
+    if($class('help-block')){
+
+        var errors = $class('help-block');
+        for(var i= 0; i<errors.length; i++ ){
+            errors[i].previousElementSibling.classList.add("has-error");
+            errors[i].previousElementSibling.classList.remove("noError");
+            errors[i].remove();
+        }
+    }
 
 }
 
@@ -313,4 +326,8 @@ if(window.location.pathname === "/connexion"){
         loginError();
     })
 }
+
+window.addEventListener('load',function () {
+    serverValidationFailed();
+});
 

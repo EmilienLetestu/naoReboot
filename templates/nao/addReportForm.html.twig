@@ -20,9 +20,9 @@
         <div class="form-group">
             {{ form_label(form.nbrOfBirds) }}
             {{ form_widget(form.nbrOfBirds, {'attr':{'min':1,'max':30, 'oninput': 'validateInteger("report_nbrOfBirds",1,30,"integerError")'}}) }}
-            {{ form_errors(form.nbrOfBirds) }}
             <span class="checked"><i class="fa fa-check" aria-hidden="true"></i></span>
             <div id="integerError" class="form-control-feedback noError">Entrez un nombre entre 1 et 30</div>
+            {{ form_errors(form.nbrOfBirds) }}
         </div>
         <div class="form-group">
             {{ form_label(form.addedOn) }}
@@ -40,10 +40,10 @@
         <div class="form-group" onkeyup="liveCharCount('report_comment','charMeter',300)">
             {{ form_label(form.comment) }}
             {{ form_widget(form.comment, {'attr':{'onkeyup' : 'validateOptionalText("report_comment",0,300,"commentError")'}}) }}
-            {{ form_errors(form.comment) }}
             <span id="charMeter" class="wordCount">0/300</span>
             <span class="checked"><i class="fa fa-check" aria-hidden="true"></i></span>
             <div id="commentError" class="form-control-feedback noError"> 300 signes maximum</div>
+            {{ form_errors(form.comment) }}
         </div>
         <div>
             {{ form_label(form.pictRef) }}

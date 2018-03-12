@@ -259,6 +259,11 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     z-index: 3;
 }
 
+#backGenerated.alert-denied{
+    background-color: #FF5240;
+    color: #FFFFFF;
+}
+
 /*---------------------landing page---------------------*/
 
 #withOutNao {
@@ -697,7 +702,6 @@ footer .list-group
     top: -25px;
     left: 4%;
 }
-
 
 /*---------------------------home page---------------------------*/
 #event{
