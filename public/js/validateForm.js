@@ -282,10 +282,35 @@ function selectCurrentDate(){
     }
 }
 
+
+function loginError(){
+
+    if($id('loginFailed')){
+
+        var msg = $id('loginFailed').innerHTML;
+        switch (msg){
+          case 'User account is disabled.':
+              $id('loginFailed').innerHTML = 'Veuillez activer votre compte';
+              break;
+          case 'User account is locked.':
+              $id('loginFailed').innerHTML = ' Votre compte a été bloqué par l’administrateur';
+              break;
+          default:
+              $id('loginFailed').innerHTML = 'L\'email et le mot de passe ne correspondent pas';
+        }
+    }
+
+}
+
 if(window.location.pathname === "/observations/nouvelle-observation"){
     window.addEventListener('load',function () {
         selectCurrentDate();
     });
 }
 
+if(window.location.pathname === "/connexion"){
+    window.addEventListener('load',function () {
+        loginError();
+    })
+}
 

@@ -13,7 +13,7 @@
     {% if app.request.get('_route') == 'login' %}
         <div class="connectionForms" onkeyup="disable('loginBtn','loginForm')">
             {% if error %}
-                <div class="alert alert-warning">{{ error.message }}</div>
+                <div class="alert alert-warning" id="loginFailed">{{ error.message }}</div>
             {% endif %}
             <form action="{{ path('login_check') }}" method="post" id="loginForm">
                 <div class="form-group">
@@ -45,13 +45,13 @@
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name, { 'attr': { 'onkeyup' : 'validateText("register_name",3,30,"nameError")'} }) }}
                 <span class="checked"><i class="fa fa-check"></i></span>
-                <div id="nameError" class="form-control-feedback noError">Le prénom doit contenir 3 lettres minimum</div>
+                <div id="nameError" class="form-control-feedback noError">Le prénom doit contenir entre 3 et 30 lettres</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.surname) }}
                 {{ form_widget(form.surname, { 'attr': { 'onkeyup' : 'validateText("register_surname",3,30,"surnameError")' } }) }}
                 <span class="checked"><i class="fa fa-check"></i></span>
-                <div id="surnameError" class="form-control-feedback noError">Le nom doit contenir 3 lettres minimum</div>
+                <div id="surnameError" class="form-control-feedback noError">Le nom doit contenir entre 3 et 30 lettres</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.email) }}
@@ -63,7 +63,7 @@
                 {{ form_label(form.pswd) }}
                 {{ form_widget(form.pswd, { 'attr': { 'onkeyup': 'validatePswd("register_pswd",6,30,"pswdError")' } }) }}
                 <span class="checked"><i class="fa fa-check"></i></span>
-                <div id="pswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+                <div id="pswdError" class="form-control-feedback noError">Entre 6 et 30 caractères avec au moins 1 lettre</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.accessLevel) }}
