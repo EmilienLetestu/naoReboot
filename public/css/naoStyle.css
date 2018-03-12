@@ -517,8 +517,6 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 .navbar-brand i
 {
-    position: relative;
-    top: 4px;
     color: #FFFFFF;
     font-size: inherit;
 }
@@ -673,6 +671,10 @@ footer .list-group
 #forgottenPswd{
     color: #ffa500;
     margin-left: 5%;
+}
+
+#forgottenPswd:hover{
+    color: #ff8013;
 }
 
 .checked{

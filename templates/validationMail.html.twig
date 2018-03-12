@@ -3,26 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        .disclaimer
-        {
-            font-size: 0.7em;
+        .disclaimer {
+            font-size: 0.7rem;
         }
+
+        #activation{
+            border: solid 1px #ffa500;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #ffa500;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        #activation:hover{
+            background: #ffa500;
+            color: #ffffff;
+        }
+
+        .center{
+            text-align: center;
+        }
+
+        .main,
+        h1,
+        h3{
+            font-size: 1.6rem;
+        }
+
+        .banner{
+            background-color: #5e5e5e;
+            padding: 2rem 0.5rem;
+            color: #ffff;
+        }
+
+        span{
+            color: #ffa500;
+        }
+
+        p{
+            color: #000000;
+        }
+
     </style>
 </head>
     <body>
 
-    <h1>Activation de votre compte</h1>
+    <h1 class="banner"><span>NAO</span> - Activation de votre compte</h1>
 
     <h3>Bonjour {{ name }} {{ surname }},</h3>
 
 
-    <p>vous avez récemment créé un compte NAO et vous devez maintenant l'activer grĉe au lien ci-dessous:</p>
+    <p class="main">vous avez récemment créé un compte NAO et vous devez maintenant l'activer grĉe au lien ci-dessous:</p>
 
-    <a href="http://localhost:8000/validation/{{ expireOn }}/{{ email }}/{{ token }}">activer le compte</a>
+    <div class="center">
+        <a href="http://localhost:8000/validation/{{ expireOn }}/{{ email }}/{{ token }}" id="activation">activer le compte</a>
+    </div>
 
-    <p>Nous vous remercions de votre confiance et vous souhaitons de passer d'agréables moments sur NAO.fr</p>
+    <p class="main">Nous vous remercions de votre confiance et vous souhaitons de passer d'agréables moments sur NAO.fr</p>
 
-    <p>L'équipe NAO.</p>
+    <p class="main">L'équipe NAO.</p>
 
     <p class="disclaimer"> Cet e-mail est généré automatiquement s'il vous est parvenu par erreur
     veuillez nous en excuser et ne pas en tenir compte</p>
