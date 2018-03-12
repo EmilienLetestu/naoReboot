@@ -23,19 +23,27 @@ if(screen.width > 768){
 
 if(screen.width < 768){
 
+
     window.addEventListener('scroll',function (){
         mobileSearch("none");
-        hide('dashboard');
     });
 
     document.getElementById('searchTrigger').addEventListener('touchstart',function () {
         mobileSearch("inline-block");
     });
 
-    document.getElementById('accountBadge').addEventListener('touchstart',function () {
-        getStyle($id('dashboard'),'display') === 'hidden' ?
-        show('dashboard') : hide('dashboard');
-    });
+
+    if(document.getElementById('accountBadge')){
+
+        window.addEventListener('scroll',function (){
+            hide('dashboard');
+        });
+
+        document.getElementById('accountBadge').addEventListener('touchstart',function () {
+            getStyle($id('dashboard'),'display') === 'hidden' ?
+                show('dashboard') : hide('dashboard');
+        });
+    }
 }
 
 function searchWidth() {

@@ -263,7 +263,7 @@ function disable(btnId,formId) {
  */
 function checked(inputValue,errorId) {
   if(inputValue !== "" && $id(errorId).className === 'form-control-feedback noError' ){
-      $id(errorId).previousElementSibling.style.display = "block";
+      $id(errorId).previousElementSibling.style.display = "inline-block";
   } else {
       $id(errorId).previousElementSibling.style.display = "none";
   }

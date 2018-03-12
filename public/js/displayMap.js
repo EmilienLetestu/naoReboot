@@ -33,10 +33,12 @@ function showMap(id,buttonId,loopIndex) {
  * @param loopIndex
  */
 function hideMap(id,buttonId,loopIndex) {
-    var imgId = "img" + loopIndex;
-    $id(imgId).style.visibility = "visible";
-    $id(id).style.visibility = "hidden";
-    $id(buttonId).style.visibility = "hidden";
+    if(loggedUser() === true ){
+        var imgId = "img" + loopIndex;
+        $id(imgId).style.visibility = "visible";
+        $id(id).style.visibility = "hidden";
+        $id(buttonId).style.visibility = "hidden";
+    }
 }
 
 if(screen.width < 768){
