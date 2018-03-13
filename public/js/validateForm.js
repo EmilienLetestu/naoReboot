@@ -209,8 +209,6 @@ function liveCharCount(textId,meterId,max) {
  */
 function fileType(id){
 
-    var validate = true;
-
     if($id(id).value !== ''){
         var file = $id(id).value.replace(/ /g,"_").split('.');
 
@@ -218,10 +216,10 @@ function fileType(id){
 
             generateMsg('jsGenerated','jsGeneratedMsg','Veuillez fournir un fichier au format .jpg ou .png','#ff5240');
 
-            return validate = false;
+        } else{
 
+            generateMsg('jsGenerated','jsGeneratedMsg','Image ajoutée','#5fdda1');
         }
-        return validate;
     }
 }
 

@@ -31,9 +31,9 @@
         </div>
         <div class="form-group">
             {{ form_label(form.location) }}
-            {{ form_widget(form.location) }}
+            {{ form_widget(form.location, {'attr':{'placeholder':'coordonnées gps, lieu ou me géolocaliser'}}) }}
             {{ form_errors(form.location) }}
-            <a class="btn btn-outline" id="localize" onclick="localizeMe()">
+            <a class="btn btn-outline" id="localize" title="Me géolcaliser / trouver" onclick="localizeMe()">
                 <i class="fa fa-map-pin" aria-hidden="true"></i>
             </a>
         </div>
@@ -47,12 +47,12 @@
         </div>
         <div>
             {{ form_label(form.pictRef) }}
-            {{ form_widget(form.pictRef) }}
+            {{ form_widget(form.pictRef, {'attr':{'onchange' : 'fileType("report_pictRef")'}}) }}
             {{ form_errors(form.pictRef) }}
         </div>
         <div class="form-group">
             {{ form_widget(form.satNav) }}
-            <button id="reportBtn" class="btn btn-success" type="submit" disabled="disabled" onclick="return fileType('report_pictRef')">Valider</button>
+            <button id="reportBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>
         </div>
         {{ form_end(form) }}
     </div>

@@ -230,6 +230,11 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     font-size: 0.8rem;
     line-height: 1.3rem;
 }
+
+#charMeter{
+    display: flex;
+    flex-flow: row-reverse;
+}
 /*---------------------error and flash---------------------*/
 .noError{
     visibility: hidden;
@@ -681,7 +686,7 @@ footer .list-group
     position: relative;
     top: -20px;
     display: none;
-    left: 5%;
+    left: 100%;
     color: #5fdda1;
 }
 

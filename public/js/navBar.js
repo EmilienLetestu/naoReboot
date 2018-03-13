@@ -16,8 +16,12 @@ if(screen.width > 768){
         searchWidth();
     });
 
-    document.getElementById('search').addEventListener('mouseleave',function () {
+    document.getElementById('nav_search_search').addEventListener('blur',function () {
        searchBlur();
+    });
+
+    window.addEventListener('scroll',function () {
+        searchBlur();
     });
 }
 
@@ -94,7 +98,7 @@ function search(array) {
         var results   = removeDuplicate(match);
         var links     = createHistoricLinks(results);
         var title     = '<h3>RESULTAT DE VOTRE RECHERCHE POUR : <span id="searchQuery">' + search.toUpperCase() +' </span></h3>';
-        var matchless = '<p class="searchResults">Aucun résultat</p>';
+        var matchless = '<p class="searchResults">Désolé nous n’avons pas trouvé de résultat correspondant à votre recherche.</p>';
 
         results.length === 0 || search.length === 0 ?
             generateMsg('searchLinks','searchLinks',matchless,'#838383'):
