@@ -28,7 +28,7 @@ class ApostropheExtension extends \Twig_Extension
      */
     public function vowelFilter($birdName)
     {
-        $vowel = ['a','e','i','o','u','y'];
+        $vowel = ['a','e','i','o','u','y','é','à','è','ê','â'];
 
         $bird = str_replace('-',' ',$birdName);
 
