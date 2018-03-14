@@ -16,16 +16,16 @@
         <span class="accountScore"><i class="fa fa-star"> {{ reportInfo.2 }}</i></span>
         <div id="profileInfo">
             <ul class="list-unstyled">
-                {% if app.user.id == app.request.get('id') %}
+                {% if app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN') %}
                 <li>
-                    Adresse email: {{ accountInfo.email }}
+                    <i class="fa fa-envelope"></i> {{ accountInfo.email }}
                 </li>
                 {% endif %}
-                <li>
-                    Type de compte: {{ accountInfo.accessLevel|account }}
+                <li class="{{ app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN') ? 'midItem'  }}">
+                    {{ accountInfo.accessLevel|account }}
                 </li>
-                <li>
-                    inscript depuis le: {{ accountInfo.creationDate}}
+                <li class="{{ app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN') ? 'hiddenItem' : 'lastItem' }}">
+                    <i class="fa fa-calendar"></i> {{ accountInfo.creationDate}}
                 </li>
             </ul>
         </div>

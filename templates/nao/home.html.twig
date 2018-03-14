@@ -35,7 +35,7 @@
     <div class="mostWanted">
         {% for img in homeImg %}
             <div class="img">
-                <img src="{{ asset('/naoPictures/'~img) }}">
+                <img src="{{ asset('/naoPictures/'~img) }}" alt="NAO recherche:{{ img|speciesFromFile }}">
                 <span class ="imgTitle">{{ img|speciesFromFile }}</span>
             </div>
         {% endfor %}

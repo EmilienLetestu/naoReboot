@@ -35,6 +35,10 @@ h1 {
     margin-bottom: 1%;
 }
 
+strong{
+    font-weight: inherit;
+}
+
 input {
     box-shadow:none;
 }
@@ -1024,27 +1028,6 @@ footer .list-group
     left: 33.5%;
 }
 
-
-#profileTable{
-    box-shadow: 0 0 8px #9b9b9b;
-}
-
-#profileTable,
-#profileTable thead tr th{
-    text-align: center;
-    color: #373737;
-}
-
-#profileTable  thead  tr  th{
-    background-color: #373737;
-    color: #FFFFFF;
- }
-
-#profileTable  thead  tr  th,
-#profileTable  tbody  tr  th{
-    border: 1px solid #596669;
-}
-
 #profileInfo ul {
 
     display: flex;
@@ -1054,8 +1037,13 @@ footer .list-group
     font-family: 'Rubik', sans-serif;
 }
 
-#profileInfo ul li:nth-child(2){
+.lastItem{
    margin-left: -3%;
+}
+
+.midItem{
+    position: relative;
+    right: 4rem;
 }
 
 #app .btn-outline
@@ -1720,6 +1708,10 @@ footer .list-group
 
     #app {
         margin-top: 80px;
+    }
+
+    .midItem{
+        right: 0;
     }
 
     form{
@@ -2581,6 +2573,10 @@ footer .list-group
 
     #app{
         margin-top: 100px;
+    }
+
+    .midItem{
+        right: 0;
     }
 
     .pageTitle{

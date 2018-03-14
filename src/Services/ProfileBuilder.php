@@ -95,7 +95,8 @@ class ProfileBuilder
             'name'         => $user->getName(),
             'surname'      => $user->getSurname(),
             'accessLevel'  => $user->getAccessLevel(),
-            'creationDate' => $user->getCreatedOn()->format('d-m-Y')
+            'creationDate' => $user->getCreatedOn()->format('d-m-Y'),
+            'email'        => $user->getEmail()
         ];
 
         //list all reports
