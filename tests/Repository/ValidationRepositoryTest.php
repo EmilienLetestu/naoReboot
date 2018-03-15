@@ -34,7 +34,7 @@ class ValidationRepositoryTest extends KernelTestCase
     {
         $validation = $this->em
             ->getRepository(Validation::class)
-            ->findValidatedReportBy($id = 1)
+            ->findValidatedReportBy($reportId = 2)
         ;
 
         $this->assertCount(1,$validation);
@@ -44,10 +44,10 @@ class ValidationRepositoryTest extends KernelTestCase
     {
         $validation = $this->em
             ->getRepository(Validation::class)
-            ->findValidationAddedBy($id = 2)
+            ->findValidationAddedBy($id = 1)
         ;
 
-        $this->assertCount(2, $validation);
+        $this->assertCount(4, $validation);
     }
 
     /**

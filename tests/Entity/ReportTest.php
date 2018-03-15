@@ -41,8 +41,8 @@ class ReportTest extends TestCase
         $report->setValidationScore(5);
 
         $tools = new Tools();
-        $pictName = $tools->generateDataForHomeImg('rosignol',1);
-        $report->setPictRef($pictName['fileName']);
+        $pictName = $tools->generateDataForUserImg('rosignol',1);
+        $report->setPictRef($pictName[0]);
 
 
 
@@ -53,7 +53,7 @@ class ReportTest extends TestCase
         static::assertEquals(8, $report->getNbrOfBirds());
         static::assertEquals(true,$report->getValidated());
         static::assertEquals(5, $report->getValidationScore());
-        static::assertEquals($pictName['fileName'],$report->getPictRef());
+        static::assertEquals($pictName[0],$report->getPictRef());
 
 
 

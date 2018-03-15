@@ -38,7 +38,7 @@ class starRepositoryTest extends KernelTestCase
             ->findStaredReportBy($id = 1)
         ;
 
-        $this->assertCount(2,$star);
+        $this->assertCount(0,$star);
     }
 
     public function testFindStarAddedBy()
@@ -48,7 +48,7 @@ class starRepositoryTest extends KernelTestCase
             ->findStarAddedBy($id = 3)
         ;
 
-        $this->assertCount(1,$star);
+        $this->assertCount(0,$star);
     }
 
     /**

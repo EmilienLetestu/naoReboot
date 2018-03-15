@@ -29,7 +29,8 @@ class ReportRepositoryTest extends KernelTestCase
 
         $this->em = static::$kernel->getContainer()
             ->get('doctrine')
-            ->getManager();
+            ->getManager()
+        ;
     }
 
 
@@ -39,44 +40,10 @@ class ReportRepositoryTest extends KernelTestCase
             ->getRepository(Report::class)
             ->findAllExpired();
 
-        $this->assertCount(2, $report);
+        $this->assertCount(1, $report);
     }
 
-    /**
-     * find all report to display for member with accessLevel 2 or 3
-     */
-    public function testFindAllDependOnViewer_1()
-    {
-        $report = $this->em
-            ->getRepository(Report::class)
-            ->findAllDependOnViewer(
-                $birdId    = 1,
-                $validated = 0,
-                $order     = 'DESC',
-                $sort      = 'addedOn',
-                $limit     = 10)
-            ;
 
-        $this->assertCount(2,$report);
-    }
-
-    /**
-     * find all report to display for member with accessLevel 1
-     */
-    public function testFindAllDependOnViewer_2()
-    {
-        $report = $this->em
-            ->getRepository(Report::class)
-            ->findAllDependOnViewer(
-                $birdId    = 1,
-                $validated = 1,
-                $order     = 'DESC',
-                $sort      = 'addedOn',
-                $limit     = 10)
-        ;
-
-        $this->assertCount(0,$report);
-    }
 
     public function testFindAllForHomePage()
     {
@@ -85,7 +52,17 @@ class ReportRepositoryTest extends KernelTestCase
             ->findAllForHomePage()
         ;
 
-        $this->assertCount(0,$report);
+        $this->assertCount(2,$report);
+    }
+
+    public function testFindUserLastPublication()
+    {
+         $report = $this->em
+            ->getRepository(Report::class)
+            ->findUserLastPublication(3)
+        ;
+
+        $this->assertEquals('Vieux, Normandie',$report->getLocation());
     }
 
     /**
