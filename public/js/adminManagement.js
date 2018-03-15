@@ -64,8 +64,8 @@ function ban(event,id){
     xmlhttp.onreadystatechange = function(){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
-               var icon = updateIcon(id,'block','do_not_disturb_off');
-               var message = icon === 'do_not_disturb_off' ? 'Utilisateur banni' : 'Bannissement levé';
+               var icon = updateIcon(id,'fa-ban','fa-user-plus');
+               var message = icon === false ? 'Utilisateur banni' : 'Bannissement levé';
                generateMsg('jsGenerated','jsGeneratedMsg',message,'#5fdda1');
             }else{
                 generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
@@ -90,7 +90,7 @@ function privilege(event,id,reminderId){
     xmlhttp.onreadystatechange = function(){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
-                updateIcon(id,'arrow_upward','arrow_downward');
+                updateIcon(id,'fa-angle-double-up','fa-angle-double-down');
                 updateLevel(reminderId);
                 generateMsg('jsGenerated','jsGeneratedMsg','Role modifié avec succès','#5fdda1');
             }else{
@@ -105,16 +105,19 @@ function privilege(event,id,reminderId){
 
 /**
  * @param id
- * @param state1
- * @param state2
- * @returns {*}
+ * @param class1
+ * @param class2
+ * @returns {boolean}
  */
-function updateIcon(id,state1,state2){
+function updateIcon(id,class1,class2){
 
     var icon = $id(id).getElementsByTagName('i');
-    var state = icon[0].innerText.trim() == state1 ? state2 : state1;
+    icon[0].classList.contains(class1) ?
+        swappClass(icon[0],class1,class2) :
+        swappClass(icon[0],class2,class1)
+    ;
 
-    return icon[0].innerText = state;
+    return icon[0].classList.contains(class1);
 }
 
 /**
