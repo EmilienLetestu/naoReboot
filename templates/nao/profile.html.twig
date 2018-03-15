@@ -13,19 +13,19 @@
 
     <div class="headBanner">
         <h2>{{ accountInfo.name }} {{ accountInfo.surname }}</h2>
-        <span class="accountScore"><i class="fa fa-star"> {{ reportInfo.2 }}</i></span>
+        <span class="accountScore"><i class="fa fa-star-o"> {{ reportInfo.2 }}</i></span>
         <div id="profileInfo">
             <ul class="list-unstyled">
                 {% if app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN') %}
                 <li>
-                    <i class="fa fa-envelope"></i> {{ accountInfo.email }}
+                    <i class="fa fa-envelope-o"></i> {{ accountInfo.email }}
                 </li>
                 {% endif %}
                 <li class="{{ app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN') ? 'midItem'  }}">
                     {{ accountInfo.accessLevel|account }}
                 </li>
                 <li class="{{ app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN') ? 'hiddenItem' : 'lastItem' }}">
-                    <i class="fa fa-calendar"></i> {{ accountInfo.creationDate}}
+                    <i class="fa fa-calendar-o"></i> {{ accountInfo.creationDate}}
                 </li>
             </ul>
         </div>
@@ -101,10 +101,10 @@
     </div>
 
     <div class="cardHolder col-sm-12" id="userReport">
-        {% for report in reportList if app.user.id == app.request.get('id') or is_granted('ROLE_ADMIN')  %}
+        {% for report in reportList if app.user.id == app.request.get('id') or is_granted('ROLE_VALIDATOR')  %}
             {{ include('nao/reportCard.html.twig') }}
         {% endfor %}
-        {% for report in reportList if report.validated == 1 and app.user.id != app.request.get('id') and not is_granted('ROLE_ADMIN')  %}
+        {% for report in reportList if report.validated == 1 and app.user.id != app.request.get('id') and not is_granted('ROLE_VALIDATOR')  %}
             {{ include('nao/reportCard.html.twig') }}
         {% endfor %}
     </div>

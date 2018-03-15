@@ -1037,6 +1037,10 @@ footer .list-group
     font-family: 'Rubik', sans-serif;
 }
 
+#profileInfo ul li i{
+    color:#FFA500;
+}
+
 .lastItem{
    margin-left: -3%;
 }
