@@ -124,8 +124,8 @@ class UserManager
         $repository = $this->doctrine->getRepository(User::class);
         $user = $repository->findOneBy([
             'id' => $id,
-
         ]);
+
         $newLevel = $user->getAccessLevel() > 1 ? 1 : 2;
         $user->setAccessLevel($newLevel);
 
