@@ -106,7 +106,7 @@ exportCsv:
         _controller: App\Action\Admin\ExportCsvAction
 
 accountValidation:
-    path: /admin/demande-accès-naturaliste
+    path: /admin/demande-acces-naturaliste
     defaults:
         _controller: App\Action\Admin\Level2RequestAction
 
@@ -115,7 +115,7 @@ unactivated:
         defaults:
            _controller: App\Action\Admin\UnactivatedListAction
 bird:
-    path: /admin/liste-des-espèces
+    path: /admin/liste-des-especes
     defaults:
         _controller:  App\Action\Admin\ReportedBirdAction
 
