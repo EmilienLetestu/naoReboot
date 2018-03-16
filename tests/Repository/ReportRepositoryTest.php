@@ -10,7 +10,6 @@ namespace tests\Repository;
 
 use App\Entity\Report;
 use App\Services\ActivitiesTracker;
-use App\Services\Tools;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class ReportRepositoryTest extends KernelTestCase
@@ -66,11 +65,6 @@ class ReportRepositoryTest extends KernelTestCase
             ->findUserLastPublication(3)
         ;
 
-        $activity = new ActivitiesTracker($this->em);
-
-        $activityList = $activity->getLastPublicationData(1);
-
-        $this->assertEquals('-------------',$activityList[0]);
         $this->assertEquals('Vieux, Normandie',$report->getLocation());
     }
 
@@ -86,3 +80,4 @@ class ReportRepositoryTest extends KernelTestCase
     }
 
 }
+
