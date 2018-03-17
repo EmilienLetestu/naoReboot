@@ -81,5 +81,14 @@ class MailsTest extends KernelTestCase
         static::assertArrayHasKey('contact@nao.fr', $contactMail->getTo());
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
 
+        $this->em->close();
+        $this->em = null;
+    }
 }
