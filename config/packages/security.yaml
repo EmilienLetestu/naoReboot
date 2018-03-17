@@ -34,6 +34,7 @@ security:
 
     access_control:
             - { path: ^/admin, roles: ROLE_ADMIN }
+            - { path: ^/observations/valide, roles: ROLE_USER}
             - { path: ^/observations/en-attente-de-validation, roles: ROLE_VALIDATOR}
             - { path: ^/observations/nouvelle-observation, roles: ROLE_USER }
             - { path: ^/historique-des-observations, roles: ROLE_USER }
