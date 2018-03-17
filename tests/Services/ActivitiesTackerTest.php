@@ -10,7 +10,6 @@ namespace test\Services;
 
 use App\Services\ActivitiesTracker;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use tests\Repository\starRepositoryTest;
 
 class ActivitiesTackerTest extends KernelTestCase
 {
@@ -34,7 +33,6 @@ class ActivitiesTackerTest extends KernelTestCase
         ;
     }
 
-
     public function testActivitiesTracker(){
 
         $activity = new ActivitiesTracker($this->em);
@@ -44,6 +42,19 @@ class ActivitiesTackerTest extends KernelTestCase
 
         $lastData = $activity->getLastReportedData(21);
         static::assertEquals('49.3334059, -0.4573649999999816',$lastData[1]);
+    }
+
+
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->em->close();
+        $this->em = null;
     }
     
 }
