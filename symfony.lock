@@ -22,5 +22,8 @@
     },
     "symfony/serializer": {
         "version": "v3.3.13"
+    },
+    "symfony/css-selector": {
+        "version": "v4.0.6"
     }
 }
