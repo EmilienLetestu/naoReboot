@@ -13,6 +13,7 @@
         <env name="APP_ENV" value="test" />
         <env name="APP_DEBUG" value="1" />
         <env name="APP_SECRET" value="s$cretf0rt3st" />
+        <env name="SECRET" value="nao_remember_me_key" />
         <env name="BASE_URLS" value="http://localhost:8000" />
         <!-- define your env variables for the test env here -->
 
@@ -32,10 +33,7 @@
         <env name="MAILER_URL" value="null://localhost" />
         <!-- ###- symfony/swiftmailer-bundle ### -->
 
-        <!-- ##> algolia/algolia-search-bundle ### -->
-        <env name="APPLICATION_ID" value="NV3VBB5AFF" />
-        <env name="API_KEY" value="5e9a94df972be506689644f7940023e0" />
-        <!-- ###< algolia/algolia-search-bundle ### -->
+
     </php>
 
     <testsuites>
