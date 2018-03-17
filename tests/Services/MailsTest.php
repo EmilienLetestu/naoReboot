@@ -46,7 +46,7 @@ class MailsTest extends KernelTestCase
         $mail = new Mails($this->twig, $this->em);
 
         $availability = $mail->checkMailAvailability('j.smith@gmail.com');
-        static::assertEquals(0,count($availability));
+        static::assertEquals(1,count($availability));
 
         //test mail content
         $token = 'abcdefghijkl';
