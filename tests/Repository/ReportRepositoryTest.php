@@ -43,7 +43,7 @@ class ReportRepositoryTest extends KernelTestCase
             ->getRepository(Report::class)
             ->findAllExpired();
 
-        $this->assertCount(1, $report);
+        $this->assertCount(0, $report);
     }
 
 
