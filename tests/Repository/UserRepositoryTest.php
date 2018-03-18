@@ -27,29 +27,47 @@ class UserRepositoryTest extends KernelTestCase
 
         $this->em = static::$kernel->getContainer()
             ->get('doctrine')
-            ->getManager();
+            ->getManager()
+        ;
     }
 
     public function testFindLogin()
     {
-        $user = $this->em
-            ->getRepository(User::class)
-            ->findLogin('eletestu@gmail.com')
-        ;
-
-        $this->assertCount(1, $user);
+        $this->assertCount(1,
+            $this->getUserRepositoryAndTest(__FUNCTION__, 'eletestu@gmail.com')
+        );
     }
 
     public function testFindDeletableAccount()
     {
-        $nMonthAgo   = "-1 day";
+        $this->assertCount(3,
+            $this ->getUserRepositoryAndTest(__FUNCTION__, '-1 day')
+        );
+    }
 
-        $user = $this->em
+    public function testCountAllActivated()
+    {
+        $this->assertCount(5,
+            $this->getUserRepositoryAndTest(__FUNCTION__)
+        );
+    }
+
+    public function testCountAllWithAccessLevel()
+    {
+        $this->assertCount(1,
+            $this->getUserRepositoryAndTest(__FUNCTION__,1)
+        );
+
+    }
+
+    private function getUserRepositoryAndTest($function, $param = null)
+    {
+        $repoNameFunction = lcfirst(str_replace('test','',$function));
+
+        return $this->em
             ->getRepository(User::class)
-            ->findDeletableAccount($nMonthAgo)
+            ->$repoNameFunction($param)
         ;
-
-        $this->assertCount(3, $user);
     }
 
     /**

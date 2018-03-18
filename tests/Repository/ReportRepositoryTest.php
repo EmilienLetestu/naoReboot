@@ -21,8 +21,6 @@ class ReportRepositoryTest extends KernelTestCase
     private $em;
 
 
-
-
     /**
      * {@inheritDoc}
      */
@@ -36,36 +34,37 @@ class ReportRepositoryTest extends KernelTestCase
         ;
     }
 
-
     public function testFindAllExpired()
     {
-        $report = $this->em
-            ->getRepository(Report::class)
-            ->findAllExpired();
-
-        $this->assertCount(0, $report);
+        $this->assertCount(0,
+            $this->getReportRepositoryAndTest(__FUNCTION__)
+        );
     }
-
 
 
     public function testFindAllForHomePage()
     {
-        $report = $this->em
-            ->getRepository(Report::class)
-            ->findAllForHomePage()
-        ;
-
-        $this->assertCount(2,$report);
+        $this->assertCount(2,
+            $this->getReportRepositoryAndTest(__FUNCTION__)
+        );
     }
 
     public function testFindUserLastPublication()
     {
-         $report = $this->em
-            ->getRepository(Report::class)
-            ->findUserLastPublication(3)
-        ;
+        $this->assertEquals('Vieux, Normandie',
+            $this->getReportRepositoryAndTest(__FUNCTION__,3)
+                 ->getLocation()
+        );
+    }
 
-        $this->assertEquals('Vieux, Normandie',$report->getLocation());
+    private function getReportRepositoryAndTest($function,$param = null)
+    {
+        $repoNameFunction = lcfirst(str_replace('test','',$function));
+
+        return $this->em
+            ->getRepository(Report::class)
+            ->$repoNameFunction($param)
+        ;
     }
 
     /**

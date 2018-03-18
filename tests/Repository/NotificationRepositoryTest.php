@@ -36,14 +36,9 @@ class NotificationRepositoryTest extends KernelTestCase
      */
     public function testFindNotificationForUser()
     {
-       $notification = $this->em
+       $this->assertCount(1,$this->em
            ->getRepository(Notification::class)
-           ->findNotificationForUser(
-               $id = 4,
-               $seen = 0
-           )
-       ;
-
-       $this->assertCount(1,$notification);
+           ->findNotificationForUser(4,0)
+       );
     }
 }

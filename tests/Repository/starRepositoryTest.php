@@ -33,22 +33,26 @@ class starRepositoryTest extends KernelTestCase
 
     public function testFindStaredReportBy()
     {
-        $star = $this->em
-            ->getRepository(Star::class)
-            ->findStaredReportBy($id = 1)
-        ;
-
-        $this->assertCount(0,$star);
+        $this->assertCount(0,
+            $this->getStarRepositoryAndTest(__FUNCTION__,1)
+        );
     }
 
     public function testFindStarAddedBy()
     {
-        $star = $this->em
-            ->getRepository(Star::class)
-            ->findStarAddedBy($id = 3)
-        ;
+        $this->assertCount(0,
+            $this->getStarRepositoryAndTest(__FUNCTION__,0)
+        );
+    }
 
-        $this->assertCount(0,$star);
+    private function getStarRepositoryAndTest($function,$param = null)
+    {
+        $repoNameFunction = lcfirst(str_replace('test','',$function));
+
+        return $this->em
+            ->getRepository(Star::class)
+            ->$repoNameFunction($param)
+        ;
     }
 
     /**

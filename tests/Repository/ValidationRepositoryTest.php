@@ -32,22 +32,26 @@ class ValidationRepositoryTest extends KernelTestCase
      */
     public function testFindValidatedReportBy()
     {
-        $validation = $this->em
-            ->getRepository(Validation::class)
-            ->findValidatedReportBy($reportId = 2)
-        ;
-
-        $this->assertCount(1,$validation);
+        $this->assertCount(1,
+            $this->getValidationRepositoryAndTest(__FUNCTION__,2)
+        );
     }
 
     public function testFindValidationAddedBy()
     {
-        $validation = $this->em
-            ->getRepository(Validation::class)
-            ->findValidationAddedBy($id = 1)
-        ;
+        $this->assertCount(4,
+            $this->getValidationRepositoryAndTest(__FUNCTION__,1)
+        );
+    }
 
-        $this->assertCount(4, $validation);
+    private function getValidationRepositoryAndTest($function, $param = null)
+    {
+        $repoNameFunction = lcfirst(str_replace('test','',$function));
+
+        return $this->em
+            ->getRepository(Validation::class)
+            ->$repoNameFunction($param)
+        ;
     }
 
     /**
