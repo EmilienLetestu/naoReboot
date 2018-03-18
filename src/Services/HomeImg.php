@@ -17,7 +17,6 @@ class HomeImg
     public function getHomeImage()
     {
         $dir = '../public/naoPictures';
-
         $dirContent = scandir($dir);
 
         //remove '.' and '..' from array and return file name
