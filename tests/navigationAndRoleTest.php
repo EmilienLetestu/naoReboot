@@ -87,7 +87,7 @@ class navigationAndRoleTest extends WebTestCase
             ->filter('a:contains("Liste des espèces")')
             ->link()
         ;
-        
+
         $crawler = $this->client->click($link);
         $this->assertSame(1, $crawler->filter('h1:contains(LISTE DES ESPECES)')->count());
 
@@ -106,7 +106,7 @@ class navigationAndRoleTest extends WebTestCase
         $form = $crawler->filter("form")->form();
         $form['_username'] =  $username;
         $form['_password'] =  $pswd;
-        $crawler = $this->client->submit($form);
+        $this->client->submit($form);
 
         return $this->client->followRedirect();
     }
