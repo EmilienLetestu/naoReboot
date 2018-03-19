@@ -163,7 +163,8 @@ function updateLevel(id){
 function removeExpiredFromTable(){
 
    var expired = $class('expired');
-   for(var i = 0; i < expired.length; i++){
-       expired[i].remove();
+
+   while(expired[0]){
+       expired[0].parentNode.removeChild(expired[0]);
    }
 }
