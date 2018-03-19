@@ -14,7 +14,7 @@
 
 
     <div class="globalDelete">
-        <a class="btn delete" id="allUnactivated" href="{{ path('userManagement', {'action' : 'delete'}) }}" onclick="deleteEntity(event,'allUnactivated','unactivatedUser')">
+        <a class="btn delete" id="allUnactivated" href="{{ path('userManagement', {'action' : 'delete'}) }}" onclick="deleteAllExpired(event,'allUnactivated')">
             Supprimer tous les comptes créés il y a plus de 60 jours
         </a>
     </div>
@@ -31,7 +31,7 @@
             </thead>
             <tbody>
             {% for user in userList %}
-            <tr id="unactivatedUser{{ loop.index }}">
+            <tr id="unactivatedUser{{ loop.index }}" class="{{ user.createdOn > date('-60days') ? 'unexpired' : 'expired' }}">
                 <td>
                     {{ user.surname }} {{ user.name }}
                 </td>

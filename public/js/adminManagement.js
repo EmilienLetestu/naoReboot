@@ -28,6 +28,35 @@ function deleteEntity(event,id,containerId){
 }
 
 /**
+ *
+ * @param event
+ * @param id
+ */
+function deleteAllExpired(event,id){
+
+    event.preventDefault();
+    if($class('expired').length > 0){
+        var url =  $id(id).getAttribute("href");
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function(){
+            if(this.readyState === 4){
+                if(this.responseText == 'success'){
+                    removeExpiredFromTable();
+                    generateMsg('jsGenerated','jsGeneratedMsg','Comptes supprimé','#5fdda1');
+                }else{
+                    generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+                }
+            }
+        };
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+    }else{
+        generateMsg('jsGenerated','jsGeneratedMsg','Aucun comptes à supprimer','#ff5240');
+    }
+}
+
+/**
  * @param event
  * @param id
  * @param containerId
@@ -129,4 +158,12 @@ function updateLevel(id){
     var level = account.innerHTML.trim() === 'Amateur' ? 'Naturaliste':'Amateur';
 
     return account.innerHTML = level;
+}
+
+function removeExpiredFromTable(){
+
+   var expired = $class('expired');
+   for(var i = 0; i < expired.length; i++){
+       expired[i].remove();
+   }
 }
