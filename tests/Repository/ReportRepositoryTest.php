@@ -34,6 +34,9 @@ class ReportRepositoryTest extends KernelTestCase
         ;
     }
 
+    /**
+     * find all reports  eligible for deletion
+     */
     public function testFindAllExpired()
     {
         $this->assertCount(0,
@@ -41,7 +44,9 @@ class ReportRepositoryTest extends KernelTestCase
         );
     }
 
-
+    /**
+     * find homepage eligible reports
+     */
     public function testFindAllForHomePage()
     {
         $this->assertCount(2,
@@ -49,6 +54,9 @@ class ReportRepositoryTest extends KernelTestCase
         );
     }
 
+    /**
+     * last published report for a given user
+     */
     public function testFindUserLastPublication()
     {
         $this->assertEquals('Vieux, Normandie',
@@ -57,6 +65,11 @@ class ReportRepositoryTest extends KernelTestCase
         );
     }
 
+    /**
+     * @param $function
+     * @param null $param
+     * @return mixed
+     */
     private function getReportRepositoryAndTest($function,$param = null)
     {
         $repoNameFunction = lcfirst(str_replace('test','',$function));

@@ -37,6 +37,9 @@ class ValidationRepositoryTest extends KernelTestCase
         );
     }
 
+    /**
+     * validation added by a given member
+     */
     public function testFindValidationAddedBy()
     {
         $this->assertCount(4,
@@ -44,7 +47,12 @@ class ValidationRepositoryTest extends KernelTestCase
         );
     }
 
-    private function getValidationRepositoryAndTest($function, $param = null)
+    /**
+     * @param $function
+     * @param null $param
+     * @return array
+     */
+    private function getValidationRepositoryAndTest($function, $param = null):array
     {
         $repoNameFunction = lcfirst(str_replace('test','',$function));
 

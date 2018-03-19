@@ -31,6 +31,9 @@ class starRepositoryTest extends KernelTestCase
     }
 
 
+    /**
+     * number of stars for a given report
+     */
     public function testFindStaredReportBy()
     {
         $this->assertCount(0,
@@ -38,6 +41,9 @@ class starRepositoryTest extends KernelTestCase
         );
     }
 
+    /**
+     * stars added by a given user
+     */
     public function testFindStarAddedBy()
     {
         $this->assertCount(0,
@@ -45,7 +51,12 @@ class starRepositoryTest extends KernelTestCase
         );
     }
 
-    private function getStarRepositoryAndTest($function,$param = null)
+    /**
+     * @param $function
+     * @param null $param
+     * @return array
+     */
+    private function getStarRepositoryAndTest($function,$param = null):array
     {
         $repoNameFunction = lcfirst(str_replace('test','',$function));
 

@@ -31,6 +31,9 @@ class UserRepositoryTest extends KernelTestCase
         ;
     }
 
+    /**
+     * fin a given account based on email
+     */
     public function testFindLogin()
     {
         $this->assertCount(1,
@@ -38,6 +41,9 @@ class UserRepositoryTest extends KernelTestCase
         );
     }
 
+    /**
+     * total of unactivated account eligible to deletion
+     */
     public function testFindDeletableAccount()
     {
         $this->assertCount(3,
@@ -45,6 +51,9 @@ class UserRepositoryTest extends KernelTestCase
         );
     }
 
+    /**
+     * total of unactivated account
+     */
     public function testCountAllActivated()
     {
         $this->assertCount(5,
@@ -52,6 +61,9 @@ class UserRepositoryTest extends KernelTestCase
         );
     }
 
+    /**
+     * total of user with a given access level (role)
+     */
     public function testCountAllWithAccessLevel()
     {
         $this->assertCount(1,
@@ -60,7 +72,12 @@ class UserRepositoryTest extends KernelTestCase
 
     }
 
-    private function getUserRepositoryAndTest($function, $param = null)
+    /**
+     * @param $function
+     * @param null $param
+     * @return array
+     */
+    private function getUserRepositoryAndTest($function, $param = null):array
     {
         $repoNameFunction = lcfirst(str_replace('test','',$function));
 
