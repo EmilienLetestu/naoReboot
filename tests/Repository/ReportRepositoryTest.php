@@ -70,7 +70,7 @@ class ReportRepositoryTest extends KernelTestCase
      * @param null $param
      * @return mixed
      */
-    private function getReportRepositoryAndTest($function,$param = null)
+    private function getReportRepositoryAndTest(string $function,$param = null)
     {
         $repoNameFunction = lcfirst(str_replace('test','',$function));
 

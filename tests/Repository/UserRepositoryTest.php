@@ -77,7 +77,7 @@ class UserRepositoryTest extends KernelTestCase
      * @param null $param
      * @return array
      */
-    private function getUserRepositoryAndTest($function, $param = null):array
+    private function getUserRepositoryAndTest(string $function, $param = null):array
     {
         $repoNameFunction = lcfirst(str_replace('test','',$function));
 

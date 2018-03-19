@@ -52,7 +52,7 @@ class ValidationRepositoryTest extends KernelTestCase
      * @param null $param
      * @return array
      */
-    private function getValidationRepositoryAndTest($function, $param = null):array
+    private function getValidationRepositoryAndTest(string $function, $param = null):array
     {
         $repoNameFunction = lcfirst(str_replace('test','',$function));
 
