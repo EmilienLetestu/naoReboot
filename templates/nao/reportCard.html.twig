@@ -26,7 +26,7 @@
              <img src="{{ asset('/userImages/'~report.pictRef) }}" id="img{{ loop.index }}" alt="observation {{ report.bird.speciesFr|apostrophe }} rapportée sur NAO.fr" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
             {% endif %}
             {% if report.pictRef == null %}
-                <img src="{{ asset('/appPictures/naoHome.jpg') }}" id="img{{ loop.index }}" alt="observation {{ report.bird.speciesFr|apostrophe }} rapportée sur NAO.fr" style="width: 100%" onload="evalSize('img{{ loop.index }}')"/>
+                <img src="{{ asset('/appPictures/naoHome.jpg') }}" id="img{{ loop.index }}" alt="observation {{ report.bird.speciesFr|apostrophe }} rapportée sur NAO.fr" style="width: 100%"/>
             {% endif %}
         </div>
 
