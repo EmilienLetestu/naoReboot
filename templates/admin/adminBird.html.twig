@@ -43,7 +43,7 @@
 
             <div>
                 <p class="birdDataTitle">Coordonnées</p>
-                <p class="birdDataStats">{{ key|lastReported['satNav'] }}</p>
+                <p class="birdDataStats {{ key|lastReported['satNav']|length > 25 ? 'shrink' }}">{{ key|lastReported['satNav'] }}</p>
             </div>
         </div>
 

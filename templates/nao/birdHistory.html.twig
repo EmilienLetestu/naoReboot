@@ -31,7 +31,7 @@
 
         <div>
             <p class="speciesDataTitle">Coordonnées</p>
-            <p class="speciesDataStats">{{ birdId|lastReported['satNav'] }}</p>
+            <p class="speciesDataStats {{ birdId|lastReported['satNav']|length > 25 ? 'shrink' }}">{{ birdId|lastReported['satNav'] }}</p>
         </div>
     </div>
 

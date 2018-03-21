@@ -91,7 +91,7 @@
 
             <div>
                 <p class="profileDataTitle">Coordonnées</p>
-                <p class="profileDataStats">{{ lastInfo.2 }}</p>
+                <p class="profileDataStats {{ lastInfo.2|length > 25 ? 'shrink'}}">{{ lastInfo.2 }}</p>
             </div>
         </div>
     </div>
