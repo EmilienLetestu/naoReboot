@@ -920,16 +920,17 @@ footer .list-group
 
 .cardCmt{
     position:absolute;
-    bottom: 5px;
+    bottom: 0;
     left: 0;
     z-index: 1;
     background-color: #FFFFFF;
     text-align: justify;
     padding: 1%;
     box-shadow: 0 0 8px #9b9b9b;
-    width:98%;
-    margin-left: 1%;
+    width:100%;
     visibility: hidden;
+    height: 405px;
+    border-radius: 5px;
 }
 
 .cardCmt i{
@@ -1983,6 +1984,10 @@ footer .list-group
 
     .cardHeader ul li i {
         padding-left: 10px;
+    }
+
+    .cardCmt{
+        height: 360px;
     }
 
     .shrink {
