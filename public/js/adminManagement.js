@@ -83,8 +83,9 @@ function roleRequest(event,id,containerId){
 /**
  * @param event
  * @param id
+ * @param containerId
  */
-function ban(event,id){
+function ban(event,id,containerId){
 
     event.preventDefault();
     var url = $id(id).getAttribute("href");
@@ -94,6 +95,7 @@ function ban(event,id){
         if(this.readyState === 4){
             if(this.responseText == 'success'){
                var icon = updateIcon(id,'fa-ban','fa-user-plus');
+                updateClass(containerId,'banStatus','banStatus1');
                var message = icon === false ? 'Utilisateur banni' : 'Bannissement levé';
                generateMsg('jsGenerated','jsGeneratedMsg',message,'#5fdda1');
             }else{
@@ -106,11 +108,13 @@ function ban(event,id){
 }
 
 /**
+ *
  * @param event
  * @param id
  * @param reminderId
+ * @param containerId
  */
-function privilege(event,id,reminderId){
+function privilege(event,id,reminderId,containerId){
 
     event.preventDefault();
     var url = $id(id).getAttribute("href");
@@ -121,6 +125,7 @@ function privilege(event,id,reminderId){
             if(this.responseText == 'success'){
                 updateIcon(id,'fa-angle-double-up','fa-angle-double-down');
                 updateLevel(reminderId);
+                updateClass(containerId,'level1','level2');
                 generateMsg('jsGenerated','jsGeneratedMsg','Role modifié avec succès','#5fdda1');
             }else{
                 generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
@@ -147,6 +152,20 @@ function updateIcon(id,class1,class2){
     ;
 
     return icon[0].classList.contains(class1);
+}
+
+/**
+ * update class to avoid filter conflict
+ * @param id
+ * @param class1
+ * @param class2
+ */
+function updateClass(id,class1,class2){
+    var element = $id(id);
+    $id(id).classList.contains(class1) ?
+        swappClass(element,class1,class2) :
+        swappClass(element,class2,class1)
+    ;
 }
 
 /**

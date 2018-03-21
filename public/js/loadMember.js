@@ -10,7 +10,13 @@ window.addEventListener('load', function () {
 function memberFilter() {
     var select = $id("memberFilter");
     var option = select.options[select.selectedIndex].value;
-    select.options[0].innerHTML = "retirer les filtres";
+    var defaultOption = select.options[0];
+
+   defaultOption.innerHTML === "filtrer" ?
+       defaultOption.innerHTML ="retirer les filtres" :
+       defaultOption.innerHTML = 'filtrer'
+   ;
+
     var classes = $class("memberInfo");
     var limit = !$id("memberLoadBtn") ? classes.length : $id("memberLoadBtn").value;
 

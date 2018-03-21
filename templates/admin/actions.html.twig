@@ -9,13 +9,13 @@
         </li>
         <li class="list-inline-item">
             <a class="btn ban" id="banBtn{{ loop.index }}"
-               href="{{ path('userManagement', {'action' :'ban','id' :user.id}) }}" onclick="ban(event,'banBtn{{ loop.index }}')">
+               href="{{ path('userManagement', {'action' :'ban','id' :user.id}) }}" onclick="ban(event,'banBtn{{ loop.index }}','member{{ loop.index }}')">
                 <i class="{{ user.ban == 0 ? 'fa fa-ban' : 'fa fa-user-plus' }}"></i>
             </a>
         </li>
         <li class="list-inline-item">
             <a class="btn privilege" id="privilegeBtn{{ loop.index }}"
-               href="{{ path('userManagement', {'action' :'privilege','id' :user.id}) }}" onclick="privilege(event,'privilegeBtn{{ loop.index }}','memberLevel{{ loop.index }}')">
+               href="{{ path('userManagement', {'action' :'privilege','id' :user.id}) }}" onclick="privilege(event,'privilegeBtn{{ loop.index }}','memberLevel{{ loop.index }}','member{{ loop.index }}')">
                 <i class="{{ user.accessLevel < 2 ? 'fa fa-angle-double-up' : 'fa fa-angle-double-down' }}"></i>
             </a>
         </li>
