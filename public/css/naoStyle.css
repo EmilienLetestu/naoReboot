@@ -250,11 +250,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 #jsGenerated{
     display: none;
-    position: fixed;
-    top: 72px;
-    color: white;
-    width: 100%;
-    text-align: center;
+    color:#FFFFFF;
 }
 
 .alert{
@@ -263,7 +259,6 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     width: 100%;
     left: 0;
     text-align: center;
-    padding-top: 1.5rem;
     z-index: 3;
     border-radius: 0;
 }
@@ -285,8 +280,9 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     color: #FFFFFF;
 }
 
+#jsGenerated p,
 #backGenerated p{
-    margin-top: 1rem !important;
+    padding-top: 1.7rem !important;
 }
 
 /*---------------------landing page---------------------*/
@@ -498,6 +494,11 @@ table thead i{
     border: none;
 }
 
+#speech .btn-default,
+#seeAll .btn-default{
+    padding: 1rem 2.5rem;
+}
+
 #connection .btn-default,
 #seeAll .btn-default,
 #speech .btn-default{
@@ -568,7 +569,7 @@ table thead i{
 
 .navbar-brand
 {
-    color: #ffa500;
+    color: #ffa500!important;
     font-size: 2rem;
 }
 
@@ -1122,7 +1123,11 @@ footer .list-group
 .searchResults{
 
     font-size: 1.2rem;
-    color: #ffa500;
+    color: #ffa500 !important;
+}
+
+.searchResults:hover{
+    color: #000000 !important;
 }
 
 #searchQuery{
