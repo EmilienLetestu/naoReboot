@@ -104,7 +104,7 @@ a.historicLink:hover{
 
 .pageTitle
 {
-    margin-bottom: 3%;
+    margin-bottom: 4rem;
 }
 
 
@@ -580,7 +580,6 @@ table thead i{
 {
     font-size: 3em;
     color: #FFA500 ;
-    padding: 25%;
 }
 
 
@@ -1031,11 +1030,6 @@ footer .list-group
     font-size: 1.5rem;
 }
 
-.accountScore i
-{
-    padding: 5%;
-}
-
 #chartIcon
 {
     text-align: center;
@@ -1291,12 +1285,8 @@ footer .list-group
     margin-bottom: 10%;
 }
 
-.dashboard{
-    padding-bottom: 1%;
-}
-
 .dashboard div{
-    margin-block-end: 50px;
+    margin-bottom: 50px;
 }
 
 
@@ -1307,8 +1297,7 @@ footer .list-group
 }
 
 #statsWrap{
-    padding-top: 2%;
-    margin-top: 3%;
+    margin-bottom: 3rem;
 }
 
 #statIcon,
