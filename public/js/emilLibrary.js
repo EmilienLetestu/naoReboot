@@ -171,8 +171,8 @@ function createHistoricLinks(array){
     for(var i = 0; i < array.length; i++){
         var latin = array[i]['latin'];
         var id    = array[i]['id'];
-        var fr    = array[i]['fr'];
-        links.push('<a class="searchResults" href="/historique-des-observations/'+latin+'/'+id+'">'+ latin.charAt(0).toUpperCase()+latin.slice(1) +' - '+ fr +'</a><br>');
+        var fr    = array[i]['fr'].split(',');
+        links.push('<a class="searchResults" href="/historique-des-observations/'+latin+'/'+id+'">'+ latin.charAt(0).toUpperCase()+latin.slice(1) +' - '+ fr[0] +'</a><br>');
     }
 
     return links;

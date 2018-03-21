@@ -263,14 +263,30 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     width: 100%;
     left: 0;
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 8px;
+    padding-top: 1.5rem;
     z-index: 3;
+    border-radius: 0;
 }
 
-#backGenerated.alert-denied{
+#backGenerated{
+    border-color: transparent;
+}
+
+#backGenerated.alert-denied,
+.alert-warning{
     background-color: #FF5240;
     color: #FFFFFF;
+    padding-top: 1.5rem;
+    padding-bottom: 1.3rem;
+}
+
+#backGenerated.alert-success{
+    background-color:  #5fdda1;
+    color: #FFFFFF;
+}
+
+#backGenerated p{
+    margin-top: 1rem !important;
 }
 
 /*---------------------landing page---------------------*/
@@ -436,6 +452,12 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 }
 
+/*------------------------table---------------------------*/
+
+table thead i{
+    color: #ffa500;
+}
+
 /*---------------------buttons and link------------------*/
 
 #connection .btn-outline:hover,
@@ -445,13 +467,13 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 {
     color: #FFFFFF;
     border-color: #FFFFFF;
-    background-color: orange;
+    background-color: #ffa500;
 }
 
 .social li
 {
-    color: orange;
-    border: solid 1px orange;
+    color: #ffa500;
+    border: solid 1px #ffa500;
     border-radius: 50%;
     margin: 2%;
     background-color: #FFFFFF;
@@ -460,8 +482,8 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 #connection .btn-outline,
 #app .btn-outline,
 #loadReports .btn-outline{
-    color: orange;
-    border-color: orange;
+    color: #ffa500;
+    border-color: #ffa500;
     background-color: #FFFFFF;
 }
 
@@ -481,7 +503,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 #speech .btn-default{
     color: #FFFFFF;
     border-color: #FFFFFF;
-    background-color: orange;
+    background-color: #ffa500;
 
 }
 
@@ -494,20 +516,20 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 #connection .btn-default:hover,
 #seeAll .btn-default:hover,
 #speech .btn-default:hover{
-    color: orange;
-    border: solid 1px orange;
+    color: #ffa500;
+    border: solid 1px #ffa500;
     background-color: #FFFFFF;
 }
 
 #speech .btn-default:hover{
-    color: orange;
-    border: solid 1px orange;
+    color: #ffa500;
+    border: solid 1px #ffa500;
     background-color: transparent;
 }
 
 
 #basic-addon1 {
-    background-color: orange;
+    background-color: #ffa500;
     color: #FFFFFF;
 }
 
