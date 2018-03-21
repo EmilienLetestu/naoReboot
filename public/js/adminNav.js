@@ -48,7 +48,7 @@ function activeLink(){
         case 'membres':
             document.getElementById('userLink').style.backgroundColor = activeColor;
             break;
-        case 'innactifs':
+        case 'inactifs':
             document.getElementById('unactivatedLink').style.backgroundColor = activeColor;
             break;
         case 'naturaliste':

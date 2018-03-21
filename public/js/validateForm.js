@@ -34,9 +34,11 @@ function validateText(id,min,max,errorId){
  */
 function validateOptionalText(id,min,max,errorId){
 
-    var userInput = $id(id).value.length;
-    if(userInput !== " "){
+    var userInput = $id(id).value;
+    if(userInput.length > 0){
         validateText(id,min,max,errorId);
+    }else{
+        swappClass($id(errorId),'has-error','noError');
     }
 }
 

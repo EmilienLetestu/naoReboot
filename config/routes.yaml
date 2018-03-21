@@ -111,7 +111,7 @@ accountValidation:
         _controller: App\Action\Admin\Level2RequestAction
 
 unactivated:
-        path: /admin/comptes-innactifs
+        path: /admin/comptes-inactifs
         defaults:
            _controller: App\Action\Admin\UnactivatedListAction
 bird:

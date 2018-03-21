@@ -8,7 +8,7 @@
 
 namespace App\Action;
 
-use App\Form\Type\ContactForm;
+use App\Form\Type\ContactType;
 use App\Handler\ContactHandler;
 use App\Responder\AboutUsResponder;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -67,7 +67,7 @@ class AboutUsAction
     public function __invoke(Request $request, AboutUsResponder $responder)
     {
         $form = $this->formFactory
-                     ->create(ContactForm::class)
+                     ->create(ContactType::class)
                      ->handleRequest($request)
         ;
 

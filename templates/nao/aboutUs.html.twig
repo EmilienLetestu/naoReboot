@@ -61,8 +61,10 @@
                     <div id="contactMailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
                 </div>
                 <div class ="form-group-row">
-                    {{ form_widget(form.subject) }}
+                    {{ form_widget(form.subject,{'attr':{'onkeyup':'validateOptionalText("contact_form_subject",5,50,"contactSubjectError")'}} ) }}
                     {{ form_errors(form.subject) }}
+                    <span class="checked inlineIcon"><i class="fa fa-check"></i></span>
+                    <div id="contactSubjectError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
                 </div>
             </div>
                 <div class ="form-group-row">

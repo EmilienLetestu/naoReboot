@@ -7,11 +7,11 @@
  */
 
 namespace App\EventListener;
-
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class SecurityListener
 {
+
     /**
      * @param InteractiveLoginEvent $event
      */
@@ -26,5 +26,6 @@ class SecurityListener
                 )
         ;
     }
+
 }
 
