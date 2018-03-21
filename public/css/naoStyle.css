@@ -1253,9 +1253,9 @@ footer .list-group
 .imgTitle{
     display: inline-block;
     position: relative;
-    top: -200px;
+    top: -200px !important;
     text-align: center;
-    width: 400px;
+    width: 100%;
     color: white;
     font-size: 1.8em;
     text-shadow: 4px 4px 1px rgba(3, 3, 3,1);
@@ -1263,8 +1263,9 @@ footer .list-group
 }
 .img button{
     position: relative;
-    top: -24.5rem;
-    left: -1rem;
+    top: -26.5rem;
+    left: -2rem;
+    float: right;
     color: #ffa500;
     background-color: transparent!important;
     border: none;
@@ -1738,6 +1739,10 @@ footer .list-group
         right: 0;
     }
 
+    #seeAll .btn-default{
+        width: 90%;
+    }
+
     form{
         font-size: 0.9rem;
         padding-left: 1rem;
@@ -1749,7 +1754,7 @@ footer .list-group
     }
 
     .pageTitle {
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
     }
 
     .alert {
@@ -1798,7 +1803,7 @@ footer .list-group
     #nav_search_search {
         width: 100%;
         position: absolute;
-        top: 2.5rem;
+        top: 2rem;
         left: -10rem;
         display: none;
         border: none;
@@ -1920,8 +1925,7 @@ footer .list-group
     }
 
     .img button{
-        left: 10.5rem;
-        top: -27rem;
+        left:0;
     }
 
     .adminPreview{
@@ -2593,7 +2597,7 @@ footer .list-group
 
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1280px) and (orientation: portrait){
+@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait){
 
     #app{
         margin-top: 100px;
@@ -2613,6 +2617,10 @@ footer .list-group
 
     ul .mobileInline {
         display: inline-block;
+    }
+
+    [id^="mobileCardTrigger"]{
+        display: none !important;
     }
 
     footer .list-group {
