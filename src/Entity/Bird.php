@@ -108,7 +108,10 @@ class Bird
      */
     public function getSpeciesFr()
     {
-        return $this->speciesFr == '' ? $this->getSpeciesNameOnly() : $this->speciesFr;
+        return $this->speciesFr == '' ?
+            $this->getSpeciesNameOnly() :
+            $this->speciesFr
+        ;
     }
 
     /**
@@ -219,7 +222,12 @@ class Bird
         $splitFr = preg_split('/;|,/',$fr);
         $sanitizeFr = preg_split('/\(|\)/',$splitFr[0]);
 
-        return  $sanitizeFr[0] === ''  ? $this->getSpeciesNameOnly() : $sanitizeFr[0];
+
+        return
+            $sanitizeFr[0] === ''  ?
+                $this->getSpeciesNameOnly() :
+                $this->getSpeciesNameOnly().' -- '.$sanitizeFr[0]
+        ;
     }
 
 }
