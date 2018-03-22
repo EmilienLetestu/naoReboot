@@ -10,6 +10,7 @@ namespace App\Form\Type;
 
 use App\Entity\Bird;
 use App\Validators\CommentLength;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\AbstractType;
