@@ -9,6 +9,7 @@
 namespace tests\Repository;
 
 use App\Entity\Star;
+use App\Repository\StarRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class starRepositoryTest extends KernelTestCase
@@ -37,7 +38,8 @@ class starRepositoryTest extends KernelTestCase
     public function testFindStaredReportBy()
     {
         $this->assertCount(0,
-            $this->getStarRepositoryAndTest(__FUNCTION__,1)
+            $this->getStarRepository()
+            ->findStaredReportBy(1)
         );
     }
 
@@ -47,22 +49,19 @@ class starRepositoryTest extends KernelTestCase
     public function testFindStarAddedBy()
     {
         $this->assertCount(0,
-            $this->getStarRepositoryAndTest(__FUNCTION__,0)
+            $this->getStarRepository()
+            ->findStarAddedby(1)
         );
     }
 
     /**
-     * @param $function
-     * @param null $param
-     * @return array
+     * @return StarRepository
      */
-    private function getStarRepositoryAndTest(string $function,$param = null):array
+    private function getStarRepository():StarRepository
     {
-        $repoNameFunction = lcfirst(str_replace('test','',$function));
-
         return $this->em
             ->getRepository(Star::class)
-            ->$repoNameFunction($param)
+
         ;
     }
 

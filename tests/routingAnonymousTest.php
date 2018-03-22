@@ -48,7 +48,7 @@ class routingAnonymousTest extends WebTestCase
         $client->request('GET','/admin');
         $this->assertEquals(302,$client->getResponse()->getStatusCode());
 
-        $client->request('GET','/admin/comptes-innactifs');
+        $client->request('GET','/admin/comptes-inactifs');
         $this->assertEquals(302,$client->getResponse()->getStatusCode());
 
         $client->request('GET','/admin/liste-des-especes');

@@ -9,6 +9,7 @@
 namespace  tests\Repository;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class UserRepositoryTest extends KernelTestCase
@@ -32,22 +33,25 @@ class UserRepositoryTest extends KernelTestCase
     }
 
     /**
-     * fin a given account based on email
-     */
-    public function testFindLogin()
-    {
-        $this->assertCount(1,
-            $this->getUserRepositoryAndTest(__FUNCTION__, 'eletestu@gmail.com')
-        );
-    }
-
-    /**
      * total of unactivated account eligible to deletion
      */
     public function testFindDeletableAccount()
     {
         $this->assertCount(3,
-            $this ->getUserRepositoryAndTest(__FUNCTION__, '-1 day')
+            $this->getUserRepository()
+            ->findDeletableAccount('-1 day')
+        );
+    }
+
+
+    /**
+     * fin a given account based on email
+     */
+    public function testFindLogin()
+    {
+        $this->assertCount(1,
+            $this->getUserRepository()
+            ->findLogin('eletestu@gmail.com')
         );
     }
 
@@ -57,7 +61,8 @@ class UserRepositoryTest extends KernelTestCase
     public function testCountAllActivated()
     {
         $this->assertCount(5,
-            $this->getUserRepositoryAndTest(__FUNCTION__)
+            $this->getUserRepository()
+            ->countAllActivated()
         );
     }
 
@@ -67,23 +72,46 @@ class UserRepositoryTest extends KernelTestCase
     public function testCountAllWithAccessLevel()
     {
         $this->assertCount(1,
-            $this->getUserRepositoryAndTest(__FUNCTION__,1)
+            $this->getUserRepository()
+            ->countAllWithAccessLevel(1)
         );
 
     }
 
     /**
-     * @param $function
-     * @param null $param
-     * @return array
+     * list all activated account
      */
-    private function getUserRepositoryAndTest(string $function, $param = null):array
+    public function testFindAllActivated()
     {
-        $repoNameFunction = lcfirst(str_replace('test','',$function));
+        $userList =  $this->getUserRepository()
+            ->findAllActivated()
+        ;
+        $this->assertSame('Emilien',$userList[0]->getName());
 
+    }
+
+    /**
+     * list all "validator" role request
+     */
+    public function testFindAllAccessLvl2Request()
+    {
+        $userList = $this->getUserRepository()
+            ->findAllAccessLvl2Request()
+        ;
+
+        $this->assertCount(1,$userList);
+        $this->assertSame('Hank',$userList[0]->getName());
+    }
+
+
+
+    /**
+     * @return UserRepository
+     */
+    private function getUserRepository():UserRepository
+    {
         return $this->em
             ->getRepository(User::class)
-            ->$repoNameFunction($param)
         ;
     }
 

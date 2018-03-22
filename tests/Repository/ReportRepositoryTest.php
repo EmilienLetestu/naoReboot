@@ -9,6 +9,7 @@
 namespace tests\Repository;
 
 use App\Entity\Report;
+use App\Repository\ReportRepository;
 use App\Services\ActivitiesTracker;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -40,8 +41,51 @@ class ReportRepositoryTest extends KernelTestCase
     public function testFindAllExpired()
     {
         $this->assertCount(0,
-            $this->getReportRepositoryAndTest(__FUNCTION__)
+            $this->getReportRepository()
+            ->findAllExpired()
         );
+    }
+
+    /**
+     * list report based on a given validation status
+     */
+    public function testFindAllReport()
+    {
+        $unvalidatedList = $this->getReportRepository()
+            ->findAllReport(0)
+        ;
+        $this->assertCount(3,$unvalidatedList);
+        $this->assertSame('Nimes, Occitanie',$unvalidatedList[1]->getLocation());
+
+        $validatedList = $this->getReportRepository()
+            ->findAllReport(1)
+        ;
+        $this->assertCount(2,$validatedList);
+        $this->assertSame('Courseulles, Normandie',$validatedList[1]->getLocation());
+    }
+
+    /**
+     * list and filter report
+     */
+    public function testFindSelection()
+    {
+        $selectionList = $this->getReportRepository()
+            ->findSelection(1,'DESC','addedOn')
+        ;
+
+        $this->assertCount(2,$selectionList);
+        $this->assertSame('Courseulles, Normandie',$selectionList[0]->getLocation());
+
+    }
+
+    public function testFindAllWithBirdName()
+    {
+        $list = $this->getReportRepository()
+            ->findAllWithBirdName(51)
+        ;
+        $this->assertCount(1,$list);
+        $this->assertSame('Chevalier guignette',$list[0]->getBird()->getSpeciesFr());
+
     }
 
     /**
@@ -50,7 +94,8 @@ class ReportRepositoryTest extends KernelTestCase
     public function testFindAllForHomePage()
     {
         $this->assertCount(2,
-            $this->getReportRepositoryAndTest(__FUNCTION__)
+            $this->getReportRepository()
+            ->findAllForHomePage()
         );
     }
 
@@ -60,23 +105,21 @@ class ReportRepositoryTest extends KernelTestCase
     public function testFindUserLastPublication()
     {
         $this->assertEquals('Vieux, Normandie',
-            $this->getReportRepositoryAndTest(__FUNCTION__,3)
-                 ->getLocation()
+            $this->getReportRepository()
+            ->findUserLastPublication(3)
+            ->getLocation()
         );
+
     }
 
-    /**
-     * @param $function
-     * @param null $param
-     * @return mixed
-     */
-    private function getReportRepositoryAndTest(string $function,$param = null)
-    {
-        $repoNameFunction = lcfirst(str_replace('test','',$function));
 
+    /**
+     * @return ReportRepository
+     */
+    private function getReportRepository():ReportRepository
+    {
         return $this->em
             ->getRepository(Report::class)
-            ->$repoNameFunction($param)
         ;
     }
 

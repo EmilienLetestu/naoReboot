@@ -9,6 +9,7 @@
 namespace tests\Repository;
 
 use App\Entity\Validation;
+use App\Repository\ValidationRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 class ValidationRepositoryTest extends KernelTestCase
 {
@@ -33,7 +34,8 @@ class ValidationRepositoryTest extends KernelTestCase
     public function testFindValidatedReportBy()
     {
         $this->assertCount(1,
-            $this->getValidationRepositoryAndTest(__FUNCTION__,2)
+            $this->getValidationRepository()
+            ->findValidatedReportBy(2)
         );
     }
 
@@ -43,22 +45,18 @@ class ValidationRepositoryTest extends KernelTestCase
     public function testFindValidationAddedBy()
     {
         $this->assertCount(4,
-            $this->getValidationRepositoryAndTest(__FUNCTION__,1)
+            $this->getValidationRepository()
+            ->findValidationAddedBy(1)
         );
     }
 
     /**
-     * @param $function
-     * @param null $param
-     * @return array
+     * @return ValidationRepository
      */
-    private function getValidationRepositoryAndTest(string $function, $param = null):array
+    private function getValidationRepository():ValidationRepository
     {
-        $repoNameFunction = lcfirst(str_replace('test','',$function));
-
         return $this->em
             ->getRepository(Validation::class)
-            ->$repoNameFunction($param)
         ;
     }
 
