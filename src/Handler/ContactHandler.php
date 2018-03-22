@@ -11,6 +11,7 @@ namespace App\Handler;
 
 use App\Handler\Interfaces\ContactHandlerInterface;
 use App\Services\Mails;
+use App\Services\RecaptchaChecker;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -21,11 +22,11 @@ class ContactHandler implements ContactHandlerInterface
      */
     private $mailService;
 
-
     /**
      * @var \Swift_Mailer
      */
     private $swift;
+
 
     /**
      * ContactHandler constructor.

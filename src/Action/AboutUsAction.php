@@ -11,6 +11,7 @@ namespace App\Action;
 use App\Form\Type\ContactType;
 use App\Handler\ContactHandler;
 use App\Responder\AboutUsResponder;
+use App\Services\RecaptchaChecker;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
