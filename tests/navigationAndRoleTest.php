@@ -103,6 +103,7 @@ class navigationAndRoleTest extends WebTestCase
 
         $crawler = $this->client->request('GET','/connexion');
         $this->assertEquals(200,$this->client->getResponse()->getStatusCode());
+
         $form = $crawler->filter("form")->form();
         $form['_username'] =  $username;
         $form['_password'] =  $pswd;

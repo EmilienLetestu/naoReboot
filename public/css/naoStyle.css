@@ -1728,6 +1728,11 @@ footer .list-group
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+
+    .img button{
+        top: -27rem;
+        left: -5rem;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -1735,6 +1740,7 @@ footer .list-group
     #app {
         margin-top: 80px;
     }
+
 
     .midItem{
         right: 0;
