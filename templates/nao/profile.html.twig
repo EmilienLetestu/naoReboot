@@ -108,8 +108,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script async src="{{ asset('js/reportMap.js') }}"></script>
-    <script async src="{{ asset('js/validateForm.js') }}"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg"
+    <script async defer src="{{ asset('js/reportMap.js') }}"></script>
+    <script async defer src="{{ asset('js/validateForm.js') }}"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcUhS0gzRBMh-V_lIwHotjxGbMFQHCczg"
             type="text/javascript"></script>
 {% endblock %}

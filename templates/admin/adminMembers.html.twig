@@ -89,8 +89,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/adminManagement.js') }}"></script>
-    <script src="{{ asset('js/loadMember.js') }}"></script>
+    <script async defer src="{{ asset('js/adminManagement.js') }}"></script>
+    <script async defer src="{{ asset('js/loadMember.js') }}"></script>
 {% endblock %}
 
 

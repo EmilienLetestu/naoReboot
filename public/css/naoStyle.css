@@ -1340,6 +1340,7 @@ footer .list-group
     top: 70px;
     left:0;
     padding: 12px 15px;
+    z-index: 1;
 }
 
 
