@@ -10,21 +10,26 @@
 function deleteEntity(event,id,containerId){
 
     event.preventDefault();
-    var url = $id(id).getAttribute("href");
-    var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.onreadystatechange = function(){
-        if(this.readyState === 4){
-            if(this.responseText == 'success'){
-                $id(containerId).remove();
-                generateMsg('jsGenerated','jsGeneratedMsg','Compte supprimé','#5fdda1');
-            }else{
-                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+    if (confirm('Surpprimer ce compte ?')){
+
+        var url = $id(id).getAttribute("href");
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function(){
+            if(this.readyState === 4){
+                if(this.responseText == 'success'){
+                    $id(containerId).remove();
+                    generateMsg('jsGenerated','jsGeneratedMsg','Compte supprimé','#5fdda1');
+                }else{
+                    generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+                }
             }
-        }
-    };
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send();
+        };
+
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+    }
 }
 
 /**
@@ -35,7 +40,7 @@ function deleteEntity(event,id,containerId){
 function deleteAllExpired(event,id){
 
     event.preventDefault();
-    if($class('expired').length > 0){
+    if($class('expired').length > 0 && confirm('Attention cette action est irréversible, continuer ?')){
         var url =  $id(id).getAttribute("href");
         var xmlhttp = new XMLHttpRequest();
 
