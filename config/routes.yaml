@@ -47,6 +47,13 @@ validation:
         email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
         token: ([^']{40,})
 
+askNewValidationMail:
+    path: /mail-activation/{email}
+    defaults:
+        _controller: App\Action\ActivationMailAction
+    requirements:
+        email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
+
 report:
     path: /observations/{state}
     defaults:
