@@ -282,7 +282,6 @@ function selectCurrentDate(){
     }
 }
 
-
 function loginError(){
 
     if($id('loginFailed')){
@@ -302,9 +301,11 @@ function loginError(){
     }
 }
 
+
 function generateSendActivationLink(){
-    return '<a class="askMail" href="/renvoie-mail-activation/' + $id('username').value +'">renvoyer l\'email d\'activation ?</a>';
+    return '<a class="askMail" href="/mail-activation/' + $id('username').value +'">renvoyer l\'email d\'activation ?</a>';
 }
+
 
 function serverValidationFailed(){
 
