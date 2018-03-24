@@ -13,7 +13,10 @@ use App\Responder\ProfileResponder;
 use App\Services\ActivitiesTracker;
 use App\Services\ProfileBuilder;
 use App\Services\UpdatePswd;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ProfileAction
@@ -22,6 +25,8 @@ class ProfileAction
     private $updatePswd;
     private $activitiesTracker;
     private $profileBuilder;
+    private $urlGenerator;
+    private $session;
 
     /**
      * ProfileAction constructor.
@@ -29,12 +34,16 @@ class ProfileAction
      * @param UpdatePswd $updatePswd
      * @param ActivitiesTracker $activitiesTracker
      * @param ProfileBuilder $profileBuilder
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param SessionInterface $session
      */
     public function __construct(
         TokenStorageInterface      $token,
         UpdatePswd                 $updatePswd,
         ActivitiesTracker          $activitiesTracker,
-        ProfileBuilder             $profileBuilder
+        ProfileBuilder             $profileBuilder,
+        UrlGeneratorInterface      $urlGenerator,
+        SessionInterface           $session
 
     )
     {
@@ -42,6 +51,8 @@ class ProfileAction
         $this->updatePswd        = $updatePswd;
         $this->activitiesTracker = $activitiesTracker;
         $this->profileBuilder    = $profileBuilder;
+        $this->urlGenerator      = $urlGenerator;
+        $this->session           = $session;
     }
 
     public function __invoke(Request $request, ProfileResponder $responder)
@@ -49,6 +60,7 @@ class ProfileAction
        $id = $request->attributes->get('id');
        $user = $this->token->getToken()->getUser();
        $userId = $user->getId();
+
 
        $profile = $this->profileBuilder->getProfileVersion(
            $request,
@@ -58,6 +70,14 @@ class ProfileAction
            $this->activitiesTracker,
            $this->updatePswd
        );
+
+        if(!$profile){
+            $this->session->getFlashBag()
+                ->add('denied','Ce compte n\'existe plus');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
+        }
 
        return $responder(
            $profile[0],

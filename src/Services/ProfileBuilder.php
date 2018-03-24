@@ -10,7 +10,6 @@ namespace App\Services;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 class ProfileBuilder
 {
@@ -55,7 +54,7 @@ class ProfileBuilder
     public function buildPrivateProfile($request, User $user, ActivitiesTracker $activitiesTracker, UpdatePswd $updatePswd)
     {
         $id          = $user->getId();
-        //create array with account creation date, chg pswd process and account type
+
         $accountInfo = [
             'title'        => 'Mon Profil',
             'name'         => $user->getName(),
@@ -66,7 +65,6 @@ class ProfileBuilder
             'updatePswd'   => $updatePswd->changePswd($request)
         ];
 
-        //fetch all user reports
         $reportList =$user->getReports();
 
         return [
@@ -89,27 +87,28 @@ class ProfileBuilder
         $user = $this->doctrine->getRepository(User::class)
             ->findOneBy(['id'=>$id]);
 
-        //create array with collected data
-        $accountInfo = [
-            'title'        => 'Profil',
-            'name'         => $user->getName(),
-            'surname'      => $user->getSurname(),
-            'accessLevel'  => $user->getAccessLevel(),
-            'creationDate' => $user->getCreatedOn()->format('d-m-Y'),
-            'email'        => $user->getEmail()
-        ];
+        if($user->getDeactivated() === false){
 
-        //list all reports
-        $reportList = $user->getReports();
+            $accountInfo = [
+                'title'        => 'Profil',
+                'name'         => $user->getName(),
+                'surname'      => $user->getSurname(),
+                'accessLevel'  => $user->getAccessLevel(),
+                'creationDate' => $user->getCreatedOn()->format('d-m-Y'),
+                'email'        => $user->getEmail()
+            ];
 
-        return [
-            $accountInfo,
-            $activitiesTracker
-                ->getLastPublicationData($id),
-            $reportList,
-            $activitiesTracker
-                ->getActivitiesData($reportList)
-        ];
+            $reportList = $user->getReports();
+
+            return [
+                $accountInfo,
+                $activitiesTracker
+                    ->getLastPublicationData($id),
+                $reportList,
+                $activitiesTracker
+                    ->getActivitiesData($reportList)
+            ];
+        }
     }
 }
 
