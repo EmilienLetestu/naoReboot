@@ -8,7 +8,6 @@
 
 namespace App\Action;
 
-
 use App\Entity\User;
 use App\Responder\ActivationMailResponder;
 use App\Services\Mails;
@@ -69,6 +68,14 @@ class ActivationMailAction
         $user = $this->doctrine->getRepository(User::class)
             ->findLogin($request->attributes->get('email'))
         ;
+
+        if(!$user){
+            $this->session->getFlashBag()
+                ->add('denied','Nous n\'avons pas pu générer de nouvel e-mail.')
+            ;
+
+            return $responder();
+        }
 
         $this->swift
             ->send($this->mails
