@@ -290,7 +290,8 @@ function loginError(){
         var msg = $id('loginFailed').innerHTML;
         switch (msg){
           case 'User account is disabled.':
-              $id('loginFailed').innerHTML = 'Veuillez activer votre compte';
+              $id('loginFailed').innerHTML = 'Veuillez activer votre compte, ' + generateSendActivationLink();
+
               break;
           case 'User account is locked.':
               $id('loginFailed').innerHTML = ' Votre compte a été bloqué par l’administrateur';
@@ -299,6 +300,10 @@ function loginError(){
               $id('loginFailed').innerHTML = 'L\'email et le mot de passe ne correspondent pas';
         }
     }
+}
+
+function generateSendActivationLink(){
+    return '<a class="askMail" href="/renvoie-mail-activation/' + $id('username').value +'">renvoyer l\'email d\'activation ?</a>';
 }
 
 function serverValidationFailed(){
