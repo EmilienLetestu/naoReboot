@@ -94,7 +94,9 @@
             {% endif %}
 
             {% if report.comment == null and  report.validated == 1 %}
-                <p class="noCmtCard">{{ report.user.name }} {{ report.user.surname }} n'a pas laissé de commentaire </p>
+                <p class="noCmtCard">
+                    {{ report.user.deactivated == 0 ? report.user.name ~' '~ report.user.surname }} n'a pas laissé de commentaire
+                </p>
             {% endif %}
 
             {% if report.comment == null and report.validated == 0 %}
