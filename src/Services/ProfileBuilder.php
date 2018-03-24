@@ -87,7 +87,7 @@ class ProfileBuilder
         $user = $this->doctrine->getRepository(User::class)
             ->findOneBy(['id'=>$id]);
 
-        if($user->getDeactivated() === false){
+        if(!$user->getDeactivated()){
 
             $accountInfo = [
                 'title'        => 'Profil',
