@@ -4,6 +4,7 @@
     {% set cmtId = 'cmt'~loop.index %}
     {% set closeBtnId = 'closeBtn'~loop.index %}
     {% set starId     = 'star'~loop.index %}
+    {% set deleteId = 'delete'~loop.index %}
 
     <div class="cardHeader">
         <ul class="list-inline">
@@ -12,6 +13,11 @@
                     {{report.bird.speciesLatin|species }}
                 </a>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
+             <a id={{ deleteId }} href="{{ path('deleteReport',{'reportId':report.id}) }}" onclick="deleteReport(event,'{{deleteId}}','{{'reportCard'~loop.index}}')">
+                 <i class="fa fa-trash"></i>
+             </a>
+            {% endif %}
             <li class="list-inline-item pull-right">
                 {{  report.addedOn|date('d-m-Y') }}
                 <i class="mobileInline fa fa-caret-right" aria-hidden="true" id="mobileCardTrigger{{ loop.index }}" onclick="mobileCard('reportCard{{ loop.index }}',this)"></i>
