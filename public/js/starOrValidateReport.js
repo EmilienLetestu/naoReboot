@@ -41,26 +41,28 @@ function deleteReport(event,id,cardId){
 
     event.preventDefault();
 
-    var url = $id(id).getAttribute("href");
-    var  xmlhttp  = new XMLHttpRequest();
+    if(confirm('Supprimer cette observation ?')){
+        var url = $id(id).getAttribute("href");
+        var  xmlhttp  = new XMLHttpRequest();
 
-    xmlhttp.onreadystatechange = function () {
-        if(this.readyState === 4){
+        xmlhttp.onreadystatechange = function () {
+            if(this.readyState === 4){
 
-            if(this.responseText == 'success'){
+                if(this.responseText == 'success'){
 
-                $id(cardId).remove();
-                generateMsg('jsGenerated','jsGeneratedMsg','Observation Supprimée','#5fdda1');
+                    $id(cardId).remove();
+                    generateMsg('jsGenerated','jsGeneratedMsg','Observation Supprimée','#5fdda1');
 
-            } else {
+                } else {
 
-                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+                    generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+                }
             }
-        }
-    };
+        };
 
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send();
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+    }
 }
 
 /**

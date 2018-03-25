@@ -13,24 +13,24 @@
     <div onload="initMap()" onkeyup="disable('reportBtn','reportForm')">
         {{ form_start(form, {'attr':{'id':'reportForm'}}) }}
         <div class="form-group">
-            {{ form_label(form.bird) }}
+            {{ form_label(form.bird) }}<span class="req">*</span>
             {{ form_widget(form.bird) }}
             {{ form_errors(form.bird) }}
         </div>
         <div class="form-group">
-            {{ form_label(form.nbrOfBirds) }}
+            {{ form_label(form.nbrOfBirds) }}<span class="req">*</span>
             {{ form_widget(form.nbrOfBirds, {'attr':{'min':1,'max':30, 'oninput': 'validateInteger("report_nbrOfBirds",1,30,"integerError")'}}) }}
             <span class="checked"><i class="fa fa-check" aria-hidden="true"></i></span>
             <div id="integerError" class="form-control-feedback noError">Entrez un nombre entre 1 et 30</div>
             {{ form_errors(form.nbrOfBirds) }}
         </div>
         <div class="form-group">
-            {{ form_label(form.addedOn) }}
+            {{ form_label(form.addedOn) }}<span class="req">*</span>
             {{ form_widget(form.addedOn) }}
             {{ form_errors(form.addedOn) }}
         </div>
         <div class="form-group">
-            {{ form_label(form.location) }}
+            {{ form_label(form.location) }}<span class="req">*</span>
             {{ form_widget(form.location, {'attr':{'placeholder':'coordonnées gps, lieu ou me géolocaliser'}}) }}
             {{ form_errors(form.location) }}
             <a class="btn btn-outline" id="localize" title="Me géolcaliser / trouver" onclick="localizeMe()">

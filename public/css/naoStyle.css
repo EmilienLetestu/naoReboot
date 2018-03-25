@@ -43,6 +43,10 @@ input {
     box-shadow:none;
 }
 
+.req{
+    color: #ffa500;
+}
+
 #intro {
     background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('../appPictures/naoHome.jpg'),no-repeat;
     background-position: center;
@@ -78,8 +82,16 @@ input {
     transform: scale(1.5) !important;
 }
 
-a.historicLink:hover{
-    font-size: 1.03rem;
+.historicLink:hover{
+    font-weight: bold;
+}
+
+.deleteReport i{
+    color: #ff5240 !important;
+}
+
+.deleteReport i:hover{
+    transform: scale(1.5) !important;
 }
 
 .btn:focus{
@@ -245,6 +257,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 
 .has-error{
     color: #ff5240;
+    font-size: 0.8em;
 }
 
 #jsGenerated{
@@ -509,7 +522,7 @@ table thead i{
 
 #connection .btn-default{
     position: absolute;
-    right: 9%;
+    right: 10%;
 }
 
 
