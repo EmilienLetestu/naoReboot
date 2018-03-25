@@ -21,18 +21,46 @@ function addPoint(event,id) {
                 if(this.responseText === 'success'){
 
                     $id(id).innerHTML = updateScore(url,id);
+
                 } else {
 
                     generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
                 }
             }
         };
+
         xmlhttp.open("GET",url,true);
         xmlhttp.send();
-    }
-    else{
+
+    } else {
         generateMsg('jsGenerated','jsGeneratedMsg','Fonctionnalité réservé aux membres, se connecter?','#ff5240');
     }
+}
+
+function deleteReport(event,id,cardId){
+
+    event.preventDefault();
+
+    var url = $id(id).getAttribute("href");
+    var  xmlhttp  = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function () {
+        if(this.readyState === 4){
+
+            if(this.responseText == 'success'){
+
+                $id(cardId).remove();
+                generateMsg('jsGenerated','jsGeneratedMsg','Observation Supprimée','#5fdda1');
+
+            } else {
+
+                generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+            }
+        }
+    };
+
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send();
 }
 
 /**
