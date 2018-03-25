@@ -150,6 +150,14 @@ validateReport:
    requirements:
        reportId: \d+
 
+deleteReport:
+   path: /admin/report/delete/{reportId}
+   defaults:
+      _controller: App\Action\Admin\DeleteReportAction
+   requirements:
+       reportId : \d+
+
+
 
 
 
