@@ -55,6 +55,25 @@ class ReportRepository extends EntityRepository
     }
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function findReport($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+
+        $queryBuilder
+            ->where('r.id = :id')
+            ->setParameter('id',$id)
+        ;
+
+        return $queryBuilder
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
      * fetch all unvalidated report posted 30 days ago or more
      * @return array
      */
@@ -64,10 +83,10 @@ class ReportRepository extends EntityRepository
         $date = date('Y-m-d', strtotime("-30 days"));
 
         $queryBuilder
-            ->where("r.validated = :state")
-            ->setParameter("state", 0)
-            ->andWhere("r.addedOn <= :date")
-            ->setParameter("date", new \DateTime($date));
+            ->where('r.validated = :state')
+            ->setParameter('state', 0)
+            ->andWhere('r.addedOn <= :date')
+            ->setParameter('date', new \DateTime($date));
 
         return $queryBuilder
             ->getQuery()
