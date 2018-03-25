@@ -52,8 +52,7 @@ class UserManager
 
         $this->doctrine->flush();
 
-        return 'success'
-        ;
+        return 'success';
     }
 
     /**

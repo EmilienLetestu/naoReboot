@@ -76,6 +76,27 @@ class ReportManager
         return $repository->findAllReport(0);
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
+    public function deleteReport($id)
+    {
+        $report = $this->doctrine
+            ->getRepository(Report::class)
+            ->findReport($id)
+        ;
+
+        if($report->getPictRef()!== null){
+            unlink("../public/userImages/{$report->getPictRef()}");
+        }
+
+        $this->doctrine->remove($report);
+        $this->doctrine->flush();
+
+        return 'success';
+    }
+
 
 }
 
