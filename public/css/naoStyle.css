@@ -306,6 +306,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 #withOutNao h2,
 #withNao h2{
    color: #ffa500;
+    font-size: 1.6em;
 }
 
 #withOutNao i,
@@ -438,6 +439,7 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 #landingTerms{
     margin-top: 10%;
     margin-left: 1%;
+    font-size: 0.9em;
 }
 
 #registerLanding {
@@ -745,8 +747,8 @@ footer .list-group
 }
 
 .textareaIcon{
-    top: -25px;
-    left: 4%;
+    top: 0;
+    left: 0;
 }
 
 /*---------------------------home page---------------------------*/
@@ -1697,8 +1699,12 @@ footer .list-group
     margin-top: 5%;
 }
 
-#contact .form-group-row:last-child{
+#contact .send{
     text-align: center;
+}
+
+#contact .inlineIcon{
+    left: 92%;
 }
 
 
@@ -2328,9 +2334,6 @@ footer .list-group
         margin-right: 0;
     }
 
-    .checked{
-        left: 95%;
-    }
 
     .table{
         font-size: 0.8rem;

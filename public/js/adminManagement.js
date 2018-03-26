@@ -57,7 +57,7 @@ function deleteAllExpired(event,id){
         xmlhttp.open("GET",url,true);
         xmlhttp.send();
     }else{
-        generateMsg('jsGenerated','jsGeneratedMsg','Aucun comptes à supprimer','#ff5240');
+        generateMsg('jsGenerated','jsGeneratedMsg','Aucun compte à supprimer','#ff5240');
     }
 }
 
