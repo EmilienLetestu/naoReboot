@@ -99,7 +99,11 @@ class ReportHandler implements ReportHandlerInterface
                 $report->setPictRef($filename);
             }
 
-            $this->session->getFlashBag()->add('success','Votre observation a bien été ajoutée !');
+            $this->session->getFlashBag()->add('success',
+                $user->getAccessLevel() < 2 ?
+                    'Votre observation a été ajoutée, maintenant elle doit être validée par la communauté':
+                    ' Votre observation a été ajoutée'
+            );
 
             return true;
         }

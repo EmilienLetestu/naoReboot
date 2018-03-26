@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             {{ form_label(form.location) }}<span class="req">*</span>
-            {{ form_widget(form.location, {'attr':{'placeholder':'coordonnées gps, lieu ou me géolocaliser'}}) }}
+            {{ form_widget(form.location, {'attr':{'placeholder':'lat. et long, lieu ou me géolocaliser'}}) }}
             {{ form_errors(form.location) }}
             <a class="btn btn-outline" id="localize" title="Me géolcaliser / trouver" onclick="localizeMe()">
                 <i class="fa fa-map-pin" aria-hidden="true"></i>
