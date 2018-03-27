@@ -21,11 +21,11 @@ class NotificationTypeExtension extends \Twig_Extension
     public function notificationFilter($type)
     {
         $list = [
-            '1'=>'Votre niveau de privilège a changé, vous disposez maintenant d\'un compte amateur',
-            '2'=>'Félicitations votre compte à été promu, vous disposez à présent d\'un compte naturalitse!',
-            '3'=>'Votre demande de compte naturaliste à été accepté',
-            '4'=>'Votre demande de compte naturaliste à été refusé',
-            '5'=>'Une de vos observations à été validé et publié'
+            '1'=>'Vos droits d\'accès ont été modifiés, vous disposez maintenant d\'un compte amateur',
+            '2'=>'Félicitations votre compte à été promu, vous disposez à présent d\'un compte naturaliste!',
+            '3'=>'Votre demande de compte naturaliste a été acceptée',
+            '4'=>'Votre demande de compte naturaliste a été refusée',
+            '5'=>'Une de vos observations à été validée et publiée'
         ];
 
         return $list[$type];

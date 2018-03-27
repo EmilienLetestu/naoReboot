@@ -84,7 +84,7 @@ class BrowserFilter
     public function getTitle($state)
     {
         return $state === 'valide' ?
-            'Observations validées' : 'Observations en attentes de validation'
+            'Observations validées' : 'Observations en attente de validation'
             ;
     }
 
@@ -97,7 +97,7 @@ class BrowserFilter
     {
         return $state === 'valide' ?
             'Observations validées: '.$bird :
-            'Observations en attentes de validation: '.$bird
+            'Observations en attente de validation: '.$bird
        ;
     }
 
