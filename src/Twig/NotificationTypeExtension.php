@@ -24,10 +24,11 @@ class NotificationTypeExtension extends \Twig_Extension
             '1'=>'Votre niveau de privilège a changé, vous disposez maintenant d\'un compte amateur',
             '2'=>'Félicitations votre compte à été promu, vous disposez à présent d\'un compte naturalitse!',
             '3'=>'Votre demande de compte naturaliste à été accepté',
-            '4'=>'Votre demande de compte naturaliste à été refusé']
-            ;
+            '4'=>'Votre demande de compte naturaliste à été refusé',
+            '5'=>'Une de vos observations à été validé et publié'
+        ];
 
-            return $list[$type];
+        return $list[$type];
 
     }
 }

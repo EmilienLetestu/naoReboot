@@ -10,28 +10,32 @@ namespace App\Managers;
 
 use App\Entity\Report;
 use App\Entity\Validation;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ValidationManager
 {
 
     private $doctrine;
     private $token;
+    private $notification;
 
     /**
      * ValidationManager constructor.
-     * @param EntityManager $doctrine
-     * @param TokenStorage $token
+     * @param EntityManagerInterface $doctrine
+     * @param TokenStorageInterface $token
+     * @param NotificationManager $notification
      */
     public function __construct(
-        EntityManager $doctrine,
-        TokenStorage  $token
+        EntityManagerInterface $doctrine,
+        TokenStorageInterface  $token,
+        NotificationManager    $notification
+
     )
     {
-        $this->doctrine = $doctrine;
-        $this->token    = $token;
+        $this->doctrine     = $doctrine;
+        $this->token        = $token;
+        $this->notification = $notification;
     }
 
     /**
@@ -40,7 +44,6 @@ class ValidationManager
      */
     public function validationProcess($reportId)
     {
-        //fetch matching report
         $repository = $this->doctrine->getRepository(Report::class);
         $report = $repository->find($reportId);
         $score = $report->getValidationScore();
@@ -48,9 +51,7 @@ class ValidationManager
         //get logged user and his id
         $user       = $this->token->getToken()->getUser();
         $loggedId   = $user->getId();
-        //get all validation added for this report
         $validationList = $report->getValidations();
-
 
         // if hasn't gathered any validation, skip verification
         // otherwise check logged user never validated this report before
@@ -61,24 +62,26 @@ class ValidationManager
             return 'Vous avez déjà validé cette observation';
         }
 
-        //create a new validation object and hydrate it
         $validation = new Validation();
         $validation
             ->setUser($user)
             ->setReport($report)
         ;
-        //update report
+
         $report
             ->addValidation($validation)
             ->setValidationScore($score + 1)
         ;
-        //prepare validation to get stored
+
         $this->doctrine->persist($validation);
 
         //check if report has to be validated
         //need 5 validations to be validated
         if($score === 4)
         {
+            $this->notification->notifyUser(5,
+                $report->getUser()
+            );
             $report->setValidated(true);
         }
 
