@@ -28,6 +28,7 @@ function getAll() {
 
                 $id('report_location').value = result.address_components[0].long_name + ', ' + result.address_components[2].long_name;
                 $id('report_satNav').value   = position.coords.latitude + ', ' + position.coords.longitude;
+                disable('reportBtn','reportForm');
             }
             if (!results) {
                 generateMsg('jsGenerated','jsGeneratedMsg','Nous ne parvenons pas à géolocaliser !','#ff5240');
@@ -61,6 +62,7 @@ function codeLocation(geocoder) {
             ;
 
             $id('report_satNav').value = data.replace(/\(|\)/g,'') ;
+            disable('reportBtn','reportForm');
 
         } else {
             generateMsg('jsGenerated','jsGeneratedMsg','Aucune données pour ce lieu !','#ff5240');
