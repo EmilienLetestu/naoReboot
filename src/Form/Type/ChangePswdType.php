@@ -43,7 +43,7 @@ class ChangePswdType extends AbstractType
 
             ->add('confirmPswd',PasswordType::class,[
                                 'constraints'=>[new NotBlank()],
-                                'label'  => 'Confirmer le nouveau mot de passe',
+                                'label'  => 'Confirmer le mot de passe',
                                 'mapped' => false
             ])
         ;
