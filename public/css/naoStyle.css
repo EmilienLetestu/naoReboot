@@ -246,10 +246,6 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     line-height: 1.3rem;
 }
 
-#charMeter{
-    display: flex;
-    flex-flow: row-reverse;
-}
 /*---------------------error and flash---------------------*/
 .noError{
     visibility: hidden;
@@ -258,6 +254,8 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
 .has-error{
     color: #ff5240;
     font-size: 0.8em;
+    position: relative;
+    right: 1.2rem;
 }
 
 #jsGenerated{
@@ -725,7 +723,7 @@ footer .list-group
 .checked{
     position: relative;
     top: -20px;
-    display: none;
+    visibility: hidden;
     left: 100%;
     color: #5fdda1;
 }
@@ -1063,6 +1061,7 @@ footer .list-group
 #pswdModal{
     visibility: hidden;
     left: 33.5%;
+    width: 450px;
 }
 
 #profileInfo ul {

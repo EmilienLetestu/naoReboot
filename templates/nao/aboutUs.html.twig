@@ -52,19 +52,19 @@
                     {{ form_widget(form.fullname,{'attr':{'onkeyup':'validateText("contact_fullname",10,45,"fullnameError")'}}) }}
                     {{ form_errors(form.fullname) }}
                     <span class="checked inlineIcon"><i class="fa fa-check"></i></span>
-                    <div id="fullnameError" class="form-control-feedback noError">10 à 45 signes maximum</div>
+                    <span id="fullnameError" class="form-control-feedback noError">10 à 45 signes maximum</span>
                 </div>
                 <div class ="form-group-row">
                     {{ form_widget(form.email,{'attr':{'onkeyup':'validateMail("contact_email","contactMailError")'}}) }}
                     {{ form_errors(form.email) }}
                     <span class="checked inlineIcon"><i class="fa fa-check"></i></span>
-                    <div id="contactMailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</div>
+                    <span id="contactMailError" class="form-control-feedback noError">Veuillez fournir un e-mail valide</span>
                 </div>
                 <div class ="form-group-row">
                     {{ form_widget(form.subject,{'attr':{'onkeyup':'validateOptionalText("contact_subject",5,50,"contactSubjectError")'}} ) }}
                     {{ form_errors(form.subject) }}
                     <span class="checked inlineIcon"><i class="fa fa-check"></i></span>
-                    <div id="contactSubjectError" class="form-control-feedback noError">10 à 50 signes maximum</div>
+                    <span id="contactSubjectError" class="form-control-feedback noError">10 à 50 signes maximum</span>
                 </div>
             </div>
                 <div class ="form-group-row">
@@ -72,7 +72,7 @@
                     {{ form_errors(form.message) }}
                     <span id="contactWords" class="wordCount">0/100</span>
                     <span class="checked textareaIcon"><i class="fa fa-check"></i></span>
-                    <div id="contactMsgError" class="form-control-feedback noError">Entre 5 et 100 mots maximum</div>
+                    <span id="contactMsgError" class="form-control-feedback noError">Entre 5 et 100 mots maximum</span>
                 </div>
                 <div class="form-group-row send">
                     <button class="btn btn-success" type="submit" id="contactBtn" disabled="disabled">Valider</button>

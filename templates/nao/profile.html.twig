@@ -43,13 +43,13 @@
                 {{ form_label(accountInfo.updatePswd.pswd) }}<span class="req">*</span>
                 {{ form_widget(accountInfo.updatePswd.pswd, {'attr':{'onkeyup':'validatePswd("change_pswd_pswd",6,30,"chgPswdError")'}}) }}
                 <span class="checked modalChecked"><i class="fa fa-check"></i></span>
-                <div id="chgPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</div>
+                <span id="chgPswdError" class="form-control-feedback noError">Le mot de passe doit contenir entre 6 et 30 caractères</span>
             </div>
             <div class="form-group">
                 {{ form_label(accountInfo.updatePswd.confirmPswd ) }}<span class="req">*</span>
                 {{ form_widget(accountInfo.updatePswd.confirmPswd, {'attr':{'onkeyup':'matching("change_pswd_confirmPswd","change_pswd_pswd","chgConfirmError")'}}) }}
                 <span class="checked modalChecked"><i class="fa fa-check"></i></span>
-                <div id="chgConfirmError" class="form-control-feedback noError">Les mots de passes ne correspondent pas</div>
+                <span id="chgConfirmError" class="form-control-feedback noError">Les mots de passes ne correspondent pas</span>
             </div>
             <div class="form-group">
                 <button id="chgPswdBtn" class="btn btn-success" type="submit" disabled="disabled">Valider</button>

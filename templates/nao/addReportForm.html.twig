@@ -10,7 +10,7 @@
         <h1 class="pageTitle"> NOUVELLE OBSERVATION</h1>
     </div>
 
-    <div onload="initMap()" onkeyup="disable('reportBtn','reportForm')">
+    <div onload="initMap()" onchange="disable('reportBtn','reportForm')">
         {{ form_start(form, {'attr':{'id':'reportForm'}}) }}
         <div class="form-group">
             {{ form_label(form.bird) }}<span class="req">*</span>
@@ -21,7 +21,7 @@
             {{ form_label(form.nbrOfBirds) }}<span class="req">*</span>
             {{ form_widget(form.nbrOfBirds, {'attr':{'min':1,'max':30, 'oninput': 'validateInteger("report_nbrOfBirds",1,30,"integerError")'}}) }}
             <span class="checked"><i class="fa fa-check" aria-hidden="true"></i></span>
-            <div id="integerError" class="form-control-feedback noError">Entrez un nombre entre 1 et 30</div>
+            <span id="integerError" class="form-control-feedback noError">Entrez un nombre entre 1 et 30</span>
             {{ form_errors(form.nbrOfBirds) }}
         </div>
         <div class="form-group">
@@ -41,8 +41,8 @@
             {{ form_label(form.comment) }}
             {{ form_widget(form.comment, {'attr':{'onkeyup' : 'validateOptionalText("report_comment",9,300,"commentError")'}}) }}
             <span id="charMeter" class="wordCount">0/300</span>
-            <span class="checked"><i class="fa fa-check" aria-hidden="true"></i></span>
-            <div id="commentError" class="form-control-feedback noError"> 300 signes maximum</div>
+            <span class="checked textareaIcon"><i class="fa fa-check" aria-hidden="true"></i></span>
+            <span id="commentError" class="form-control-feedback noError"> 300 signes maximum</span>
             {{ form_errors(form.comment) }}
         </div>
         <div>

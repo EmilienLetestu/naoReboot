@@ -65,7 +65,7 @@
         </ul>
 
         <ul class="list-inline info2">
-            <li class="list-inline-item {{ report.location|length > 25 ? 'shrink' }}">
+            <li class="list-inline-item">
                 {% if report.validated == 1 and report.user.deactivated == 0%}
                     <a href="{{ path('profile', {'name' :report.user.name|specChars,'surname' :report.user.surname|specChars,'id' :report.user.id}) }}">
                         <i class="fa fa-user" aria-hidden="true"></i>
@@ -81,9 +81,9 @@
                     {{ report.user.createdOn|date('d-m-Y') }}
                 {% endif %}
             </li>
-            <li class="list-inline-item pull-right  {{ report.location|length > 25 ? 'shrink' }}">
+            <li class="list-inline-item pull-right" id="location{{ loop.index }}">
                 <i class="fa fa-map-marker " aria-hidden="true"></i>
-                {{ report.location }}
+                {{ report.location|length > 25 ? report.location|split(',')[0] : report.location}}
             </li>
         </ul>
 
