@@ -37,6 +37,44 @@ function addPoint(event,id) {
     }
 }
 
+/**
+ * @param event
+ * @param id
+ * @param containerId
+ */
+function addValidation(event,id,containerId) {
+    event.preventDefault();
+
+    if(loggedUser() === true){
+
+        var url = $id(id).getAttribute("href");
+        var  xmlhttp  = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if(this.readyState === 4){
+
+                if(this.responseText === 'success'){
+
+                    $id(id).innerHTML = updateScore(url,id);
+                    parseInt($id(id).innerHTML) === 5 ?
+                        validateAndPublish(containerId) :
+                        generateMsg('jsGenerated','jsGeneratedMsg','Validation ajoutée','#5fdda1')
+                    ;
+
+                } else {
+                    generateMsg('jsGenerated','jsGeneratedMsg',this.responseText,'#ff5240');
+                }
+            }
+        };
+
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+
+    } else {
+        generateMsg('jsGenerated','jsGeneratedMsg','Fonctionnalité réservé aux membres, se connecter?','#ff5240');
+    }
+}
+
 function deleteReport(event,id,cardId){
 
     event.preventDefault();
@@ -80,6 +118,14 @@ function updateScore(url,id){
         '<i class="fa fa-star-o" aria-hidden="true"></i>' + (parseInt(getScore) + 1) :
          $id(id).innerHTML = parseInt(getScore) + 1 + '/5'
     ;
+}
+
+/**
+ * @param containerId
+ */
+function validateAndPublish(containerId){
+    generateMsg('jsGenerated','jsGeneratedMsg','Observation validée et publiée','#5fdda1');
+    $id(containerId).remove();
 }
 
 /**
