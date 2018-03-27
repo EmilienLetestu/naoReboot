@@ -107,7 +107,7 @@
 
             {% if report.comment == null and report.validated == 0 %}
                 <div class="reportValidation">
-                    <a class="btn btn-outline" id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
+                    <a class="btn btn-outline" id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addValidation(event,'validate{{ loop.index }}','{{'reportCard'~loop.index}}')">
                         {{ report.validationScore }} / 5
                     </a>
                 </div>
@@ -115,7 +115,7 @@
 
             {% if report.comment != null and report.validated == 0 %}
                 <div class="reportValidationCmt">
-                    <a class="btn btn-outline" id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addPoint(event,'validate{{ loop.index }}')">
+                    <a class="btn btn-outline" id="validate{{ loop.index }}" href="{{ path('validateReport', {'reportId': report.id}) }}" onclick="addValidation(event,'validate{{ loop.index }}','{{'reportCard'~loop.index}}')">
                         {{ report.validationScore }} / 5
                     </a>
                     <button class="btn btn-outline" onclick="show('{{ cmtId }}')">Lire le commentaire</button>
