@@ -54,7 +54,7 @@ function codeLocation(geocoder) {
             var addressToUpper = address.charAt(0).toUpperCase() + address.slice(1);
 
 
-            address.match(/^[a-zA-Z]+$/) ?
+            address.match( /^[a-zA-Z\s\-]*$/) ?
                 $id('report_location').value =  addressToUpper + ', ' +  results[0].address_components[2].long_name
                 :
                 $id('report_location').value =  results[0].address_components[2].long_name + ', ' +  results[0].address_components[4].long_name
