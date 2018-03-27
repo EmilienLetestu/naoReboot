@@ -1807,7 +1807,7 @@ footer .list-group
     }
 
     .has-error {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     .navbar-brand {
@@ -1816,10 +1816,11 @@ footer .list-group
 
     #connection .btn {
         font-size: 0.7rem;
+        padding: 0.5rem;
     }
 
     #connection .btn-default {
-        right: 25%;
+        right: 22%;
     }
 
     #accountBadge {
@@ -2096,6 +2097,11 @@ footer .list-group
     }
 
     #pswdModal {
+        left: 0;
+        width: auto;
+    }
+
+    #pswdModal .has-error{
         left: 0;
     }
 
@@ -2455,6 +2461,18 @@ footer .list-group
         top:25px;
     }
 
+
+
+    #contact{
+        padding: 1%;
+    }
+
+    .checked{
+        position: unset !important;
+    }
+
+
+
 }
 @media only screen and (max-width: 320px){
 
@@ -2485,7 +2503,15 @@ footer .list-group
     }
 
     #connection .btn{
-        padding:5px;
+        padding:0.3rem;
+    }
+
+    #connection .btn-default {
+        right: 25%;
+    }
+
+    #searchTrigger {
+        left: 9rem;
     }
 
     .speciesData,
