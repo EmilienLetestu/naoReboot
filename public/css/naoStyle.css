@@ -1722,15 +1722,16 @@ footer .list-group
 
 #senderInfo{
     display: flex;
+    justify-content: space-between;
     margin-top: 5%;
 }
 
-#senderInfo input:not(:last-child){
-   margin-right: 25%;
+#senderInfo input{
+    width: 100%;
 }
 
-#senderInfo input{
-    width: 400px;
+#senderInfo .form-group-row{
+    flex-grow: 0.2;
 }
 
 #contact_form_message{
