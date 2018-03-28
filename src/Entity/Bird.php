@@ -223,11 +223,7 @@ class Bird
         $sanitizeFr = preg_split('/\(|\)/',$splitFr[0]);
 
 
-        return
-            $sanitizeFr[0] === ''  ?
-                $this->getSpeciesNameOnly() :
-                $this->getSpeciesNameOnly().' -- '.$sanitizeFr[0]
-        ;
+        return $this->getSpeciesNameOnly().' -- '.$sanitizeFr[0];
     }
 
 }
