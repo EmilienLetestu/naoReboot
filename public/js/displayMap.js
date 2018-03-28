@@ -6,6 +6,8 @@ window.addEventListener('scroll',function () {
     document.getElementById('jsGenerated').style.display = "none";
 });
 
+
+
 /**
  * @param id
  * @param buttonId
@@ -67,4 +69,12 @@ if(screen.width < 768){
             swappClass(trigger,'fa-caret-right','fa-caret-down')
         ;
     }
+
+    function showFirstCard() {
+       var hidden1 = $id('reportCard1').getElementsByClassName('mobileHidden');
+       hidden1[0].style.display = "block";
+       swappClass($id('mobileCardTrigger1'),'fa-caret-right','fa-caret-down');
+    }
+
+    showFirstCard();
 }
