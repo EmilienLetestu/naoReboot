@@ -223,6 +223,10 @@ button[type="submit"]:hover:not(#nav_search_submit):not(#filterSubmit){
     padding: 2% 8%;
 }
 
+.moreBtn{
+    text-align: center;
+}
+
 .moreBtn .btn{
     width: 100%;
     background-color: transparent;
@@ -900,11 +904,6 @@ footer .list-group
     text-align: center;
 }
 
-.reportValidationCmt{
-    display: inline-flex;
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
-}
 
 .reportValidationCmt a{
     position: relative;
@@ -922,6 +921,7 @@ footer .list-group
     position: relative;
     right: -1rem;
     font-size: 0.8rem;
+    padding: 0.5rem;
 }
 
 
