@@ -2,17 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <style>
+            li {
+                font-size: 1rem;
+            }
+
+            span{
+                font-weight: bold;
+            }
+
+            p{
+                font-size: 1rem;
+                padding: 2rem;
+            }
+        </style>
     </head>
     <body>
         <ul>
             <li>
-                Sujet : {{ subject }}
+                Sujet : <span>{{ subject }}</span>
             </li>
             <li>
-                Message de : {{ fullname }}
+                Message de : <span>{{ fullname }}</span>
             </li>
             <li>
-                Envoyé le : {{ date }}
+                Envoyé le : <span>{{ "now"|date("d/m/Y") }}</span>
             </li>
         </ul>
         <div>
