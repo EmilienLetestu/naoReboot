@@ -1257,6 +1257,7 @@ footer .list-group
     padding-top: 2%;
 }
 
+
 /*---------------------------admin home-------------------------*/
 
 .img img{
@@ -1676,8 +1677,20 @@ footer .list-group
 }
 
 #partnership{
-    height: 500px;
     padding: 5%;
+}
+
+.partners{
+    display: flex;
+    justify-content: space-between;
+}
+
+.partners{
+    padding: 5%;
+}
+
+.partners img{
+    height: 80px;
 }
 
 #contact{
@@ -1760,6 +1773,9 @@ footer .list-group
         margin-top: 80px;
     }
 
+    .partners img{
+        height: 50px;
+    }
 
     .midItem{
         right: 0;
