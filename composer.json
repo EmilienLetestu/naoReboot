@@ -26,7 +26,6 @@
         "symfony/serializer": "^3.3"
     },
     "require-dev": {
-        "easycorp/easy-deploy-bundle": "^1.0",
         "symfony/dotenv": "^3.3"
     },
     "config": {
