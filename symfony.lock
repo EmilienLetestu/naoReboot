@@ -25,5 +25,8 @@
     },
     "symfony/css-selector": {
         "version": "v4.0.6"
+    },
+    "easycorp/easy-deploy-bundle": {
+        "version": "v1.0.3"
     }
 }
