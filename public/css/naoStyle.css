@@ -732,6 +732,15 @@ footer .list-group
     color: #5fdda1;
 }
 
+#landingForm .form-control-feedback.has-error{
+   right: 0;
+}
+
+#landingForm span.checked{
+    left: 95%;
+}
+
+
 .modalChecked{
     position: relative;
     top: -20px;

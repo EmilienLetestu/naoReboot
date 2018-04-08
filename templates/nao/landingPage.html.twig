@@ -37,21 +37,25 @@
             <div class="form-group">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name, { 'attr': { 'onkeyup' : 'validateText("register_name",3,30,"landingNameError")'} }) }}
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="landingNameError" class="form-control-feedback noError">Le prénom doit contenir 3 lettres minimum</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.surname) }}
                 {{ form_widget(form.surname, { 'attr': { 'onkeyup' : 'validateText("register_surname",3,30,"landingSurnameError")' } }) }}
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="landingSurnameError" class="form-control-feedback noError">Le nom doit contenir 3 lettres minimum</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email,  { 'attr': {'onkeyup': 'validateMail("register_email","landingEmailError")'} }) }}
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="landingEmailError" class="form-control-feedback noError">Veuillez fournir un e-mail</div>
             </div>
             <div class="form-group">
                 {{ form_label(form.pswd) }}
                 {{ form_widget(form.pswd, { 'attr': { 'onkeyup': 'validatePswd("register_pswd",6,30,"landingPswdError")' } }) }}
+                <span class="checked"><i class="fa fa-check"></i></span>
                 <div id="landingPswdError" class="form-control-feedback noError">Entre 6 et 30 caractères</div>
             </div>
             <div class="form-group">
