@@ -2230,6 +2230,8 @@ footer .list-group
 
     #modalPicture{
         left: 0;
+        width: auto;
+        padding: 1% !important;
     }
 
     #adminNavTrigger,
